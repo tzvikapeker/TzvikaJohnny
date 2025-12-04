@@ -3,29 +3,235 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eyal Izenman | איל איזנמן</title>
+  <title>Generative AI in Art Direction & Copywriting | איל איזנמן</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <button id="language-toggle">עברית</button>
-  <div class="container">
-    <h1><span class="english">Eyal Izenman</span> | <span class="hebrew">איל איזנמן</span></h1>
-    <h2><span class="english">Visual, AI Artist & Educator</span> | <span class="hebrew">אמן חזותי בינאי ומורה</span></h2>
-    <div class="carousel-container">
-      <div class="carousel" id="carousel">
-        <!-- Carousel items will be added dynamically here -->
+  <div class="background-grid"></div>
+  <button id="language-toggle" aria-label="Switch language">עברית</button>
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">
+        <span class="english">Generative AI Workshop · Art Direction & Copywriting</span>
+        <span class="hebrew" lang="he" dir="rtl">סדנת Generative AI · ארט דיירקשן וקופי</span>
+      </p>
+      <h1 class="title">
+        <span class="english">Everything happens at once.</span>
+        <span class="hebrew" lang="he" dir="rtl">הכול קורה בבת־אחת.</span>
+      </h1>
+      <p class="subtitle">
+        <span class="english">Cracking the brief in the multimodal space. A deep-dive workshop in strategy, creative, and visual development in the age of Generative AI.</span>
+        <span class="hebrew" lang="he" dir="rtl">לפצח את הבריף במרחב המולטי־מודאלי. סדנת עומק לאסטרטגיה, קריאייטיב ופיתוח ויזואלי בעידן ה‑Generative AI.</span>
+      </p>
+      <div class="cta-row">
+        <a class="primary-cta" href="mailto:Eyalizenman@gmail.com?subject=Generative%20AI%20Workshop">
+          <span class="english">Reserve your spot →</span>
+          <span class="hebrew" lang="he" dir="rtl">שריינו מקום בסדנה הקרובה ←</span>
+        </a>
+        <div class="meta">
+          <span class="english">Live, hands-on · Tool-agnostic · Bilingual</span>
+          <span class="hebrew" lang="he" dir="rtl">מעשי, חי · אגנוסטי לכלי · דו״ל</span>
+        </div>
       </div>
     </div>
-<div id="floating-quotes-container"></div>
-    <div class="contact-info">
-      <div class="contact-details">
-        <a href="https://wa.me/97236030603" target="_blank">WhatsApp: +972 3 6030603</a>
+    <div class="hero-media">
+      <div class="portrait-frame">
+        <img src="assets/portrait-placeholder.svg" alt="Portrait of Eyal Izenman" loading="lazy">
+      </div>
+      <div class="logo-chip">
+        <img src="assets/logo-mark.svg" alt="Eyal Izenman logo" loading="lazy">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" id="shift">
+      <div class="section-heading">
+        <p class="label">
+          <span class="english">The shift: from “copy here, visual there” to one unified canvas.</span>
+          <span class="hebrew" lang="he" dir="rtl">המעבר: מ"קופי כאן, ויז׳ואל שם" לקנבס אחוד אחד.</span>
+        </p>
+      </div>
+      <div class="two-col">
+        <div class="card glass">
+          <h3><span class="english">The problem</span><span class="hebrew" lang="he" dir="rtl">הבעיה</span></h3>
+          <p>
+            <span class="english">Most of the industry still works in a “divide and fragment” mindset. Copy in one tab, images in another, and the original brief gets lost somewhere in the middle. The result: friction. Too many technical handoffs, not enough continuous creation.</span>
+            <span class="hebrew" lang="he" dir="rtl">רוב התעשייה עדיין עובדת בשיטת "הפרד ומשול". טקסט בטאב אחד, תמונה בטאב שני, והבריף המקורי הולך לאיבוד איפשהו באמצע. התוצאה? חיכוך. הרבה מעברים טכניים, ומעט מדי יצירה רציפה.</span>
+          </p>
+        </div>
+        <div class="card glass">
+          <h3><span class="english">The shift</span><span class="hebrew" lang="he" dir="rtl">המעבר</span></h3>
+          <p>
+            <span class="english">This workshop moves you into a unified workflow. Forget ping‑ponging between tools. We work on a single generative canvas, where written strategy and visual output evolve side by side. It does not matter if you use Krea, ComfyUI, or Runway – the real shift is in your thinking, not in the tool.</span>
+            <span class="hebrew" lang="he" dir="rtl">אנחנו עוברים למודל עבודה אחוד. תשכחו מפינג‑פונג בין כלים. הסדנה מציגה עבודה על קנבס גנרטיבי אחד: מרחב שבו המילה הכתובה, האסטרטגיה והפלט הגרפי מתהווים במקביל. זה לא משנה אם אתם עובדים ב‑Krea, ComfyUI או Runway – השינוי הוא בראש, לא בכלי.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel methodology" id="methodology">
+      <div class="section-heading">
+        <p class="label">
+          <span class="english">The methodology: from brief to video in 4 movements.</span>
+          <span class="hebrew" lang="he" dir="rtl">המתודולוגיה: מבריף לוידאו בארבעה מהלכים.</span>
+        </p>
+        <p class="intro">
+          <span class="english">A structured workflow that turns creative chaos into a precise pipeline.</span>
+          <span class="hebrew" lang="he" dir="rtl">תהליך מובנה שהופך כאוס יצירתי לפייפליין מדויק.</span>
+        </p>
+      </div>
+      <div class="steps">
+        <article class="step-card">
+          <div class="step-number">01</div>
+          <h3>
+            <span class="english">Deconstruction // Understanding the DNA</span>
+            <span class="hebrew" lang="he" dir="rtl">פירוק (Deconstruction) // להבין את ה‑DNA</span>
+          </h3>
+          <p>
+            <span class="english">The brief does not go into the machine as‑is. First, it is taken apart into its core components.</span>
+            <span class="hebrew" lang="he" dir="rtl">הבריף לא נכנס למכונה כמו שהוא. אנחנו מפרקים אותו לגורמים ראשוניים.</span>
+          </p>
+          <p class="learn">
+            <span class="english">Learn: How to surface hidden intentions and brand values using LLMs, and how to spot the gap between “what the client asked for” and “what the brand actually needs”.</span>
+            <span class="hebrew" lang="he" dir="rtl">מה נלמד: חילוץ כוונות נסתרות וערכי מותג בעזרת LLM, וזיהוי הפער הקריטי בין "מה הלקוח ביקש" לבין "מה המותג צריך".</span>
+          </p>
+        </article>
+        <article class="step-card">
+          <div class="step-number">02</div>
+          <h3>
+            <span class="english">Decoding // Building the language</span>
+            <span class="hebrew" lang="he" dir="rtl">פענוח (Decoding) // לבנות את השפה</span>
+          </h3>
+          <p>
+            <span class="english">Turning insights into a creative operating system. This is where words become visuals.</span>
+            <span class="hebrew" lang="he" dir="rtl">הפיכת התובנות למערכת הפעלה יצירתית. זה השלב שבו מילים הופכות לוויז׳ואל.</span>
+          </p>
+          <p class="learn">
+            <span class="english">Learn: Building an AI‑driven style‑sheet, translating narrative into composition, and crafting prompts that do more than describe an image – they tell a story.</span>
+            <span class="hebrew" lang="he" dir="rtl">מה נלמד: בניית "Style‑Sheet" מבוסס AI, תרגום נרטיב לקומפוזיציה, ויצירת פרומפטים שלא רק מתארים תמונה, אלא מספרים סיפור.</span>
+          </p>
+        </article>
+        <article class="step-card">
+          <div class="step-number">03</div>
+          <h3>
+            <span class="english">Mutation // The big bang</span>
+            <span class="hebrew" lang="he" dir="rtl">הנפצה (Mutation) // המפץ הגדול</span>
+          </h3>
+          <p>
+            <span class="english">No random spraying of ideas – instead, an evolution of concepts.</span>
+            <span class="hebrew" lang="he" dir="rtl">לא יורים לכל הכיוונים – מייצרים אבולוציה של רעיונות.</span>
+          </p>
+          <p class="learn">
+            <span class="english">Learn: Text → Image → Text cycles, smart variations, and using mood exploration to reach results that are surprising yet precise.</span>
+            <span class="hebrew" lang="he" dir="rtl">מה נלמד: סייקלים של Text → Image → Text, יצירת וריאציות חכמות, ושימוש ב‑Mood Exploration כדי להגיע לתוצאות בלתי צפויות אך מדויקות.</span>
+          </p>
+        </article>
+        <article class="step-card">
+          <div class="step-number">04</div>
+          <h3>
+            <span class="english">Refinement // The final reduction</span>
+            <span class="hebrew" lang="he" dir="rtl">התססה (Refinement) // הזיקוק הסופי</span>
+          </h3>
+          <p>
+            <span class="english">The distillation phase. Sketches become assets, ideas become production‑ready.</span>
+            <span class="hebrew" lang="he" dir="rtl">שלב העיבוי. כאן הופכים סקיצות לנכסים, ורעיונות להפקה.</span>
+          </p>
+          <p class="learn">
+            <span class="english">Learn: Building visual consistency across series, iterative refinement, and preparing for full production: from storyboard to video shots.</span>
+            <span class="hebrew" lang="he" dir="rtl">מה נלמד: יצירת עקביות (Consistency) בתוך סדרות ויזואליות, Iterative Refinement, והכנת הקרקע להפקה מלאה: מסטוריבורד ועד שוטים לווידאו.</span>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel audience" id="audience">
+      <div class="section-heading">
+        <h2>
+          <span class="english">Who is this for?</span>
+          <span class="hebrew" lang="he" dir="rtl">למי הסדנה מיועדת?</span>
+        </h2>
+      </div>
+      <div class="audience-grid">
+        <ul class="audience-list">
+          <li><span class="english">Professionals who know AI is not a “magic button”, but their new creative partner.</span><span class="hebrew" lang="he" dir="rtl">מקצוענים שיודעים ש‑AI הוא לא "כפתור קסם" אלא שותף יצירתי.</span></li>
+          <li><span class="english">Account managers who want to lead the process, not just pass messages along.</span><span class="hebrew" lang="he" dir="rtl">מנהלי לקוח שרוצים להוביל את התהליך – לא רק להעביר מסרים.</span></li>
+          <li><span class="english">Planners and strategists who want visual expression for their insights.</span><span class="hebrew" lang="he" dir="rtl">פלנרים ואסטרטגים שמחפשים ביטוי ויזואלי לתובנות שלהם.</span></li>
+          <li><span class="english">Art directors and designers who want to control the tool, instead of being controlled by it.</span><span class="hebrew" lang="he" dir="rtl">ארט דיירקטורים ומעצבים שרוצים לשלוט בכלי – ולא שהוא ישלוט בהם.</span></li>
+          <li><span class="english">AI creators and producers ready to level up from random outputs to a stable, well‑reasoned pipeline.</span><span class="hebrew" lang="he" dir="rtl">יוצרי AI ומפיקים שמוכנים לעבור מפלטים אקראיים לפייפליין יציב ומנומק.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel value" id="value">
+      <div class="section-heading">
+        <h2>
+          <span class="english">What you leave with</span>
+          <span class="hebrew" lang="he" dir="rtl">בסיום הסדנה, יהיה לכם ביד</span>
+        </h2>
+      </div>
+      <div class="value-grid">
+        <div class="value-card">
+          <p><span class="english">A complete creative pipeline – from strategy to video.</span><span class="hebrew" lang="he" dir="rtl">פייפליין יצירתי מלא – מאסטרטגיה ועד וידאו.</span></p>
+        </div>
+        <div class="value-card">
+          <p><span class="english">Full control over the brief, the language, and the final output.</span><span class="hebrew" lang="he" dir="rtl">שליטה מוחלטת בבריף, בשפה ובתוצר הסופי.</span></p>
+        </div>
+        <div class="value-card">
+          <p><span class="english">A tool‑agnostic methodology that will not break the moment platforms change.</span><span class="hebrew" lang="he" dir="rtl">מתודולוגיה אגנוסטית – כזו שלא תלויה בפלטפורמה אחת שתתחלף מחר בבוקר.</span></p>
+        </div>
+        <div class="value-card">
+          <p><span class="english">The ability to lead – to show clients a deep process, not just a pretty result.</span><span class="hebrew" lang="he" dir="rtl">יכולת הובלה – להציג ללקוח תהליך עומק, ולא רק תוצאה יפה.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel bio" id="bio">
+      <div class="bio-media">
+        <div class="portrait-stack">
+          <img src="assets/portrait-placeholder.svg" alt="Portrait of איל איזנמן" loading="lazy">
+          <div class="accent-block"></div>
+        </div>
+      </div>
+      <div class="bio-copy">
+        <p class="label">
+          <span class="english">About the facilitator – איל איזנמן</span>
+          <span class="hebrew" lang="he" dir="rtl">על המנחה – איל איזנמן</span>
+        </p>
+        <h2>
+          <span class="english">Creator, animator, motion designer, and thought leader in the Generative AI space.</span>
+          <span class="hebrew" lang="he" dir="rtl">יוצר, אנימטור, מעצב תנועה ומוביל דעה בתחום ה‑Generative AI.</span>
+        </h2>
+        <p>
+          <span class="english">With decades of experience weaving together music, design, and movement, איל איזנמן is one of the leading voices in Israel at the intersection of human creativity and artificial intelligence.</span>
+          <span class="hebrew" lang="he" dir="rtl">עם עשרות שנים של ניסיון בחיבור בין מוזיקה, עיצוב ותנועה, איל איזנמן הוא מהקולות הבולטים בישראל בסינתזה שבין יצירה אנושית לבינה מלאכותית.</span>
+        </p>
+        <blockquote>
+          <span class="english">“AI is not a tech trick – it is a full creative space. My goal is to help you surface the idea, refine it, and turn it into a complete visual asset – in one continuous breath.”</span>
+          <span class="hebrew" lang="he" dir="rtl">"אני לא רואה ב‑AI טריק טכנולוגי, אלא מרחב יצירתי שלם. המטרה שלי היא ללמד אתכם איך לחשוף את הרעיון, לדייק אותו, ולהפוך אותו לנכס ויזואלי שלם – בנשימה אחת."</span>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="panel cta" id="cta">
+      <div class="pipeline">
+        <span class="english">Brief ← Deconstruction ← Decoding ← Mutation ← Refinement ← Moodboard ← Look & Feel ← Storyboard ← Video.</span>
+        <span class="hebrew" lang="he" dir="rtl">בריף ← פירוק ← פענוח ← הנפצה ← התססה ← Moodboard ← Look & Feel ← סטוריבורד ← וידאו.</span>
+      </div>
+      <a class="primary-cta" href="https://wa.me/97236030603" target="_blank" rel="noopener">
+        <span class="english">Reserve your spot in the next workshop →</span>
+        <span class="hebrew" lang="he" dir="rtl">שריינו מקום בסדנה הקרובה ←</span>
+      </a>
+      <div class="contact-info">
+        <a href="https://wa.me/97236030603" target="_blank" rel="noopener">WhatsApp: +972 3 6030603</a>
         <a href="mailto:Eyalizenman@gmail.com" class="email-link">Eyalizenman@gmail.com</a>
       </div>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://wa.me/97236030603" alt="WhatsApp QR Code">
-    </div>
-  </div>
+    </section>
+  </main>
+
   <script src="script.js"></script>
 </body>
 </html>
