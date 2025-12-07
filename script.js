@@ -1,14 +1,9 @@
 const items = [
-  { title: 'About Me', src: 'https://drive.google.com/thumbnail?id=1PzZBzXBSmCvBjHPHaw3xdswfUlDS7a56', link: 'pages/about-me.html' },
-  { title: 'Animation', src: 'https://drive.google.com/thumbnail?id=1M2Z84DU_jtEqG1doqmUO7gukAN9MnXws', link: 'pages/animation.html' },
-  { title: 'Courses', src: 'https://drive.google.com/thumbnail?id=1b62GivFwZR4djMTP0qmVhFvk9Vr0-uwy', link: 'pages/courses.html' },
-  { title: 'DeepFake', src: 'https://drive.google.com/thumbnail?id=1F_h8tAnGZb-u1VoUJ1gX_g1Qq6yz5zMN', link: 'pages/deepfake.html' },
-  { title: 'Design', src: 'https://drive.google.com/thumbnail?id=1E-AtjtH7ggL-EQzg14GwjIbf8i7hVw8O', link: 'pages/design.html' },
-  { title: 'Motion Design', src: 'https://drive.google.com/thumbnail?id=1Uf0Wza_h-qsoE1kZHT1QRUK13mcsqSa5', link: 'pages/motion-design.html' },
-  { title: 'Shoshke Engelmaier', src: 'https://drive.google.com/thumbnail?id=15xg5m4gL6K4mt2YfKlAfuKOPWSyxfVE3', link: 'pages/shoshke-engelmaier.html' },
-  { title: 'Visual Art', src: 'https://drive.google.com/thumbnail?id=1YbayXi_u8lY8bxjuo2VjFwDOCrGnquIh', link: 'pages/visual-art.html' },
-  { title: 'Generative Video', src: 'https://drive.google.com/thumbnail?id=1eyH78d9a0R216B1B2Buelf9rIfMCrdRE', link: 'pages/generative-video.html' },
-  { title: 'Above and Beyond', src: 'https://drive.google.com/thumbnail?id=1rO-rggUfDimdefDfiDZlfesuvyBIE_kq', link: 'pages/above-and-beyond.html' }
+  { title: 'Image', src: 'https://drive.google.com/file/d/1DGeToGCG4Sy1QLd9bcUXTvfgwkwKhFlT/view?usp=drive_link', link: 'pages/image.html' },
+  { title: 'Simulation', src: 'https://drive.google.com/file/d/1P1-8Gy10D83KwbrhUEa1vRnQaCzp7PpT/view?usp=drive_link', link: 'pages/simulation.html' },
+  { title: 'Video', src: 'https://drive.google.com/file/d/1leLgmJl99J-VvI_ERK9g3WlgUQHA_qtt/view?usp=drive_link', link: 'pages/video.html' },
+  { title: 'Personal Work', src: 'https://drive.google.com/file/d/17PuWeEYspDq6wybgCTc7tQWwa_3w2g_2/view?usp=drive_link', link: 'pages/personal-work.html' },
+  { title: 'Satire', src: 'https://drive.google.com/file/d/1xZwHCbZdBdiyR1z4RBXjUpGDxl2VOG51/view?usp=drive_link', link: 'pages/satire.html' }
 ];
 
 const carousel = document.getElementById('carousel');
@@ -226,6 +221,7 @@ function startFloatingQuotes() {
 }
 
 // Start the carousel and floating quotes when the page loads
+
 window.addEventListener('load', () => {
   const savedLang = localStorage.getItem('lang') || 'en';
   setLanguage(savedLang);
