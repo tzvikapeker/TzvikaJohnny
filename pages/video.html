@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>וידאו – Tzvika Johnny</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Heebo font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-color: #050608;
+        --card-bg: rgba(18, 18, 24, 0.92);
+        --accent: #ffb86c;
+        --accent-soft: rgba(255, 184, 108, 0.14);
+        --text-main: #f8f8ff;
+        --text-muted: #b7b7c7;
+        --border-color: rgba(255, 255, 255, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
+        color: var(--text-main);
+        display: flex;
+        flex-direction: column;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      header {
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--border-color);
+        backdrop-filter: blur(16px);
+        background: linear-gradient(
+          to bottom,
+          rgba(5, 6, 8, 0.92),
+          rgba(5, 6, 8, 0.78)
+        );
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
+
+      .logo-title {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .logo-title span:first-child {
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        font-size: 13px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+
+      .logo-title span:last-child {
+        font-weight: 500;
+        font-size: 15px;
+      }
+
+      nav {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .nav-link {
+        font-size: 14px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        color: var(--text-muted);
+      }
+
+      .nav-link.active {
+        border-color: var(--accent-soft);
+        background: radial-gradient(
+          circle at top,
+          rgba(255, 184, 108, 0.18),
+          rgba(8, 9, 14, 0.9)
+        );
+        color: var(--accent);
+      }
+
+      .language-toggle {
+        font-size: 13px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        background: rgba(10, 10, 16, 0.8);
+        color: var(--text-muted);
+      }
+
+      main {
+        flex: 1;
+        padding: 32px 6vw 40px 6vw;
+        display: grid;
+        grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+        gap: 28px;
+      }
+
+      @media (max-width: 900px) {
+        main {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+
+      .content-card {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 184, 108, 0.06),
+            transparent 48%
+          ),
+          linear-gradient(
+            200deg,
+            rgba(145, 124, 255, 0.06),
+            transparent 64%
+          ),
+          var(--card-bg);
+        border-radius: 20px;
+        padding: 22px 22px 20px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .content-card::before {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background:
+          radial-gradient(circle at 0% 0%, rgba(255, 184, 108, 0.09) 0, transparent 55%),
+          radial-gradient(circle at 110% 0%, rgba(112, 97, 255, 0.08) 0, transparent 52%);
+        opacity: 0.8;
+        pointer-events: none;
+      }
+
+      .content-inner {
+        position: relative;
+        z-index: 1;
+      }
+
+      .pill-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(10, 10, 16, 0.84);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+      }
+
+      .pill-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: radial-gradient(circle, #ffb86c 0, #ff7e5f 65%);
+        box-shadow: 0 0 10px rgba(255, 184, 108, 0.8);
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: clamp(26px, 3vw, 30px);
+        letter-spacing: 0.04em;
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        font-size: 18px;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      .text-block {
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--text-main);
+        margin-bottom: 14px;
+      }
+
+      .text-muted {
+        color: var(--text-muted);
+        font-size: 14px;
+      }
+
+      .en {
+        direction: ltr;
+        text-align: left;
+      }
+
+      .he {
+        direction: rtl;
+        text-align: right;
+      }
+
+      .media-card {
+        background: radial-gradient(
+            circle at top,
+            rgba(255, 184, 108, 0.12),
+            transparent 60%
+          ),
+          rgba(10, 10, 18, 0.96);
+        border-radius: 20px;
+        padding: 18px 18px 16px;
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .media-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+      }
+
+      .media-title {
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .media-sub {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .video-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        margin-top: 6px;
+      }
+
+      .video-item {
+        padding: 10px;
+        border-radius: 14px;
+        background: rgba(9, 9, 16, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .video-label {
+        font-size: 13px;
+        margin-bottom: 6px;
+        color: var(--text-muted);
+      }
+
+      video {
+        width: 100%;
+        border-radius: 10px;
+        display: block;
+      }
+
+      footer {
+        border-top: 1px solid var(--border-color);
+        padding: 18px 6vw 22px 6vw;
+        font-size: 13px;
+        color: var(--text-muted);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+        background: rgba(3, 3, 8, 0.98);
+      }
+
+      .footer-left,
+      .footer-right {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo-title">
+        <span>TZVIKA JOHNNY</span>
+        <span>Multimodal creative technologist</span>
+      </div>
+      <nav>
+        <a href="../index.html" class="nav-link">ראשי</a>
+        <a href="image.html" class="nav-link">דימוי</a>
+        <a href="simulation.html" class="nav-link">הדמיה</a>
+        <a href="video.html" class="nav-link active">וידאו</a>
+        <a href="personal-work.html" class="nav-link">יצירה אישית</a>
+        <a href="satire.html" class="nav-link">סאטירה</a>
+        <button class="language-toggle" id="langToggle">HE / EN</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="content-card">
+        <div class="content-inner">
+          <div class="pill-label">
+            <span class="pill-dot"></span>
+            <span>Video · Motion Stories</span>
+          </div>
+
+          <h1 class="he">וידאו</h1>
+          <h2 class="he">המקום שבו הכל זז ונושם</h2>
+
+          <div class="text-block he">
+            הרובליקה שבה הכל מתחבר לצורה החיה ביותר של יצירה – וידאו. כאן אני מייצר
+            קטעים קצרים וארוכים, קולנועיים או קומיים, מופשטים או ישירים, וכל אחד מהם
+            מספר סיפור קטן.
+          </div>
+          <div class="text-block he">
+            אני משלב תנועה חכמה, קומפוזיציה מוקפדת, קצב נכון, עריכה מדויקת, והומור
+            שמופיע בדיוק כשהוא צריך. וידאו בשבילי הוא כמו ניסוי במעבדה: מנסים,
+            בודקים, משחקים עד שהסצנה מרגישה נכונה. כל סרטון נועד לתת חוויה, לא רק
+            תמונה זזה.
+          </div>
+          <div class="text-block he">
+            זה המקום שבו רעיון מתעורר לחיים, בועט, מצחיק, מרגש, ומדבר בשפה שאין לה
+            צורך במילים.
+          </div>
+
+          <div class="text-block en">
+            This is the space where everything comes together in the most vivid form of
+            creation – video. Here the work ranges from short clips to longer pieces,
+            cinematic or comic, abstract or direct, each one carrying its own little
+            story.
+          </div>
+          <div class="text-block en">
+            Smart motion, deliberate composition, rhythm, precise editing, and humor
+            that lands exactly when it should all meet here. For me, video is a lab
+            experiment: trying, testing, and playing until the scene feels right. Each
+            piece is built to be an experience, not just moving pixels.
+          </div>
+          <div class="text-block en">
+            This is where an idea wakes up, kicks, jokes, moves you, and speaks in a
+            language that does not need words.
+          </div>
+
+          <p class="text-muted he">
+            * חלק מהעבודות כאן נוצרו בשילוב כלי AI, אנימציה, צילום ועריכה – תמיד עם
+            מטרה אחת: לגרום לצופה להרגיש משהו.
+          </p>
+        </div>
+      </section>
+
+      <aside class="media-card">
+        <div class="media-card-header">
+          <div>
+            <div class="media-title he">סרטונים נבחרים</div>
+            <div class="media-sub he">קליפים, ניסויים, קטעי וידאו קצרים</div>
+          </div>
+        </div>
+
+        <div class="video-grid">
+          <div class="video-item">
+            <div class="video-label he">וידאו 01</div>
+            <video controls preload="none">
+              <source src="https://docs.google.com/uc?export=download&id=1Rv_Dhh-oH_n8DM-eZL7RymWTqYdWjr3B" type="video/mp4" />
+              הדפדפן שלך לא תומך בנגן וידאו.
+            </video>
+          </div>
+
+          <div class="video-item">
+            <div class="video-label he">וידאו 02</div>
+            <video controls preload="none">
+              <source src="https://docs.google.com/uc?export=download&id=1Kq0zEX2ZVR3jXv2_5Iupp01Y5YF0yla5" type="video/mp4" />
+              הדפדפן שלך לא תומך בנגן וידאו.
+            </video>
+          </div>
+
+          <div class="video-item">
+            <div class="video-label he">וידאו 03</div>
+            <video controls preload="none">
+              <source src="https://docs.google.com/uc?export=download&id=1QR8HWDs5tgxkHdWStLS6PNpj8fb6ADCG" type="video/mp4" />
+              הדפדפן שלך לא תומך בנגן וידאו.
+            </video>
+          </div>
+
+          <div class="video-item">
+            <div class="video-label he">וידאו 04</div>
+            <video controls preload="none">
+              <source src="https://docs.google.com/uc?export=download&id=1CFOu_3FxfCbwQapn6ZyUj-Ao-CqVveen" type="video/mp4" />
+              הדפדפן שלך לא תומך בנגן וידאו.
+            </video>
+          </div>
+
+          <div class="video-item">
+            <div class="video-label he">וידאו 05</div>
+            <video controls preload="none">
+              <source src="https://docs.google.com/uc?export=download&id=1qxyoZurfB70RTGcNEq1hfk8pfdJpv8cH" type="video/mp4" />
+              הדפדפן שלך לא תומך בנגן וידאו.
+            </video>
+          </div>
+
+          <div class="video-item">
+            <div class="video-label he">וידאו 06</div>
+            <video controls preload="none">
+              <source src="https://docs.google.com/uc?export=download&id=1iijGL-hdsj_tddbQqS2Syp1qNfLVw-Dm" type="video/mp4" />
+              הדפדפן שלך לא תומך בנגן וידאו.
+            </video>
+          </div>
+
+          <div class="video-item">
+            <div class="video-label he">וידאו 07</div>
+            <video controls preload="none">
+              <source src="https://docs.google.com/uc?export=download&id=1leLgmJl99J-VvI_ERK9g3WlgUQHA_qtt" type="video/mp4" />
+              הדפדפן שלך לא תומך בנגן וידאו.
+            </video>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div class="footer-left he">
+        <span>© Tzvika Johnny</span>
+        <span>מולטי־מודל קריאייטיב טכנולוגיסט</span>
+      </div>
+      <div class="footer-right">
+        <span class="he">זמין לשיתופי פעולה, פרויקטים וסיפורים פרועים במיוחד.</span>
+        <a href="mailto:tzvika@example.com">tzvika@example.com</a>
+      </div>
+    </footer>
+
+    <script>
+      // Simple language toggle: show both by default, allow hiding English if needed.
+      const toggle = document.getElementById("langToggle");
+      let showEn = true;
+      toggle.addEventListener("click", () => {
+        showEn = !showEn;
+        document.querySelectorAll(".en").forEach((el) => {
+          el.style.display = showEn ? "" : "none";
+        });
+      });
+    </script>
+  </body>
+</html>
