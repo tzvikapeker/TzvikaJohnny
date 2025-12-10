@@ -1,10 +1,10 @@
 const items = [
-  { title: 'Podcasts', src: 'https://drive.google.com/uc?export=view&id=1p4-uxcq4MLuf39U1MTsek5pEHE40Zh4N', link: 'pages/podcasts.html' },
-  { title: 'Video | Simulation', src: 'https://drive.google.com/uc?export=view&id=1JssQiFqnjA96ozChTomDaTaCSzQtY9-6', link: 'pages/video-simulation.html' },
-  { title: 'Songs', src: 'https://drive.google.com/uc?export=view&id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l', link: 'pages/songs.html' },
-  { title: 'Personal Work', src: 'https://drive.google.com/uc?export=view&id=1PZOsdtXAuLlleN8BRbRZ-vIl0WZkd8sw', link: 'pages/personal-work.html' },
-  { title: 'Satire', src: 'https://drive.google.com/uc?export=view&id=1tOWZ4QLOdw5oSVI5vlN9qkF118JYL4_2', link: 'pages/satire.html' }
-];];
+  { title: 'Podcasts', src: 'https://drive.google.com/thumbnail?id=1p4-uxcq4MLuf39U1MTsek5pEHE40Zh4N&sz=w1000', link: 'pages/podcasts.html' },
+  { title: 'Video | Simulation', src: 'https://drive.google.com/thumbnail?id=1JssQiFqnjA96ozChTomDaTaCSzQtY9-6&sz=w1000', link: 'pages/video-simulation.html' },
+  { title: 'Songs', src: 'https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w1000', link: 'pages/songs.html' },
+  { title: 'Personal Work', src: 'https://drive.google.com/thumbnail?id=1PZOsdtXAuLlleN8BRbRZ-vIl0WZkd8sw&sz=w1000', link: 'pages/personal-work.html' },
+  { title: 'Satire', src: 'https://drive.google.com/thumbnail?id=1tOWZ4QLOdw5oSVI5vlN9qkF118JYL4_2&sz=w1000', link: 'pages/satire.html' }
+];];];
 
 const carousel = document.getElementById('carousel');
 const itemCount = items.length;
@@ -229,6 +229,7 @@ window.addEventListener('load', () => {
   updateCarousel();
   startFloatingQuotes();
 });
+
 
 
 
