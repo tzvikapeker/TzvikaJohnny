@@ -1,5 +1,5 @@
 const items = [
-  { title: 'Image', src: 'https://drive.google.com/file/d/1DGeToGCG4Sy1QLd9bcUXTvfgwkwKhFlT/view?usp=drive_link', link: 'pages/image.html' },
+  { title: 'Podcasts', src: 'https://drive.google.com/file/d/1DGeToGCG4Sy1QLd9bcUXTvfgwkwKhFlT/view?usp=drive_link', link: 'pages/image.html' },
   { title: 'Simulation', src: 'https://drive.google.com/file/d/1P1-8Gy10D83KwbrhUEa1vRnQaCzp7PpT/view?usp=drive_link', link: 'pages/simulation.html' },
   { title: 'Video', src: 'https://drive.google.com/file/d/1leLgmJl99J-VvI_ERK9g3WlgUQHA_qtt/view?usp=drive_link', link: 'pages/video.html' },
   { title: 'Personal Work', src: 'https://drive.google.com/file/d/17PuWeEYspDq6wybgCTc7tQWwa_3w2g_2/view?usp=drive_link', link: 'pages/personal-work.html' },
@@ -229,3 +229,4 @@ window.addEventListener('load', () => {
   updateCarousel();
   startFloatingQuotes();
 });
+
