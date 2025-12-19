@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl" data-lang="he">
   <head>
     <meta charset="UTF-8" />
     <title>וידאו | הדמיה – Tzvika Johnny</title>
@@ -10,237 +10,313 @@
     />
 
     <style>
-      :root {
-        --bg-color: #050608;
-        --card-bg: rgba(18, 18, 24, 0.92);
-        --accent: #ffb86c;
-        --accent-soft: rgba(255, 184, 108, 0.14);
-        --text-main: #f8f8ff;
-        --text-muted: #b7b7c7;
-        --border-color: rgba(255, 255, 255, 0.08);
+      :root{
+        --bg:#050608;
+        --card: rgba(18,18,24,0.92);
+        --ink:#f8f8ff;
+        --muted:#b7b7c7;
+        --border: rgba(255,255,255,0.08);
+        --accent:#ffb86c;
+        --accent2: rgba(255,184,108,0.14);
       }
-
-      * { box-sizing: border-box; }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      *{box-sizing:border-box}
+      body{
+        margin:0; min-height:100vh;
+        font-family:"Heebo",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
         background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
-        color: var(--text-main);
-        display: flex;
-        flex-direction: column;
+        color:var(--ink);
+        display:flex; flex-direction:column;
       }
+      a{color:var(--accent); text-decoration:none}
+      a:hover{text-decoration:underline}
 
-      a { color: var(--accent); text-decoration: none; }
-      a:hover { text-decoration: underline; }
-
-      header {
-        padding: 16px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid var(--border-color);
+      header{
+        padding:16px 24px;
+        display:flex; align-items:center; justify-content:space-between;
+        gap:14px; flex-wrap:wrap;
+        border-bottom:1px solid var(--border);
         backdrop-filter: blur(16px);
-        background: linear-gradient(to bottom, rgba(5, 6, 8, 0.92), rgba(5, 6, 8, 0.78));
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        gap: 14px;
-        flex-wrap: wrap;
+        background: linear-gradient(to bottom, rgba(5,6,8,0.92), rgba(5,6,8,0.78));
+        position:sticky; top:0; z-index:20;
+      }
+      .logo-title{display:flex; flex-direction:column; gap:2px}
+      .logo-title span:first-child{
+        font-weight:600; letter-spacing:.06em; font-size:13px;
+        text-transform:uppercase; color:var(--muted);
+      }
+      .logo-title span:last-child{font-weight:500; font-size:15px}
+
+      nav{display:flex; gap:12px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+      .nav-link{
+        font-size:14px; padding:6px 10px; border-radius:999px;
+        border:1px solid transparent; color:var(--muted);
+        display:inline-flex; gap:6px; align-items:center;
+      }
+      .nav-link.active{
+        border-color:var(--accent2);
+        background: radial-gradient(circle at top, rgba(255,184,108,0.18), rgba(8,9,14,0.9));
+        color:var(--accent);
+      }
+      .language-toggle{
+        font-size:13px; padding:6px 10px; border-radius:999px;
+        border:1px solid var(--border);
+        cursor:pointer;
+        background: rgba(10,10,16,0.8);
+        color:var(--muted);
       }
 
-      .logo-title { display: flex; flex-direction: column; gap: 2px; }
-      .logo-title span:first-child {
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        font-size: 13px;
-        text-transform: uppercase;
-        color: var(--text-muted);
+      main{
+        flex:1;
+        padding:32px 6vw 44px 6vw;
+        display:grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr);
+        gap:28px;
+        align-items:start;
       }
-      .logo-title span:last-child { font-weight: 500; font-size: 15px; }
-
-      nav { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-
-      .nav-link {
-        font-size: 14px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid transparent;
-        color: var(--text-muted);
-        display: inline-flex;
-        gap: 6px;
-        align-items: center;
+      @media (max-width: 980px){
+        main{grid-template-columns: 1fr}
       }
 
-      .nav-link.active {
-        border-color: var(--accent-soft);
-        background: radial-gradient(circle at top, rgba(255, 184, 108, 0.18), rgba(8, 9, 14, 0.9));
+      .content-card{
+        background:
+          linear-gradient(135deg, rgba(255,184,108,0.06), transparent 48%),
+          linear-gradient(200deg, rgba(145,124,255,0.06), transparent 64%),
+          var(--card);
+        border-radius:20px;
+        padding:22px 22px 20px;
+        border:1px solid var(--border);
+        box-shadow:0 20px 60px rgba(0,0,0,0.8);
+        position:relative; overflow:hidden;
+      }
+      .content-card::before{
+        content:"";
+        position:absolute; inset:-40%;
+        background:
+          radial-gradient(circle at 0% 0%, rgba(255,184,108,0.09) 0, transparent 55%),
+          radial-gradient(circle at 110% 0%, rgba(112,97,255,0.08) 0, transparent 52%);
+        opacity:.8; pointer-events:none;
+      }
+      .content-inner{position:relative; z-index:1}
+      .pill-label{
+        display:inline-flex; align-items:center; gap:6px;
+        padding:4px 10px; border-radius:999px;
+        background: rgba(10,10,16,0.84);
+        border:1px solid rgba(255,255,255,0.08);
+        font-size:11px; color:var(--muted);
+        margin-bottom:10px;
+      }
+      .pill-dot{
+        width:7px; height:7px; border-radius:999px;
+        background: radial-gradient(circle, #ffb86c 0, #ff7e5f 65%);
+        box-shadow:0 0 10px rgba(255,184,108,0.8);
+      }
+      h1{margin:0 0 6px; font-size:clamp(26px,3vw,30px); letter-spacing:.04em}
+      h2{margin:0 0 14px; font-size:18px; color:var(--muted); font-weight:400}
+      .text-block{font-size:15px; line-height:1.7; margin-bottom:14px}
+      .text-muted{color:var(--muted); font-size:14px}
+
+      /* Media side */
+      .media-card{
+        background:
+          radial-gradient(circle at top, rgba(255,184,108,0.12), transparent 60%),
+          rgba(10, 10, 18, 0.96);
+        border-radius:20px;
+        padding:18px;
+        border:1px solid var(--border);
+        box-shadow:0 18px 50px rgba(0,0,0,0.55);
+      }
+      .media-header{
+        display:flex; align-items:flex-end; justify-content:space-between;
+        gap:10px; margin-bottom:12px;
+      }
+      .media-title{font-size:15px; font-weight:600}
+      .media-sub{font-size:13px; color:var(--muted)}
+
+      .tabs{
+        display:flex; gap:8px; margin:10px 0 14px;
+        flex-wrap:wrap;
+      }
+      .tab{
+        border:1px solid rgba(255,255,255,0.10);
+        background: rgba(0,0,0,0.18);
+        color: rgba(255,255,255,0.72);
+        padding:6px 10px;
+        border-radius:999px;
+        cursor:pointer;
+        font-size:13px;
+      }
+      .tab.active{
+        border-color: rgba(255,184,108,0.35);
+        background: rgba(255,184,108,0.14);
         color: var(--accent);
       }
 
-      .language-toggle {
-        font-size: 13px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid var(--border-color);
-        cursor: pointer;
-        background: rgba(10, 10, 16, 0.8);
-        color: var(--text-muted);
+      .grid{
+        display:grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap:12px;
+      }
+      @media (max-width: 560px){
+        .grid{grid-template-columns: 1fr}
       }
 
-      main {
-        flex: 1;
-        padding: 32px 6vw 40px 6vw;
-        display: grid;
-        grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
-        gap: 28px;
+      .card{
+        border-radius:16px;
+        overflow:hidden;
+        border:1px solid rgba(255,255,255,0.08);
+        background: rgba(9,9,16,0.96);
+        display:flex;
+        flex-direction:column;
+        min-height: 240px;
       }
 
-      @media (max-width: 900px) {
-        main { grid-template-columns: minmax(0, 1fr); }
-      }
-
-      .content-card {
-        background:
-          linear-gradient(135deg, rgba(255, 184, 108, 0.06), transparent 48%),
-          linear-gradient(200deg, rgba(145, 124, 255, 0.06), transparent 64%),
-          var(--card-bg);
-        border-radius: 20px;
-        padding: 22px 22px 20px;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .content-card::before {
-        content: "";
-        position: absolute;
-        inset: -40%;
-        background:
-          radial-gradient(circle at 0% 0%, rgba(255, 184, 108, 0.09) 0, transparent 55%),
-          radial-gradient(circle at 110% 0%, rgba(112, 97, 255, 0.08) 0, transparent 52%);
-        opacity: 0.8;
-        pointer-events: none;
-      }
-
-      .content-inner { position: relative; z-index: 1; }
-
-      .pill-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 4px 10px;
-        border-radius: 999px;
-        background: rgba(10, 10, 16, 0.84);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        font-size: 11px;
-        color: var(--text-muted);
-        margin-bottom: 10px;
-      }
-
-      .pill-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 999px;
-        background: radial-gradient(circle, #ffb86c 0, #ff7e5f 65%);
-        box-shadow: 0 0 10px rgba(255, 184, 108, 0.8);
-      }
-
-      h1 { margin: 0 0 6px; font-size: clamp(26px, 3vw, 30px); letter-spacing: 0.04em; }
-      h2 { margin: 0 0 14px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
-
-      .text-block { font-size: 15px; line-height: 1.7; color: var(--text-main); margin-bottom: 14px; }
-      .text-muted { color: var(--text-muted); font-size: 14px; }
-
-      .en { direction: ltr; text-align: left; }
-      .he { direction: rtl; text-align: right; }
-
-      .media-card {
-        background:
-          radial-gradient(circle at top, rgba(255, 184, 108, 0.12), transparent 60%),
-          rgba(10, 10, 18, 0.96);
-        border-radius: 20px;
-        padding: 18px 18px 16px;
-        border: 1px solid var(--border-color);
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .media-card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 4px;
-      }
-
-      .media-title { font-size: 15px; font-weight: 500; }
-      .media-sub { font-size: 13px; color: var(--text-muted); }
-
-      /* Lists */
-      .audio-list, .video-list {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 6px;
-      }
-
-      .media-item {
-        padding: 10px;
-        border-radius: 14px;
-        background: rgba(9, 9, 16, 0.96);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-      }
-
-      .media-label {
-        font-size: 13px;
-        margin-bottom: 8px;
-        color: var(--text-muted);
-      }
-
-      /* Video grid */
-      .video-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      /* Responsive embed */
-      .embed {
-        width: 100%;
-        border: 0;
-        border-radius: 12px;
+      .thumb{
+        position:relative;
+        width:100%;
+        aspect-ratio: 16 / 9;
         background: rgba(0,0,0,0.35);
       }
-
-      .embed--audio { height: 120px; }
-      .embed--video { aspect-ratio: 16 / 9; height: auto; }
-
-      /* Language visibility (works with your .english/.hebrew spans too) */
-      html[data-lang="en"] .hebrew, html[data-lang="en"] .he { display: none; }
-      html[data-lang="he"] .english, html[data-lang="he"] .en { display: none; }
-
-      footer {
-        border-top: 1px solid var(--border-color);
-        padding: 18px 6vw 22px 6vw;
-        font-size: 13px;
-        color: var(--text-muted);
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: space-between;
-        background: rgba(3, 3, 8, 0.98);
+      .thumb img{
+        width:100%; height:100%;
+        object-fit:cover;
+        display:block;
+        filter: saturate(1.05) contrast(1.02);
+      }
+      .badge{
+        position:absolute;
+        top:10px; right:10px;
+        padding:4px 8px;
+        border-radius:999px;
+        font-size:12px;
+        border:1px solid rgba(255,255,255,0.16);
+        background: rgba(0,0,0,0.38);
+        color: rgba(255,255,255,0.82);
+        backdrop-filter: blur(10px);
+      }
+      .play{
+        position:absolute;
+        left:50%; top:50%;
+        transform: translate(-50%,-50%);
+        width:54px; height:54px;
+        border-radius:999px;
+        border:1px solid rgba(255,255,255,0.22);
+        background: rgba(0,0,0,0.42);
+        display:grid;
+        place-items:center;
+        cursor:pointer;
+        backdrop-filter: blur(10px);
+      }
+      .play:active{transform: translate(-50%,-50%) scale(0.98)}
+      .play svg{width:22px; height:22px; fill: rgba(255,255,255,0.9)}
+      .meta{
+        padding:12px 12px 12px;
+        display:flex;
+        flex-direction:column;
+        gap:8px;
+        flex:1;
+      }
+      .label{
+        font-size:13px;
+        color: rgba(255,255,255,0.82);
+        line-height:1.3;
+      }
+      .actions{
+        margin-top:auto;
+        display:flex;
+        gap:10px;
+        flex-wrap:wrap;
+      }
+      .btn{
+        font-size:13px;
+        padding:7px 10px;
+        border-radius:12px;
+        border:1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.06);
+        color: rgba(255,255,255,0.82);
+        cursor:pointer;
+      }
+      .btn.primary{
+        border-color: rgba(255,184,108,0.35);
+        background: rgba(255,184,108,0.14);
+        color: var(--accent);
       }
 
-      .footer-left, .footer-right {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px 16px;
-        align-items: center;
+      /* Modal */
+      .modal{
+        position:fixed;
+        inset:0;
+        display:none;
+        place-items:center;
+        background: rgba(0,0,0,0.68);
+        z-index:9999;
+        padding: 20px;
       }
+      .modal.open{display:grid}
+      .modal-panel{
+        width:min(980px, 96vw);
+        border-radius:18px;
+        border:1px solid rgba(255,255,255,0.12);
+        background: rgba(10,10,16,0.96);
+        box-shadow: 0 30px 90px rgba(0,0,0,0.8);
+        overflow:hidden;
+      }
+      .modal-top{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        padding:12px 14px;
+        border-bottom:1px solid rgba(255,255,255,0.08);
+      }
+      .modal-title{
+        font-size:13px;
+        color: rgba(255,255,255,0.78);
+      }
+      .modal-close{
+        border:1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.06);
+        color: rgba(255,255,255,0.82);
+        padding:6px 10px;
+        border-radius:12px;
+        cursor:pointer;
+      }
+      .modal-body{
+        position:relative;
+        background: #000;
+      }
+      .modal-embed{
+        width:100%;
+        height: min(70vh, 560px);
+        border:0;
+        display:block;
+      }
+      .modal-fallback{
+        display:none;
+        padding:14px;
+        color: rgba(255,255,255,0.76);
+      }
+      .modal-fallback a{color: var(--accent)}
+      .hint{
+        margin-top:10px;
+        font-size:12px;
+        color: rgba(255,255,255,0.55);
+      }
+
+      footer{
+        border-top:1px solid var(--border);
+        padding:18px 6vw 22px;
+        font-size:13px;
+        color:var(--muted);
+        display:flex;
+        flex-wrap:wrap;
+        gap:10px;
+        justify-content:space-between;
+        background: rgba(3,3,8,0.98);
+      }
+
+      /* Language visibility */
+      html[data-lang="en"] .he, html[data-lang="en"] .hebrew { display:none }
+      html[data-lang="he"] .en, html[data-lang="he"] .english { display:none }
     </style>
   </head>
 
@@ -251,33 +327,27 @@
         <span>Multimodal creative technologist</span>
       </div>
 
-      <!-- ✅ Nav fixed: active is on video-simulation -->
       <nav>
         <a href="../index.html" class="nav-link">ראשי</a>
 
         <a href="podcasts.html" class="nav-link">
-          <span class="english">Podcasts</span>
-          <span class="hebrew">פודקאסטים</span>
+          <span class="english">Podcasts</span><span class="hebrew">פודקאסטים</span>
         </a>
 
         <a href="video-simulation.html" class="nav-link active">
-          <span class="english">Video | Simulation</span>
-          <span class="hebrew">וידאו | הדמיה</span>
+          <span class="english">Video | Simulation</span><span class="hebrew">וידאו | הדמיה</span>
         </a>
 
         <a href="songs.html" class="nav-link">
-          <span class="english">Songs</span>
-          <span class="hebrew">שירים</span>
+          <span class="english">Songs</span><span class="hebrew">שירים</span>
         </a>
 
         <a href="personal-work.html" class="nav-link">
-          <span class="english">Personal Work</span>
-          <span class="hebrew">עבודה אישית</span>
+          <span class="english">Personal Work</span><span class="hebrew">עבודה אישית</span>
         </a>
 
         <a href="satire.html" class="nav-link">
-          <span class="english">Satire</span>
-          <span class="hebrew">סאטירה</span>
+          <span class="english">Satire</span><span class="hebrew">סאטירה</span>
         </a>
 
         <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
@@ -287,12 +357,9 @@
     <main>
       <section class="content-card">
         <div class="content-inner">
-          <div class="pill-label">
-            <span class="pill-dot"></span>
-            <span>Simulation · AI Worlds</span>
-          </div>
+          <div class="pill-label"><span class="pill-dot"></span><span>Simulation · AI Worlds</span></div>
 
-          <h1 class="he">הדמיה</h1>
+          <h1 class="he">וידאו | הדמיה</h1>
           <h2 class="he">כאן מתרחש הקסם הטכנולוגי</h2>
 
           <div class="text-block he">
@@ -300,44 +367,30 @@
             כלים מתקדמים של בינה מלאכותית. אני בונה עולמות חדשים, מדמה רעיונות
             מופשטים, ומייצר סצנות שנראות כאילו יצאו מחלום או מסיוט, תלוי ביום.
           </div>
-          <div class="text-block he">
-            הדמיה עבורי היא לא רק “לייצר תמונה”. היא תהליך של תרגום מחשבה למשהו מוחשי.
-            רעיון שנזרק באוויר הופך בעזרת אלגוריתמים וטכניקה לויזואל מרשים, מדויק ומלא אופי.
-          </div>
 
           <div class="text-block en">
-            This is where the technological magic happens. The simulation space connects
-            raw creativity with advanced AI tools to build new worlds, test abstract
-            ideas, and stage scenes that feel like they came out of a dream – or a nightmare.
-          </div>
-          <div class="text-block en">
-            For me, simulation is not just “making an image”. It is the process of translating
-            a thought into something tangible — through algorithms and craft.
+            This is where the technological magic happens — new worlds, tests, and staged scenes
+            built with advanced AI tools.
           </div>
 
-          <p class="text-muted he">
-            * הדף הזה מתעדכן באופן שוטף עם פרויקטים חדשים, ניסויים, ורגעים שבהם
-            המחשב קצת מפספס – ולאט לאט לומד.
-          </p>
+          <p class="text-muted he">* כל פריט כאן מוצג עם תצוגה מקדימה. לחיצה פותחת נגן.</p>
         </div>
       </section>
 
       <aside class="media-card">
-        <div class="media-card-header">
+        <div class="media-header">
           <div>
-            <div class="media-title he">מדיה מהדמיה</div>
-            <div class="media-sub he">פריוויו דרייב (יציב) — אודיו + וידאו</div>
+            <div class="media-title he">כל המדיה</div>
+            <div class="media-sub he">תמיד תראה פריוויו. נגן נפתח בלחיצה.</div>
           </div>
         </div>
 
-        <!-- ✅ Audio embeds -->
-        <div class="audio-list" id="audioList"></div>
-
-        <!-- ✅ Video embeds -->
-        <div class="video-list" style="margin-top: 10px;">
-          <div class="media-label he" style="margin-bottom: 6px;">וידאו</div>
-          <div class="video-grid" id="videoGrid"></div>
+        <div class="tabs">
+          <button class="tab active" id="tabVideos" type="button">וידאו</button>
+          <button class="tab" id="tabAudio" type="button">אודיו</button>
         </div>
+
+        <div class="grid" id="mediaGrid"></div>
       </aside>
     </main>
 
@@ -352,45 +405,60 @@
       </div>
     </footer>
 
+    <!-- Modal -->
+    <div class="modal" id="modal" aria-hidden="true">
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-top">
+          <div class="modal-title" id="modalTitle">Preview</div>
+          <button class="modal-close" id="modalClose" type="button">סגור</button>
+        </div>
+        <div class="modal-body">
+          <iframe class="modal-embed" id="modalFrame" allow="autoplay; fullscreen" loading="lazy"></iframe>
+          <div class="modal-fallback" id="modalFallback">
+            לא הצלחתי להטמיע את הפריוויו בדפדפן הזה.
+            <div class="hint">
+              <a id="modalOpenDrive" target="_blank" rel="noopener noreferrer">Open in Drive</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
-      // ===== Language toggle (real HE/EN switching) =====
+      // ===== Language toggle =====
       const toggle = document.getElementById("langToggle");
       const root = document.documentElement;
 
-      function setLang(lang) {
+      function setLang(lang){
         root.setAttribute("data-lang", lang);
         root.setAttribute("lang", lang);
         root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
-        try { localStorage.setItem("lang", lang); } catch {}
+        try{ localStorage.setItem("lang", lang); }catch{}
         toggle.textContent = lang === "he" ? "EN / HE" : "HE / EN";
       }
-
       toggle.addEventListener("click", () => {
         const current = root.getAttribute("data-lang") || "he";
         setLang(current === "he" ? "en" : "he");
       });
-
-      // init
-      const saved = (() => { try { return localStorage.getItem("lang"); } catch { return null; } })();
-      setLang(saved || "he");
-
-      // ===== Drive helpers: use /preview embeds (stable playback) =====
-      function drivePreviewUrl(fileId) {
-        return `https://drive.google.com/file/d/${fileId}/preview`;
+      try{
+        setLang(localStorage.getItem("lang") || "he");
+      }catch{
+        setLang("he");
       }
 
-      function extractIdFromUc(url) {
-        // expects: https://docs.google.com/uc?export=download&id=FILEID
-        try {
-          const u = new URL(url);
-          return u.searchParams.get("id");
-        } catch {
+      // ===== Drive URL helpers =====
+      function extractIdFromUc(url){
+        try{ return new URL(url).searchParams.get("id"); }
+        catch{
           const m = url.match(/[?&]id=([^&]+)/);
           return m ? m[1] : null;
         }
       }
+      function previewUrl(id){ return `https://drive.google.com/file/d/${id}/preview`; }
+      function viewUrl(id){ return `https://drive.google.com/file/d/${id}/view`; }
+      function thumbUrl(id, size=1200){ return `https://drive.google.com/thumbnail?id=${id}&sz=w${size}`; }
 
-      // Your original sources (ids extracted)
+      // ===== Data (from your current page) =====
       const audioSources = [
         { label: "סימולציה 01", src: "https://docs.google.com/uc?export=download&id=1IdkzydQPMY6R47D_TMMrhynGfnEVV9dS" },
         { label: "סימולציה 02", src: "https://docs.google.com/uc?export=download&id=1b4UeauaPjj4u8CR7JamuKkY__cDCPl3o" },
@@ -412,58 +480,160 @@
         { label: "וידאו 07", src: "https://docs.google.com/uc?export=download&id=1leLgmJl99J-VvI_ERK9g3WlgUQHA_qtt" },
       ];
 
-      function renderEmbeds() {
-        const audioList = document.getElementById("audioList");
-        const videoGrid = document.getElementById("videoGrid");
+      const mediaGrid = document.getElementById("mediaGrid");
+      const tabVideos = document.getElementById("tabVideos");
+      const tabAudio = document.getElementById("tabAudio");
 
-        audioSources.forEach((it) => {
-          const id = extractIdFromUc(it.src);
+      const modal = document.getElementById("modal");
+      const modalFrame = document.getElementById("modalFrame");
+      const modalClose = document.getElementById("modalClose");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalFallback = document.getElementById("modalFallback");
+      const modalOpenDrive = document.getElementById("modalOpenDrive");
+
+      let activeKind = "video";
+
+      function makeCard({ id, label, kind }){
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
+
+        const img = document.createElement("img");
+        img.alt = label;
+        img.loading = "lazy";
+        img.src = thumbUrl(id, 1200);
+        img.onerror = () => {
+          // אם thumbnail לא זמין, עדיין נשאיר רקע יפה ונטען fallback לטקסט
+          img.style.display = "none";
+          thumb.style.background = "radial-gradient(circle at top, rgba(255,184,108,0.18), rgba(0,0,0,0.6))";
+        };
+
+        const badge = document.createElement("div");
+        badge.className = "badge";
+        badge.textContent = kind === "video" ? "VIDEO" : "AUDIO";
+
+        const play = document.createElement("button");
+        play.className = "play";
+        play.type = "button";
+        play.innerHTML = `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        `;
+        play.addEventListener("click", () => openModal({ id, label }));
+
+        thumb.appendChild(img);
+        thumb.appendChild(badge);
+        thumb.appendChild(play);
+
+        const meta = document.createElement("div");
+        meta.className = "meta";
+
+        const title = document.createElement("div");
+        title.className = "label he";
+        title.textContent = label;
+
+        const actions = document.createElement("div");
+        actions.className = "actions";
+
+        const btnPlay = document.createElement("button");
+        btnPlay.className = "btn primary";
+        btnPlay.type = "button";
+        btnPlay.textContent = "נגן";
+        btnPlay.addEventListener("click", () => openModal({ id, label }));
+
+        const btnDrive = document.createElement("a");
+        btnDrive.className = "btn";
+        btnDrive.href = viewUrl(id);
+        btnDrive.target = "_blank";
+        btnDrive.rel = "noopener noreferrer";
+        btnDrive.textContent = "פתח בדרייב";
+
+        actions.appendChild(btnPlay);
+        actions.appendChild(btnDrive);
+
+        meta.appendChild(title);
+        meta.appendChild(actions);
+
+        card.appendChild(thumb);
+        card.appendChild(meta);
+
+        return card;
+      }
+
+      function render(){
+        mediaGrid.innerHTML = "";
+        const list = activeKind === "video" ? videoSources : audioSources;
+
+        list.forEach(item => {
+          const id = extractIdFromUc(item.src);
           if (!id) return;
-
-          const wrap = document.createElement("div");
-          wrap.className = "media-item";
-
-          const label = document.createElement("div");
-          label.className = "media-label he";
-          label.textContent = it.label;
-
-          const iframe = document.createElement("iframe");
-          iframe.className = "embed embed--audio";
-          iframe.src = drivePreviewUrl(id);
-          iframe.allow = "autoplay";
-          iframe.setAttribute("loading", "lazy");
-          iframe.setAttribute("title", it.label);
-
-          wrap.appendChild(label);
-          wrap.appendChild(iframe);
-          audioList.appendChild(wrap);
-        });
-
-        videoSources.forEach((it) => {
-          const id = extractIdFromUc(it.src);
-          if (!id) return;
-
-          const wrap = document.createElement("div");
-          wrap.className = "media-item";
-
-          const label = document.createElement("div");
-          label.className = "media-label he";
-          label.textContent = it.label;
-
-          const iframe = document.createElement("iframe");
-          iframe.className = "embed embed--video";
-          iframe.src = drivePreviewUrl(id);
-          iframe.allow = "autoplay; fullscreen";
-          iframe.setAttribute("loading", "lazy");
-          iframe.setAttribute("title", it.label);
-
-          wrap.appendChild(label);
-          wrap.appendChild(iframe);
-          videoGrid.appendChild(wrap);
+          mediaGrid.appendChild(makeCard({ id, label: item.label, kind: activeKind }));
         });
       }
 
-      window.addEventListener("load", renderEmbeds);
+      function openModal({ id, label }){
+        modalTitle.textContent = label;
+        modalOpenDrive.href = viewUrl(id);
+
+        modalFallback.style.display = "none";
+        modalFrame.style.display = "block";
+
+        // נטעין preview במודאל
+        modalFrame.src = previewUrl(id);
+
+        // אם ה־preview לא נטען (או נחסם) — נציג fallback אחרי זמן קצר
+        const t = setTimeout(() => {
+          // עדיין שחור/לא נטען? נציג fallback
+          modalFrame.style.display = "none";
+          modalFallback.style.display = "block";
+        }, 2500);
+
+        // אם iframe כן נטען — נבטל fallback
+        modalFrame.onload = () => {
+          clearTimeout(t);
+          modalFrame.style.display = "block";
+          modalFallback.style.display = "none";
+        };
+
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden","false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal(){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden","true");
+        document.body.style.overflow = "";
+        // לנקות כדי לעצור נגינה
+        modalFrame.src = "about:blank";
+      }
+
+      modalClose.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+
+      tabVideos.addEventListener("click", () => {
+        activeKind = "video";
+        tabVideos.classList.add("active");
+        tabAudio.classList.remove("active");
+        render();
+      });
+
+      tabAudio.addEventListener("click", () => {
+        activeKind = "audio";
+        tabAudio.classList.add("active");
+        tabVideos.classList.remove("active");
+        render();
+      });
+
+      render();
     </script>
   </body>
 </html>
