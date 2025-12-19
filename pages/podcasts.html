@@ -129,21 +129,21 @@
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 16px;
-      padding: 14px 14px;
+      padding: 14px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.35);
     }
 
     .episodes {
       display: grid;
       gap: 12px;
-      margin-top: 18px;
+      margin-top: 6px;
     }
 
     .episode {
       display: grid;
       grid-template-columns: 1fr;
       gap: 10px;
-      padding: 14px;
+      padding: 12px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.06);
       background: rgba(255,255,255,0.02);
@@ -169,15 +169,29 @@
       color: var(--text-muted);
     }
 
-    audio {
+    /* Compact Drive preview player (feels like an audio row) */
+    .drive-player {
+      position: relative;
       width: 100%;
-      height: 36px;
+      height: 72px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.25);
+    }
+
+    .drive-player iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     .hint {
       font-size: 12px;
       color: var(--text-muted);
-      margin-top: 8px;
+      margin-top: 10px;
       line-height: 1.7;
     }
 
@@ -205,7 +219,6 @@
       text-decoration: none;
       font-size: 14px;
     }
-
     .contact-info a:hover { color: var(--accent); }
 
     .contact-info img {
@@ -218,7 +231,7 @@
       padding: 6px;
     }
 
-    /* Language helpers (works with your script.js if it toggles classes/display) */
+    /* Language helpers (also works with your existing ../script.js toggler) */
     .english { display: none; }
     html[data-lang="en"] .english { display: inline; }
     html[data-lang="en"] .hebrew { display: none; }
@@ -226,6 +239,7 @@
     @media (max-width: 720px) {
       header { padding: 14px 14px; }
       h1 { font-size: 26px; }
+      .drive-player { height: 78px; }
     }
   </style>
 </head>
@@ -276,15 +290,15 @@
     </h1>
 
     <p class="subtitle">
-      <span class="english">Short audio pieces, hosted here as simple players.</span>
-      <span class="hebrew">קטעי קול קצרים — בלי דרמה, בלי עטיפות מיותרות. פשוט לנגן.</span>
+      <span class="english">Audio pieces hosted via Google Drive preview players.</span>
+      <span class="hebrew">קטעי קול שמוגשים דרך נגן הפריוויו של Google Drive (הכי אמין להטמעה).</span>
     </p>
 
     <section class="card">
       <div class="episodes" id="episodes"></div>
       <div class="hint">
-        <span class="english">Tip: if a track won’t play, ensure the Drive files are shared publicly (“Anyone with the link”).</span>
-        <span class="hebrew">טיפ: אם משהו לא מתנגן, ודאי שהקבצים ב-Drive מוגדרים כ״כל מי שיש לו קישור״.</span>
+        <span class="english">Tip: each Drive file must be shared as “Anyone with the link”.</span>
+        <span class="hebrew">טיפ: ודאי שכל קובץ ב-Drive מוגדר “כל מי שיש לו קישור”.</span>
       </div>
     </section>
 
@@ -301,9 +315,8 @@
   </main>
 
   <script>
-    // --- Google Drive helpers ---
+    // Extract Google Drive file id from common share URLs
     function extractDriveId(url) {
-      // supports: /file/d/ID/view?...  and also other formats with id=ID
       const m1 = url.match(/\/file\/d\/([^\/]+)/);
       if (m1 && m1[1]) return m1[1];
       const m2 = url.match(/[?&]id=([^&]+)/);
@@ -311,12 +324,12 @@
       return null;
     }
 
-    function driveDirectUrl(fileId) {
-      // Common direct endpoint for media playback / download
-      return "https://drive.google.com/uc?export=download&id=" + encodeURIComponent(fileId);
+    // Drive preview embed URL (most reliable for embedded playback)
+    function drivePreviewUrl(fileId) {
+      return `https://drive.google.com/file/d/${encodeURIComponent(fileId)}/preview`;
     }
 
-    // --- Your podcast files (mp4) ---
+    // Your podcast files (mp4)
     const podcastUrls = [
       "https://drive.google.com/file/d/1gGF0dXX9CB7mzAbNTPhCyvRuCTwp0kv-/view?usp=drive_link",
       "https://drive.google.com/file/d/1nnzrWNOIGNjbtFl9e6x6ARqHUWocqNnd/view?usp=drive_link",
@@ -327,18 +340,10 @@
 
     const episodesEl = document.getElementById("episodes");
 
-    const episodes = podcastUrls
-      .map((u, idx) => {
-        const id = extractDriveId(u);
-        return {
-          titleEN: `Episode ${String(idx + 1).padStart(2, "0")}`,
-          titleHE: `פרק ${String(idx + 1).padStart(2, "0")}`,
-          src: id ? driveDirectUrl(id) : u,
-          id
-        };
-      });
+    podcastUrls.forEach((u, idx) => {
+      const id = extractDriveId(u);
+      const src = id ? drivePreviewUrl(id) : u;
 
-    episodes.forEach((ep) => {
       const wrap = document.createElement("article");
       wrap.className = "episode";
 
@@ -346,32 +351,37 @@
       titleRow.className = "episode-title";
 
       const h = document.createElement("h3");
-      h.innerHTML = `<span class="english">${ep.titleEN}</span><span class="hebrew">${ep.titleHE}</span>`;
+      h.innerHTML = `
+        <span class="english">Episode ${String(idx + 1).padStart(2, "0")}</span>
+        <span class="hebrew">פרק ${String(idx + 1).padStart(2, "0")}</span>
+      `;
 
       const meta = document.createElement("div");
       meta.className = "meta";
-      meta.textContent = ep.id ? `Drive ID: ${ep.id}` : "Drive";
+      meta.textContent = "Google Drive • mp4";
+
+      const player = document.createElement("div");
+      player.className = "drive-player";
+
+      const iframe = document.createElement("iframe");
+      iframe.src = src;
+      iframe.allow = "autoplay";
+      iframe.loading = "lazy";
+      iframe.title = `Podcast ${idx + 1}`;
+
+      player.appendChild(iframe);
 
       titleRow.appendChild(h);
       titleRow.appendChild(meta);
 
-      const audio = document.createElement("audio");
-      audio.controls = true;
-      audio.preload = "metadata";
-
-      const source = document.createElement("source");
-      source.src = ep.src;
-      source.type = "audio/mp4"; // mp4 with audio track
-      audio.appendChild(source);
-
       wrap.appendChild(titleRow);
-      wrap.appendChild(audio);
+      wrap.appendChild(player);
 
       episodesEl.appendChild(wrap);
     });
   </script>
 
-  <!-- keep your existing language/UX logic -->
+  <!-- Keep your existing language/UX logic -->
   <script src="../script.js"></script>
 </body>
 </html>
