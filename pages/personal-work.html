@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <title>יצירה אישית – Tzvika Johnny</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Heebo font -->
+
     <link
       href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
+
     <style>
       :root {
         --bg-color: #050608;
@@ -20,29 +21,20 @@
         --border-color: rgba(255, 255, 255, 0.08);
       }
 
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
 
       body {
         margin: 0;
         min-height: 100vh;
-        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
+        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
         color: var(--text-main);
         display: flex;
         flex-direction: column;
       }
 
-      a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
 
       header {
         padding: 16px 24px;
@@ -51,22 +43,13 @@
         justify-content: space-between;
         border-bottom: 1px solid var(--border-color);
         backdrop-filter: blur(16px);
-        background: linear-gradient(
-          to bottom,
-          rgba(5, 6, 8, 0.92),
-          rgba(5, 6, 8, 0.78)
-        );
+        background: linear-gradient(to bottom, rgba(5, 6, 8, 0.92), rgba(5, 6, 8, 0.78));
         position: sticky;
         top: 0;
         z-index: 20;
       }
 
-      .logo-title {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-
+      .logo-title { display: flex; flex-direction: column; gap: 2px; }
       .logo-title span:first-child {
         font-weight: 600;
         letter-spacing: 0.06em;
@@ -74,17 +57,9 @@
         text-transform: uppercase;
         color: var(--text-muted);
       }
+      .logo-title span:last-child { font-weight: 500; font-size: 15px; }
 
-      .logo-title span:last-child {
-        font-weight: 500;
-        font-size: 15px;
-      }
-
-      nav {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-      }
+      nav { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 
       .nav-link {
         font-size: 14px;
@@ -92,21 +67,18 @@
         border-radius: 999px;
         border: 1px solid transparent;
         color: var(--text-muted);
+        white-space: nowrap;
       }
 
       .nav-link.active {
         border-color: var(--accent-soft);
-        background: radial-gradient(
-          circle at top,
-          rgba(255, 184, 108, 0.18),
-          rgba(8, 9, 14, 0.9)
-        );
+        background: radial-gradient(circle at top, rgba(255, 184, 108, 0.18), rgba(8, 9, 14, 0.9));
         color: var(--accent);
       }
 
       .language-toggle {
         font-size: 13px;
-        padding: 4px 8px;
+        padding: 6px 10px;
         border-radius: 999px;
         border: 1px solid var(--border-color);
         cursor: pointer;
@@ -123,22 +95,13 @@
       }
 
       @media (max-width: 900px) {
-        main {
-          grid-template-columns: minmax(0, 1fr);
-        }
+        main { grid-template-columns: minmax(0, 1fr); }
       }
 
       .content-card {
-        background: linear-gradient(
-            135deg,
-            rgba(255, 184, 108, 0.06),
-            transparent 48%
-          ),
-          linear-gradient(
-            200deg,
-            rgba(145, 124, 255, 0.06),
-            transparent 64%
-          ),
+        background:
+          linear-gradient(135deg, rgba(255, 184, 108, 0.06), transparent 48%),
+          linear-gradient(200deg, rgba(145, 124, 255, 0.06), transparent 64%),
           var(--card-bg);
         border-radius: 20px;
         padding: 22px 22px 20px;
@@ -159,10 +122,7 @@
         pointer-events: none;
       }
 
-      .content-inner {
-        position: relative;
-        z-index: 1;
-      }
+      .content-inner { position: relative; z-index: 1; }
 
       .pill-label {
         display: inline-flex;
@@ -185,47 +145,18 @@
         box-shadow: 0 0 10px rgba(255, 184, 108, 0.8);
       }
 
-      h1 {
-        margin: 0 0 6px;
-        font-size: clamp(26px, 3vw, 30px);
-        letter-spacing: 0.04em;
-      }
+      h1 { margin: 0 0 6px; font-size: clamp(26px, 3vw, 30px); letter-spacing: 0.04em; }
+      h2 { margin: 0 0 14px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
 
-      h2 {
-        margin: 0 0 14px;
-        font-size: 18px;
-        color: var(--text-muted);
-        font-weight: 400;
-      }
+      .text-block { font-size: 15px; line-height: 1.7; color: var(--text-main); margin-bottom: 14px; }
+      .text-muted { color: var(--text-muted); font-size: 14px; }
 
-      .text-block {
-        font-size: 15px;
-        line-height: 1.7;
-        color: var(--text-main);
-        margin-bottom: 14px;
-      }
-
-      .text-muted {
-        color: var(--text-muted);
-        font-size: 14px;
-      }
-
-      .en {
-        direction: ltr;
-        text-align: left;
-      }
-
-      .he {
-        direction: rtl;
-        text-align: right;
-      }
+      .en { direction: ltr; text-align: left; }
+      .he { direction: rtl; text-align: right; }
 
       .media-card {
-        background: radial-gradient(
-            circle at top,
-            rgba(255, 184, 108, 0.12),
-            transparent 60%
-          ),
+        background:
+          radial-gradient(circle at top, rgba(255, 184, 108, 0.12), transparent 60%),
           rgba(10, 10, 18, 0.96);
         border-radius: 20px;
         padding: 18px 18px 16px;
@@ -235,49 +166,93 @@
         gap: 12px;
       }
 
-      .media-card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 4px;
-      }
-
-      .media-title {
-        font-size: 15px;
-        font-weight: 500;
-      }
-
-      .media-sub {
-        font-size: 13px;
-        color: var(--text-muted);
-      }
+      .media-card-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; }
+      .media-title { font-size: 15px; font-weight: 500; }
+      .media-sub { font-size: 13px; color: var(--text-muted); }
 
       .personal-grid {
         display: grid;
         grid-template-columns: minmax(0, 1fr);
-        gap: 10px;
+        gap: 12px;
         margin-top: 6px;
         max-height: 520px;
         overflow-y: auto;
+        padding-right: 2px;
       }
 
       .personal-item {
-        padding: 10px;
+        padding: 12px;
         border-radius: 14px;
         background: rgba(9, 9, 16, 0.96);
         border: 1px solid rgba(255, 255, 255, 0.06);
       }
 
-      .personal-label {
-        font-size: 13px;
-        margin-bottom: 4px;
-        color: var(--text-muted);
+      .personal-label { font-size: 13px; margin-bottom: 8px; color: var(--text-muted); }
+      .personal-link { font-size: 14px; word-break: break-all; }
+
+      /* ===== Masonry Gallery ===== */
+      .masonry-wrap {
+        margin-top: 10px;
       }
 
-      .personal-link {
-        font-size: 14px;
-        word-break: break-all;
+      .masonry {
+        column-count: 2;
+        column-gap: 12px;
+      }
+
+      @media (max-width: 1200px) { .masonry { column-count: 2; } }
+      @media (max-width: 900px)  { .masonry { column-count: 3; } } /* כשזה יורד לעמוד אחד – אפשר להגדיל קצת */
+      @media (max-width: 600px)  { .masonry { column-count: 2; } }
+
+      .masonry-item {
+        break-inside: avoid;
+        margin: 0 0 12px;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(5,5,10,0.75);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        position: relative;
+      }
+
+      .masonry-item a {
+        display: block;
+      }
+
+      .masonry-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transform: scale(1);
+        transition: transform 180ms ease, filter 180ms ease, opacity 180ms ease;
+        opacity: 0;
+      }
+
+      .masonry-item img.is-loaded { opacity: 1; }
+
+      .masonry-item:hover img {
+        transform: scale(1.02);
+        filter: saturate(1.08);
+      }
+
+      .img-badge {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        font-size: 11px;
+        color: rgba(255,255,255,0.85);
+        background: rgba(0,0,0,0.45);
+        border: 1px solid rgba(255,255,255,0.12);
+        backdrop-filter: blur(10px);
+        pointer-events: none;
+      }
+
+      .img-error {
+        padding: 12px;
+        font-size: 12px;
+        color: var(--text-muted);
       }
 
       footer {
@@ -292,8 +267,7 @@
         background: rgba(3, 3, 8, 0.98);
       }
 
-      .footer-left,
-      .footer-right {
+      .footer-left, .footer-right {
         display: flex;
         flex-wrap: wrap;
         gap: 8px 16px;
@@ -301,6 +275,7 @@
       }
     </style>
   </head>
+
   <body>
     <header>
       <div class="logo-title">
@@ -310,11 +285,11 @@
       <nav>
         <a href="../index.html" class="nav-link">ראשי</a>
         <a href="podcasts.html" class="nav-link">דימוי</a>
-        <a href="video-simulation.html" class="nav-link">הדמיה</a>
+        <a href="video-simulation.html" class="nav-link">וידאו והדמיה</a>
         <a href="songs.html" class="nav-link">וידאו</a>
         <a href="personal-work.html" class="nav-link active">יצירה אישית</a>
         <a href="satire.html" class="nav-link">סאטירה</a>
-        <button class="language-toggle" id="langToggle">HE / EN</button>
+        <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
       </nav>
     </header>
 
@@ -372,152 +347,73 @@
         </div>
 
         <div class="personal-grid">
+          <!-- לינקים 01-11 נשארים כקבצים -->
           <div class="personal-item">
             <div class="personal-label he">עבודה אישית 01</div>
-            <a
-              class="personal-link"
-              href="https://drive.google.com/file/d/10sK7DgkWTX743SgJvCVedam48JfLSS4_/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
+            <a class="personal-link" href="https://drive.google.com/file/d/10sK7DgkWTX743SgJvCVedam48JfLSS4_/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
           </div>
 
           <div class="personal-item">
             <div class="personal-label he">עבודה אישית 02</div>
-            <a
-              class="personal-link"
-              href="https://drive.google.com/file/d/17PuWeEYspDq6wybgCTc7tQWwa_3w2g_2/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
+            <a class="personal-link" href="https://drive.google.com/file/d/17PuWeEYspDq6wybgCTc7tQWwa_3w2g_2/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
           </div>
 
           <div class="personal-item">
             <div class="personal-label he">עבודה אישית 03</div>
-            <a
-              class="personal-link"
-              href="https://drive.google.com/file/d/13nCAZ0LjbJ6a32p8ninsxLak6dKXHPjk/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
+            <a class="personal-link" href="https://drive.google.com/file/d/13nCAZ0LjbJ6a32p8ninsxLak6dKXHPjk/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
           </div>
 
           <div class="personal-item">
             <div class="personal-label he">עבודה אישית 04</div>
-            <a
-              class="personal-link"
-              href="https://drive.google.com/file/d/14-Ul7MhJvgMVdqSDYkZqrt59qO51ierw/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
+            <a class="personal-link" href="https://drive.google.com/file/d/14-Ul7MhJvgMVdqSDYkZqrt59qO51ierw/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
           </div>
 
           <div class="personal-item">
             <div class="personal-label he">עבודה אישית 05</div>
-            <a
-              class="personal-link"
-              href="https://drive.google.com/file/d/14BUAoBy1A4WF388Q_0hjq6lv3B-lvGMc/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
+            <a class="personal-link" href="https://drive.google.com/file/d/14BUAoBy1A4WF388Q_0hjq6lv3B-lvGMc/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
           </div>
 
           <div class="personal-item">
             <div class="personal-label he">עבודה אישית 06</div>
-            <a
-              class="personal-link"
-              href="https://drive.google.com/file/d/1EwZ-4b60wNygFCRk-KzJnr7LGIHdzBP3/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
+            <a class="personal-link" href="https://drive.google.com/file/d/1EwZ-4b60wNygFCRk-KzJnr7LGIHdzBP3/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
           </div>
 
           <div class="personal-item">
             <div class="personal-label he">עבודה אישית 07</div>
-            <a
-              class="personal-link"
-              href="https://drive.google.com/file/d/16lemEvsbSlj4fys_vPYxb-b7auWaIGJP/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
+            <a class="personal-link" href="https://drive.google.com/file/d/16lemEvsbSlj4fys_vPYxb-b7auWaIGJP/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
           </div>
 
           <div class="personal-item">
             <div class="personal-label he">עבודה אישית 08</div>
-            <a
-              class="personal-link"
-              href="https://drive.google.com/file/d/1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
+            <a class="personal-link" href="https://drive.google.com/file/d/1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
           </div>
 
           <div class="personal-item">
             <div class="personal-label he">עבודה אישית 09</div>
-            <a
-              class="personal-link"
-              href="https://drive.google.com/file/d/10jXvk49eHUlORzSPwbJ0jBhSg59LAR5j/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
+            <a class="personal-link" href="https://drive.google.com/file/d/10jXvk49eHUlORzSPwbJ0jBhSg59LAR5j/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
           </div>
 
           <div class="personal-item">
             <div class="personal-label he">עבודה אישית 10</div>
-            <a
-              class="personal-link"
-              href="https://drive.google.com/file/d/1pJ936-J1w-5xP0hgSrD72dnAldFTlrnk/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
+            <a class="personal-link" href="https://drive.google.com/file/d/1pJ936-J1w-5xP0hgSrD72dnAldFTlrnk/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
           </div>
 
           <div class="personal-item">
             <div class="personal-label he">עבודה אישית 11</div>
-            <a
-              class="personal-link"
-              href="https://drive.google.com/file/d/1vVuvZbIYLD1MvsWnEmeskLjUrYCjczNW/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
+            <a class="personal-link" href="https://drive.google.com/file/d/1vVuvZbIYLD1MvsWnEmeskLjUrYCjczNW/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
           </div>
 
+          <!-- גלריית תמונות (מייסונרי) -->
           <div class="personal-item">
-            <div class="personal-label he">עבודה אישית 12</div>
-            <a
-              class="personal-link"
-              href="https://drive.google.com/file/d/1da3Cy63y2nJsKPpdOSrphZ7um8NlRdVd/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-             <img src="https://drive.google.com/file/d/1DGeToGCG4Sy1QLd9bcUXTvfgwkwKhFlT/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/1HywSYCwOqifrBQYgs-YJudYok9mP4qND/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/1UhANZC57EWR2k6opate--Zznscym6lxP/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/1gzFCEYgPo1mWRiab4eRtiasib8-O1aGU/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/1ro3GYA2KfN5NUzFrFbGqCSY0Op_vQDVp/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/1MvHGwYf_OJIqOtET8-mMP2W77dKCJ5RA/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/1oteYyFydPuJsOpq9oSBamp44aM9WLmbh/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/1Z_jBH9MaqxOlPYV9Km0bkBD7zMJef1H0/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/1Wb97nZUKZL8K8mg2-ed7bnC_qC8IhYI9/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/1vDFWndpC9G_z5dplsoFxPJ_HPcYxN1Sg/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/17Auk61C-paCKe8d2D7gQuXYKAc9lVF8d/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/185Aus2D_CzSEebIPsWmQ9z31MbHyDwNv/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/1BzffH8Wun6J3wemOb5Xly6Not68Psntc/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/1kW8YqpDT15FUWNc4rZEcJ1_dR39F38Yk/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/1W30xp_Y1ahtG4cQ_vZjK_P4hzf--7I6P/view?usp=drive_link" alt="Artwork">
-        <img src="https://drive.google.com/file/d/1C2NSVUhB4XmNExvsnBEeMjA0WBKlTUQo/view?usp=drive_link" alt="Artwork">
+            <div class="personal-label he">עבודה אישית 12 · גלריה</div>
+
+            <div class="masonry-wrap">
+              <div id="masonry" class="masonry" aria-label="Personal gallery masonry grid"></div>
+            </div>
+
+            <div class="text-muted he" style="margin-top:10px;font-size:12px;">
+              התמונות נטענות מפריוויו של Google Drive. לחיצה פותחת את הקובץ בדרייב.
+            </div>
           </div>
         </div>
       </aside>
@@ -535,16 +431,138 @@
     </footer>
 
     <script>
+      // ===== Language toggle (HE/EN) =====
       const toggle = document.getElementById("langToggle");
       let showEn = true;
-      toggle.addEventListener("click", () => {
-        showEn = !showEn;
+
+      function applyLanguage() {
         document.querySelectorAll(".en").forEach((el) => {
           el.style.display = showEn ? "" : "none";
         });
+        document.querySelectorAll(".he").forEach((el) => {
+          el.style.display = showEn ? "none" : "";
+        });
+        // כיוון הדף (אופציונלי): כשהאנגלית מוצגת, אפשר להפוך ל-ltr
+        document.documentElement.setAttribute("dir", showEn ? "ltr" : "rtl");
+        document.documentElement.setAttribute("lang", showEn ? "en" : "he");
+        toggle.textContent = showEn ? "EN / HE" : "HE / EN";
+      }
+
+      toggle.addEventListener("click", () => {
+        showEn = !showEn;
+        applyLanguage();
+      });
+
+      // ===== Drive helpers =====
+      function extractDriveFileId(url) {
+        // supports:
+        // https://drive.google.com/file/d/FILEID/view...
+        // https://lh3.googleusercontent.com/d/FILEID=w1200
+        // https://drive.google.com/thumbnail?id=FILEID&sz=w1200
+        try {
+          const u = new URL(url);
+          if (u.hostname.includes("lh3.googleusercontent.com")) {
+            // path: /d/FILEID
+            const m = u.pathname.match(/\/d\/([^/]+)/);
+            return m ? m[1] : null;
+          }
+          if (u.hostname.includes("drive.google.com")) {
+            if (u.pathname.includes("/file/d/")) {
+              const m = u.pathname.match(/\/file\/d\/([^/]+)/);
+              return m ? m[1] : null;
+            }
+            if (u.pathname.includes("/thumbnail")) {
+              return u.searchParams.get("id");
+            }
+          }
+          // fallback: try regex
+          const m2 = url.match(/\/file\/d\/([^/]+)/);
+          return m2 ? m2[1] : null;
+        } catch (e) {
+          const m = url.match(/\/file\/d\/([^/]+)/);
+          return m ? m[1] : null;
+        }
+      }
+
+      function drivePreviewUrl(fileId, width = 1200) {
+        // Usually the most reliable for images:
+        return `https://lh3.googleusercontent.com/d/${fileId}=w${width}`;
+      }
+
+      function driveOpenUrl(fileId) {
+        return `https://drive.google.com/file/d/${fileId}/view`;
+      }
+
+      // ===== Masonry render =====
+      const galleryDriveUrls = [
+        "https://drive.google.com/file/d/1DGeToGCG4Sy1QLd9bcUXTvfgwkwKhFlT/view?usp=drive_link",
+        "https://drive.google.com/file/d/1HywSYCwOqifrBQYgs-YJudYok9mP4qND/view?usp=drive_link",
+        "https://drive.google.com/file/d/1UhANZC57EWR2k6opate--Zznscym6lxP/view?usp=drive_link",
+        "https://drive.google.com/file/d/1gzFCEYgPo1mWRiab4eRtiasib8-O1aGU/view?usp=drive_link",
+        "https://drive.google.com/file/d/1ro3GYA2KfN5NUzFrFbGqCSY0Op_vQDVp/view?usp=drive_link",
+        "https://drive.google.com/file/d/1MvHGwYf_OJIqOtET8-mMP2W77dKCJ5RA/view?usp=drive_link",
+        "https://drive.google.com/file/d/1oteYyFydPuJsOpq9oSBamp44aM9WLmbh/view?usp=drive_link",
+        "https://drive.google.com/file/d/1Z_jBH9MaqxOlPYV9Km0bkBD7zMJef1H0/view?usp=drive_link",
+        "https://drive.google.com/file/d/1Wb97nZUKZL8K8mg2-ed7bnC_qC8IhYI9/view?usp=drive_link",
+        "https://drive.google.com/file/d/1vDFWndpC9G_z5dplsoFxPJ_HPcYxN1Sg/view?usp=drive_link",
+        "https://drive.google.com/file/d/17Auk61C-paCKe8d2D7gQuXYKAc9lVF8d/view?usp=drive_link",
+        "https://drive.google.com/file/d/185Aus2D_CzSEebIPsWmQ9z31MbHyDwNv/view?usp=drive_link",
+        "https://drive.google.com/file/d/1BzffH8Wun6J3wemOb5Xly6Not68Psntc/view?usp=drive_link",
+        "https://drive.google.com/file/d/1kW8YqpDT15FUWNc4rZEcJ1_dR39F38Yk/view?usp=drive_link",
+        "https://drive.google.com/file/d/1W30xp_Y1ahtG4cQ_vZjK_P4hzf--7I6P/view?usp=drive_link",
+        "https://drive.google.com/file/d/1C2NSVUhB4XmNExvsnBEeMjA0WBKlTUQo/view?usp=drive_link",
+      ];
+
+      function renderMasonry() {
+        const masonry = document.getElementById("masonry");
+        if (!masonry) return;
+
+        masonry.innerHTML = "";
+
+        galleryDriveUrls.forEach((url, idx) => {
+          const id = extractDriveFileId(url);
+
+          const item = document.createElement("div");
+          item.className = "masonry-item";
+
+          if (!id) {
+            item.innerHTML = `<div class="img-error">לא הצלחתי לחלץ FILE ID מהקישור: ${url}</div>`;
+            masonry.appendChild(item);
+            return;
+          }
+
+          const a = document.createElement("a");
+          a.href = driveOpenUrl(id);
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.title = "Open in Drive";
+
+          const img = document.createElement("img");
+          img.loading = "lazy";
+          img.alt = `Artwork ${String(idx + 1).padStart(2, "0")}`;
+          img.src = drivePreviewUrl(id, 1200);
+
+          img.addEventListener("load", () => img.classList.add("is-loaded"));
+          img.addEventListener("error", () => {
+            // fallback ל-thumbnail אם lh3 נחסם/נופל
+            img.src = `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
+          });
+
+          const badge = document.createElement("div");
+          badge.className = "img-badge";
+          badge.textContent = `#${idx + 1}`;
+
+          a.appendChild(img);
+          item.appendChild(a);
+          item.appendChild(badge);
+          masonry.appendChild(item);
+        });
+      }
+
+      window.addEventListener("load", () => {
+        applyLanguage();
+        renderMasonry();
       });
     </script>
   </body>
 </html>
-
-
