@@ -86,7 +86,7 @@ function updateCarousel() {
   for (let i = 0; i < items.length; i++) {
     const item = items[i];
     const itemAngle = (i * angle + currentAngle) % 360;
-    const zTranslate = 300 + 50 * Math.cos(itemAngle * Math.PI / 180);
+    const zTranslate = 200 + 50 * Math.cos(itemAngle * Math.PI / 180);
     const opacity = 1 + 0.7 * Math.cos(itemAngle * Math.PI / 180);
     const scale = 0.8 + 0.2 * Math.cos(itemAngle * Math.PI / 180);
     item.style.transform = `rotateY(${i * angle}deg) translateZ(${zTranslate}px) scale(${scale})`;
@@ -228,6 +228,7 @@ window.addEventListener('load', () => {
   updateCarousel();
   startFloatingQuotes();
 });
+
 
 
 
