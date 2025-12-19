@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl" data-lang="he">
   <head>
     <meta charset="UTF-8" />
     <title>יצירה אישית – Tzvika Johnny</title>
@@ -47,6 +47,8 @@
         position: sticky;
         top: 0;
         z-index: 20;
+        gap: 14px;
+        flex-wrap: wrap;
       }
 
       .logo-title { display: flex; flex-direction: column; gap: 2px; }
@@ -67,6 +69,9 @@
         border-radius: 999px;
         border: 1px solid transparent;
         color: var(--text-muted);
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
         white-space: nowrap;
       }
 
@@ -164,6 +169,7 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
+        min-height: 200px;
       }
 
       .media-card-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; }
@@ -171,11 +177,11 @@
       .media-sub { font-size: 13px; color: var(--text-muted); }
 
       .personal-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr);
+        display: flex;
+        flex-direction: column;
         gap: 12px;
         margin-top: 6px;
-        max-height: 520px;
+        max-height: 560px;
         overflow-y: auto;
         padding-right: 2px;
       }
@@ -190,18 +196,15 @@
       .personal-label { font-size: 13px; margin-bottom: 8px; color: var(--text-muted); }
       .personal-link { font-size: 14px; word-break: break-all; }
 
-      /* ===== Masonry Gallery ===== */
-      .masonry-wrap {
-        margin-top: 10px;
-      }
+      /* ===== Masonry Gallery (Drive previews) ===== */
+      .masonry-wrap { margin-top: 10px; }
 
       .masonry {
         column-count: 2;
         column-gap: 12px;
       }
 
-      @media (max-width: 1200px) { .masonry { column-count: 2; } }
-      @media (max-width: 900px)  { .masonry { column-count: 3; } } /* כשזה יורד לעמוד אחד – אפשר להגדיל קצת */
+      @media (max-width: 900px)  { .masonry { column-count: 3; } }
       @media (max-width: 600px)  { .masonry { column-count: 2; } }
 
       .masonry-item {
@@ -213,10 +216,14 @@
         background: rgba(5,5,10,0.75);
         box-shadow: 0 10px 30px rgba(0,0,0,0.35);
         position: relative;
+        cursor: zoom-in;
       }
 
-      .masonry-item a {
+      .masonry-item button {
+        all: unset;
         display: block;
+        width: 100%;
+        cursor: zoom-in;
       }
 
       .masonry-item img {
@@ -255,6 +262,93 @@
         color: var(--text-muted);
       }
 
+      /* ===== Lightbox modal ===== */
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(0,0,0,0.72);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+      }
+
+      .modal.open { display: flex; }
+
+      .modal-card {
+        width: min(1100px, 96vw);
+        max-height: 92vh;
+        background: rgba(10, 10, 18, 0.96);
+        border: 1px solid rgba(255,255,255,0.10);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 30px 90px rgba(0,0,0,0.85);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .modal-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .modal-title {
+        font-size: 13px;
+        color: var(--text-muted);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .btn {
+        font-size: 13px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.04);
+        color: var(--text-main);
+        cursor: pointer;
+      }
+      .btn:hover { background: rgba(255,255,255,0.08); }
+      .btn.primary {
+        border-color: var(--accent-soft);
+        background: rgba(255, 184, 108, 0.10);
+        color: var(--accent);
+      }
+
+      .modal-body {
+        padding: 12px;
+        overflow: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-body img {
+        width: 100%;
+        height: auto;
+        max-height: 78vh;
+        object-fit: contain;
+        border-radius: 12px;
+        background: rgba(0,0,0,0.25);
+      }
+
+      /* ===== Language visibility ===== */
+      html[data-lang="en"] .hebrew, html[data-lang="en"] .he { display: none; }
+      html[data-lang="he"] .english, html[data-lang="he"] .en { display: none; }
+
       footer {
         border-top: 1px solid var(--border-color);
         padding: 18px 6vw 22px 6vw;
@@ -282,36 +376,37 @@
         <span>TZVIKA JOHNNY</span>
         <span>Multimodal creative technologist</span>
       </div>
-     <nav>
-  <a href="../index.html" class="nav-link">ראשי</a>
 
-  <a href="podcasts.html" class="nav-link">
-    <span class="english">Podcasts</span>
-    <span class="hebrew">פודקאסטים</span>
-  </a>
+      <nav>
+        <a href="../index.html" class="nav-link">ראשי</a>
 
-  <a href="video-simulation.html" class="nav-link">
-    <span class="english">Video | Simulation</span>
-    <span class="hebrew">וידאו | הדמיה</span>
-  </a>
+        <a href="podcasts.html" class="nav-link">
+          <span class="english">Podcasts</span>
+          <span class="hebrew">פודקאסטים</span>
+        </a>
 
-  <a href="songs.html" class="nav-link">
-    <span class="english">Songs</span>
-    <span class="hebrew">שירים</span>
-  </a>
+        <a href="video-simulation.html" class="nav-link">
+          <span class="english">Video | Simulation</span>
+          <span class="hebrew">וידאו | הדמיה</span>
+        </a>
 
-  <a href="personal-work.html" class="nav-link active">
-    <span class="english">Personal Work</span>
-    <span class="hebrew">עבודה אישית</span>
-  </a>
+        <a href="songs.html" class="nav-link">
+          <span class="english">Songs</span>
+          <span class="hebrew">שירים</span>
+        </a>
 
-  <a href="satire.html" class="nav-link">
-    <span class="english">Satire</span>
-    <span class="hebrew">סאטירה</span>
-  </a>
+        <a href="personal-work.html" class="nav-link active">
+          <span class="english">Personal Work</span>
+          <span class="hebrew">עבודה אישית</span>
+        </a>
 
-  <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
-</nav>
+        <a href="satire.html" class="nav-link">
+          <span class="english">Satire</span>
+          <span class="hebrew">סאטירה</span>
+        </a>
+
+        <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
+      </nav>
     </header>
 
     <main>
@@ -340,16 +435,11 @@
 
           <div class="text-block en">
             This is the most intimate corner of the site – the place where the cynicism
-            is set aside (at least a little) and the work comes out as it is. Here lives
-            the personal layer: texts, thoughts, flashes of insight, experiences, songs,
-            and ideas that are born from a single breath or from a week of chaos.
+            is set aside (at least a little) and the work comes out as it is.
           </div>
           <div class="text-block en">
             The work here comes straight from the gut, without masks, mannerisms, or
-            polish. Every personal project is a journey – sometimes funny, sometimes
-            moving, sometimes completely unhinged. The goal is not to be “perfect”, but
-            to be honest. This is where you can meet the person behind all the satire
-            and jokes.
+            polish. The goal is not to be “perfect”, but to be honest.
           </div>
 
           <p class="text-muted he">
@@ -433,7 +523,7 @@
             </div>
 
             <div class="text-muted he" style="margin-top:10px;font-size:12px;">
-              התמונות נטענות מפריוויו של Google Drive. לחיצה פותחת את הקובץ בדרייב.
+              התמונות נטענות מ־Google Drive thumbnail preview (יציב). לחיצה פותחת תצוגה גדולה.
             </div>
           </div>
         </div>
@@ -451,28 +541,45 @@
       </div>
     </footer>
 
-    <script>
-      // ===== Language toggle (HE/EN) =====
-      const toggle = document.getElementById("langToggle");
-      let showEn = true;
+    <!-- ===== Lightbox Modal ===== -->
+    <div class="modal" id="modal" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-label="Image preview">
+        <div class="modal-topbar">
+          <div class="modal-title">
+            <span id="modalIndex">#—</span>
+            <span class="text-muted" id="modalHint">Preview</span>
+          </div>
+          <div class="modal-actions">
+            <a class="btn primary" id="openInDrive" href="#" target="_blank" rel="noopener noreferrer">Open in Drive</a>
+            <button class="btn" id="closeModal" type="button">Close</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <img id="modalImg" alt="Artwork preview" />
+        </div>
+      </div>
+    </div>
 
-      function applyLanguage() {
-        document.querySelectorAll(".en").forEach((el) => {
-          el.style.display = showEn ? "" : "none";
-        });
-        document.querySelectorAll(".he").forEach((el) => {
-          el.style.display = showEn ? "none" : "";
-        });
-        // כיוון הדף (אופציונלי): כשהאנגלית מוצגת, אפשר להפוך ל-ltr
-        document.documentElement.setAttribute("dir", showEn ? "ltr" : "rtl");
-        document.documentElement.setAttribute("lang", showEn ? "en" : "he");
-        toggle.textContent = showEn ? "EN / HE" : "HE / EN";
+    <script>
+      // ===== Language toggle (real HE/EN switching) =====
+      const langBtn = document.getElementById("langToggle");
+      const root = document.documentElement;
+
+      function setLang(lang) {
+        root.setAttribute("data-lang", lang);
+        root.setAttribute("lang", lang);
+        root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+        try { localStorage.setItem("lang", lang); } catch {}
+        langBtn.textContent = lang === "he" ? "EN / HE" : "HE / EN";
       }
 
-      toggle.addEventListener("click", () => {
-        showEn = !showEn;
-        applyLanguage();
+      langBtn.addEventListener("click", () => {
+        const current = root.getAttribute("data-lang") || "he";
+        setLang(current === "he" ? "en" : "he");
       });
+
+      const savedLang = (() => { try { return localStorage.getItem("lang"); } catch { return null; } })();
+      setLang(savedLang || "he");
 
       // ===== Drive helpers =====
       function extractDriveFileId(url) {
@@ -482,11 +589,12 @@
         // https://drive.google.com/thumbnail?id=FILEID&sz=w1200
         try {
           const u = new URL(url);
+
           if (u.hostname.includes("lh3.googleusercontent.com")) {
-            // path: /d/FILEID
             const m = u.pathname.match(/\/d\/([^/]+)/);
             return m ? m[1] : null;
           }
+
           if (u.hostname.includes("drive.google.com")) {
             if (u.pathname.includes("/file/d/")) {
               const m = u.pathname.match(/\/file\/d\/([^/]+)/);
@@ -496,25 +604,22 @@
               return u.searchParams.get("id");
             }
           }
-          // fallback: try regex
-          const m2 = url.match(/\/file\/d\/([^/]+)/);
-          return m2 ? m2[1] : null;
-        } catch (e) {
-          const m = url.match(/\/file\/d\/([^/]+)/);
-          return m ? m[1] : null;
-        }
+        } catch {}
+
+        const m2 = url.match(/\/file\/d\/([^/]+)/);
+        return m2 ? m2[1] : null;
       }
 
-      function drivePreviewUrl(fileId, width = 1200) {
-        // Usually the most reliable for images:
-        return `https://lh3.googleusercontent.com/d/${fileId}=w${width}`;
+      function driveThumbUrl(fileId, size = 1600) {
+        // ה־thumbnail endpoint נוטה להיות הכי יציב להצגה בתוך <img>
+        return `https://drive.google.com/thumbnail?id=${fileId}&sz=w${size}`;
       }
 
       function driveOpenUrl(fileId) {
         return `https://drive.google.com/file/d/${fileId}/view`;
       }
 
-      // ===== Masonry render =====
+      // ===== Gallery sources (same list you pasted) =====
       const galleryDriveUrls = [
         "https://drive.google.com/file/d/1DGeToGCG4Sy1QLd9bcUXTvfgwkwKhFlT/view?usp=drive_link",
         "https://drive.google.com/file/d/1HywSYCwOqifrBQYgs-YJudYok9mP4qND/view?usp=drive_link",
@@ -534,6 +639,38 @@
         "https://drive.google.com/file/d/1C2NSVUhB4XmNExvsnBEeMjA0WBKlTUQo/view?usp=drive_link",
       ];
 
+      // ===== Lightbox wiring =====
+      const modal = document.getElementById("modal");
+      const modalImg = document.getElementById("modalImg");
+      const closeModalBtn = document.getElementById("closeModal");
+      const openInDrive = document.getElementById("openInDrive");
+      const modalIndex = document.getElementById("modalIndex");
+
+      function openModal({ fileId, idx }) {
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        modalImg.src = driveThumbUrl(fileId, 2400);
+        openInDrive.href = driveOpenUrl(fileId);
+        modalIndex.textContent = `#${idx + 1}`;
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+        modalImg.src = "";
+        document.body.style.overflow = "";
+      }
+
+      closeModalBtn.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+
+      // ===== Render masonry =====
       function renderMasonry() {
         const masonry = document.getElementById("masonry");
         if (!masonry) return;
@@ -552,39 +689,35 @@
             return;
           }
 
-          const a = document.createElement("a");
-          a.href = driveOpenUrl(id);
-          a.target = "_blank";
-          a.rel = "noopener noreferrer";
-          a.title = "Open in Drive";
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.setAttribute("aria-label", `Open image ${idx + 1}`);
 
           const img = document.createElement("img");
           img.loading = "lazy";
           img.alt = `Artwork ${String(idx + 1).padStart(2, "0")}`;
-          img.src = drivePreviewUrl(id, 1200);
+          img.src = driveThumbUrl(id, 1400);
 
           img.addEventListener("load", () => img.classList.add("is-loaded"));
           img.addEventListener("error", () => {
-            // fallback ל-thumbnail אם lh3 נחסם/נופל
-            img.src = `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
+            // fallback קטן יותר אם משהו נחסם
+            img.src = driveThumbUrl(id, 800);
           });
+
+          btn.addEventListener("click", () => openModal({ fileId: id, idx }));
 
           const badge = document.createElement("div");
           badge.className = "img-badge";
           badge.textContent = `#${idx + 1}`;
 
-          a.appendChild(img);
-          item.appendChild(a);
+          btn.appendChild(img);
+          item.appendChild(btn);
           item.appendChild(badge);
           masonry.appendChild(item);
         });
       }
 
-      window.addEventListener("load", () => {
-        applyLanguage();
-        renderMasonry();
-      });
+      window.addEventListener("load", renderMasonry);
     </script>
   </body>
 </html>
-
