@@ -3,7 +3,7 @@ const items = [
   { title: 'Video | Simulation', src: 'https://lh3.googleusercontent.com/d/1JssQiFqnjA96ozChTomDaTaCSzQtY9-6=w1000', link: 'pages/video-simulation.html' },
   { title: 'Songs', src: 'https://lh3.googleusercontent.com/d/1Bx08pEL47s6mATgeDt2EP-epJq5fas5l=w1000', link: 'pages/songs.html' },
   { title: 'Personal Work', src: 'https://lh3.googleusercontent.com/d/1PZOsdtXAuLlleN8BRbRZ-vIl0WZkd8sw=w1000', link: 'pages/personal-work.html' },
-  { title: 'Satire', src: 'https://lh3.googleusercontent.com/d/1tOWZ4QLOdw5oSVI5vlN9qkF118JYL4_2=w1000', link: 'pages/satire.html' }
+  { title: 'Satire', src: 'https://lh3.googleusercontent.com/d/1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so=w1000', link: 'pages/satire.html' }
 ];
 const carousel = document.getElementById('carousel');
 const itemCount = items.length;
@@ -228,6 +228,7 @@ window.addEventListener('load', () => {
   updateCarousel();
   startFloatingQuotes();
 });
+
 
 
 
