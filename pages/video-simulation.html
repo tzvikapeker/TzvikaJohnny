@@ -2,13 +2,13 @@
 <html lang="he" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <title>הדמיה – Tzvika Johnny</title>
+    <title>וידאו | הדמיה – Tzvika Johnny</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Heebo font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
+
     <style>
       :root {
         --bg-color: #050608;
@@ -20,29 +20,20 @@
         --border-color: rgba(255, 255, 255, 0.08);
       }
 
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
 
       body {
         margin: 0;
         min-height: 100vh;
-        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
+        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
         color: var(--text-main);
         display: flex;
         flex-direction: column;
       }
 
-      a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
 
       header {
         padding: 16px 24px;
@@ -51,22 +42,15 @@
         justify-content: space-between;
         border-bottom: 1px solid var(--border-color);
         backdrop-filter: blur(16px);
-        background: linear-gradient(
-          to bottom,
-          rgba(5, 6, 8, 0.92),
-          rgba(5, 6, 8, 0.78)
-        );
+        background: linear-gradient(to bottom, rgba(5, 6, 8, 0.92), rgba(5, 6, 8, 0.78));
         position: sticky;
         top: 0;
         z-index: 20;
+        gap: 14px;
+        flex-wrap: wrap;
       }
 
-      .logo-title {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-
+      .logo-title { display: flex; flex-direction: column; gap: 2px; }
       .logo-title span:first-child {
         font-weight: 600;
         letter-spacing: 0.06em;
@@ -74,17 +58,9 @@
         text-transform: uppercase;
         color: var(--text-muted);
       }
+      .logo-title span:last-child { font-weight: 500; font-size: 15px; }
 
-      .logo-title span:last-child {
-        font-weight: 500;
-        font-size: 15px;
-      }
-
-      nav {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-      }
+      nav { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 
       .nav-link {
         font-size: 14px;
@@ -92,21 +68,20 @@
         border-radius: 999px;
         border: 1px solid transparent;
         color: var(--text-muted);
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
       }
 
       .nav-link.active {
         border-color: var(--accent-soft);
-        background: radial-gradient(
-          circle at top,
-          rgba(255, 184, 108, 0.18),
-          rgba(8, 9, 14, 0.9)
-        );
+        background: radial-gradient(circle at top, rgba(255, 184, 108, 0.18), rgba(8, 9, 14, 0.9));
         color: var(--accent);
       }
 
       .language-toggle {
         font-size: 13px;
-        padding: 4px 8px;
+        padding: 6px 10px;
         border-radius: 999px;
         border: 1px solid var(--border-color);
         cursor: pointer;
@@ -123,22 +98,13 @@
       }
 
       @media (max-width: 900px) {
-        main {
-          grid-template-columns: minmax(0, 1fr);
-        }
+        main { grid-template-columns: minmax(0, 1fr); }
       }
 
       .content-card {
-        background: linear-gradient(
-            135deg,
-            rgba(255, 184, 108, 0.06),
-            transparent 48%
-          ),
-          linear-gradient(
-            200deg,
-            rgba(145, 124, 255, 0.06),
-            transparent 64%
-          ),
+        background:
+          linear-gradient(135deg, rgba(255, 184, 108, 0.06), transparent 48%),
+          linear-gradient(200deg, rgba(145, 124, 255, 0.06), transparent 64%),
           var(--card-bg);
         border-radius: 20px;
         padding: 22px 22px 20px;
@@ -159,10 +125,7 @@
         pointer-events: none;
       }
 
-      .content-inner {
-        position: relative;
-        z-index: 1;
-      }
+      .content-inner { position: relative; z-index: 1; }
 
       .pill-label {
         display: inline-flex;
@@ -185,47 +148,18 @@
         box-shadow: 0 0 10px rgba(255, 184, 108, 0.8);
       }
 
-      h1 {
-        margin: 0 0 6px;
-        font-size: clamp(26px, 3vw, 30px);
-        letter-spacing: 0.04em;
-      }
+      h1 { margin: 0 0 6px; font-size: clamp(26px, 3vw, 30px); letter-spacing: 0.04em; }
+      h2 { margin: 0 0 14px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
 
-      h2 {
-        margin: 0 0 14px;
-        font-size: 18px;
-        color: var(--text-muted);
-        font-weight: 400;
-      }
+      .text-block { font-size: 15px; line-height: 1.7; color: var(--text-main); margin-bottom: 14px; }
+      .text-muted { color: var(--text-muted); font-size: 14px; }
 
-      .text-block {
-        font-size: 15px;
-        line-height: 1.7;
-        color: var(--text-main);
-        margin-bottom: 14px;
-      }
-
-      .text-muted {
-        color: var(--text-muted);
-        font-size: 14px;
-      }
-
-      .en {
-        direction: ltr;
-        text-align: left;
-      }
-
-      .he {
-        direction: rtl;
-        text-align: right;
-      }
+      .en { direction: ltr; text-align: left; }
+      .he { direction: rtl; text-align: right; }
 
       .media-card {
-        background: radial-gradient(
-            circle at top,
-            rgba(255, 184, 108, 0.12),
-            transparent 60%
-          ),
+        background:
+          radial-gradient(circle at top, rgba(255, 184, 108, 0.12), transparent 60%),
           rgba(10, 10, 18, 0.96);
         border-radius: 20px;
         padding: 18px 18px 16px;
@@ -243,39 +177,51 @@
         margin-bottom: 4px;
       }
 
-      .media-title {
-        font-size: 15px;
-        font-weight: 500;
-      }
+      .media-title { font-size: 15px; font-weight: 500; }
+      .media-sub { font-size: 13px; color: var(--text-muted); }
 
-      .media-sub {
-        font-size: 13px;
-        color: var(--text-muted);
-      }
-
-      .audio-list {
+      /* Lists */
+      .audio-list, .video-list {
         display: flex;
         flex-direction: column;
         gap: 10px;
         margin-top: 6px;
       }
 
-      .audio-item {
+      .media-item {
         padding: 10px;
         border-radius: 14px;
         background: rgba(9, 9, 16, 0.96);
         border: 1px solid rgba(255, 255, 255, 0.06);
       }
 
-      .audio-label {
+      .media-label {
         font-size: 13px;
-        margin-bottom: 4px;
+        margin-bottom: 8px;
         color: var(--text-muted);
       }
 
-      audio {
-        width: 100%;
+      /* Video grid */
+      .video-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
       }
+
+      /* Responsive embed */
+      .embed {
+        width: 100%;
+        border: 0;
+        border-radius: 12px;
+        background: rgba(0,0,0,0.35);
+      }
+
+      .embed--audio { height: 120px; }
+      .embed--video { aspect-ratio: 16 / 9; height: auto; }
+
+      /* Language visibility (works with your .english/.hebrew spans too) */
+      html[data-lang="en"] .hebrew, html[data-lang="en"] .he { display: none; }
+      html[data-lang="he"] .english, html[data-lang="he"] .en { display: none; }
 
       footer {
         border-top: 1px solid var(--border-color);
@@ -289,8 +235,7 @@
         background: rgba(3, 3, 8, 0.98);
       }
 
-      .footer-left,
-      .footer-right {
+      .footer-left, .footer-right {
         display: flex;
         flex-wrap: wrap;
         gap: 8px 16px;
@@ -298,42 +243,45 @@
       }
     </style>
   </head>
+
   <body>
     <header>
       <div class="logo-title">
         <span>TZVIKA JOHNNY</span>
         <span>Multimodal creative technologist</span>
       </div>
-     <nav>
-  <a href="../index.html" class="nav-link">ראשי</a>
 
-  <a href="podcasts.html" class="nav-link">
-    <span class="english">Podcasts</span>
-    <span class="hebrew">פודקאסטים</span>
-  </a>
+      <!-- ✅ Nav fixed: active is on video-simulation -->
+      <nav>
+        <a href="../index.html" class="nav-link">ראשי</a>
 
-  <a href="video-simulation.html" class="nav-link">
-    <span class="english">Video | Simulation</span>
-    <span class="hebrew">וידאו | הדמיה</span>
-  </a>
+        <a href="podcasts.html" class="nav-link">
+          <span class="english">Podcasts</span>
+          <span class="hebrew">פודקאסטים</span>
+        </a>
 
-  <a href="songs.html" class="nav-link">
-    <span class="english">Songs</span>
-    <span class="hebrew">שירים</span>
-  </a>
+        <a href="video-simulation.html" class="nav-link active">
+          <span class="english">Video | Simulation</span>
+          <span class="hebrew">וידאו | הדמיה</span>
+        </a>
 
-  <a href="personal-work.html" class="nav-link active">
-    <span class="english">Personal Work</span>
-    <span class="hebrew">עבודה אישית</span>
-  </a>
+        <a href="songs.html" class="nav-link">
+          <span class="english">Songs</span>
+          <span class="hebrew">שירים</span>
+        </a>
 
-  <a href="satire.html" class="nav-link">
-    <span class="english">Satire</span>
-    <span class="hebrew">סאטירה</span>
-  </a>
+        <a href="personal-work.html" class="nav-link">
+          <span class="english">Personal Work</span>
+          <span class="hebrew">עבודה אישית</span>
+        </a>
 
-  <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
-</nav>
+        <a href="satire.html" class="nav-link">
+          <span class="english">Satire</span>
+          <span class="hebrew">סאטירה</span>
+        </a>
+
+        <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
+      </nav>
     </header>
 
     <main>
@@ -354,22 +302,17 @@
           </div>
           <div class="text-block he">
             הדמיה עבורי היא לא רק “לייצר תמונה”. היא תהליך של תרגום מחשבה למשהו מוחשי.
-            מה זה אומר? רעיון שנזרק באוויר, הופך בעזרת אלגוריתמים וטכניקה לויזואל
-            מרשים, מדויק ומלא אופי. כאן אפשר לראות איך דמיון הופך למציאות שניתן
-            להחזיק ביד.
+            רעיון שנזרק באוויר הופך בעזרת אלגוריתמים וטכניקה לויזואל מרשים, מדויק ומלא אופי.
           </div>
 
           <div class="text-block en">
             This is where the technological magic happens. The simulation space connects
             raw creativity with advanced AI tools to build new worlds, test abstract
-            ideas, and stage scenes that feel like they came out of a dream – or a
-            nightmare, depending on the day.
+            ideas, and stage scenes that feel like they came out of a dream – or a nightmare.
           </div>
           <div class="text-block en">
-            For me, simulation is not just “making an image”. It is the process of
-            translating a thought into something tangible. A throwaway idea in the air
-            becomes, through algorithms and craft, a precise, characterful visual.
-            This is where imagination hardens into a reality you can almost hold.
+            For me, simulation is not just “making an image”. It is the process of translating
+            a thought into something tangible — through algorithms and craft.
           </div>
 
           <p class="text-muted he">
@@ -382,131 +325,18 @@
       <aside class="media-card">
         <div class="media-card-header">
           <div>
-            <div class="media-title he">פסקול של הדמיה</div>
-            <div class="media-sub he">רנדרים קוליים, סקיצות, ניסויים</div>
+            <div class="media-title he">מדיה מהדמיה</div>
+            <div class="media-sub he">פריוויו דרייב (יציב) — אודיו + וידאו</div>
           </div>
         </div>
 
-        <div class="audio-list">
-          <div class="audio-item">
-            <div class="audio-label he">סימולציה 01</div>
-            <audio controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1IdkzydQPMY6R47D_TMMrhynGfnEVV9dS" />
-              הדפדפן שלך לא תומך בנגן אודיו.
-            </audio>
-          </div>
-<div class="video-grid">
-          <div class="video-item">
-            <div class="video-label he">וידאו 01</div>
-            <video controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1Rv_Dhh-oH_n8DM-eZL7RymWTqYdWjr3B" type="video/mp4" />
-              הדפדפן שלך לא תומך בנגן וידאו.
-            </video>
-          </div>
+        <!-- ✅ Audio embeds -->
+        <div class="audio-list" id="audioList"></div>
 
-          <div class="video-item">
-            <div class="video-label he">וידאו 02</div>
-            <video controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1Kq0zEX2ZVR3jXv2_5Iupp01Y5YF0yla5" type="video/mp4" />
-              הדפדפן שלך לא תומך בנגן וידאו.
-            </video>
-          </div>
-
-          <div class="video-item">
-            <div class="video-label he">וידאו 03</div>
-            <video controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1QR8HWDs5tgxkHdWStLS6PNpj8fb6ADCG" type="video/mp4" />
-              הדפדפן שלך לא תומך בנגן וידאו.
-            </video>
-          </div>
-
-          <div class="video-item">
-            <div class="video-label he">וידאו 04</div>
-            <video controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1CFOu_3FxfCbwQapn6ZyUj-Ao-CqVveen" type="video/mp4" />
-              הדפדפן שלך לא תומך בנגן וידאו.
-            </video>
-          </div>
-
-          <div class="video-item">
-            <div class="video-label he">וידאו 05</div>
-            <video controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1qxyoZurfB70RTGcNEq1hfk8pfdJpv8cH" type="video/mp4" />
-              הדפדפן שלך לא תומך בנגן וידאו.
-            </video>
-          </div>
-
-          <div class="video-item">
-            <div class="video-label he">וידאו 06</div>
-            <video controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1iijGL-hdsj_tddbQqS2Syp1qNfLVw-Dm" type="video/mp4" />
-              הדפדפן שלך לא תומך בנגן וידאו.
-            </video>
-          </div>
-
-          <div class="video-item">
-            <div class="video-label he">וידאו 07</div>
-            <video controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1leLgmJl99J-VvI_ERK9g3WlgUQHA_qtt" type="video/mp4" />
-              הדפדפן שלך לא תומך בנגן וידאו.
-            </video>
-          </div>
-        </div>
-          <div class="audio-item">
-            <div class="audio-label he">סימולציה 02</div>
-            <audio controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1b4UeauaPjj4u8CR7JamuKkY__cDCPl3o" />
-              הדפדפן שלך לא תומך בנגן אודיו.
-            </audio>
-          </div>
-
-          <div class="audio-item">
-            <div class="audio-label he">סימולציה 03</div>
-            <audio controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1XunSMzK6bGS8XiAQdQVRzepf6LiELoFj" />
-              הדפדפן שלך לא תומך בנגן אודיו.
-            </audio>
-          </div>
-
-          <div class="audio-item">
-            <div class="audio-label he">סימולציה 04</div>
-            <audio controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1gHyNkYQ201CswdyJu4Uke7YjqRZ_Q0d1" />
-              הדפדפן שלך לא תומך בנגן אודיו.
-            </audio>
-          </div>
-
-          <div class="audio-item">
-            <div class="audio-label he">סימולציה 05</div>
-            <audio controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1ClV9G1mdHVnEknk-MrA2a66yqXGOv0nZ" />
-              הדפדפן שלך לא תומך בנגן אודיו.
-            </audio>
-          </div>
-
-          <div class="audio-item">
-            <div class="audio-label he">סימולציה 06</div>
-            <audio controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1qzqAun8xPwqKUMxQ1RvHtA4_urev0if8" />
-              הדפדפן שלך לא תומך בנגן אודיו.
-            </audio>
-          </div>
-
-          <div class="audio-item">
-            <div class="audio-label he">סימולציה 07</div>
-            <audio controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1d23vZXpP_gbchSDquAKfvlXWpqT1MOIe" />
-              הדפדפן שלך לא תומך בנגן אודיו.
-            </audio>
-          </div>
-
-          <div class="audio-item">
-            <div class="audio-label he">סימולציה 08</div>
-            <audio controls preload="none">
-              <source src="https://docs.google.com/uc?export=download&id=1P1-8Gy10D83KwbrhUEa1vRnQaCzp7PpT" />
-              הדפדפן שלך לא תומך בנגן אודיו.
-            </audio>
-          </div>
+        <!-- ✅ Video embeds -->
+        <div class="video-list" style="margin-top: 10px;">
+          <div class="media-label he" style="margin-bottom: 6px;">וידאו</div>
+          <div class="video-grid" id="videoGrid"></div>
         </div>
       </aside>
     </main>
@@ -523,18 +353,117 @@
     </footer>
 
     <script>
-      // Simple language toggle: show both by default, allow hiding English if needed.
+      // ===== Language toggle (real HE/EN switching) =====
       const toggle = document.getElementById("langToggle");
-      let showEn = true;
+      const root = document.documentElement;
+
+      function setLang(lang) {
+        root.setAttribute("data-lang", lang);
+        root.setAttribute("lang", lang);
+        root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+        try { localStorage.setItem("lang", lang); } catch {}
+        toggle.textContent = lang === "he" ? "EN / HE" : "HE / EN";
+      }
+
       toggle.addEventListener("click", () => {
-        showEn = !showEn;
-        document.querySelectorAll(".en").forEach((el) => {
-          el.style.display = showEn ? "" : "none";
-        });
+        const current = root.getAttribute("data-lang") || "he";
+        setLang(current === "he" ? "en" : "he");
       });
+
+      // init
+      const saved = (() => { try { return localStorage.getItem("lang"); } catch { return null; } })();
+      setLang(saved || "he");
+
+      // ===== Drive helpers: use /preview embeds (stable playback) =====
+      function drivePreviewUrl(fileId) {
+        return `https://drive.google.com/file/d/${fileId}/preview`;
+      }
+
+      function extractIdFromUc(url) {
+        // expects: https://docs.google.com/uc?export=download&id=FILEID
+        try {
+          const u = new URL(url);
+          return u.searchParams.get("id");
+        } catch {
+          const m = url.match(/[?&]id=([^&]+)/);
+          return m ? m[1] : null;
+        }
+      }
+
+      // Your original sources (ids extracted)
+      const audioSources = [
+        { label: "סימולציה 01", src: "https://docs.google.com/uc?export=download&id=1IdkzydQPMY6R47D_TMMrhynGfnEVV9dS" },
+        { label: "סימולציה 02", src: "https://docs.google.com/uc?export=download&id=1b4UeauaPjj4u8CR7JamuKkY__cDCPl3o" },
+        { label: "סימולציה 03", src: "https://docs.google.com/uc?export=download&id=1XunSMzK6bGS8XiAQdQVRzepf6LiELoFj" },
+        { label: "סימולציה 04", src: "https://docs.google.com/uc?export=download&id=1gHyNkYQ201CswdyJu4Uke7YjqRZ_Q0d1" },
+        { label: "סימולציה 05", src: "https://docs.google.com/uc?export=download&id=1ClV9G1mdHVnEknk-MrA2a66yqXGOv0nZ" },
+        { label: "סימולציה 06", src: "https://docs.google.com/uc?export=download&id=1qzqAun8xPwqKUMxQ1RvHtA4_urev0if8" },
+        { label: "סימולציה 07", src: "https://docs.google.com/uc?export=download&id=1d23vZXpP_gbchSDquAKfvlXWpqT1MOIe" },
+        { label: "סימולציה 08", src: "https://docs.google.com/uc?export=download&id=1P1-8Gy10D83KwbrhUEa1vRnQaCzp7PpT" },
+      ];
+
+      const videoSources = [
+        { label: "וידאו 01", src: "https://docs.google.com/uc?export=download&id=1Rv_Dhh-oH_n8DM-eZL7RymWTqYdWjr3B" },
+        { label: "וידאו 02", src: "https://docs.google.com/uc?export=download&id=1Kq0zEX2ZVR3jXv2_5Iupp01Y5YF0yla5" },
+        { label: "וידאו 03", src: "https://docs.google.com/uc?export=download&id=1QR8HWDs5tgxkHdWStLS6PNpj8fb6ADCG" },
+        { label: "וידאו 04", src: "https://docs.google.com/uc?export=download&id=1CFOu_3FxfCbwQapn6ZyUj-Ao-CqVveen" },
+        { label: "וידאו 05", src: "https://docs.google.com/uc?export=download&id=1qxyoZurfB70RTGcNEq1hfk8pfdJpv8cH" },
+        { label: "וידאו 06", src: "https://docs.google.com/uc?export=download&id=1iijGL-hdsj_tddbQqS2Syp1qNfLVw-Dm" },
+        { label: "וידאו 07", src: "https://docs.google.com/uc?export=download&id=1leLgmJl99J-VvI_ERK9g3WlgUQHA_qtt" },
+      ];
+
+      function renderEmbeds() {
+        const audioList = document.getElementById("audioList");
+        const videoGrid = document.getElementById("videoGrid");
+
+        audioSources.forEach((it) => {
+          const id = extractIdFromUc(it.src);
+          if (!id) return;
+
+          const wrap = document.createElement("div");
+          wrap.className = "media-item";
+
+          const label = document.createElement("div");
+          label.className = "media-label he";
+          label.textContent = it.label;
+
+          const iframe = document.createElement("iframe");
+          iframe.className = "embed embed--audio";
+          iframe.src = drivePreviewUrl(id);
+          iframe.allow = "autoplay";
+          iframe.setAttribute("loading", "lazy");
+          iframe.setAttribute("title", it.label);
+
+          wrap.appendChild(label);
+          wrap.appendChild(iframe);
+          audioList.appendChild(wrap);
+        });
+
+        videoSources.forEach((it) => {
+          const id = extractIdFromUc(it.src);
+          if (!id) return;
+
+          const wrap = document.createElement("div");
+          wrap.className = "media-item";
+
+          const label = document.createElement("div");
+          label.className = "media-label he";
+          label.textContent = it.label;
+
+          const iframe = document.createElement("iframe");
+          iframe.className = "embed embed--video";
+          iframe.src = drivePreviewUrl(id);
+          iframe.allow = "autoplay; fullscreen";
+          iframe.setAttribute("loading", "lazy");
+          iframe.setAttribute("title", it.label);
+
+          wrap.appendChild(label);
+          wrap.appendChild(iframe);
+          videoGrid.appendChild(wrap);
+        });
+      }
+
+      window.addEventListener("load", renderEmbeds);
     </script>
   </body>
 </html>
-
-
-
