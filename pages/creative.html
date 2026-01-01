@@ -2,7 +2,7 @@
 <html lang="he" dir="rtl" data-lang="he">
   <head>
     <meta charset="UTF-8" />
-    <title>יצירה אישית – Tzvika Johnny</title>
+    <title>יצירה אישית</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link
@@ -181,23 +181,13 @@
         flex-direction: column;
         gap: 12px;
         margin-top: 6px;
-        max-height: 560px;
+        max-height: 80vh; /* Allowed more height for the gallery */
         overflow-y: auto;
         padding-right: 2px;
       }
 
-      .personal-item {
-        padding: 12px;
-        border-radius: 14px;
-        background: rgba(9, 9, 16, 0.96);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-      }
-
-      .personal-label { font-size: 13px; margin-bottom: 8px; color: var(--text-muted); }
-      .personal-link { font-size: 14px; word-break: break-all; }
-
       /* ===== Masonry Gallery (Drive previews) ===== */
-      .masonry-wrap { margin-top: 10px; }
+      .masonry-wrap { margin-top: 0; }
 
       .masonry {
         column-count: 2;
@@ -395,9 +385,9 @@
           <span class="hebrew">שירים</span>
         </a>
 
-        <a href="personal-work.html" class="nav-link active">
-          <span class="english">Personal Work</span>
-          <span class="hebrew">עבודה אישית</span>
+        <a href="creative.html" class="nav-link active">
+          <span class="english">Creative</span>
+          <span class="hebrew">קריאייטיב</span>
         </a>
 
         <a href="satire.html" class="nav-link">
@@ -414,117 +404,57 @@
         <div class="content-inner">
           <div class="pill-label">
             <span class="pill-dot"></span>
-            <span>Personal work · Inner layer</span>
+            <span>Unconventional ideas</span>
           </div>
 
-          <h1 class="he">יצירה אישית</h1>
-          <h2 class="he">המקום שבו הציניות יורדת לשקט</h2>
+          <h1 class="he">קריאייטיב</h1>
+          <h2 class="he">רעיון שמתחיל משאלה פשוטה</h2>
 
+          <h1 class="en">Creative</h1>
+          <h2 class="en">Ideas that start with a simple question</h2>
+
+          <!-- HEBREW CONTENT -->
           <div class="text-block he">
-            הפינה הכי אינטימית באתר – המקום שבו אני מניח את הציניות בצד (רק קצת)
-            ומאפשר לאמנות לצאת כמו שהיא. כאן נמצאת היצירה האישית: טקסטים,
-            מחשבות, הברקות, חוויות, שירים, רעיונות שנולדים מתוך נשימה אחת או מתוך
-            כאוס של שבוע.
+            הקריאייטיב שלי מתחיל משאלה אחת פשוטה: למה שמישהו יעצור רגע ויסתכל על זה?
           </div>
           <div class="text-block he">
-            זו יצירה שמגיעה מהבטן, בלי מסכות, בלי מניירות ובלי לייפות. כל פרויקט
-            אישי כאן הוא מסע. לפעמים מצחיק, לפעמים מרגש, לפעמים פשוט משוגע. המטרה
-            היא לא להיות “מושלם”, אלא להיות אמיתי. זה המקום שבו אפשר לפגוש אותי
-            מאחורי כל הסאטירה והבדיחות.
+            אני מפתח רעיונות חכמים, חדים ולא שגרתיים, כאלה שמדברים בשפה אנושית ולא מרגישים כמו עוד תוכן שעבר דרך נוסחה. כל רעיון נולד מתוך מחשבה, הקשבה ודיוק ואז מקבל צורה דרך דימוי, וידאו, טקסט, הדמיה או שיר.
+          </div>
+          <div class="text-block he">
+            הגישה שלי משלבת אינטואיציה, ניסיון וכלים מתקדמים, אבל תמיד שומרת על דבר אחד מרכזי: קריאייטיב צריך לעורר רגש, סקרנות או חיוך. אם זה לא מזיז משהו זה לא גמור.
           </div>
 
+          <!-- ENGLISH CONTENT -->
           <div class="text-block en">
-            This is the most intimate corner of the site – the place where the cynicism
-            is set aside (at least a little) and the work comes out as it is.
+            My creative process begins with one simple question: Why would anyone stop for a moment to look at this?
           </div>
           <div class="text-block en">
-            The work here comes straight from the gut, without masks, mannerisms, or
-            polish. The goal is not to be “perfect”, but to be honest.
+            I develop smart, sharp, and unconventional ideas—ones that speak a human language and don't feel like just another piece of content churned out by a formula. Every idea creates a spark from thought, listening, and precision, and then takes shape through imagery, video, text, simulation, or song.
           </div>
-
-          <p class="text-muted he">
-            * חלק מהקבצים כאן הם סקיצות, טיוטות ויומנים קוליים – חומר גלם בדרך
-            להפוך למשהו אחר, או פשוט להישאר כפי שהוא.
-          </p>
+          <div class="text-block en">
+            My approach combines intuition, experience, and advanced tools, yet always maintains one central principle: creative work must evoke emotion, curiosity, or a smile. If it doesn't move something inside, it's not finished.
+          </div>
         </div>
       </section>
 
       <aside class="media-card">
         <div class="media-card-header">
           <div>
-            <div class="media-title he">עבודות אישיות</div>
-            <div class="media-sub he">טקסטים, הקלטות, רגעים שלא נועדו לקהל רחב</div>
+            <div class="media-title">
+              <span class="he">גלריה</span>
+              <span class="en">Gallery</span>
+            </div>
+            <div class="media-sub">
+              <span class="he">עבודות נבחרות</span>
+              <span class="en">Selected Works</span>
+            </div>
           </div>
         </div>
 
         <div class="personal-grid">
-          <!-- לינקים 01-11 נשארים כקבצים -->
-          <div class="personal-item">
-            <div class="personal-label he">עבודה אישית 01</div>
-            <a class="personal-link" href="https://drive.google.com/file/d/10sK7DgkWTX743SgJvCVedam48JfLSS4_/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
-          </div>
-
-          <div class="personal-item">
-            <div class="personal-label he">עבודה אישית 02</div>
-            <a class="personal-link" href="https://drive.google.com/file/d/17PuWeEYspDq6wybgCTc7tQWwa_3w2g_2/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
-          </div>
-
-          <div class="personal-item">
-            <div class="personal-label he">עבודה אישית 03</div>
-            <a class="personal-link" href="https://drive.google.com/file/d/13nCAZ0LjbJ6a32p8ninsxLak6dKXHPjk/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
-          </div>
-
-          <div class="personal-item">
-            <div class="personal-label he">עבודה אישית 04</div>
-            <a class="personal-link" href="https://drive.google.com/file/d/14-Ul7MhJvgMVdqSDYkZqrt59qO51ierw/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
-          </div>
-
-          <div class="personal-item">
-            <div class="personal-label he">עבודה אישית 05</div>
-            <a class="personal-link" href="https://drive.google.com/file/d/14BUAoBy1A4WF388Q_0hjq6lv3B-lvGMc/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
-          </div>
-
-          <div class="personal-item">
-            <div class="personal-label he">עבודה אישית 06</div>
-            <a class="personal-link" href="https://drive.google.com/file/d/1EwZ-4b60wNygFCRk-KzJnr7LGIHdzBP3/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
-          </div>
-
-          <div class="personal-item">
-            <div class="personal-label he">עבודה אישית 07</div>
-            <a class="personal-link" href="https://drive.google.com/file/d/16lemEvsbSlj4fys_vPYxb-b7auWaIGJP/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
-          </div>
-
-          <div class="personal-item">
-            <div class="personal-label he">עבודה אישית 08</div>
-            <a class="personal-link" href="https://drive.google.com/file/d/1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
-          </div>
-
-          <div class="personal-item">
-            <div class="personal-label he">עבודה אישית 09</div>
-            <a class="personal-link" href="https://drive.google.com/file/d/10jXvk49eHUlORzSPwbJ0jBhSg59LAR5j/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
-          </div>
-
-          <div class="personal-item">
-            <div class="personal-label he">עבודה אישית 10</div>
-            <a class="personal-link" href="https://drive.google.com/file/d/1pJ936-J1w-5xP0hgSrD72dnAldFTlrnk/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
-          </div>
-
-          <div class="personal-item">
-            <div class="personal-label he">עבודה אישית 11</div>
-            <a class="personal-link" href="https://drive.google.com/file/d/1vVuvZbIYLD1MvsWnEmeskLjUrYCjczNW/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Open in Drive</a>
-          </div>
-
-          <!-- גלריית תמונות (מייסונרי) -->
-          <div class="personal-item">
-            <div class="personal-label he">עבודה אישית 12 · גלריה</div>
-
-            <div class="masonry-wrap">
-              <div id="masonry" class="masonry" aria-label="Personal gallery masonry grid"></div>
-            </div>
-
-            <div class="text-muted he" style="margin-top:10px;font-size:12px;">
-              התמונות נטענות מ־Google Drive thumbnail preview (יציב). לחיצה פותחת תצוגה גדולה.
-            </div>
+          <!-- Masonry Gallery -->
+          <div class="masonry-wrap">
+            <div id="masonry" class="masonry" aria-label="Creative gallery masonry grid"></div>
           </div>
         </div>
       </aside>
@@ -583,10 +513,6 @@
 
       // ===== Drive helpers =====
       function extractDriveFileId(url) {
-        // supports:
-        // https://drive.google.com/file/d/FILEID/view...
-        // https://lh3.googleusercontent.com/d/FILEID=w1200
-        // https://drive.google.com/thumbnail?id=FILEID&sz=w1200
         try {
           const u = new URL(url);
 
@@ -611,7 +537,6 @@
       }
 
       function driveThumbUrl(fileId, size = 1600) {
-        // ה־thumbnail endpoint נוטה להיות הכי יציב להצגה בתוך <img>
         return `https://drive.google.com/thumbnail?id=${fileId}&sz=w${size}`;
       }
 
@@ -619,24 +544,37 @@
         return `https://drive.google.com/file/d/${fileId}/view`;
       }
 
-      // ===== Gallery sources (same list you pasted) =====
+      // ===== Gallery sources =====
       const galleryDriveUrls = [
-        "https://drive.google.com/file/d/1DGeToGCG4Sy1QLd9bcUXTvfgwkwKhFlT/view?usp=drive_link",
-        "https://drive.google.com/file/d/1HywSYCwOqifrBQYgs-YJudYok9mP4qND/view?usp=drive_link",
-        "https://drive.google.com/file/d/1UhANZC57EWR2k6opate--Zznscym6lxP/view?usp=drive_link",
-        "https://drive.google.com/file/d/1gzFCEYgPo1mWRiab4eRtiasib8-O1aGU/view?usp=drive_link",
-        "https://drive.google.com/file/d/1ro3GYA2KfN5NUzFrFbGqCSY0Op_vQDVp/view?usp=drive_link",
-        "https://drive.google.com/file/d/1MvHGwYf_OJIqOtET8-mMP2W77dKCJ5RA/view?usp=drive_link",
-        "https://drive.google.com/file/d/1oteYyFydPuJsOpq9oSBamp44aM9WLmbh/view?usp=drive_link",
-        "https://drive.google.com/file/d/1Z_jBH9MaqxOlPYV9Km0bkBD7zMJef1H0/view?usp=drive_link",
-        "https://drive.google.com/file/d/1Wb97nZUKZL8K8mg2-ed7bnC_qC8IhYI9/view?usp=drive_link",
-        "https://drive.google.com/file/d/1vDFWndpC9G_z5dplsoFxPJ_HPcYxN1Sg/view?usp=drive_link",
-        "https://drive.google.com/file/d/17Auk61C-paCKe8d2D7gQuXYKAc9lVF8d/view?usp=drive_link",
+        "https://drive.google.com/file/d/1p6lJ9EFLlCkwAEjGDRIIzvBq972D2wD-/view?usp=drive_link",
+        "https://drive.google.com/file/d/1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT/view?usp=drive_link",
+        "https://drive.google.com/file/d/1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ/view?usp=drive_link",
+        "https://drive.google.com/file/d/1CR-Q_QB58GcG4SECUdG5MAxMl-HUY7Gi/view?usp=drive_link",
+        "https://drive.google.com/file/d/10jXvk49eHUlORzSPwbJ0jBhSg59LAR5j/view?usp=drive_link",
+        "https://drive.google.com/file/d/1da3Cy63y2nJsKPpdOSrphZ7um8NlRdVd/view?usp=drive_link",
+        "https://drive.google.com/file/d/13nCAZ0LjbJ6a32p8ninsxLak6dKXHPjk/view?usp=drive_link",
+        "https://drive.google.com/file/d/16lemEvsbSlj4fys_vPYxb-b7auWaIGJP/view?usp=drive_link",
+        "https://drive.google.com/file/d/12ak2KGc2soSMa6ZRXjCOS1ip_WlMjZwI/view?usp=drive_link",
+        "https://drive.google.com/file/d/1ylyREJ4EkmonHM0DLWc-r16rM8X-OOj3/view?usp=drive_link",
+        "https://drive.google.com/file/d/1EwZ-4b60wNygFCRk-KzJnr7LGIHdzBP3/view?usp=drive_link",
+        "https://drive.google.com/file/d/1OomQoJi0j23dkSm6L2VDf4ZRKF54EYxR/view?usp=drive_link",
+        "https://drive.google.com/file/d/1w4XchLZ6H9AhkMu9ybWikdBq9zGPyWSd/view?usp=drive_link",
+        "https://drive.google.com/file/d/1tlg0QCMMyJwAmxvVRkPGGycvsp3aabkx/view?usp=drive_link",
+        "https://drive.google.com/file/d/1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg/view?usp=drive_link",
+        "https://drive.google.com/file/d/1bB6URSsuUk5xVWt1iK5MjCATLKn0fbkb/view?usp=drive_link",
         "https://drive.google.com/file/d/185Aus2D_CzSEebIPsWmQ9z31MbHyDwNv/view?usp=drive_link",
-        "https://drive.google.com/file/d/1BzffH8Wun6J3wemOb5Xly6Not68Psntc/view?usp=drive_link",
-        "https://drive.google.com/file/d/1kW8YqpDT15FUWNc4rZEcJ1_dR39F38Yk/view?usp=drive_link",
         "https://drive.google.com/file/d/1W30xp_Y1ahtG4cQ_vZjK_P4hzf--7I6P/view?usp=drive_link",
-        "https://drive.google.com/file/d/1C2NSVUhB4XmNExvsnBEeMjA0WBKlTUQo/view?usp=drive_link",
+        "https://drive.google.com/file/d/1Wb97nZUKZL8K8mg2-ed7bnC_qC8IhYI9/view?usp=drive_link",
+        "https://drive.google.com/file/d/1lJXcYYAer5ZJ2vmz36aBKCDx8ZfMS_lr/view?usp=drive_link",
+        "https://drive.google.com/file/d/1O7gHjUrlpqSafb_blDj-IcGkIxT0d7LE/view?usp=drive_link",
+        "https://drive.google.com/file/d/1otk559-02FywZLwV8TEown-zWpElm4ai/view?usp=drive_link",
+        "https://drive.google.com/file/d/1oteYyFydPuJsOpq9oSBamp44aM9WLmbh/view?usp=drive_link",
+        "https://drive.google.com/file/d/1DGeToGCG4Sy1QLd9bcUXTvfgwkwKhFlT/view?usp=drive_link",
+        "https://drive.google.com/file/d/1pJ936-J1w-5xP0hgSrD72dnAldFTlrnk/view?usp=drive_link",
+        "https://drive.google.com/file/d/1Y3F4BSj15Z3QCf3s5Rdzw7C0JyJYuq9V/view?usp=drive_link",
+        "https://drive.google.com/file/d/14BUAoBy1A4WF388Q_0hjq6lv3B-lvGMc/view?usp=drive_link",
+        "https://drive.google.com/file/d/14-Ul7MhJvgMVdqSDYkZqrt59qO51ierw/view?usp=drive_link",
+        "https://drive.google.com/file/d/150Fuq4Iljfo_3S2595lgYHChR86j9VrI/view?usp=drive_link"
       ];
 
       // ===== Lightbox wiring =====
@@ -684,8 +622,7 @@
           item.className = "masonry-item";
 
           if (!id) {
-            item.innerHTML = `<div class="img-error">לא הצלחתי לחלץ FILE ID מהקישור: ${url}</div>`;
-            masonry.appendChild(item);
+            // Optional: Skip broken links to keep grid clean
             return;
           }
 
@@ -695,12 +632,12 @@
 
           const img = document.createElement("img");
           img.loading = "lazy";
-          img.alt = `Artwork ${String(idx + 1).padStart(2, "0")}`;
+          img.alt = `Creative Work ${String(idx + 1).padStart(2, "0")}`;
           img.src = driveThumbUrl(id, 1400);
 
           img.addEventListener("load", () => img.classList.add("is-loaded"));
           img.addEventListener("error", () => {
-            // fallback קטן יותר אם משהו נחסם
+            // fallback
             img.src = driveThumbUrl(id, 800);
           });
 
