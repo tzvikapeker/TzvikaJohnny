@@ -1,502 +1,327 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl" data-lang="he">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Tzvika Johnny – Multimodal Creative Technologist</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<html lang="en" dir="ltr" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tzvika Johnny Peker | צביקה ג׳וני פקר</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===== RESET & VARS ===== */
+    :root {
+      --bg-color: #050608;
+      --text-main: #f8f8ff;
+      --text-muted: #b7b7c7;
+      --accent: #ffb86c;
+      --card-glass: rgba(20, 20, 28, 0.6);
+      --border-light: rgba(255, 255, 255, 0.1);
+    }
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <style>
-      :root {
-        --bg-color: #050608;
-        --card-bg: rgba(18, 18, 24, 0.92);
-        --accent: #ffb86c;
-        --accent-soft: rgba(255, 184, 108, 0.14);
-        --text-main: #f8f8ff;
-        --text-muted: #b7b7c7;
-        --border-color: rgba(255, 255, 255, 0.08);
-        --overlay-grad: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
-      }
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: radial-gradient(circle at 50% 0%, #1b1328 0%, #050608 60%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
 
-      * { box-sizing: border-box; }
+    a { text-decoration: none; color: inherit; }
 
-      body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
-        color: var(--text-main);
-        display: flex;
-        flex-direction: column;
-        overflow-x: hidden; /* Prevent horizontal scroll from slides */
-      }
+    /* ===== LANGUAGE TOGGLE ===== */
+    #language-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
 
-      a { text-decoration: none; color: inherit; }
+    #language-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
 
-      /* ===== Header ===== */
-      header {
-        padding: 16px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid var(--border-color);
-        backdrop-filter: blur(16px);
-        background: linear-gradient(to bottom, rgba(5, 6, 8, 0.92), rgba(5, 6, 8, 0.78));
-        position: sticky;
-        top: 0;
-        z-index: 20;
-      }
+    /* Support RTL layout when Hebrew is active */
+    html[data-lang="he"] #language-toggle { left: 20px; right: auto; }
+    html[data-lang="he"] { direction: rtl; }
 
-      .logo-title { display: flex; flex-direction: column; gap: 2px; }
-      .logo-title span:first-child {
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        font-size: 13px;
-        text-transform: uppercase;
-        color: var(--text-muted);
-      }
-      .logo-title span:last-child { font-weight: 500; font-size: 15px; }
+    /* Hide/Show logic */
+    html[data-lang="en"] .hebrew { display: none; }
+    html[data-lang="he"] .english { display: none; }
 
-      .language-toggle {
-        font-size: 13px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid var(--border-color);
-        cursor: pointer;
-        background: rgba(10, 10, 16, 0.8);
-        color: var(--text-muted);
-        transition: 0.2s ease;
-      }
-      .language-toggle:hover { border-color: var(--accent); color: var(--text-main); }
+    /* ===== CONTAINER ===== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
 
-      /* ===== Main Layout ===== */
-      main {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        width: 100%;
-      }
+    h1 {
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 5px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
 
-      .hero-text {
-        text-align: center;
-        margin-bottom: 30px;
-        max-width: 600px;
-      }
+    h2 {
+      font-weight: 300;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
 
-      .hero-text h1 {
-        font-size: 28px;
-        margin: 0 0 10px;
-        color: var(--accent);
-      }
-      .hero-text p {
-        font-size: 16px;
-        color: var(--text-muted);
-        margin: 0;
-      }
+    /* ===== CAROUSEL ===== */
+    .carousel-container {
+      width: 100%;
+      perspective: 1000px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: center;
+    }
 
-      /* ===== Carousel Styling ===== */
-      .carousel {
-        position: relative;
-        width: 100%;
-        max-width: 1000px; /* Max width of the card */
-        height: 60vh;      /* Height of the slider */
-        min-height: 400px;
-        margin: 0 auto;
-        perspective: 1000px;
-      }
+    .carousel {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 40px 20px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;  /* IE */
+      max-width: 100%;
+    }
 
-      .carousel-track-container {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        border-radius: 24px;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        border: 1px solid var(--border-color);
-        position: relative;
-      }
+    .carousel::-webkit-scrollbar { display: none; }
 
-      .carousel-track {
-        display: flex;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        height: 100%;
-        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-      }
+    .carousel-item {
+      flex: 0 0 auto;
+      width: 280px;
+      height: 400px;
+      scroll-snap-align: center;
+      background: var(--card-glass);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
 
-      .carousel-slide {
-        min-width: 100%;
-        height: 100%;
-        position: relative;
-      }
+    /* Hover Effect */
+    .carousel-item:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
 
-      /* Card Content inside Slide */
-      .slide-link {
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-      }
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      filter: brightness(0.75);
+    }
 
-      .slide-bg {
-        position: absolute;
-        inset: 0;
-        background-size: cover;
-        background-position: center;
-        transition: transform 6s ease;
-      }
-      /* Subtle zoom effect on active slide */
-      .carousel-slide.current-slide .slide-bg {
-        transform: scale(1.1);
-      }
+    .carousel-item:hover .card-img {
+      transform: scale(1.1);
+      filter: brightness(1);
+    }
 
-      .slide-content {
-        position: absolute;
-        inset: 0;
-        background: var(--overlay-grad);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 40px;
-        text-align: right;
-      }
-      /* Adjust text alignment for English */
-      html[dir="ltr"] .slide-content { text-align: left; }
+    .card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+      text-align: center;
+    }
 
-      .slide-title {
-        font-size: clamp(24px, 4vw, 36px);
-        font-weight: 700;
-        color: #fff;
-        margin-bottom: 8px;
-        text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-      }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #fff;
+    }
 
-      .slide-desc {
-        font-size: clamp(16px, 2vw, 18px);
-        color: rgba(255,255,255,0.85);
-        max-width: 600px;
-      }
+    /* ===== FOOTER / CONTACT ===== */
+    .contact-info {
+      background: var(--card-glass);
+      border: 1px solid var(--border-light);
+      padding: 15px 25px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      backdrop-filter: blur(10px);
+      margin-top: auto;
+    }
 
-      /* Navigation Buttons */
-      .carousel-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(10, 10, 16, 0.6);
-        backdrop-filter: blur(8px);
-        border: 1px solid var(--border-color);
-        color: #fff;
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 10;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        transition: background 0.2s, transform 0.2s;
-      }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 0.9rem;
+    }
 
-      .carousel-btn:hover {
-        background: var(--accent);
-        color: #000;
-        transform: translateY(-50%) scale(1.1);
-      }
+    .contact-details a {
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
 
-      .carousel-btn.prev { left: -24px; }
-      .carousel-btn.next { right: -24px; }
+    .contact-details a:hover {
+      color: var(--accent);
+    }
 
-      @media (max-width: 768px) {
-        .carousel-btn.prev { left: 10px; }
-        .carousel-btn.next { right: 10px; }
-      }
+    .contact-info img {
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
 
-      /* Dots */
-      .carousel-nav {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 20px;
-      }
-
-      .carousel-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        border: 1px solid var(--text-muted);
-        background: transparent;
-        cursor: pointer;
-        padding: 0;
-        transition: 0.3s;
-      }
-
-      .carousel-dot.current-slide {
-        background: var(--accent);
-        border-color: var(--accent);
-        transform: scale(1.2);
-      }
-
-      /* ===== Language visibility ===== */
-      html[data-lang="en"] .hebrew, html[data-lang="en"] .he { display: none; }
-      html[data-lang="he"] .english, html[data-lang="he"] .en { display: none; }
-
-      footer {
-        border-top: 1px solid var(--border-color);
-        padding: 24px;
-        text-align: center;
-        font-size: 13px;
-        color: var(--text-muted);
-        background: rgba(3, 3, 8, 0.98);
-        margin-top: auto;
-      }
-    </style>
-  </head>
-
-  <body>
-    <header>
-      <div class="logo-title">
-        <span>TZVIKA JOHNNY</span>
-        <span>Multimodal creative technologist</span>
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .carousel-item { width: 240px; height: 340px; }
+      .contact-info { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  
+  <button id="language-toggle">עברית / English</button>
+  
+  <div class="container">
+    <h1>
+      <span class="english">Tzvika Johnny Peker</span>
+      <span class="hebrew">צביקה ג׳וני פקר</span>
+    </h1>
+    <h2>
+      <span class="english">Multimodal Creative</span>
+      <span class="hebrew">יוצר מולטי-מודאלי</span>
+    </h2>
+    
+    <div class="carousel-container">
+      <div class="carousel" id="carousel">
+        <!-- Dynamic Items will load here -->
       </div>
-      <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
-    </header>
+    </div>
 
-    <main>
-      <div class="hero-text">
-        <h1 class="he">ברוכים הבאים</h1>
-        <h1 class="en">Welcome</h1>
-        <p class="he">גללו בין העולמות כדי להתחיל את המסע</p>
-        <p class="en">Swipe through the worlds to begin the journey</p>
+    <div id="floating-quotes-container"></div>
+
+    <div class="contact-info">
+      <div class="contact-details">
+        <a href="https://wa.me/972528359966" target="_blank">WhatsApp: +972 52 8359966</a>
+        <a href="mailto:Tzvikasp2013@gmail.com" class="email-link">Tzvikasp2013@gmail.com</a>
       </div>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://wa.me/972528359966" alt="WhatsApp QR Code">
+    </div>
+  </div>
 
-      <div class="carousel">
-        <button class="carousel-btn prev" id="prevBtn">❮</button>
-        
-        <div class="carousel-track-container">
-          <ul class="carousel-track">
-            
-            <!-- Slide 1: Creative -->
-            <li class="carousel-slide current-slide">
-              <a href="pages/creative.html" class="slide-link">
-                <div class="slide-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J&sz=w1200');"></div>
-                <div class="slide-content">
-                  <div class="slide-title">
-                    <span class="he">יצירה אישית</span>
-                    <span class="en">Creative Work</span>
-                  </div>
-                  <div class="slide-desc">
-                    <span class="he">השכבה החשופה והאמנותית – המקום שבו הציניות יורדת לשקט.</span>
-                    <span class="en">The exposed, artistic layer – where cynicism quiets down.</span>
-                  </div>
-                </div>
-              </a>
-            </li>
+  <script>
+    // ===== Data Configuration =====
+    // Links are converted to 'thumbnail?id=' format for reliable image loading
+    const pages = [
+      {
+        titleEn: "Creative Work",
+        titleHe: "יצירה אישית",
+        link: "pages/creative.html",
+        imgId: "1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J"
+      },
+      {
+        titleEn: "Clients",
+        titleHe: "לקוחות",
+        link: "pages/lessons.html",
+        imgId: "1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so"
+      },
+      {
+        titleEn: "Podcasts",
+        titleHe: "פודקאסטים",
+        link: "pages/podcasts.html",
+        imgId: "1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon"
+      },
+      {
+        titleEn: "Post-Trauma",
+        titleHe: "פוסט־טראומה",
+        link: "pages/posttrauma.html",
+        imgId: "1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q"
+      },
+      {
+        titleEn: "Satire",
+        titleHe: "סאטירה",
+        link: "pages/satire.html",
+        imgId: "1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw"
+      },
+      {
+        titleEn: "Songs",
+        titleHe: "שירים",
+        link: "pages/songs.html",
+        imgId: "1Bx08pEL47s6mATgeDt2EP-epJq5fas5l"
+      }
+    ];
 
-            <!-- Slide 2: Lessons (Clients) -->
-            <li class="carousel-slide">
-              <a href="pages/lessons.html" class="slide-link">
-                <div class="slide-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so&sz=w1200');"></div>
-                <div class="slide-content">
-                  <div class="slide-title">
-                    <span class="he">לקוחות</span>
-                    <span class="en">Clients</span>
-                  </div>
-                  <div class="slide-desc">
-                    <span class="he">מותחים את הגבולות – מחשבה לפני עיצוב.</span>
-                    <span class="en">Pushing boundaries – thought before design.</span>
-                  </div>
-                </div>
-              </a>
-            </li>
+    const carousel = document.getElementById('carousel');
 
-            <!-- Slide 3: Podcasts -->
-            <li class="carousel-slide">
-              <a href="pages/podcasts.html" class="slide-link">
-                <div class="slide-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon&sz=w1200');"></div>
-                <div class="slide-content">
-                  <div class="slide-title">
-                    <span class="he">פודקאסטים</span>
-                    <span class="en">Podcasts</span>
-                  </div>
-                  <div class="slide-desc">
-                    <span class="he">מה למדתי היום? האזנה לשיחות ומחשבות.</span>
-                    <span class="en">What did I learn today? Listening to conversations and thoughts.</span>
-                  </div>
-                </div>
-              </a>
-            </li>
+    // Helper to build Drive Thumbnail URL
+    const getThumb = (id) => `https://drive.google.com/thumbnail?id=${id}&sz=w800`;
 
-            <!-- Slide 4: Post Trauma -->
-            <li class="carousel-slide">
-              <a href="pages/posttrauma.html" class="slide-link">
-                <div class="slide-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q&sz=w1200');"></div>
-                <div class="slide-content">
-                  <div class="slide-title">
-                    <span class="he">פוסט־טראומה</span>
-                    <span class="en">Post-Trauma</span>
-                  </div>
-                  <div class="slide-desc">
-                    <span class="he">יחסינו לאן? חוויה אנושית מבפנים.</span>
-                    <span class="en">Where do we go from here? The human experience from within.</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-
-            <!-- Slide 5: Satire -->
-            <li class="carousel-slide">
-              <a href="pages/satire.html" class="slide-link">
-                <div class="slide-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w1200');"></div>
-                <div class="slide-content">
-                  <div class="slide-title">
-                    <span class="he">סאטירה</span>
-                    <span class="en">Satire</span>
-                  </div>
-                  <div class="slide-desc">
-                    <span class="he">מציאות ללא פילטרים – עקיצה והומור.</span>
-                    <span class="en">Unfiltered reality – sting and humor.</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-
-            <!-- Slide 6: Songs -->
-            <li class="carousel-slide">
-              <a href="pages/songs.html" class="slide-link">
-                <div class="slide-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w1200');"></div>
-                <div class="slide-content">
-                  <div class="slide-title">
-                    <span class="he">שירים</span>
-                    <span class="en">Songs</span>
-                  </div>
-                  <div class="slide-desc">
-                    <span class="he">יצירה מקורית – מילים, לחן ונשימה.</span>
-                    <span class="en">Original songs – lyrics, melody, and breath.</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-
-          </ul>
+    // ===== Generate Carousel Items =====
+    pages.forEach(page => {
+      const item = document.createElement('a');
+      item.href = page.link;
+      item.className = 'carousel-item';
+      
+      item.innerHTML = `
+        <img src="${getThumb(page.imgId)}" alt="${page.titleEn}" class="card-img" loading="lazy" />
+        <div class="card-content">
+          <div class="card-title">
+            <span class="english">${page.titleEn}</span>
+            <span class="hebrew">${page.titleHe}</span>
+          </div>
         </div>
+      `;
+      
+      carousel.appendChild(item);
+    });
 
-        <button class="carousel-btn next" id="nextBtn">❯</button>
-      </div>
+    // ===== Language Toggle Logic =====
+    const langBtn = document.getElementById('language-toggle');
+    const root = document.documentElement;
 
-      <div class="carousel-nav" id="dotsNav">
-        <!-- Dots generated by JS -->
-      </div>
-    </main>
+    function toggleLanguage() {
+      const current = root.getAttribute('data-lang');
+      const next = current === 'en' ? 'he' : 'en';
+      
+      root.setAttribute('data-lang', next);
+      root.setAttribute('dir', next === 'he' ? 'rtl' : 'ltr');
+      
+      // Save preference
+      try { localStorage.setItem('site-lang', next); } catch(e){}
+    }
 
-    <footer>
-      <span>© Tzvika Johnny 2025</span>
-    </footer>
+    langBtn.addEventListener('click', toggleLanguage);
 
-    <script>
-      // ===== Language Toggle Logic =====
-      const langBtn = document.getElementById("langToggle");
-      const root = document.documentElement;
+    // Initialize Language
+    const saved = localStorage.getItem('site-lang') || 'en';
+    root.setAttribute('data-lang', saved);
+    root.setAttribute('dir', saved === 'he' ? 'rtl' : 'ltr');
 
-      function setLang(lang) {
-        root.setAttribute("data-lang", lang);
-        root.setAttribute("lang", lang);
-        root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
-        try { localStorage.setItem("lang", lang); } catch {}
-        langBtn.textContent = lang === "he" ? "EN / HE" : "HE / EN";
-      }
-
-      langBtn.addEventListener("click", () => {
-        const current = root.getAttribute("data-lang") || "he";
-        setLang(current === "he" ? "en" : "he");
-      });
-
-      const savedLang = (() => { try { return localStorage.getItem("lang"); } catch { return null; } })();
-      setLang(savedLang || "he");
-
-      // ===== Carousel Logic =====
-      const track = document.querySelector('.carousel-track');
-      const slides = Array.from(track.children);
-      const nextButton = document.querySelector('#nextBtn');
-      const prevButton = document.querySelector('#prevBtn');
-      const dotsNav = document.querySelector('#dotsNav');
-
-      // Create dots based on slides count
-      slides.forEach((_, index) => {
-        const dot = document.createElement('button');
-        dot.classList.add('carousel-dot');
-        if (index === 0) dot.classList.add('current-slide');
-        dot.addEventListener('click', () => {
-          moveToSlide(track, currentSlide(), slides[index]);
-          updateDots(index);
-        });
-        dotsNav.appendChild(dot);
-      });
-
-      const dots = Array.from(dotsNav.children);
-
-      const slideWidth = slides[0].getBoundingClientRect().width;
-
-      // Arrange slides next to one another
-      const setSlidePosition = (slide, index) => {
-        slide.style.left = slideWidth * index + 'px';
-      };
-      slides.forEach(setSlidePosition);
-
-      // Helper to find current slide
-      const currentSlide = () => track.querySelector('.current-slide');
-
-      const moveToSlide = (track, currentSlide, targetSlide) => {
-        if(!targetSlide) return; // Boundary check
-        track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
-        currentSlide.classList.remove('current-slide');
-        targetSlide.classList.add('current-slide');
-      };
-
-      const updateDots = (targetIndex) => {
-        const currentDot = dotsNav.querySelector('.current-slide');
-        const targetDot = dots[targetIndex];
-        currentDot.classList.remove('current-slide');
-        targetDot.classList.add('current-slide');
-      };
-
-      // Button Listeners
-      nextButton.addEventListener('click', () => {
-        const current = currentSlide();
-        const next = current.nextElementSibling || slides[0]; // Loop to start
-        const nextIndex = slides.indexOf(next);
-        
-        moveToSlide(track, current, next);
-        updateDots(nextIndex);
-      });
-
-      prevButton.addEventListener('click', () => {
-        const current = currentSlide();
-        const prev = current.previousElementSibling || slides[slides.length - 1]; // Loop to end
-        const prevIndex = slides.indexOf(prev);
-
-        moveToSlide(track, current, prev);
-        updateDots(prevIndex);
-      });
-
-      // Handle Resize (Update widths)
-      window.addEventListener('resize', () => {
-        const newSlideWidth = slides[0].getBoundingClientRect().width;
-        slides.forEach((slide, index) => {
-          slide.style.left = newSlideWidth * index + 'px';
-        });
-        // Re-center active slide
-        const current = currentSlide();
-        track.style.transform = 'translateX(-' + current.style.left + ')';
-      });
-    </script>
-  </body>
+  </script>
+</body>
 </html>
