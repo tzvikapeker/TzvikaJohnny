@@ -1,109 +1,448 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl" data-lang="he">
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <title>פוסטראומה - יחסינו לאן</title>
+    <title>Post-Trauma – Tzvika Johnny</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
-        rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
     />
 
     <style>
-        :root {
-            --bg-color: #050608;
-            --card-bg: rgba(18, 18, 24, 0.92);
-            --accent: #ffb86c;
-            --accent-soft: rgba(255, 184, 108, 0.14);
-            --text-main: #f8f8ff;
-            --text-muted: #b7b7c7;
-            --border-color: rgba(255, 255, 255, 0.08);
-        }
+      :root {
+        --bg-color: #050608;
+        --card-bg: rgba(18, 18, 24, 0.92);
+        --accent: #ffb86c;
+        --accent-soft: rgba(255, 184, 108, 0.14);
+        --text-main: #f8f8ff;
+        --text-muted: #b7b7c7;
+        --border-color: rgba(255, 255, 255, 0.08);
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * { box-sizing: border-box; }
 
-        body {
-            font-family: 'Heebo', sans-serif;
-            background: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.7;
-            padding: 2rem;
-            min-height: 100vh;
-        }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
+        color: var(--text-main);
+        display: flex;
+        flex-direction: column;
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--accent);
-            text-align: center;
-        }
+      header {
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--border-color);
+        backdrop-filter: blur(16px);
+        background: linear-gradient(to bottom, rgba(5, 6, 8, 0.92), rgba(5, 6, 8, 0.78));
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
 
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
+      .logo-title { display: flex; flex-direction: column; gap: 2px; }
+      .logo-title span:first-child {
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        font-size: 13px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+      .logo-title span:last-child { font-weight: 500; font-size: 15px; }
 
-        .video-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease;
-        }
+      nav { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 
-        .video-card:hover {
-            transform: translateY(-5px);
-        }
+      .nav-link {
+        font-size: 14px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        color: var(--text-muted);
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        white-space: nowrap;
+      }
 
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-        }
+      .nav-link.active {
+        border-color: var(--accent-soft);
+        background: radial-gradient(circle at top, rgba(255, 184, 108, 0.18), rgba(8, 9, 14, 0.9));
+        color: var(--accent);
+      }
 
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+      .language-toggle {
+        font-size: 13px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        background: rgba(10, 10, 16, 0.8);
+        color: var(--text-muted);
+      }
 
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 2rem;
-            padding: 0.8rem 1.5rem;
-            background: var(--accent-soft);
-            color: var(--accent);
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.3s ease;
-        }
+      main {
+        flex: 1;
+        padding: 32px 6vw 40px 6vw;
+        display: grid;
+        grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+        gap: 28px;
+      }
 
-        .back-btn:hover {
-            background: var(--accent);
-            color: var(--bg-color);
-        }
+      @media (max-width: 900px) {
+        main { grid-template-columns: minmax(0, 1fr); }
+      }
+
+      .content-card {
+        background:
+          linear-gradient(135deg, rgba(255, 184, 108, 0.06), transparent 48%),
+          linear-gradient(200deg, rgba(145, 124, 255, 0.06), transparent 64%),
+          var(--card-bg);
+        border-radius: 20px;
+        padding: 22px 22px 20px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .content-card::before {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background:
+          radial-gradient(circle at 0% 0%, rgba(255, 184, 108, 0.09) 0, transparent 55%),
+          radial-gradient(circle at 110% 0%, rgba(112, 97, 255, 0.08) 0, transparent 52%);
+        opacity: 0.8;
+        pointer-events: none;
+      }
+
+      .content-inner { position: relative; z-index: 1; }
+
+      .pill-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(10, 10, 16, 0.84);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+      }
+
+      .pill-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: radial-gradient(circle, #ffb86c 0, #ff7e5f 65%);
+        box-shadow: 0 0 10px rgba(255, 184, 108, 0.8);
+      }
+
+      h1 { margin: 0 0 6px; font-size: clamp(26px, 3vw, 30px); letter-spacing: 0.04em; }
+      h2 { margin: 0 0 14px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
+
+      .text-block { font-size: 15px; line-height: 1.7; color: var(--text-main); margin-bottom: 14px; }
+      .text-muted { color: var(--text-muted); font-size: 14px; }
+
+      .en { direction: ltr; text-align: left; }
+      .he { direction: rtl; text-align: right; }
+
+      /* Media List Styles */
+      .media-card {
+        background:
+          radial-gradient(circle at top, rgba(255, 184, 108, 0.12), transparent 60%),
+          rgba(10, 10, 18, 0.96);
+        border-radius: 20px;
+        padding: 18px 18px 16px;
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 200px;
+      }
+
+      .media-card-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; }
+      .media-title { font-size: 15px; font-weight: 500; }
+      .media-sub { font-size: 13px; color: var(--text-muted); }
+
+      .media-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 6px;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding-right: 2px;
+      }
+
+      .media-item {
+        background: rgba(9, 9, 16, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .media-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: var(--text-main);
+      }
+      .media-badge {
+        font-size: 11px;
+        color: var(--text-muted);
+        background: rgba(255,255,255,0.05);
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+
+      .drive-embed-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 for video */
+        background: rgba(0,0,0,0.3);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .drive-embed-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      /* ===== Language visibility ===== */
+      html[data-lang="en"] .hebrew, html[data-lang="en"] .he { display: none; }
+      html[data-lang="he"] .english, html[data-lang="he"] .en { display: none; }
+
+      footer {
+        border-top: 1px solid var(--border-color);
+        padding: 18px 6vw 22px 6vw;
+        font-size: 13px;
+        color: var(--text-muted);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+        background: rgba(3, 3, 8, 0.98);
+      }
+
+      .footer-left, .footer-right {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        align-items: center;
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <a href="../index.html" class="back-btn">← חזרה לעמוד הראשי</a>
-        <h1>פוסטראומה - חטסם כאן</h1>
-        <div class="video-grid">
-            <!-- Add video content here -->
+  </head>
+
+  <body>
+    <header>
+      <div class="logo-title">
+        <span>TZVIKA JOHNNY</span>
+        <span>Multimodal creative technologist</span>
+      </div>
+
+      <nav>
+        <a href="../index.html" class="nav-link">ראשי</a>
+
+        <a href="podcasts.html" class="nav-link">
+          <span class="english">Podcasts</span>
+          <span class="hebrew">פודקאסטים</span>
+        </a>
+
+        <a href="video-simulation.html" class="nav-link">
+          <span class="english">Video | Simulation</span>
+          <span class="hebrew">וידאו | הדמיה</span>
+        </a>
+
+        <a href="songs.html" class="nav-link">
+          <span class="english">Songs</span>
+          <span class="hebrew">שירים</span>
+        </a>
+
+        <a href="creative.html" class="nav-link">
+          <span class="english">Creative</span>
+          <span class="hebrew">קריאייטיב</span>
+        </a>
+
+        <a href="lessons.html" class="nav-link">
+          <span class="english">Clients</span>
+          <span class="hebrew">לקוחות</span>
+        </a>
+
+        <a href="satire.html" class="nav-link">
+          <span class="english">Satire</span>
+          <span class="hebrew">סאטירה</span>
+        </a>
+
+        <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="content-card">
+        <div class="content-inner">
+          <div class="pill-label">
+            <span class="pill-dot"></span>
+            <span>Internal Experience</span>
+          </div>
+
+          <h1 class="he">פוסט־טראומה – יחסינו לאן</h1>
+          <h2 class="he">חוויה אנושית מבפנים</h2>
+
+          <h1 class="en">Post-Trauma</h1>
+          <h2 class="en">Where do we go from here?</h2>
+
+          <!-- HEBREW CONTENT -->
+          <div class="text-block he">
+            הרובריקה הזאת עוסקת בהתמודדות עם פוסט־טראומה כפי שהיא נחווית מבפנים - לא כהגדרה רפואית, אלא כחוויה אנושית. דרך יצירה, טקסט, דימוי, וידאו ומוזיקה, אני נותן מקום למה שקשה להסביר במילים רגילות: הזיכרונות, הדריכות, הניתוקים, ההומור השחור, והמאמץ היומיומי להישאר מתפקד.
+          </div>
+          <div class="text-block he">
+            זו יצירה שלא מבקשת רחמים ולא מחפשת כותרות. היא נועדה לשקף, לעבד, ולפעמים גם לפרוק. יש כאן כנות, חשיפה מבוקרת, ורצון להפוך חוויה פנימית מורכבת למשהו שניתן לראות, להרגיש ולהבין.
+          </div>
+          <div class="text-block he">
+            המטרה היא לא “לטפל” ולא “לפתור”, אלא לתת קול. להפוך שקט כבד ליצירה חיה. ולפעמים, עצם ההכרה היא כבר תנועה קדימה.
+          </div>
+
+          <!-- ENGLISH CONTENT -->
+          <div class="text-block en">
+            This rubric deals with coping with PTSD as experienced from the inside—not as a medical definition, but as a human experience. Through art, text, imagery, video, and music, I give space to what is hard to explain in ordinary words: the memories, the vigilance, the dissociation, the dark humor, and the daily effort to remain functional.
+          </div>
+          <div class="text-block en">
+            This work asks for no pity and seeks no headlines. It is meant to reflect, process, and sometimes release. There is honesty here, controlled exposure, and a desire to turn a complex internal experience into something visible, palpable, and understandable.
+          </div>
+          <div class="text-block en">
+            The goal is not to "treat" or "solve," but to give a voice. To turn heavy silence into living art. And sometimes, recognition itself is a movement forward.
+          </div>
         </div>
-    </div>
-</body>
+      </section>
+
+      <aside class="media-card">
+        <div class="media-card-header">
+          <div>
+            <div class="media-title">
+              <span class="he">מדיה</span>
+              <span class="en">Media</span>
+            </div>
+            <div class="media-sub">
+              <span class="he">וידאו וסאונד</span>
+              <span class="en">Video & Sound</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="media-list" id="mediaList">
+          <!-- Dynamic Content Loaded Here -->
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div class="footer-left he">
+        <span>© Tzvika Johnny</span>
+        <span>מולטי־מודל קריאייטיב טכנולוגיסט</span>
+      </div>
+      <div class="footer-right">
+        <span class="he">להפוך שקט כבד ליצירה חיה.</span>
+        <a href="mailto:tzvika@example.com">tzvika@example.com</a>
+      </div>
+    </footer>
+
+    <script>
+      // ===== Language toggle =====
+      const langBtn = document.getElementById("langToggle");
+      const root = document.documentElement;
+
+      function setLang(lang) {
+        root.setAttribute("data-lang", lang);
+        root.setAttribute("lang", lang);
+        root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+        try { localStorage.setItem("lang", lang); } catch {}
+        langBtn.textContent = lang === "he" ? "EN / HE" : "HE / EN";
+      }
+
+      langBtn.addEventListener("click", () => {
+        const current = root.getAttribute("data-lang") || "he";
+        setLang(current === "he" ? "en" : "he");
+      });
+
+      const savedLang = (() => { try { return localStorage.getItem("lang"); } catch { return null; } })();
+      setLang(savedLang || "he");
+
+      // ===== Drive Logic =====
+      function extractDriveId(url) {
+        const m1 = url.match(/\/file\/d\/([^\/]+)/);
+        if (m1 && m1[1]) return m1[1];
+        const m2 = url.match(/[?&]id=([^&]+)/);
+        if (m2 && m2[1]) return m2[1];
+        return null;
+      }
+
+      function drivePreviewUrl(fileId) {
+        return `https://drive.google.com/file/d/${encodeURIComponent(fileId)}/preview`;
+      }
+
+      // ===== Media Sources =====
+      const mediaUrls = [
+        "https://drive.google.com/file/d/1jDz-vXe_X3xu6LelcZAu1V96y1RK3xEn/view?usp=drive_link",
+        "https://drive.google.com/file/d/1nnzrWNOIGNjbtFl9e6x6ARqHUWocqNnd/view?usp=drive_link",
+        "https://drive.google.com/file/d/1gGF0dXX9CB7mzAbNTPhCyvRuCTwp0kv-/view?usp=drive_link"
+      ];
+
+      const listContainer = document.getElementById("mediaList");
+
+      mediaUrls.forEach((url, idx) => {
+        const id = extractDriveId(url);
+        if (!id) return;
+
+        const item = document.createElement("div");
+        item.className = "media-item";
+
+        const meta = document.createElement("div");
+        meta.className = "media-meta";
+        meta.innerHTML = `
+          <span>
+             <span class="he">חלק ${idx + 1}</span>
+             <span class="en">Part ${idx + 1}</span>
+          </span>
+          <span class="media-badge">Media Player</span>
+        `;
+
+        const embedBox = document.createElement("div");
+        embedBox.className = "drive-embed-container";
+        
+        const iframe = document.createElement("iframe");
+        iframe.src = drivePreviewUrl(id);
+        iframe.allow = "autoplay";
+        iframe.title = `PTSD Project ${idx + 1}`;
+        iframe.loading = "lazy";
+
+        embedBox.appendChild(iframe);
+        item.appendChild(meta);
+        item.appendChild(embedBox);
+        listContainer.appendChild(item);
+      });
+    </script>
+  </body>
 </html>
