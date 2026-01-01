@@ -1,32 +1,330 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tzvika Johnny Peker | צביקה ג׳וני פקר</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <button id="language-toggle">עברית</button>
-  <div class="container">
-    <h1><span class="english">Tzvika Johnny Peker</span> | <span class="hebrew">צביקה ג׳וני פקר</span></h1>
-    <h2><span class="english">AI Artist</span> | <span class="hebrew">יוצר בינאי </span></h2>
-    <div class="carousel-container">
-      <div class="carousel" id="carousel">
-        <!-- Carousel items will be added dynamically here -->
-      </div>
-    </div>
-<div id="floating-quotes-container"></div>
-    <div class="contact-info">
-      <div class="contact-details">
-        <a href="https://wa.me/972528359966" target="_blank">WhatsApp: +972 52 8359966</a>
-        <a href="mailto:Tzvikasp2013@gmail.com" class="email-link">Tzvikasp2013@gmail.com</a>
-      </div>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://wa.me/972528359966" alt="WhatsApp QR Code">
-    </div>
-  </div>
-  <script src="script.js"></script>
-</body>
-</html>
+<html lang="he" dir="rtl" data-lang="he">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tzvika Johnny – Multimodal Creative Technologist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg-color: #050608;
+        --card-bg: rgba(18, 18, 24, 0.92);
+        --accent: #ffb86c;
+        --accent-soft: rgba(255, 184, 108, 0.14);
+        --text-main: #f8f8ff;
+        --text-muted: #b7b7c7;
+        --border-color: rgba(255, 255, 255, 0.08);
+        --overlay-grad: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
+        color: var(--text-main);
+        display: flex;
+        flex-direction: column;
+      }
+
+      a { text-decoration: none; color: inherit; }
+
+      /* ===== Header ===== */
+      header {
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--border-color);
+        backdrop-filter: blur(16px);
+        background: linear-gradient(to bottom, rgba(5, 6, 8, 0.92), rgba(5, 6, 8, 0.78));
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
+
+      .logo-title { display: flex; flex-direction: column; gap: 2px; }
+      .logo-title span:first-child {
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        font-size: 13px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+      .logo-title span:last-child { font-weight: 500; font-size: 15px; }
+
+      .language-toggle {
+        font-size: 13px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        background: rgba(10, 10, 16, 0.8);
+        color: var(--text-muted);
+        transition: 0.2s ease;
+      }
+      .language-toggle:hover { border-color: var(--accent); color: var(--text-main); }
+
+      /* ===== Hero Section ===== */
+      .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-size: clamp(32px, 5vw, 48px);
+        margin: 0 0 16px;
+        background: linear-gradient(to right, #fff, #b7b7c7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin: 0 auto;
+        max-width: 600px;
+      }
+
+      /* ===== Navigation Grid (Visual Menu) ===== */
+      main {
+        flex: 1;
+        padding: 20px 6vw 60px;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .nav-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+      }
+
+      .nav-card {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        aspect-ratio: 16/10;
+        border: 1px solid var(--border-color);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        background-color: var(--card-bg);
+        cursor: pointer;
+        group: block;
+      }
+
+      .nav-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        border-color: var(--accent-soft);
+      }
+
+      .card-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.5s ease;
+        filter: brightness(0.9);
+      }
+
+      .nav-card:hover .card-bg {
+        transform: scale(1.05);
+        filter: brightness(1);
+      }
+
+      .card-overlay {
+        position: absolute;
+        inset: 0;
+        background: var(--overlay-grad);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 24px;
+      }
+
+      .card-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text-main);
+        margin-bottom: 6px;
+      }
+
+      .card-subtitle {
+        font-size: 14px;
+        color: var(--text-muted);
+        opacity: 0.9;
+      }
+
+      /* ===== Language visibility ===== */
+      html[data-lang="en"] .hebrew, html[data-lang="en"] .he { display: none; }
+      html[data-lang="he"] .english, html[data-lang="he"] .en { display: none; }
+
+      footer {
+        border-top: 1px solid var(--border-color);
+        padding: 24px;
+        text-align: center;
+        font-size: 13px;
+        color: var(--text-muted);
+        background: rgba(3, 3, 8, 0.98);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo-title">
+        <span>TZVIKA JOHNNY</span>
+        <span>Multimodal creative technologist</span>
+      </div>
+      <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
+    </header>
+
+    <div class="hero">
+      <h1 class="he">יצירה. טכנולוגיה. רגש.</h1>
+      <h1 class="en">Creation. Technology. Emotion.</h1>
+      
+      <p class="he">
+        ברוכים הבאים לעולם שבו סאונד, וידאו, טקסט וקוד נפגשים כדי לספר סיפור.
+        בחרו קטגוריה כדי להתחיל את המסע.
+      </p>
+      <p class="en">
+        Welcome to a world where sound, video, text, and code meet to tell a story.
+        Select a category to begin the journey.
+      </p>
+    </div>
+
+    <main>
+      <div class="nav-grid">
+        
+        <!-- 1. Creative (Personal Work) -->
+        <a href="pages/creative.html" class="nav-card">
+          <div class="card-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J&sz=w1000');"></div>
+          <div class="card-overlay">
+            <span class="card-title">
+              <span class="he">יצירה אישית</span>
+              <span class="en">Creative Work</span>
+            </span>
+            <span class="card-subtitle">
+              <span class="he">השכבה החשופה והאמנותית</span>
+              <span class="en">The exposed, artistic layer</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- 2. Lessons (Clients) -->
+        <a href="pages/lessons.html" class="nav-card">
+          <div class="card-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so&sz=w1000');"></div>
+          <div class="card-overlay">
+            <span class="card-title">
+              <span class="he">לקוחות</span>
+              <span class="en">Clients</span>
+            </span>
+            <span class="card-subtitle">
+              <span class="he">מותחים את הגבולות</span>
+              <span class="en">Pushing the boundaries</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- 3. Podcasts -->
+        <a href="pages/podcasts.html" class="nav-card">
+          <div class="card-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon&sz=w1000');"></div>
+          <div class="card-overlay">
+            <span class="card-title">
+              <span class="he">פודקאסטים</span>
+              <span class="en">Podcasts</span>
+            </span>
+            <span class="card-subtitle">
+              <span class="he">מה למדתי היום?</span>
+              <span class="en">What did I learn today?</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- 4. Post Trauma -->
+        <a href="pages/posttrauma.html" class="nav-card">
+          <div class="card-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q&sz=w1000');"></div>
+          <div class="card-overlay">
+            <span class="card-title">
+              <span class="he">פוסט־טראומה</span>
+              <span class="en">Post-Trauma</span>
+            </span>
+            <span class="card-subtitle">
+              <span class="he">יחסינו לאן?</span>
+              <span class="en">Where do we go from here?</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- 5. Satire -->
+        <a href="pages/satire.html" class="nav-card">
+          <div class="card-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w1000');"></div>
+          <div class="card-overlay">
+            <span class="card-title">
+              <span class="he">סאטירה</span>
+              <span class="en">Satire</span>
+            </span>
+            <span class="card-subtitle">
+              <span class="he">מציאות ללא פילטרים</span>
+              <span class="en">Unfiltered reality</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- 6. Songs -->
+        <a href="pages/songs.html" class="nav-card">
+          <div class="card-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w1000');"></div>
+          <div class="card-overlay">
+            <span class="card-title">
+              <span class="he">שירים</span>
+              <span class="en">Songs</span>
+            </span>
+            <span class="card-subtitle">
+              <span class="he">יצירה מקורית</span>
+              <span class="en">Original music</span>
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </main>
+
+    <footer>
+      <span>© Tzvika Johnny 2025</span>
+    </footer>
+
+    <script>
+      // ===== Language Toggle Logic =====
+      const langBtn = document.getElementById("langToggle");
+      const root = document.documentElement;
+
+      function setLang(lang) {
+        root.setAttribute("data-lang", lang);
+        root.setAttribute("lang", lang);
+        root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+        try { localStorage.setItem("lang", lang); } catch {}
+        langBtn.textContent = lang === "he" ? "EN / HE" : "HE / EN";
+      }
+
+      langBtn.addEventListener("click", () => {
+        const current = root.getAttribute("data-lang") || "he";
+        setLang(current === "he" ? "en" : "he");
+      });
+
+      // Load saved language
+      const savedLang = (() => { try { return localStorage.getItem("lang"); } catch { return null; } })();
+      setLang(savedLang || "he");
+    </script>
+  </body>
+</html>
