@@ -1,10 +1,12 @@
 const items = [
-{ title: 'Podcasts', src: 'https://lh3.googleusercontent.com/d/1p4-uxcq4MLuf39U1MTsek5pEHE40Zh4N=w1000', link: 'pages/podcasts.html' },
-  { title: 'Video | Simulation', src: 'https://lh3.googleusercontent.com/d/1JssQiFqnjA96ozChTomDaTaCSzQtY9-6=w1000', link: 'pages/video-simulation.html' },
-  { title: 'Songs', src: 'https://lh3.googleusercontent.com/d/1Bx08pEL47s6mATgeDt2EP-epJq5fas5l=w1000', link: 'pages/songs.html' },
-  { title: 'Personal Work', src: 'https://lh3.googleusercontent.com/d/1PZOsdtXAuLlleN8BRbRZ-vIl0WZkd8sw=w1000', link: 'pages/personal-work.html' },
-  { title: 'Satire', src: 'https://lh3.googleusercontent.com/d/1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so=w1000', link: 'pages/satire.html' }
+  { title: 'שירים יצירתי', src: 'https://lh3.googleusercontent.com/d/1Bx08pEL47s6mATgeDt2EP-epJq5fas5l=w1000', link: 'pages/songs.html' },
+  { title: 'קריאייטיב שלי', src: 'https://lh3.googleusercontent.com/d/1PZOsdtXAuLlleN8BRbRZ-vIl0WZkd8sw=w1000', link: 'pages/creative.html' },
+  { title: 'פוסטראומה- חטסם כאן', src: 'https://lh3.googleusercontent.com/d/1JssQiFqnjA96ozChTomDaTaCSzQtY9-6=w1000', link: 'pages/posttrauma.html' },
+  { title: 'פודקאסטים - מה למדתי היום', src: 'https://lh3.googleusercontent.com/d/1p4-uxcq4MLuf39U1MTsek5pEHE40Zh4N=w1000', link: 'pages/podcasts.html' },
+  { title: 'סאטירה פוליטית', src: 'https://lh3.googleusercontent.com/d/1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so=w1000', link: 'pages/satire.html' },
+  { title: 'לקחות ומוחויח את הכבולת', src: 'https://lh3.googleusercontent.com/d/1PZOsdtXAuLlleN8BRbRZ-vIl0WZkd8sw=w1000', link: 'pages/lessons.html' }
 ];
+
 const carousel = document.getElementById('carousel');
 const itemCount = items.length;
 const angle = 360 / itemCount;
@@ -19,11 +21,13 @@ let isTouching = false;
 let touchStartX;
 let touchStartY;
 let touchStartTime;
+
 const TAP_THRESHOLD = 10;
 const TAP_TIMEOUT = 200;
 
 // Language toggle functionality
 const languageToggle = document.getElementById('language-toggle');
+
 function setLanguage(lang) {
   document.documentElement.setAttribute('data-lang', lang);
   localStorage.setItem('lang', lang);
@@ -48,10 +52,12 @@ function createCarouselItems() {
       <h3>${item.title}</h3>
     `;
     element.style.transform = `rotateY(${i * angle}deg) translateZ(300px)`;
+
     element.addEventListener('click', (e) => {
       e.preventDefault();
       handleItemClick(element, item);
     });
+
     carousel.appendChild(element);
   });
 }
@@ -89,6 +95,7 @@ function updateCarousel() {
     const zTranslate = 200 + 50 * Math.cos(itemAngle * Math.PI / 180);
     const opacity = 1 + 0.7 * Math.cos(itemAngle * Math.PI / 180);
     const scale = 0.8 + 0.2 * Math.cos(itemAngle * Math.PI / 180);
+
     item.style.transform = `rotateY(${i * angle}deg) translateZ(${zTranslate}px) scale(${scale})`;
     item.style.opacity = opacity;
   }
@@ -119,11 +126,14 @@ function handleTouchStart(e) {
 
 function handleTouchMove(e) {
   if (!isTouching) return;
+
   const touchX = e.touches[0].clientX;
   const touchY = e.touches[0].clientY;
+
   if (Math.abs(touchY - touchStartY) > Math.abs(touchX - touchStartX)) {
     return;
   }
+
   e.preventDefault();
   const touchDelta = touchX - touchStartX;
   velocity = -touchDelta * 0.3;
@@ -133,6 +143,7 @@ function handleTouchMove(e) {
 
 function handleTouchEnd(e) {
   if (!isTouching) return;
+
   const touchEndX = e.changedTouches[0].clientX;
   const touchEndY = e.changedTouches[0].clientY;
   const touchEndTime = Date.now();
@@ -140,6 +151,7 @@ function handleTouchEnd(e) {
   const touchDistance = Math.sqrt(
     Math.pow(touchEndX - touchStartX, 2) + Math.pow(touchEndY - touchStartY, 2)
   );
+
   if (touchDuration < TAP_TIMEOUT && touchDistance < TAP_THRESHOLD) {
     const tappedItem = document.elementFromPoint(touchEndX, touchEndY);
     const carouselItem = tappedItem.closest('.carousel-item');
@@ -150,6 +162,7 @@ function handleTouchEnd(e) {
       }
     }
   }
+
   isTouching = false;
 }
 
@@ -172,8 +185,8 @@ carousel.addEventListener('touchend', handleTouchEnd);
 // Floating Quotes functionality
 const quotes = [
   "קוֹלֵט הֵדִים, מְתָאֵר אֲוִיר",
-  "הַחַיִּים כְּהֶתְקֵף חֲרָדָה, קַל וּמִתְמַשֵּׁךְ",
-  "הָאֱמֶת לְעִתִּים מֵתָה פִיזִית, אֲבָל הִיא מֵטָאפִיזִית",
+  "הַחַיִּים כְּהֶתְקֵף חֲרָדָה, קַל וּמִתְמַשֵּׁךְ",
+  "הָאֱמֶת לְעִתִּים מֵתָה פִיזִית, אֲבָל הִיא מֵטָאפִיזִית",
   // Add more quotes as needed
 ];
 
@@ -220,7 +233,6 @@ function startFloatingQuotes() {
 }
 
 // Start the carousel and floating quotes when the page loads
-
 window.addEventListener('load', () => {
   const savedLang = localStorage.getItem('lang') || 'en';
   setLanguage(savedLang);
@@ -228,11 +240,3 @@ window.addEventListener('load', () => {
   updateCarousel();
   startFloatingQuotes();
 });
-
-
-
-
-
-
-
-
