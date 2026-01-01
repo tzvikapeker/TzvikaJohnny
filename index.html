@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tzvika Johnny Peker | צביקה ג׳וני פקר</title>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
   
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+
   <style>
-    /* ===== RESET & VARS ===== */
     :root {
       --bg-color: #050608;
       --text-main: #f8f8ff;
       --text-muted: #b7b7c7;
       --accent: #ffb86c;
-      --card-glass: rgba(20, 20, 28, 0.6);
-      --border-light: rgba(255, 255, 255, 0.1);
+      --card-glass: rgba(22, 22, 30, 0.85);
+      --border-light: rgba(255, 255, 255, 0.15);
+      --card-width: 260px; /* Width of a card */
+      --card-height: 380px; /* Height of a card */
+      /* Z-distance pushed out from center. 
+         Formula: (CardWidth / 2) / tan(180 / NumberOfItems). 
+         For 6 items: ~225px. We add extra for spacing. */
+      --z-distance: 360px; 
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,9 +36,7 @@
       overflow-x: hidden;
     }
 
-    a { text-decoration: none; color: inherit; }
-
-    /* ===== LANGUAGE TOGGLE ===== */
+    /* ===== Language Button ===== */
     #language-toggle {
       position: absolute;
       top: 20px;
@@ -47,122 +51,136 @@
       transition: all 0.3s ease;
       z-index: 100;
     }
+    #language-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
-    #language-toggle:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* Support RTL layout when Hebrew is active */
-    html[data-lang="he"] #language-toggle { left: 20px; right: auto; }
+    /* RTL Support */
     html[data-lang="he"] { direction: rtl; }
-
-    /* Hide/Show logic */
     html[data-lang="en"] .hebrew { display: none; }
     html[data-lang="he"] .english { display: none; }
+    html[data-lang="he"] #language-toggle { right: auto; left: 20px; }
 
-    /* ===== CONTAINER ===== */
+    /* ===== Layout ===== */
     .container {
       width: 100%;
       max-width: 1200px;
-      padding: 40px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      flex: 1;
+      min-height: 100vh;
+      padding: 40px 20px;
+      position: relative;
     }
 
     h1 {
       font-weight: 700;
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: clamp(1.8rem, 5vw, 3rem);
       margin-bottom: 5px;
       text-align: center;
       letter-spacing: 1px;
+      z-index: 10;
     }
 
     h2 {
       font-weight: 300;
-      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-size: clamp(1rem, 3vw, 1.4rem);
       color: var(--text-muted);
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 2px;
+      z-index: 10;
     }
 
-    /* ===== CAROUSEL ===== */
+    /* ===== 3D CAROUSEL CONTAINER ===== */
     .carousel-container {
+      position: relative;
       width: 100%;
-      perspective: 1000px;
-      margin-bottom: 40px;
+      height: 500px; /* Space for the 3D sphere */
+      perspective: 1000px; /* Depth of field */
       display: flex;
+      align-items: center;
       justify-content: center;
+      margin: 40px 0;
     }
 
     .carousel {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      padding: 40px 20px;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none;  /* IE */
-      max-width: 100%;
+      width: var(--card-width);
+      height: var(--card-height);
+      position: absolute;
+      transform-style: preserve-3d;
+      transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1); /* Smooth snap effect */
     }
 
-    .carousel::-webkit-scrollbar { display: none; }
-
+    /* The Individual Card */
     .carousel-item {
-      flex: 0 0 auto;
-      width: 280px;
-      height: 400px;
-      scroll-snap-align: center;
+      position: absolute;
+      width: var(--card-width);
+      height: var(--card-height);
+      left: 0;
+      top: 0;
+      border-radius: 16px;
       background: var(--card-glass);
       border: 1px solid var(--border-light);
-      border-radius: 20px;
-      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      /* This is critical: ensures image is visible but back is hidden if we wanted */
+      backface-visibility: hidden; 
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
-      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
       cursor: pointer;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
 
-    /* Hover Effect */
     .carousel-item:hover {
-      transform: translateY(-10px) scale(1.02);
       border-color: var(--accent);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 25px rgba(255, 184, 108, 0.3);
     }
 
     .card-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
-      filter: brightness(0.75);
+      filter: brightness(0.8);
+      transition: filter 0.3s;
     }
+    .carousel-item:hover .card-img { filter: brightness(1); }
 
-    .carousel-item:hover .card-img {
-      transform: scale(1.1);
-      filter: brightness(1);
-    }
-
-    .card-content {
+    .card-label {
       position: absolute;
       bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 20px;
-      background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
       text-align: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
     }
 
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: 500;
-      color: #fff;
+    /* Navigation Buttons for the 3D Wheel */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-light);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
     }
+    .nav-btn:hover { background: var(--accent); color: black; }
+    .nav-btn.prev { left: 0; }
+    .nav-btn.next { right: 0; }
 
-    /* ===== FOOTER / CONTACT ===== */
+    /* ===== FOOTER ===== */
     .contact-info {
       background: var(--card-glass);
       border: 1px solid var(--border-light);
@@ -173,6 +191,7 @@
       gap: 20px;
       backdrop-filter: blur(10px);
       margin-top: auto;
+      z-index: 10;
     }
 
     .contact-details {
@@ -181,25 +200,19 @@
       gap: 5px;
       font-size: 0.9rem;
     }
+    .contact-details a { color: var(--text-muted); transition: 0.3s; }
+    .contact-details a:hover { color: var(--accent); }
+    .contact-info img { border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
 
-    .contact-details a {
-      color: var(--text-muted);
-      transition: color 0.3s;
-    }
-
-    .contact-details a:hover {
-      color: var(--accent);
-    }
-
-    .contact-info img {
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 600px) {
-      .carousel-item { width: 240px; height: 340px; }
+    @media (max-width: 700px) {
+      :root {
+        --card-width: 220px;
+        --card-height: 320px;
+        --z-distance: 280px; 
+      }
+      .carousel-container { height: 400px; }
       .contact-info { flex-direction: column; text-align: center; }
+      .nav-btn { width: 40px; height: 40px; }
     }
   </style>
 </head>
@@ -218,11 +231,16 @@
     </h2>
     
     <div class="carousel-container">
+      <button class="nav-btn prev" id="prevBtn">❮</button>
+      
       <div class="carousel" id="carousel">
-        <!-- Dynamic Items will load here -->
+        <!-- Dynamic 3D Items injected here -->
       </div>
+      
+      <button class="nav-btn next" id="nextBtn">❯</button>
     </div>
 
+    <!-- Placeholder for floating quotes (optional visual flair) -->
     <div id="floating-quotes-container"></div>
 
     <div class="contact-info">
@@ -235,89 +253,120 @@
   </div>
 
   <script>
-    // ===== Data Configuration =====
-    // Links are converted to 'thumbnail?id=' format for reliable image loading
-    const pages = [
+    // ===== CONFIGURATION =====
+    const data = [
       {
-        titleEn: "Creative Work",
-        titleHe: "יצירה אישית",
+        en: "Creative Work",
+        he: "יצירה אישית",
         link: "pages/creative.html",
         imgId: "1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J"
       },
       {
-        titleEn: "Clients",
-        titleHe: "לקוחות",
+        en: "Clients",
+        he: "לקוחות",
         link: "pages/lessons.html",
         imgId: "1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so"
       },
       {
-        titleEn: "Podcasts",
-        titleHe: "פודקאסטים",
+        en: "Podcasts",
+        he: "פודקאסטים",
         link: "pages/podcasts.html",
         imgId: "1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon"
       },
       {
-        titleEn: "Post-Trauma",
-        titleHe: "פוסט־טראומה",
+        en: "Post-Trauma",
+        he: "פוסט־טראומה",
         link: "pages/posttrauma.html",
         imgId: "1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q"
       },
       {
-        titleEn: "Satire",
-        titleHe: "סאטירה",
+        en: "Satire",
+        he: "סאטירה",
         link: "pages/satire.html",
         imgId: "1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw"
       },
       {
-        titleEn: "Songs",
-        titleHe: "שירים",
+        en: "Songs",
+        he: "שירים",
         link: "pages/songs.html",
         imgId: "1Bx08pEL47s6mATgeDt2EP-epJq5fas5l"
       }
     ];
 
     const carousel = document.getElementById('carousel');
+    const itemCount = data.length;
+    // 360 degrees divided by number of items (6) = 60 degrees per slice
+    const angleStep = 360 / itemCount; 
+    let currentAngle = 0;
 
-    // Helper to build Drive Thumbnail URL
+    // Helper: Thumbnail URL
     const getThumb = (id) => `https://drive.google.com/thumbnail?id=${id}&sz=w800`;
 
-    // ===== Generate Carousel Items =====
-    pages.forEach(page => {
-      const item = document.createElement('a');
-      item.href = page.link;
-      item.className = 'carousel-item';
+    // ===== INITIALIZE 3D CAROUSEL =====
+    data.forEach((item, index) => {
+      const el = document.createElement('div');
+      el.className = 'carousel-item';
       
-      item.innerHTML = `
-        <img src="${getThumb(page.imgId)}" alt="${page.titleEn}" class="card-img" loading="lazy" />
-        <div class="card-content">
-          <div class="card-title">
-            <span class="english">${page.titleEn}</span>
-            <span class="hebrew">${page.titleHe}</span>
-          </div>
+      // Calculate rotation for this item
+      const rotation = angleStep * index;
+      // Apply the 3D transformation: Rotate Y, then push outward (Translate Z)
+      el.style.transform = `rotateY(${rotation}deg) translateZ(var(--z-distance))`;
+      
+      el.innerHTML = `
+        <img src="${getThumb(item.imgId)}" class="card-img" alt="${item.en}">
+        <div class="card-label">
+          <span class="english">${item.en}</span>
+          <span class="hebrew">${item.he}</span>
         </div>
       `;
-      
-      carousel.appendChild(item);
+
+      // Click to Navigate
+      el.addEventListener('click', () => {
+        // Determine current "front" slot
+        const normalizedAngle = currentAngle % 360; 
+        
+        // Simple logic: If we are clicking a card, usually in 3D UX 
+        // you rotate it to front first, then click again to enter.
+        // For simplicity here, we just go to the link.
+        window.location.href = item.link;
+      });
+
+      carousel.appendChild(el);
     });
 
-    // ===== Language Toggle Logic =====
+    // ===== NAVIGATION CONTROLS =====
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function rotateCarousel() {
+      carousel.style.transform = `rotateY(${currentAngle}deg)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentAngle += angleStep; // Rotate "left"
+      rotateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentAngle -= angleStep; // Rotate "right"
+      rotateCarousel();
+    });
+
+    // ===== LANGUAGE TOGGLE =====
     const langBtn = document.getElementById('language-toggle');
     const root = document.documentElement;
 
-    function toggleLanguage() {
+    function toggleLang() {
       const current = root.getAttribute('data-lang');
       const next = current === 'en' ? 'he' : 'en';
-      
       root.setAttribute('data-lang', next);
       root.setAttribute('dir', next === 'he' ? 'rtl' : 'ltr');
-      
-      // Save preference
       try { localStorage.setItem('site-lang', next); } catch(e){}
     }
 
-    langBtn.addEventListener('click', toggleLanguage);
+    langBtn.addEventListener('click', toggleLang);
 
-    // Initialize Language
+    // Load Saved Lang
     const saved = localStorage.getItem('site-lang') || 'en';
     root.setAttribute('data-lang', saved);
     root.setAttribute('dir', saved === 'he' ? 'rtl' : 'ltr');
