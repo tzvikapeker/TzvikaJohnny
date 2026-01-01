@@ -19,7 +19,7 @@
         --text-main: #f8f8ff;
         --text-muted: #b7b7c7;
         --border-color: rgba(255, 255, 255, 0.08);
-        --overlay-grad: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+        --overlay-grad: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
       }
 
       * { box-sizing: border-box; }
@@ -32,6 +32,7 @@
         color: var(--text-main);
         display: flex;
         flex-direction: column;
+        overflow-x: hidden; /* Prevent horizontal scroll from slides */
       }
 
       a { text-decoration: none; color: inherit; }
@@ -72,98 +73,176 @@
       }
       .language-toggle:hover { border-color: var(--accent); color: var(--text-main); }
 
-      /* ===== Hero Section ===== */
-      .hero {
+      /* ===== Main Layout ===== */
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        width: 100%;
+      }
+
+      .hero-text {
         text-align: center;
-        padding: 60px 20px 40px;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .hero h1 {
-        font-size: clamp(32px, 5vw, 48px);
-        margin: 0 0 16px;
-        background: linear-gradient(to right, #fff, #b7b7c7);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .hero p {
-        font-size: 18px;
-        color: var(--text-muted);
-        line-height: 1.6;
-        margin: 0 auto;
+        margin-bottom: 30px;
         max-width: 600px;
       }
 
-      /* ===== Navigation Grid (Visual Menu) ===== */
-      main {
-        flex: 1;
-        padding: 20px 6vw 60px;
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
+      .hero-text h1 {
+        font-size: 28px;
+        margin: 0 0 10px;
+        color: var(--accent);
+      }
+      .hero-text p {
+        font-size: 16px;
+        color: var(--text-muted);
+        margin: 0;
       }
 
-      .nav-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 24px;
-      }
-
-      .nav-card {
+      /* ===== Carousel Styling ===== */
+      .carousel {
         position: relative;
-        border-radius: 20px;
+        width: 100%;
+        max-width: 1000px; /* Max width of the card */
+        height: 60vh;      /* Height of the slider */
+        min-height: 400px;
+        margin: 0 auto;
+        perspective: 1000px;
+      }
+
+      .carousel-track-container {
+        width: 100%;
+        height: 100%;
         overflow: hidden;
-        aspect-ratio: 16/10;
+        border-radius: 24px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         border: 1px solid var(--border-color);
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        background-color: var(--card-bg);
-        cursor: pointer;
+        position: relative;
+      }
+
+      .carousel-track {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        height: 100%;
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .carousel-slide {
+        min-width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      /* Card Content inside Slide */
+      .slide-link {
         display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
       }
 
-      .nav-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        border-color: var(--accent-soft);
-      }
-
-      .card-bg {
+      .slide-bg {
         position: absolute;
         inset: 0;
         background-size: cover;
         background-position: center;
-        transition: transform 0.5s ease;
-        filter: brightness(0.9);
+        transition: transform 6s ease;
+      }
+      /* Subtle zoom effect on active slide */
+      .carousel-slide.current-slide .slide-bg {
+        transform: scale(1.1);
       }
 
-      .nav-card:hover .card-bg {
-        transform: scale(1.05);
-        filter: brightness(1);
-      }
-
-      .card-overlay {
+      .slide-content {
         position: absolute;
         inset: 0;
         background: var(--overlay-grad);
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        padding: 24px;
+        padding: 40px;
+        text-align: right;
       }
+      /* Adjust text alignment for English */
+      html[dir="ltr"] .slide-content { text-align: left; }
 
-      .card-title {
-        font-size: 22px;
+      .slide-title {
+        font-size: clamp(24px, 4vw, 36px);
         font-weight: 700;
-        color: var(--text-main);
-        margin-bottom: 6px;
+        color: #fff;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.5);
       }
 
-      .card-subtitle {
-        font-size: 14px;
-        color: var(--text-muted);
-        opacity: 0.9;
+      .slide-desc {
+        font-size: clamp(16px, 2vw, 18px);
+        color: rgba(255,255,255,0.85);
+        max-width: 600px;
+      }
+
+      /* Navigation Buttons */
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(10, 10, 16, 0.6);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--border-color);
+        color: #fff;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        transition: background 0.2s, transform 0.2s;
+      }
+
+      .carousel-btn:hover {
+        background: var(--accent);
+        color: #000;
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .carousel-btn.prev { left: -24px; }
+      .carousel-btn.next { right: -24px; }
+
+      @media (max-width: 768px) {
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+      }
+
+      /* Dots */
+      .carousel-nav {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .carousel-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1px solid var(--text-muted);
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+        transition: 0.3s;
+      }
+
+      .carousel-dot.current-slide {
+        background: var(--accent);
+        border-color: var(--accent);
+        transform: scale(1.2);
       }
 
       /* ===== Language visibility ===== */
@@ -177,6 +256,7 @@
         font-size: 13px;
         color: var(--text-muted);
         background: rgba(3, 3, 8, 0.98);
+        margin-top: auto;
       }
     </style>
   </head>
@@ -190,113 +270,130 @@
       <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
     </header>
 
-    <div class="hero">
-      <h1 class="he">יצירה. טכנולוגיה. רגש.</h1>
-      <h1 class="en">Creation. Technology. Emotion.</h1>
-      
-      <p class="he">
-        ברוכים הבאים לעולם שבו סאונד, וידאו, טקסט וקוד נפגשים כדי לספר סיפור.
-        בחרו קטגוריה כדי להתחיל את המסע.
-      </p>
-      <p class="en">
-        Welcome to a world where sound, video, text, and code meet to tell a story.
-        Select a category to begin the journey.
-      </p>
-    </div>
-
     <main>
-      <div class="nav-grid">
+      <div class="hero-text">
+        <h1 class="he">ברוכים הבאים</h1>
+        <h1 class="en">Welcome</h1>
+        <p class="he">גללו בין העולמות כדי להתחיל את המסע</p>
+        <p class="en">Swipe through the worlds to begin the journey</p>
+      </div>
+
+      <div class="carousel">
+        <button class="carousel-btn prev" id="prevBtn">❮</button>
         
-        <!-- 1. Creative (Personal Work) -->
-        <a href="pages/creative.html" class="nav-card">
-          <div class="card-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J&sz=w1000');"></div>
-          <div class="card-overlay">
-            <span class="card-title">
-              <span class="he">יצירה אישית</span>
-              <span class="en">Creative Work</span>
-            </span>
-            <span class="card-subtitle">
-              <span class="he">השכבה החשופה והאמנותית</span>
-              <span class="en">The exposed, artistic layer</span>
-            </span>
-          </div>
-        </a>
+        <div class="carousel-track-container">
+          <ul class="carousel-track">
+            
+            <!-- Slide 1: Creative -->
+            <li class="carousel-slide current-slide">
+              <a href="pages/creative.html" class="slide-link">
+                <div class="slide-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J&sz=w1200');"></div>
+                <div class="slide-content">
+                  <div class="slide-title">
+                    <span class="he">יצירה אישית</span>
+                    <span class="en">Creative Work</span>
+                  </div>
+                  <div class="slide-desc">
+                    <span class="he">השכבה החשופה והאמנותית – המקום שבו הציניות יורדת לשקט.</span>
+                    <span class="en">The exposed, artistic layer – where cynicism quiets down.</span>
+                  </div>
+                </div>
+              </a>
+            </li>
 
-        <!-- 2. Lessons (Clients) -->
-        <a href="pages/lessons.html" class="nav-card">
-          <div class="card-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so&sz=w1000');"></div>
-          <div class="card-overlay">
-            <span class="card-title">
-              <span class="he">לקוחות</span>
-              <span class="en">Clients</span>
-            </span>
-            <span class="card-subtitle">
-              <span class="he">מותחים את הגבולות</span>
-              <span class="en">Pushing the boundaries</span>
-            </span>
-          </div>
-        </a>
+            <!-- Slide 2: Lessons (Clients) -->
+            <li class="carousel-slide">
+              <a href="pages/lessons.html" class="slide-link">
+                <div class="slide-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so&sz=w1200');"></div>
+                <div class="slide-content">
+                  <div class="slide-title">
+                    <span class="he">לקוחות</span>
+                    <span class="en">Clients</span>
+                  </div>
+                  <div class="slide-desc">
+                    <span class="he">מותחים את הגבולות – מחשבה לפני עיצוב.</span>
+                    <span class="en">Pushing boundaries – thought before design.</span>
+                  </div>
+                </div>
+              </a>
+            </li>
 
-        <!-- 3. Podcasts -->
-        <a href="pages/podcasts.html" class="nav-card">
-          <div class="card-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon&sz=w1000');"></div>
-          <div class="card-overlay">
-            <span class="card-title">
-              <span class="he">פודקאסטים</span>
-              <span class="en">Podcasts</span>
-            </span>
-            <span class="card-subtitle">
-              <span class="he">מה למדתי היום?</span>
-              <span class="en">What did I learn today?</span>
-            </span>
-          </div>
-        </a>
+            <!-- Slide 3: Podcasts -->
+            <li class="carousel-slide">
+              <a href="pages/podcasts.html" class="slide-link">
+                <div class="slide-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon&sz=w1200');"></div>
+                <div class="slide-content">
+                  <div class="slide-title">
+                    <span class="he">פודקאסטים</span>
+                    <span class="en">Podcasts</span>
+                  </div>
+                  <div class="slide-desc">
+                    <span class="he">מה למדתי היום? האזנה לשיחות ומחשבות.</span>
+                    <span class="en">What did I learn today? Listening to conversations and thoughts.</span>
+                  </div>
+                </div>
+              </a>
+            </li>
 
-        <!-- 4. Post Trauma -->
-        <a href="pages/posttrauma.html" class="nav-card">
-          <div class="card-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q&sz=w1000');"></div>
-          <div class="card-overlay">
-            <span class="card-title">
-              <span class="he">פוסט־טראומה</span>
-              <span class="en">Post-Trauma</span>
-            </span>
-            <span class="card-subtitle">
-              <span class="he">יחסינו לאן?</span>
-              <span class="en">Where do we go from here?</span>
-            </span>
-          </div>
-        </a>
+            <!-- Slide 4: Post Trauma -->
+            <li class="carousel-slide">
+              <a href="pages/posttrauma.html" class="slide-link">
+                <div class="slide-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q&sz=w1200');"></div>
+                <div class="slide-content">
+                  <div class="slide-title">
+                    <span class="he">פוסט־טראומה</span>
+                    <span class="en">Post-Trauma</span>
+                  </div>
+                  <div class="slide-desc">
+                    <span class="he">יחסינו לאן? חוויה אנושית מבפנים.</span>
+                    <span class="en">Where do we go from here? The human experience from within.</span>
+                  </div>
+                </div>
+              </a>
+            </li>
 
-        <!-- 5. Satire -->
-        <a href="pages/satire.html" class="nav-card">
-          <div class="card-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w1000');"></div>
-          <div class="card-overlay">
-            <span class="card-title">
-              <span class="he">סאטירה</span>
-              <span class="en">Satire</span>
-            </span>
-            <span class="card-subtitle">
-              <span class="he">מציאות ללא פילטרים</span>
-              <span class="en">Unfiltered reality</span>
-            </span>
-          </div>
-        </a>
+            <!-- Slide 5: Satire -->
+            <li class="carousel-slide">
+              <a href="pages/satire.html" class="slide-link">
+                <div class="slide-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w1200');"></div>
+                <div class="slide-content">
+                  <div class="slide-title">
+                    <span class="he">סאטירה</span>
+                    <span class="en">Satire</span>
+                  </div>
+                  <div class="slide-desc">
+                    <span class="he">מציאות ללא פילטרים – עקיצה והומור.</span>
+                    <span class="en">Unfiltered reality – sting and humor.</span>
+                  </div>
+                </div>
+              </a>
+            </li>
 
-        <!-- 6. Songs -->
-        <a href="pages/songs.html" class="nav-card">
-          <div class="card-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w1000');"></div>
-          <div class="card-overlay">
-            <span class="card-title">
-              <span class="he">שירים</span>
-              <span class="en">Songs</span>
-            </span>
-            <span class="card-subtitle">
-              <span class="he">יצירה מקורית</span>
-              <span class="en">Original music</span>
-            </span>
-          </div>
-        </a>
+            <!-- Slide 6: Songs -->
+            <li class="carousel-slide">
+              <a href="pages/songs.html" class="slide-link">
+                <div class="slide-bg" style="background-image: url('https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w1200');"></div>
+                <div class="slide-content">
+                  <div class="slide-title">
+                    <span class="he">שירים</span>
+                    <span class="en">Songs</span>
+                  </div>
+                  <div class="slide-desc">
+                    <span class="he">יצירה מקורית – מילים, לחן ונשימה.</span>
+                    <span class="en">Original songs – lyrics, melody, and breath.</span>
+                  </div>
+                </div>
+              </a>
+            </li>
 
+          </ul>
+        </div>
+
+        <button class="carousel-btn next" id="nextBtn">❯</button>
+      </div>
+
+      <div class="carousel-nav" id="dotsNav">
+        <!-- Dots generated by JS -->
       </div>
     </main>
 
@@ -322,9 +419,84 @@
         setLang(current === "he" ? "en" : "he");
       });
 
-      // Load saved language
       const savedLang = (() => { try { return localStorage.getItem("lang"); } catch { return null; } })();
       setLang(savedLang || "he");
+
+      // ===== Carousel Logic =====
+      const track = document.querySelector('.carousel-track');
+      const slides = Array.from(track.children);
+      const nextButton = document.querySelector('#nextBtn');
+      const prevButton = document.querySelector('#prevBtn');
+      const dotsNav = document.querySelector('#dotsNav');
+
+      // Create dots based on slides count
+      slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('carousel-dot');
+        if (index === 0) dot.classList.add('current-slide');
+        dot.addEventListener('click', () => {
+          moveToSlide(track, currentSlide(), slides[index]);
+          updateDots(index);
+        });
+        dotsNav.appendChild(dot);
+      });
+
+      const dots = Array.from(dotsNav.children);
+
+      const slideWidth = slides[0].getBoundingClientRect().width;
+
+      // Arrange slides next to one another
+      const setSlidePosition = (slide, index) => {
+        slide.style.left = slideWidth * index + 'px';
+      };
+      slides.forEach(setSlidePosition);
+
+      // Helper to find current slide
+      const currentSlide = () => track.querySelector('.current-slide');
+
+      const moveToSlide = (track, currentSlide, targetSlide) => {
+        if(!targetSlide) return; // Boundary check
+        track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+        currentSlide.classList.remove('current-slide');
+        targetSlide.classList.add('current-slide');
+      };
+
+      const updateDots = (targetIndex) => {
+        const currentDot = dotsNav.querySelector('.current-slide');
+        const targetDot = dots[targetIndex];
+        currentDot.classList.remove('current-slide');
+        targetDot.classList.add('current-slide');
+      };
+
+      // Button Listeners
+      nextButton.addEventListener('click', () => {
+        const current = currentSlide();
+        const next = current.nextElementSibling || slides[0]; // Loop to start
+        const nextIndex = slides.indexOf(next);
+        
+        moveToSlide(track, current, next);
+        updateDots(nextIndex);
+      });
+
+      prevButton.addEventListener('click', () => {
+        const current = currentSlide();
+        const prev = current.previousElementSibling || slides[slides.length - 1]; // Loop to end
+        const prevIndex = slides.indexOf(prev);
+
+        moveToSlide(track, current, prev);
+        updateDots(prevIndex);
+      });
+
+      // Handle Resize (Update widths)
+      window.addEventListener('resize', () => {
+        const newSlideWidth = slides[0].getBoundingClientRect().width;
+        slides.forEach((slide, index) => {
+          slide.style.left = newSlideWidth * index + 'px';
+        });
+        // Re-center active slide
+        const current = currentSlide();
+        track.style.transform = 'translateX(-' + current.style.left + ')';
+      });
     </script>
   </body>
 </html>
