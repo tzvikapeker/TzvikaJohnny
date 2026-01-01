@@ -160,6 +160,7 @@
       .en { direction: ltr; text-align: left; }
       .he { direction: rtl; text-align: right; }
 
+      /* Media List Styles (For Playable Embeds) */
       .media-card {
         background:
           radial-gradient(circle at top, rgba(255, 184, 108, 0.12), transparent 60%),
@@ -177,155 +178,58 @@
       .media-title { font-size: 15px; font-weight: 500; }
       .media-sub { font-size: 13px; color: var(--text-muted); }
 
-      .gallery-container {
+      .media-list {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
         margin-top: 6px;
         max-height: 80vh;
         overflow-y: auto;
         padding-right: 2px;
       }
 
-      /* ===== Masonry Gallery ===== */
-      .masonry {
-        column-count: 2;
-        column-gap: 12px;
-      }
-
-      @media (max-width: 900px)  { .masonry { column-count: 3; } }
-      @media (max-width: 600px)  { .masonry { column-count: 2; } }
-
-      .masonry-item {
-        break-inside: avoid;
-        margin: 0 0 12px;
+      .media-item {
+        background: rgba(9, 9, 16, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.06);
         border-radius: 14px;
-        overflow: hidden;
-        border: 1px solid rgba(255,255,255,0.08);
-        background: rgba(5,5,10,0.75);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-        position: relative;
-        cursor: zoom-in;
-      }
-
-      .masonry-item button {
-        all: unset;
-        display: block;
-        width: 100%;
-        cursor: zoom-in;
-      }
-
-      .masonry-item img {
-        width: 100%;
-        height: auto;
-        display: block;
-        transform: scale(1);
-        transition: transform 180ms ease, filter 180ms ease, opacity 180ms ease;
-        opacity: 0;
-      }
-
-      .masonry-item img.is-loaded { opacity: 1; }
-
-      .masonry-item:hover img {
-        transform: scale(1.02);
-        filter: saturate(1.08);
-      }
-
-      .img-badge {
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
-        padding: 4px 8px;
-        border-radius: 999px;
-        font-size: 11px;
-        color: rgba(255,255,255,0.85);
-        background: rgba(0,0,0,0.45);
-        border: 1px solid rgba(255,255,255,0.12);
-        backdrop-filter: blur(10px);
-        pointer-events: none;
-      }
-
-      /* ===== Lightbox modal ===== */
-      .modal {
-        position: fixed;
-        inset: 0;
-        z-index: 9999;
-        background: rgba(0,0,0,0.72);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 18px;
-      }
-
-      .modal.open { display: flex; }
-
-      .modal-card {
-        width: min(1100px, 96vw);
-        max-height: 92vh;
-        background: rgba(10, 10, 18, 0.96);
-        border: 1px solid rgba(255,255,255,0.10);
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 30px 90px rgba(0,0,0,0.85);
+        padding: 12px;
         display: flex;
         flex-direction: column;
+        gap: 10px;
       }
 
-      .modal-topbar {
+      .media-meta {
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        gap: 10px;
-        padding: 10px 12px;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-      }
-
-      .modal-title {
-        font-size: 13px;
-        color: var(--text-muted);
-        display: flex;
-        gap: 10px;
         align-items: center;
-        flex-wrap: wrap;
-      }
-
-      .modal-actions {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-      }
-
-      .btn {
         font-size: 13px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(255,255,255,0.12);
-        background: rgba(255,255,255,0.04);
         color: var(--text-main);
-        cursor: pointer;
       }
-      .btn:hover { background: rgba(255,255,255,0.08); }
-      .btn.primary {
-        border-color: var(--accent-soft);
-        background: rgba(255, 184, 108, 0.10);
-        color: var(--accent);
-      }
-
-      .modal-body {
-        padding: 12px;
-        overflow: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      .media-badge {
+        font-size: 11px;
+        color: var(--text-muted);
+        background: rgba(255,255,255,0.05);
+        padding: 2px 6px;
+        border-radius: 4px;
       }
 
-      .modal-body img {
+      .drive-embed-container {
+        position: relative;
         width: 100%;
-        height: auto;
-        max-height: 78vh;
-        object-fit: contain;
-        border-radius: 12px;
-        background: rgba(0,0,0,0.25);
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        background: rgba(0,0,0,0.3);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .drive-embed-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
       }
 
       /* ===== Language visibility ===== */
@@ -354,7 +258,6 @@
   </head>
 
   <body>
-    
     <header>
       <div class="logo-title">
         <span>TZVIKA JOHNNY</span>
@@ -367,7 +270,7 @@
           <span class="hebrew">ראשי</span>
         </a>
 
-        <a href="creative.html" class="nav-link active">
+        <a href="creative.html" class="nav-link">
           <span class="english">Creative</span>
           <span class="hebrew">קריאייטיב</span>
         </a>
@@ -390,6 +293,11 @@
         <a href="satire.html" class="nav-link">
           <span class="english">Satire</span>
           <span class="hebrew">סאטירה</span>
+        </a>
+
+        <a href="songs.html" class="nav-link active">
+          <span class="english">Songs</span>
+          <span class="hebrew">שירים</span>
         </a>
 
         <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
@@ -460,8 +368,8 @@
         <div class="media-card-header">
           <div>
             <div class="media-title">
-              <span class="he">גלריה</span>
-              <span class="en">Gallery</span>
+              <span class="he">נגן</span>
+              <span class="en">Player</span>
             </div>
             <div class="media-sub">
               <span class="he">וידאו ואודיו</span>
@@ -470,8 +378,8 @@
           </div>
         </div>
 
-        <div class="gallery-container">
-          <div id="masonry" class="masonry" aria-label="Songs gallery"></div>
+        <div class="media-list" id="mediaList">
+          <!-- Dynamic Content Loaded Here -->
         </div>
       </aside>
     </main>
@@ -486,25 +394,6 @@
         <a href="mailto:tzvika@example.com">tzvika@example.com</a>
       </div>
     </footer>
-
-    <!-- ===== Lightbox Modal ===== -->
-    <div class="modal" id="modal" aria-hidden="true">
-      <div class="modal-card" role="dialog" aria-modal="true" aria-label="Media preview">
-        <div class="modal-topbar">
-          <div class="modal-title">
-            <span id="modalIndex">#—</span>
-            <span class="text-muted" id="modalHint">Preview</span>
-          </div>
-          <div class="modal-actions">
-            <a class="btn primary" id="openInDrive" href="#" target="_blank" rel="noopener noreferrer">Open in Drive</a>
-            <button class="btn" id="closeModal" type="button">Close</button>
-          </div>
-        </div>
-        <div class="modal-body">
-          <img id="modalImg" alt="Media preview thumbnail" />
-        </div>
-      </div>
-    </div>
 
     <script>
       // ===== Language toggle =====
@@ -549,96 +438,52 @@
         return m2 ? m2[1] : null;
       }
 
-      function driveThumbUrl(fileId, size = 1600) {
-        return `https://drive.google.com/thumbnail?id=${fileId}&sz=w${size}`;
+      function drivePreviewUrl(fileId) {
+        return `https://drive.google.com/file/d/${encodeURIComponent(fileId)}/preview`;
       }
 
-      function driveOpenUrl(fileId) {
-        return `https://drive.google.com/file/d/${fileId}/view`;
-      }
-
-      // ===== Gallery Sources (Songs) =====
-      const galleryDriveUrls = [
+      // ===== Media Sources (Playable) =====
+      const mediaUrls = [
+        "https://drive.google.com/file/d/16S1XdFRQEhGm24mgXL88lmg_adhVDdMw/view?usp=drive_link",
         "https://drive.google.com/file/d/1zUGCnSIJBMdsVS4l-v2TDYAfyCFRvurd/view?usp=drive_link",
         "https://drive.google.com/file/d/1np8jDUPZeBxOf9EDn0BlR1XWjI8VVwrl/view?usp=drive_link",
-        "https://drive.google.com/file/d/16S1XdFRQEhGm24mgXL88lmg_adhVDdMw/view?usp=drive_link",
         "https://drive.google.com/file/d/1z3QhKy2kXEC89TRp16RjQuzeoQH7DzmZ/view?usp=drive_link"
       ];
 
-      // ===== Lightbox Logic =====
-      const modal = document.getElementById("modal");
-      const modalImg = document.getElementById("modalImg");
-      const closeModalBtn = document.getElementById("closeModal");
-      const openInDrive = document.getElementById("openInDrive");
-      const modalIndex = document.getElementById("modalIndex");
+      // ===== Render Media Players =====
+      const listContainer = document.getElementById("mediaList");
 
-      function openModal({ fileId, idx }) {
-        modal.classList.add("open");
-        modal.setAttribute("aria-hidden", "false");
-        modalImg.src = driveThumbUrl(fileId, 2400);
-        openInDrive.href = driveOpenUrl(fileId);
-        modalIndex.textContent = `#${idx + 1}`;
-        document.body.style.overflow = "hidden";
-      }
+      mediaUrls.forEach((url, idx) => {
+        const id = extractDriveFileId(url);
+        if (!id) return;
 
-      function closeModal() {
-        modal.classList.remove("open");
-        modal.setAttribute("aria-hidden", "true");
-        modalImg.src = "";
-        document.body.style.overflow = "";
-      }
+        const item = document.createElement("div");
+        item.className = "media-item";
 
-      closeModalBtn.addEventListener("click", closeModal);
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) closeModal();
+        const meta = document.createElement("div");
+        meta.className = "media-meta";
+        meta.innerHTML = `
+          <span>
+             <span class="he">רצועה ${idx + 1}</span>
+             <span class="en">Track ${idx + 1}</span>
+          </span>
+          <span class="media-badge">Drive Player</span>
+        `;
+
+        const embedBox = document.createElement("div");
+        embedBox.className = "drive-embed-container";
+        
+        const iframe = document.createElement("iframe");
+        iframe.src = drivePreviewUrl(id);
+        iframe.allow = "autoplay";
+        iframe.title = `Song ${idx + 1}`;
+        iframe.loading = "lazy";
+
+        embedBox.appendChild(iframe);
+        item.appendChild(meta);
+        item.appendChild(embedBox);
+        listContainer.appendChild(item);
       });
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeModal();
-      });
-
-      // ===== Render Masonry =====
-      function renderMasonry() {
-        const masonry = document.getElementById("masonry");
-        if (!masonry) return;
-
-        masonry.innerHTML = "";
-
-        galleryDriveUrls.forEach((url, idx) => {
-          const id = extractDriveFileId(url);
-          if (!id) return;
-
-          const item = document.createElement("div");
-          item.className = "masonry-item";
-
-          const btn = document.createElement("button");
-          btn.type = "button";
-          btn.setAttribute("aria-label", `Open media ${idx + 1}`);
-
-          const img = document.createElement("img");
-          img.loading = "lazy";
-          img.alt = `Song/Parody ${String(idx + 1).padStart(2, "0")}`;
-          img.src = driveThumbUrl(id, 1400);
-
-          img.addEventListener("load", () => img.classList.add("is-loaded"));
-          img.addEventListener("error", () => {
-             img.src = driveThumbUrl(id, 800);
-          });
-
-          btn.addEventListener("click", () => openModal({ fileId: id, idx }));
-
-          const badge = document.createElement("div");
-          badge.className = "img-badge";
-          badge.textContent = `Media #${idx + 1}`;
-
-          btn.appendChild(img);
-          item.appendChild(btn);
-          item.appendChild(badge);
-          masonry.appendChild(item);
-        });
-      }
-
-      window.addEventListener("load", renderMasonry);
     </script>
   </body>
 </html>
-
