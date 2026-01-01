@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl" data-lang="he">
   <head>
     <meta charset="UTF-8" />
-    <title>סאטירה פוליטית</title>
+    <title>Political Satire – Tzvika Johnny</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Heebo font -->
+
     <link
       href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
+
     <style>
       :root {
         --bg-color: #050608;
@@ -20,29 +21,20 @@
         --border-color: rgba(255, 255, 255, 0.08);
       }
 
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
 
       body {
         margin: 0;
         min-height: 100vh;
-        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
+        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
         color: var(--text-main);
         display: flex;
         flex-direction: column;
       }
 
-      a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
 
       header {
         padding: 16px 24px;
@@ -51,22 +43,15 @@
         justify-content: space-between;
         border-bottom: 1px solid var(--border-color);
         backdrop-filter: blur(16px);
-        background: linear-gradient(
-          to bottom,
-          rgba(5, 6, 8, 0.92),
-          rgba(5, 6, 8, 0.78)
-        );
+        background: linear-gradient(to bottom, rgba(5, 6, 8, 0.92), rgba(5, 6, 8, 0.78));
         position: sticky;
         top: 0;
         z-index: 20;
+        gap: 14px;
+        flex-wrap: wrap;
       }
 
-      .logo-title {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-
+      .logo-title { display: flex; flex-direction: column; gap: 2px; }
       .logo-title span:first-child {
         font-weight: 600;
         letter-spacing: 0.06em;
@@ -74,17 +59,9 @@
         text-transform: uppercase;
         color: var(--text-muted);
       }
+      .logo-title span:last-child { font-weight: 500; font-size: 15px; }
 
-      .logo-title span:last-child {
-        font-weight: 500;
-        font-size: 15px;
-      }
-
-      nav {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-      }
+      nav { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 
       .nav-link {
         font-size: 14px;
@@ -92,21 +69,21 @@
         border-radius: 999px;
         border: 1px solid transparent;
         color: var(--text-muted);
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        white-space: nowrap;
       }
 
       .nav-link.active {
         border-color: var(--accent-soft);
-        background: radial-gradient(
-          circle at top,
-          rgba(255, 184, 108, 0.18),
-          rgba(8, 9, 14, 0.9)
-        );
+        background: radial-gradient(circle at top, rgba(255, 184, 108, 0.18), rgba(8, 9, 14, 0.9));
         color: var(--accent);
       }
 
       .language-toggle {
         font-size: 13px;
-        padding: 4px 8px;
+        padding: 6px 10px;
         border-radius: 999px;
         border: 1px solid var(--border-color);
         cursor: pointer;
@@ -123,22 +100,13 @@
       }
 
       @media (max-width: 900px) {
-        main {
-          grid-template-columns: minmax(0, 1fr);
-        }
+        main { grid-template-columns: minmax(0, 1fr); }
       }
 
       .content-card {
-        background: linear-gradient(
-            135deg,
-            rgba(255, 184, 108, 0.06),
-            transparent 48%
-          ),
-          linear-gradient(
-            200deg,
-            rgba(145, 124, 255, 0.06),
-            transparent 64%
-          ),
+        background:
+          linear-gradient(135deg, rgba(255, 184, 108, 0.06), transparent 48%),
+          linear-gradient(200deg, rgba(145, 124, 255, 0.06), transparent 64%),
           var(--card-bg);
         border-radius: 20px;
         padding: 22px 22px 20px;
@@ -159,10 +127,7 @@
         pointer-events: none;
       }
 
-      .content-inner {
-        position: relative;
-        z-index: 1;
-      }
+      .content-inner { position: relative; z-index: 1; }
 
       .pill-label {
         display: inline-flex;
@@ -185,47 +150,18 @@
         box-shadow: 0 0 10px rgba(255, 184, 108, 0.8);
       }
 
-      h1 {
-        margin: 0 0 6px;
-        font-size: clamp(26px, 3vw, 30px);
-        letter-spacing: 0.04em;
-      }
+      h1 { margin: 0 0 6px; font-size: clamp(26px, 3vw, 30px); letter-spacing: 0.04em; }
+      h2 { margin: 0 0 14px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
 
-      h2 {
-        margin: 0 0 14px;
-        font-size: 18px;
-        color: var(--text-muted);
-        font-weight: 400;
-      }
+      .text-block { font-size: 15px; line-height: 1.7; color: var(--text-main); margin-bottom: 14px; }
+      .text-muted { color: var(--text-muted); font-size: 14px; }
 
-      .text-block {
-        font-size: 15px;
-        line-height: 1.7;
-        color: var(--text-main);
-        margin-bottom: 14px;
-      }
-
-      .text-muted {
-        color: var(--text-muted);
-        font-size: 14px;
-      }
-
-      .en {
-        direction: ltr;
-        text-align: left;
-      }
-
-      .he {
-        direction: rtl;
-        text-align: right;
-      }
+      .en { direction: ltr; text-align: left; }
+      .he { direction: rtl; text-align: right; }
 
       .media-card {
-        background: radial-gradient(
-            circle at top,
-            rgba(255, 184, 108, 0.12),
-            transparent 60%
-          ),
+        background:
+          radial-gradient(circle at top, rgba(255, 184, 108, 0.12), transparent 60%),
           rgba(10, 10, 18, 0.96);
         border-radius: 20px;
         padding: 18px 18px 16px;
@@ -233,52 +169,167 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
+        min-height: 200px;
       }
 
-      .media-card-header {
+      .media-card-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; }
+      .media-title { font-size: 15px; font-weight: 500; }
+      .media-sub { font-size: 13px; color: var(--text-muted); }
+
+      .gallery-container {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 4px;
-      }
-
-      .media-title {
-        font-size: 15px;
-        font-weight: 500;
-      }
-
-      .media-sub {
-        font-size: 13px;
-        color: var(--text-muted);
-      }
-
-      .satire-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr);
-        gap: 10px;
+        flex-direction: column;
+        gap: 12px;
         margin-top: 6px;
-        max-height: 520px;
+        max-height: 80vh;
         overflow-y: auto;
+        padding-right: 2px;
       }
 
-      .satire-item {
-        padding: 10px;
+      /* ===== Masonry Gallery ===== */
+      .masonry {
+        column-count: 2;
+        column-gap: 12px;
+      }
+
+      @media (max-width: 900px)  { .masonry { column-count: 3; } }
+      @media (max-width: 600px)  { .masonry { column-count: 2; } }
+
+      .masonry-item {
+        break-inside: avoid;
+        margin: 0 0 12px;
         border-radius: 14px;
-        background: rgba(9, 9, 16, 0.96);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(5,5,10,0.75);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        position: relative;
+        cursor: zoom-in;
       }
 
-      .satire-label {
+      .masonry-item button {
+        all: unset;
+        display: block;
+        width: 100%;
+        cursor: zoom-in;
+      }
+
+      .masonry-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transform: scale(1);
+        transition: transform 180ms ease, filter 180ms ease, opacity 180ms ease;
+        opacity: 0;
+      }
+
+      .masonry-item img.is-loaded { opacity: 1; }
+
+      .masonry-item:hover img {
+        transform: scale(1.02);
+        filter: saturate(1.08);
+      }
+
+      .img-badge {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        font-size: 11px;
+        color: rgba(255,255,255,0.85);
+        background: rgba(0,0,0,0.45);
+        border: 1px solid rgba(255,255,255,0.12);
+        backdrop-filter: blur(10px);
+        pointer-events: none;
+      }
+
+      /* ===== Lightbox modal ===== */
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(0,0,0,0.72);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+      }
+
+      .modal.open { display: flex; }
+
+      .modal-card {
+        width: min(1100px, 96vw);
+        max-height: 92vh;
+        background: rgba(10, 10, 18, 0.96);
+        border: 1px solid rgba(255,255,255,0.10);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 30px 90px rgba(0,0,0,0.85);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .modal-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .modal-title {
         font-size: 13px;
-        margin-bottom: 4px;
         color: var(--text-muted);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
       }
 
-      .satire-link {
-        font-size: 14px;
-        word-break: break-all;
+      .modal-actions {
+        display: flex;
+        gap: 8px;
+        align-items: center;
       }
+
+      .btn {
+        font-size: 13px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.04);
+        color: var(--text-main);
+        cursor: pointer;
+      }
+      .btn:hover { background: rgba(255,255,255,0.08); }
+      .btn.primary {
+        border-color: var(--accent-soft);
+        background: rgba(255, 184, 108, 0.10);
+        color: var(--accent);
+      }
+
+      .modal-body {
+        padding: 12px;
+        overflow: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-body img {
+        width: 100%;
+        height: auto;
+        max-height: 78vh;
+        object-fit: contain;
+        border-radius: 12px;
+        background: rgba(0,0,0,0.25);
+      }
+
+      /* ===== Language visibility ===== */
+      html[data-lang="en"] .hebrew, html[data-lang="en"] .he { display: none; }
+      html[data-lang="he"] .english, html[data-lang="he"] .en { display: none; }
 
       footer {
         border-top: 1px solid var(--border-color);
@@ -292,8 +343,7 @@
         background: rgba(3, 3, 8, 0.98);
       }
 
-      .footer-left,
-      .footer-right {
+      .footer-left, .footer-right {
         display: flex;
         flex-wrap: wrap;
         gap: 8px 16px;
@@ -301,42 +351,49 @@
       }
     </style>
   </head>
+
   <body>
     <header>
       <div class="logo-title">
         <span>TZVIKA JOHNNY</span>
         <span>Multimodal creative technologist</span>
       </div>
-     <nav>
-  <a href="../index.html" class="nav-link">ראשי</a>
 
-  <a href="podcasts.html" class="nav-link">
-    <span class="english">Podcasts</span>
-    <span class="hebrew">פודקאסטים</span>
-  </a>
+      <nav>
+        <a href="../index.html" class="nav-link">ראשי</a>
 
-  <a href="video-simulation.html" class="nav-link">
-    <span class="english">Video | Simulation</span>
-    <span class="hebrew">וידאו | הדמיה</span>
-  </a>
+        <a href="podcasts.html" class="nav-link">
+          <span class="english">Podcasts</span>
+          <span class="hebrew">פודקאסטים</span>
+        </a>
 
-  <a href="songs.html" class="nav-link">
-    <span class="english">Songs</span>
-    <span class="hebrew">שירים</span>
-  </a>
+        <a href="video-simulation.html" class="nav-link">
+          <span class="english">Video | Simulation</span>
+          <span class="hebrew">וידאו | הדמיה</span>
+        </a>
 
-  <a href="personal-work.html" class="nav-link active">
-    <span class="english">Personal Work</span>
-    <span class="hebrew">עבודה אישית</span>
-  </a>
+        <a href="songs.html" class="nav-link">
+          <span class="english">Songs</span>
+          <span class="hebrew">שירים</span>
+        </a>
 
-  <a href="satire.html" class="nav-link">
-    <span class="english">Satire</span>
-    <span class="hebrew">סאטירה</span>
-  </a>
+        <a href="creative.html" class="nav-link">
+          <span class="english">Creative</span>
+          <span class="hebrew">קריאייטיב</span>
+        </a>
 
-  <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
-</nav>
+        <a href="lessons.html" class="nav-link">
+          <span class="english">Clients</span>
+          <span class="hebrew">לקוחות</span>
+        </a>
+
+        <a href="satire.html" class="nav-link active">
+          <span class="english">Satire</span>
+          <span class="hebrew">סאטירה</span>
+        </a>
+
+        <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
+      </nav>
     </header>
 
     <main>
@@ -344,196 +401,55 @@
         <div class="content-inner">
           <div class="pill-label">
             <span class="pill-dot"></span>
-            <span>Satire · Banana republic</span>
+            <span>Unfiltered Reality</span>
           </div>
 
-          <h1 class="he">סאטירה</h1>
-          <h2 class="he">היכן שהמציאות מקבלת בעיטה</h2>
+          <h1 class="he">סאטירה פוליטית</h1>
+          <h2 class="he">מציאות עם עקיצה</h2>
 
+          <h1 class="en">Political Satire</h1>
+          <h2 class="en">Reality with a sting</h2>
+
+          <!-- HEBREW CONTENT -->
           <div class="text-block he">
-            ברובליקת הבננות הזאת אני לוקח את המציאות, מפרק לה את האשליות ומחזיר
-            אותה לצופה עטופה בציניות מדויקת. כאן אין פילטרים ואין הנחות. כל מה
-            שהוא מופרך, שקרי, צבוע או פשוט מעצבן, מקבל ניתוח חד כמו סכין של מנתח
-            עם משכורת מינימום.
+            ברובליקת הבננות הזאת אני לוקח את המציאות, מפרק לה את האשליות ומחזיר אותה לצופה עטופה בציניות מדויקת. כאן אין פילטרים ואין הנחות.
           </div>
           <div class="text-block he">
-            אני משתמש בהומור כדי להראות את מה שכולם חושבים ולא תמיד מעיזים להגיד,
-            ובמיוחד כשזה נוגע לפוליטיקה. זה המקום שבו העקיצה הופכת לאמנות, האבסורד
-            הופך לסטנדאפ, והכאב הלאומי מקבל צחוק שמציל שפיות. כאן המציאות משתקפת.
+            כל מה שהוא מופרך, שקרי, צבוע או פשוט מעצבן, מקבל ניתוח חד כמו סכין של מנתח עם משכורת מינימום.
+          </div>
+          <div class="text-block he">
+            אני משתמש בהומור כדי להראות את מה שכולם חושבים ולא תמיד מעיזים להגיד, ובמיוחד כשזה נוגע לפוליטיקה. זה המקום שבו העקיצה הופכת לאמנות, האבסורד הופך לסטנדאפ, והכאב הלאומי מקבל צחוק שמציל שפיות. כאן המציאות משתקפת.
           </div>
 
+          <!-- ENGLISH CONTENT -->
           <div class="text-block en">
-            In this little banana republic corner, reality gets taken apart, stripped
-            of its illusions, and handed back to the viewer wrapped in sharp cynicism.
-            There are no filters here and no discounts. Everything absurd, fake,
-            hypocritical, or just plain infuriating gets dissected with the precision
-            of a surgeon on minimum wage.
+            In this banana rubric, I take reality, dismantle its illusions, and return it to the viewer wrapped in precise cynicism. There are no filters and no discounts here.
           </div>
           <div class="text-block en">
-            Humor becomes a way to show what everyone is already thinking but does not
-            always dare to say – especially when it comes to politics. This is where
-            the sting turns into art, the absurd becomes stand‑up, and collective
-            pain gets a laugh that saves sanity. This is where reality stares back.
+            Anything absurd, false, hypocritical, or simply annoying gets dissected with a scalpel sharp as a minimum-wage surgeon's.
           </div>
-
-          <p class="text-muted he">
-            * חלק מהעבודות כאן חדות, חלק בועטות, חלק פשוט מטורפות. אם זה מצחיק
-            ומכאיב באותו זמן – כנראה שזה במקום הנכון.
-          </p>
+          <div class="text-block en">
+            I use humor to show what everyone is thinking but doesn't always dare to say, especially regarding politics. This is where the sting becomes art, the absurd becomes stand-up, and national pain gets a laugh that saves sanity. Here, reality is reflected.
+          </div>
         </div>
       </section>
 
       <aside class="media-card">
         <div class="media-card-header">
           <div>
-            <div class="media-title he">חומר סאטירי</div>
-            <div class="media-sub he">קטעי וידאו, אודיו וניסויי בננה</div>
+            <div class="media-title">
+              <span class="he">צפייה</span>
+              <span class="en">Watch</span>
+            </div>
+            <div class="media-sub">
+              <span class="he">גלריית וידאו</span>
+              <span class="en">Video Gallery</span>
+            </div>
           </div>
         </div>
 
-        <div class="satire-grid">
-          <div class="satire-item">
-            <div class="satire-label he">סאטירה 01</div>
-            <a
-              class="satire-link"
-              href="https://drive.google.com/file/d/1akLfun0ILEAC7osA8dDVB2iKjAX1R3Oe/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-          </div>
-
-          <div class="satire-item">
-            <div class="satire-label he">סאטירה 02</div>
-            <a
-              class="satire-link"
-              href="https://drive.google.com/file/d/1FPp4Inz2AS-MoGGCKaRQ_sWyzK-I_9SB/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-          </div>
-
-          <div class="satire-item">
-            <div class="satire-label he">סאטירה 03</div>
-            <a
-              class="satire-link"
-              href="https://drive.google.com/file/d/1XWaTGatmPjjBRZAhg15b2Dkd3RaK4tNv/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-          </div>
-
-          <div class="satire-item">
-            <div class="satire-label he">סאטירה 04</div>
-            <a
-              class="satire-link"
-              href="https://drive.google.com/file/d/1BNgS2zIP7R5EigGYusJIT7zztAaeWve5/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-          </div>
-
-          <div class="satire-item">
-            <div class="satire-label he">סאטירה 05</div>
-            <a
-              class="satire-link"
-              href="https://drive.google.com/file/d/1xZwHCbZdBdiyR1z4RBXjUpGDxl2VOG51/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-          </div>
-
-          <div class="satire-item">
-            <div class="satire-label he">סאטירה 06</div>
-            <a
-              class="satire-link"
-              href="https://drive.google.com/file/d/1x-GUPM1cCzlX8_eIL-YeRbN5b5xzbzbJ/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-          </div>
-
-          <div class="satire-item">
-            <div class="satire-label he">סאטירה 07</div>
-            <a
-              class="satire-link"
-              href="https://drive.google.com/file/d/1HEeNJ4ugoFS-FctanKgK0P-0HwXPnf9U/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-          </div>
-
-          <div class="satire-item">
-            <div class="satire-label he">סאטירה 08</div>
-            <a
-              class="satire-link"
-              href="https://drive.google.com/file/d/1CclLZT4DxJ_VVP7JI24ie350IVv4VueT/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-          </div>
-
-          <div class="satire-item">
-            <div class="satire-label he">סאטירה 09</div>
-            <a
-              class="satire-link"
-              href="https://drive.google.com/file/d/1tuLEZiJgl_ONd3kLY0puqdkhHh10HOk8/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-          </div>
-
-          <div class="satire-item">
-            <div class="satire-label he">סאטירה 10</div>
-            <a
-              class="satire-link"
-              href="https://drive.google.com/file/d/1YyffcMub35FYd1iBsCFtvreT4PZ4EILf/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-          </div>
-
-          <div class="satire-item">
-            <div class="satire-label he">סאטירה 11</div>
-            <a
-              class="satire-link"
-              href="https://drive.google.com/file/d/1J-k8Gwarrl96rm8L5h2OluVqFNTxG4av/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-          </div>
-
-          <div class="satire-item">
-            <div class="satire-label he">סאטירה 12</div>
-            <a
-              class="satire-link"
-              href="https://drive.google.com/file/d/1DhaQJF-_FTdqpE29g1Iifwk6TpDeur_E/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-          </div>
-
-          <div class="satire-item">
-            <div class="satire-label he">סאטירה 13</div>
-            <a
-              class="satire-link"
-              href="https://drive.google.com/file/d/1KGvXIt_QBqXyoMlLljCG2RVW1h1oD3PQ/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open in Drive</a
-            >
-          </div>
+        <div class="gallery-container">
+          <div id="masonry" class="masonry" aria-label="Satire video gallery"></div>
         </div>
       </aside>
     </main>
@@ -544,23 +460,171 @@
         <span>מולטי־מודל קריאייטיב טכנולוגיסט</span>
       </div>
       <div class="footer-right">
-        <span class="he">אם כאב הראש מדינה הזאת היה צריך ז'אנר – זה היה כאן.</span>
+        <span class="he">צחוק שמציל שפיות.</span>
         <a href="mailto:tzvika@example.com">tzvika@example.com</a>
       </div>
     </footer>
 
+    <!-- ===== Lightbox Modal ===== -->
+    <div class="modal" id="modal" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-label="Media preview">
+        <div class="modal-topbar">
+          <div class="modal-title">
+            <span id="modalIndex">#—</span>
+            <span class="text-muted" id="modalHint">Preview</span>
+          </div>
+          <div class="modal-actions">
+            <a class="btn primary" id="openInDrive" href="#" target="_blank" rel="noopener noreferrer">Watch in Drive</a>
+            <button class="btn" id="closeModal" type="button">Close</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <img id="modalImg" alt="Video preview thumbnail" />
+        </div>
+      </div>
+    </div>
+
     <script>
-      const toggle = document.getElementById("langToggle");
-      let showEn = true;
-      toggle.addEventListener("click", () => {
-        showEn = !showEn;
-        document.querySelectorAll(".en").forEach((el) => {
-          el.style.display = showEn ? "" : "none";
-        });
+      // ===== Language toggle =====
+      const langBtn = document.getElementById("langToggle");
+      const root = document.documentElement;
+
+      function setLang(lang) {
+        root.setAttribute("data-lang", lang);
+        root.setAttribute("lang", lang);
+        root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+        try { localStorage.setItem("lang", lang); } catch {}
+        langBtn.textContent = lang === "he" ? "EN / HE" : "HE / EN";
+      }
+
+      langBtn.addEventListener("click", () => {
+        const current = root.getAttribute("data-lang") || "he";
+        setLang(current === "he" ? "en" : "he");
       });
+
+      const savedLang = (() => { try { return localStorage.getItem("lang"); } catch { return null; } })();
+      setLang(savedLang || "he");
+
+      // ===== Drive helpers =====
+      function extractDriveFileId(url) {
+        try {
+          const u = new URL(url);
+          if (u.hostname.includes("lh3.googleusercontent.com")) {
+            const m = u.pathname.match(/\/d\/([^/]+)/);
+            return m ? m[1] : null;
+          }
+          if (u.hostname.includes("drive.google.com")) {
+            if (u.pathname.includes("/file/d/")) {
+              const m = u.pathname.match(/\/file\/d\/([^/]+)/);
+              return m ? m[1] : null;
+            }
+            if (u.pathname.includes("/thumbnail")) {
+              return u.searchParams.get("id");
+            }
+          }
+        } catch {}
+        const m2 = url.match(/\/file\/d\/([^/]+)/);
+        return m2 ? m2[1] : null;
+      }
+
+      function driveThumbUrl(fileId, size = 1600) {
+        return `https://drive.google.com/thumbnail?id=${fileId}&sz=w${size}`;
+      }
+
+      function driveOpenUrl(fileId) {
+        return `https://drive.google.com/file/d/${fileId}/view`;
+      }
+
+      // ===== Gallery Sources (Satire) =====
+      const galleryDriveUrls = [
+        "https://drive.google.com/file/d/1HEeNJ4ugoFS-FctanKgK0P-0HwXPnf9U/view?usp=drive_link",
+        "https://drive.google.com/file/d/1CclLZT4DxJ_VVP7JI24ie350IVv4VueT/view?usp=drive_link",
+        "https://drive.google.com/file/d/1XWaTGatmPjjBRZAhg15b2Dkd3RaK4tNv/view?usp=drive_link",
+        "https://drive.google.com/file/d/1tuLEZiJgl_ONd3kLY0puqdkhHh10HOk8/view?usp=drive_link",
+        "https://drive.google.com/file/d/1x-GUPM1cCzlX8_eIL-YeRbN5b5xzbzbJ/view?usp=drive_link",
+        "https://drive.google.com/file/d/1FPp4Inz2AS-MoGGCKaRQ_sWyzK-I_9SB/view?usp=drive_link",
+        "https://drive.google.com/file/d/1J-k8Gwarrl96rm8L5h2OluVqFNTxG4av/view?usp=drive_link",
+        "https://drive.google.com/file/d/1akLfun0ILEAC7osA8dDVB2iKjAX1R3Oe/view?usp=drive_link",
+        "https://drive.google.com/file/d/1xZwHCbZdBdiyR1z4RBXjUpGDxl2VOG51/view?usp=drive_link",
+        "https://drive.google.com/file/d/1DhaQJF-_FTdqpE29g1Iifwk6TpDeur_E/view?usp=drive_link",
+        "https://drive.google.com/file/d/1BNgS2zIP7R5EigGYusJIT7zztAaeWve5/view?usp=drive_link",
+        "https://drive.google.com/file/d/1YyffcMub35FYd1iBsCFtvreT4PZ4EILf/view?usp=drive_link",
+        "https://drive.google.com/file/d/1KGvXIt_QBqXyoMlLljCG2RVW1h1oD3PQ/view?usp=drive_link"
+      ];
+
+      // ===== Lightbox Logic =====
+      const modal = document.getElementById("modal");
+      const modalImg = document.getElementById("modalImg");
+      const closeModalBtn = document.getElementById("closeModal");
+      const openInDrive = document.getElementById("openInDrive");
+      const modalIndex = document.getElementById("modalIndex");
+
+      function openModal({ fileId, idx }) {
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        modalImg.src = driveThumbUrl(fileId, 2400);
+        openInDrive.href = driveOpenUrl(fileId);
+        modalIndex.textContent = `#${idx + 1}`;
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+        modalImg.src = "";
+        document.body.style.overflow = "";
+      }
+
+      closeModalBtn.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+
+      // ===== Render Masonry =====
+      function renderMasonry() {
+        const masonry = document.getElementById("masonry");
+        if (!masonry) return;
+
+        masonry.innerHTML = "";
+
+        galleryDriveUrls.forEach((url, idx) => {
+          const id = extractDriveFileId(url);
+          if (!id) return;
+
+          const item = document.createElement("div");
+          item.className = "masonry-item";
+
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.setAttribute("aria-label", `Open video ${idx + 1}`);
+
+          const img = document.createElement("img");
+          img.loading = "lazy";
+          img.alt = `Satire ${String(idx + 1).padStart(2, "0")}`;
+          img.src = driveThumbUrl(id, 1400);
+
+          img.addEventListener("load", () => img.classList.add("is-loaded"));
+          img.addEventListener("error", () => {
+             img.src = driveThumbUrl(id, 800);
+          });
+
+          btn.addEventListener("click", () => openModal({ fileId: id, idx }));
+
+          const badge = document.createElement("div");
+          badge.className = "img-badge";
+          badge.textContent = `Video #${idx + 1}`;
+
+          btn.appendChild(img);
+          item.appendChild(btn);
+          item.appendChild(badge);
+          masonry.appendChild(item);
+        });
+      }
+
+      window.addEventListener("load", renderMasonry);
     </script>
   </body>
 </html>
-
-
-
