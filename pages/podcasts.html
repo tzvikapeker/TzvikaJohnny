@@ -1,388 +1,454 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl" data-lang="he">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>פודקאסטים - מה למדתי היום</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Podcasts – Tzvika Johnny</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Heebo font -->
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    :root {
-      --bg-color: #050608;
-      --card-bg: rgba(18, 18, 24, 0.92);
-      --accent: #ffb86c;
-      --accent-soft: rgba(255, 184, 108, 0.14);
-      --text-main: #f8f8ff;
-      --text-muted: #b7b7c7;
-      --border-color: rgba(255, 255, 255, 0.08);
-    }
+    <style>
+      :root {
+        --bg-color: #050608;
+        --card-bg: rgba(18, 18, 24, 0.92);
+        --accent: #ffb86c;
+        --accent-soft: rgba(255, 184, 108, 0.14);
+        --text-main: #f8f8ff;
+        --text-muted: #b7b7c7;
+        --border-color: rgba(255, 255, 255, 0.08);
+      }
 
-    * { box-sizing: border-box; }
+      * { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: 'Heebo', Arial, sans-serif;
-      background: radial-gradient(circle at top, rgba(255,184,108,0.06), rgba(5,6,8,1) 45%);
-      color: var(--text-main);
-    }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
+        color: var(--text-main);
+        display: flex;
+        flex-direction: column;
+      }
 
-    /* Header + Nav */
-    header {
-      padding: 16px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border-color);
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(5, 6, 8, 0.92), rgba(5, 6, 8, 0.78));
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
 
-    .logo-title {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+      header {
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--border-color);
+        backdrop-filter: blur(16px);
+        background: linear-gradient(to bottom, rgba(5, 6, 8, 0.92), rgba(5, 6, 8, 0.78));
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
 
-    .logo-title span:first-child {
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      font-size: 13px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
+      .logo-title { display: flex; flex-direction: column; gap: 2px; }
+      .logo-title span:first-child {
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        font-size: 13px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+      .logo-title span:last-child { font-weight: 500; font-size: 15px; }
 
-    .logo-title span:last-child {
-      font-weight: 500;
-      font-size: 15px;
-      color: var(--text-main);
-    }
+      nav { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 
-    nav {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
+      .nav-link {
+        font-size: 14px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        color: var(--text-muted);
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        white-space: nowrap;
+      }
 
-    .nav-link {
-      font-size: 14px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
-      display: inline-flex;
-      gap: 6px;
-      align-items: baseline;
-    }
+      .nav-link.active {
+        border-color: var(--accent-soft);
+        background: radial-gradient(circle at top, rgba(255, 184, 108, 0.18), rgba(8, 9, 14, 0.9));
+        color: var(--accent);
+      }
 
-    .nav-link:hover {
-      transform: translateY(-1px);
-      border-color: rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.03);
-    }
+      .language-toggle {
+        font-size: 13px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        background: rgba(10, 10, 16, 0.8);
+        color: var(--text-muted);
+      }
 
-    .nav-link.active {
-      border-color: var(--accent-soft);
-      background: radial-gradient(circle at top, rgba(255, 184, 108, 0.18), rgba(8, 9, 14, 0.9));
-      color: var(--accent);
-    }
+      main {
+        flex: 1;
+        padding: 32px 6vw 40px 6vw;
+        display: grid;
+        grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+        gap: 28px;
+      }
 
-    .language-toggle {
-      font-size: 13px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--border-color);
-      cursor: pointer;
-      background: rgba(10, 10, 16, 0.8);
-      color: var(--text-muted);
-    }
+      @media (max-width: 900px) {
+        main { grid-template-columns: minmax(0, 1fr); }
+      }
 
-    /* Page */
-    .container {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 28px 18px 48px;
-    }
+      .content-card {
+        background:
+          linear-gradient(135deg, rgba(255, 184, 108, 0.06), transparent 48%),
+          linear-gradient(200deg, rgba(145, 124, 255, 0.06), transparent 64%),
+          var(--card-bg);
+        border-radius: 20px;
+        padding: 22px 22px 20px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        position: relative;
+        overflow: hidden;
+      }
 
-    h1 {
-      margin: 0 0 12px 0;
-      font-size: 32px;
-      letter-spacing: 0.02em;
-    }
+      .content-card::before {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background:
+          radial-gradient(circle at 0% 0%, rgba(255, 184, 108, 0.09) 0, transparent 55%),
+          radial-gradient(circle at 110% 0%, rgba(112, 97, 255, 0.08) 0, transparent 52%);
+        opacity: 0.8;
+        pointer-events: none;
+      }
 
-    .subtitle {
-      margin: 0 0 22px 0;
-      color: var(--text-muted);
-      line-height: 1.8;
-      max-width: 72ch;
-    }
+      .content-inner { position: relative; z-index: 1; }
 
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-    }
+      .pill-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(10, 10, 16, 0.84);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+      }
 
-    .episodes {
-      display: grid;
-      gap: 12px;
-      margin-top: 6px;
-    }
+      .pill-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: radial-gradient(circle, #ffb86c 0, #ff7e5f 65%);
+        box-shadow: 0 0 10px rgba(255, 184, 108, 0.8);
+      }
 
-    .episode {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.02);
-    }
+      h1 { margin: 0 0 6px; font-size: clamp(26px, 3vw, 30px); letter-spacing: 0.04em; }
+      h2 { margin: 0 0 14px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
 
-    .episode-title {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+      .text-block { font-size: 15px; line-height: 1.7; color: var(--text-main); margin-bottom: 14px; }
+      .text-muted { color: var(--text-muted); font-size: 14px; }
 
-    .episode-title h3 {
-      margin: 0;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--text-main);
-    }
+      .en { direction: ltr; text-align: left; }
+      .he { direction: rtl; text-align: right; }
 
-    .meta {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+      /* Media List Styles (Specific to Podcasts/Audio) */
+      .media-card {
+        background:
+          radial-gradient(circle at top, rgba(255, 184, 108, 0.12), transparent 60%),
+          rgba(10, 10, 18, 0.96);
+        border-radius: 20px;
+        padding: 18px 18px 16px;
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 200px;
+      }
 
-    /* Compact Drive preview player (feels like an audio row) */
-    .drive-player {
-      position: relative;
-      width: 100%;
-      height: 72px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(0,0,0,0.25);
-    }
+      .media-card-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; }
+      .media-title { font-size: 15px; font-weight: 500; }
+      .media-sub { font-size: 13px; color: var(--text-muted); }
 
-    .drive-player iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
+      .podcast-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 6px;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding-right: 2px;
+      }
 
-    .hint {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 10px;
-      line-height: 1.7;
-    }
+      .podcast-item {
+        background: rgba(9, 9, 16, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
 
-    .contact-info {
-      margin-top: 22px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      padding: 14px;
-      border-radius: 16px;
-      border: 1px solid var(--border-color);
-      background: rgba(255,255,255,0.02);
-    }
+      .podcast-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: var(--text-main);
+      }
+      .podcast-badge {
+        font-size: 11px;
+        color: var(--text-muted);
+        background: rgba(255,255,255,0.05);
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
 
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+      .drive-embed-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 for video, can be adjusted */
+        background: rgba(0,0,0,0.3);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      
+      /* For pure audio, we can make it shorter */
+      .drive-embed-container.audio-mode {
+        padding-bottom: 80px; 
+      }
 
-    .contact-info a {
-      color: var(--text-main);
-      text-decoration: none;
-      font-size: 14px;
-    }
-    .contact-info a:hover { color: var(--accent); }
+      .drive-embed-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
 
-    .contact-info img {
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(0,0,0,0.25);
-      padding: 6px;
-    }
+      /* ===== Language visibility ===== */
+      html[data-lang="en"] .hebrew, html[data-lang="en"] .he { display: none; }
+      html[data-lang="he"] .english, html[data-lang="he"] .en { display: none; }
 
-    /* Language helpers (also works with your existing ../script.js toggler) */
-    .english { display: none; }
-    html[data-lang="en"] .english { display: inline; }
-    html[data-lang="en"] .hebrew { display: none; }
+      footer {
+        border-top: 1px solid var(--border-color);
+        padding: 18px 6vw 22px 6vw;
+        font-size: 13px;
+        color: var(--text-muted);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+        background: rgba(3, 3, 8, 0.98);
+      }
 
-    @media (max-width: 720px) {
-      header { padding: 14px 14px; }
-      h1 { font-size: 26px; }
-      .drive-player { height: 78px; }
-    }
-  </style>
-</head>
+      .footer-left, .footer-right {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        align-items: center;
+      }
+    </style>
+  </head>
 
-<body>
-  <header>
-    <div class="logo-title">
-      <span>TZVIKA JOHNNY</span>
-      <span>Multimodal creative technologist</span>
-    </div>
-
-    <nav>
-      <a href="../index.html" class="nav-link">ראשי</a>
-
-      <a href="podcasts.html" class="nav-link active">
-        <span class="english">Podcasts</span>
-        <span class="hebrew">פודקאסטים</span>
-      </a>
-
-      <a href="video-simulation.html" class="nav-link">
-        <span class="english">Video | Simulation</span>
-        <span class="hebrew">וידאו | הדמיה</span>
-      </a>
-
-      <a href="songs.html" class="nav-link">
-        <span class="english">Songs</span>
-        <span class="hebrew">שירים</span>
-      </a>
-
-      <a href="personal-work.html" class="nav-link">
-        <span class="english">Personal Work</span>
-        <span class="hebrew">עבודה אישית</span>
-      </a>
-
-      <a href="satire.html" class="nav-link">
-        <span class="english">Satire</span>
-        <span class="hebrew">סאטירה</span>
-      </a>
-
-      <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
-    </nav>
-  </header>
-
-  <main class="container">
-    <h1>
-      <span class="english">Podcasts</span>
-      <span class="hebrew">פודקאסטים</span>
-    </h1>
-
-    <p class="subtitle">
-      <span class="english">Audio pieces hosted via Google Drive preview players.</span>
-      <span class="hebrew">קטעי קול שמוגשים דרך נגן הפריוויו של Google Drive (הכי אמין להטמעה).</span>
-    </p>
-
-    <section class="card">
-      <div class="episodes" id="episodes"></div>
-      <div class="hint">
-        <span class="english">Tip: each Drive file must be shared as “Anyone with the link”.</span>
-        <span class="hebrew">טיפ: ודאי שכל קובץ ב-Drive מוגדר “כל מי שיש לו קישור”.</span>
+  <body>
+    <header>
+      <div class="logo-title">
+        <span>TZVIKA JOHNNY</span>
+        <span>Multimodal creative technologist</span>
       </div>
-    </section>
 
-    <div class="contact-info">
-      <div class="contact-details">
-        <a href="https://wa.me/972528359966" target="_blank" rel="noopener">WhatsApp: +972 52 8359966</a>
-        <a href="mailto:Tzvikasp2013@gmail.com" class="email-link">Tzvikasp2013@gmail.com</a>
+      <nav>
+        <a href="../index.html" class="nav-link">ראשי</a>
+
+        <a href="podcasts.html" class="nav-link active">
+          <span class="english">Podcasts</span>
+          <span class="hebrew">פודקאסטים</span>
+        </a>
+
+        <a href="video-simulation.html" class="nav-link">
+          <span class="english">Video | Simulation</span>
+          <span class="hebrew">וידאו | הדמיה</span>
+        </a>
+
+        <a href="songs.html" class="nav-link">
+          <span class="english">Songs</span>
+          <span class="hebrew">שירים</span>
+        </a>
+
+        <a href="creative.html" class="nav-link">
+          <span class="english">Creative</span>
+          <span class="hebrew">קריאייטיב</span>
+        </a>
+
+        <a href="lessons.html" class="nav-link">
+          <span class="english">Clients</span>
+          <span class="hebrew">לקוחות</span>
+        </a>
+
+        <a href="satire.html" class="nav-link">
+          <span class="english">Satire</span>
+          <span class="hebrew">סאטירה</span>
+        </a>
+
+        <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="content-card">
+        <div class="content-inner">
+          <div class="pill-label">
+            <span class="pill-dot"></span>
+            <span>Audio & Parody</span>
+          </div>
+
+          <h1 class="he">פודקאסטים</h1>
+          <h2 class="he">מה למדתי היום</h2>
+
+          <h1 class="en">Podcasts</h1>
+          <h2 class="en">What I learned today</h2>
+
+          <!-- HEBREW CONTENT -->
+          <div class="text-block he">
+            זו הזירה שבה מוזיקה פוגשת הומור חד ומודעות עצמית. כאן אני יוצר שירי פארודיה וסאטירה שמבוססים על מציאות יומיומית, תרבות פופולרית ואבסורדים שכולנו מזהים.
+          </div>
+          <div class="text-block he">
+            אני לוקח לחנים מוכרים או סגנונות ברורים, מסובב אותם עם טקסטים חכמים, עקיצות מדויקות ופאנצ’ים שעובדים גם כשצוחקים וגם כשעוצרים לחשוב.
+          </div>
+          <div class="text-block he">
+            המטרה היא לא רק להצחיק, אלא להגיד משהו דרך הצחוק לשחרר, לעקוץ, ולפעמים גם לשים מראה מול המאזין.
+          </div>
+
+          <!-- ENGLISH CONTENT -->
+          <div class="text-block en">
+            This is the arena where music meets sharp humor and self-awareness. Here I create parody and satire songs based on everyday reality, pop culture, and the absurdities we all recognize.
+          </div>
+          <div class="text-block en">
+            I take familiar melodies or distinct styles, twisting them with clever lyrics, precise stings, and punchlines that work both for a laugh and a moment of thought.
+          </div>
+          <div class="text-block en">
+            The goal isn't just to entertain, but to say something through the humor—to release, to sting, and sometimes to hold a mirror up to the listener.
+          </div>
+        </div>
+      </section>
+
+      <aside class="media-card">
+        <div class="media-card-header">
+          <div>
+            <div class="media-title">
+              <span class="he">האזנה</span>
+              <span class="en">Listen</span>
+            </div>
+            <div class="media-sub">
+              <span class="he">פרקים נבחרים</span>
+              <span class="en">Selected Episodes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="podcast-list" id="podcastList">
+          <!-- Dynamic Content Loaded Here -->
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div class="footer-left he">
+        <span>© Tzvika Johnny</span>
+        <span>מולטי־מודל קריאייטיב טכנולוגיסט</span>
       </div>
-      <img
-        src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://wa.me/972528359966"
-        alt="WhatsApp QR Code"
-      />
-    </div>
-  </main>
+      <div class="footer-right">
+        <span class="he">להגיד משהו דרך הצחוק.</span>
+        <a href="mailto:tzvika@example.com">tzvika@example.com</a>
+      </div>
+    </footer>
 
-  <script>
-    // Extract Google Drive file id from common share URLs
-    function extractDriveId(url) {
-      const m1 = url.match(/\/file\/d\/([^\/]+)/);
-      if (m1 && m1[1]) return m1[1];
-      const m2 = url.match(/[?&]id=([^&]+)/);
-      if (m2 && m2[1]) return m2[1];
-      return null;
-    }
+    <script>
+      // ===== Language toggle =====
+      const langBtn = document.getElementById("langToggle");
+      const root = document.documentElement;
 
-    // Drive preview embed URL (most reliable for embedded playback)
-    function drivePreviewUrl(fileId) {
-      return `https://drive.google.com/file/d/${encodeURIComponent(fileId)}/preview`;
-    }
+      function setLang(lang) {
+        root.setAttribute("data-lang", lang);
+        root.setAttribute("lang", lang);
+        root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+        try { localStorage.setItem("lang", lang); } catch {}
+        langBtn.textContent = lang === "he" ? "EN / HE" : "HE / EN";
+      }
 
-    // Your podcast files (mp4)
-    const podcastUrls = [
-      "https://drive.google.com/file/d/1gGF0dXX9CB7mzAbNTPhCyvRuCTwp0kv-/view?usp=drive_link",
-      "https://drive.google.com/file/d/1nnzrWNOIGNjbtFl9e6x6ARqHUWocqNnd/view?usp=drive_link",
-      "https://drive.google.com/file/d/1GWKat4DMeBylpaEGuaWDgTX5RC1coaJ-/view?usp=drive_link",
-      "https://drive.google.com/file/d/1N_vrYX98IkXooUWgzKYCSeX0Z_mt-jP0/view?usp=drive_link",
-      "https://drive.google.com/file/d/1o04irFuakI-EYPbbspZ4NYT6LG8XZd6M/view?usp=drive_link"
-    ];
+      langBtn.addEventListener("click", () => {
+        const current = root.getAttribute("data-lang") || "he";
+        setLang(current === "he" ? "en" : "he");
+      });
 
-    const episodesEl = document.getElementById("episodes");
+      const savedLang = (() => { try { return localStorage.getItem("lang"); } catch { return null; } })();
+      setLang(savedLang || "he");
 
-    podcastUrls.forEach((u, idx) => {
-      const id = extractDriveId(u);
-      const src = id ? drivePreviewUrl(id) : u;
+      // ===== Drive Logic =====
+      function extractDriveId(url) {
+        const m1 = url.match(/\/file\/d\/([^\/]+)/);
+        if (m1 && m1[1]) return m1[1];
+        const m2 = url.match(/[?&]id=([^&]+)/);
+        if (m2 && m2[1]) return m2[1];
+        return null;
+      }
 
-      const wrap = document.createElement("article");
-      wrap.className = "episode";
+      function drivePreviewUrl(fileId) {
+        return `https://drive.google.com/file/d/${encodeURIComponent(fileId)}/preview`;
+      }
 
-      const titleRow = document.createElement("div");
-      titleRow.className = "episode-title";
+      // ===== Media Sources =====
+      const podcastUrls = [
+        "https://drive.google.com/file/d/1N_vrYX98IkXooUWgzKYCSeX0Z_mt-jP0/view?usp=drive_link",
+        "https://drive.google.com/file/d/1GWKat4DMeBylpaEGuaWDgTX5RC1coaJ-/view?usp=drive_link",
+        "https://drive.google.com/file/d/1o04irFuakI-EYPbbspZ4NYT6LG8XZd6M/view?usp=drive_link"
+      ];
 
-      const h = document.createElement("h3");
-      h.innerHTML = `
-        <span class="english">Episode ${String(idx + 1).padStart(2, "0")}</span>
-        <span class="hebrew">פרק ${String(idx + 1).padStart(2, "0")}</span>
-      `;
+      const listContainer = document.getElementById("podcastList");
 
-      const meta = document.createElement("div");
-      meta.className = "meta";
-      meta.textContent = "Google Drive • mp4";
+      podcastUrls.forEach((url, idx) => {
+        const id = extractDriveId(url);
+        if (!id) return;
 
-      const player = document.createElement("div");
-      player.className = "drive-player";
+        const item = document.createElement("div");
+        item.className = "podcast-item";
 
-      const iframe = document.createElement("iframe");
-      iframe.src = src;
-      iframe.allow = "autoplay";
-      iframe.loading = "lazy";
-      iframe.title = `Podcast ${idx + 1}`;
+        const meta = document.createElement("div");
+        meta.className = "podcast-meta";
+        meta.innerHTML = `
+          <span>
+             <span class="he">רצועה ${idx + 1}</span>
+             <span class="en">Track ${idx + 1}</span>
+          </span>
+          <span class="podcast-badge">Drive Player</span>
+        `;
 
-      player.appendChild(iframe);
+        const embedBox = document.createElement("div");
+        // Using audio-mode class to make it slightly shorter, change to standard for video
+        embedBox.className = "drive-embed-container audio-mode"; 
+        
+        const iframe = document.createElement("iframe");
+        iframe.src = drivePreviewUrl(id);
+        iframe.allow = "autoplay";
+        iframe.title = `Media ${idx + 1}`;
+        iframe.loading = "lazy";
 
-      titleRow.appendChild(h);
-      titleRow.appendChild(meta);
-
-      wrap.appendChild(titleRow);
-      wrap.appendChild(player);
-
-      episodesEl.appendChild(wrap);
-    });
-  </script>
-
-  <!-- Keep your existing language/UX logic -->
-  <script src="../script.js"></script>
-</body>
+        embedBox.appendChild(iframe);
+        item.appendChild(meta);
+        item.appendChild(embedBox);
+        listContainer.appendChild(item);
+      });
+    </script>
+  </body>
 </html>
-
