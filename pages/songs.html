@@ -116,17 +116,6 @@
         overflow: hidden;
       }
 
-      .content-card::before {
-        content: "";
-        position: absolute;
-        inset: -40%;
-        background:
-          radial-gradient(circle at 0% 0%, rgba(255, 184, 108, 0.09) 0, transparent 55%),
-          radial-gradient(circle at 110% 0%, rgba(112, 97, 255, 0.08) 0, transparent 52%);
-        opacity: 0.8;
-        pointer-events: none;
-      }
-
       .content-inner { position: relative; z-index: 1; }
 
       .pill-label {
@@ -155,12 +144,7 @@
       h3 { margin: 24px 0 10px; font-size: 16px; color: var(--accent); font-weight: 500; }
 
       .text-block { font-size: 15px; line-height: 1.7; color: var(--text-main); margin-bottom: 14px; }
-      .text-muted { color: var(--text-muted); font-size: 14px; }
 
-      .en { direction: ltr; text-align: left; }
-      .he { direction: rtl; text-align: right; }
-
-      /* Media List Styles (For Playable Embeds) */
       .media-card {
         background:
           radial-gradient(circle at top, rgba(255, 184, 108, 0.12), transparent 60%),
@@ -201,10 +185,28 @@
       .media-meta {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         font-size: 13px;
         color: var(--text-main);
       }
+
+      .media-track-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .track-name {
+        font-weight: 600;
+        color: var(--accent);
+        font-size: 15px;
+      }
+
+      .track-number {
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
       .media-badge {
         font-size: 11px;
         color: var(--text-muted);
@@ -217,7 +219,7 @@
         position: relative;
         width: 100%;
         height: 0;
-        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        padding-bottom: 56.25%; 
         background: rgba(0,0,0,0.3);
         border-radius: 8px;
         overflow: hidden;
@@ -269,37 +271,30 @@
           <span class="english">Home</span>
           <span class="hebrew">ראשי</span>
         </a>
-
         <a href="creative.html" class="nav-link">
           <span class="english">Creative</span>
           <span class="hebrew">קריאייטיב</span>
         </a>
-
         <a href="lessons.html" class="nav-link">
           <span class="english">Clients</span>
           <span class="hebrew">לקוחות</span>
         </a>
-
         <a href="podcasts.html" class="nav-link">
           <span class="english">Podcasts</span>
           <span class="hebrew">פודקאסטים</span>
         </a>
-
         <a href="posttrauma.html" class="nav-link">
           <span class="english">Post-Trauma</span>
           <span class="hebrew">פוסט־טראומה</span>
         </a>
-
         <a href="satire.html" class="nav-link">
           <span class="english">Satire</span>
           <span class="hebrew">סאטירה</span>
         </a>
-
         <a href="songs.html" class="nav-link active">
           <span class="english">Songs</span>
           <span class="hebrew">שירים</span>
         </a>
-
         <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
       </nav>
     </header>
@@ -318,7 +313,6 @@
           <h1 class="en">Original Songs</h1>
           <h2 class="en">Words, music, and breath</h2>
 
-          <!-- HEBREW CONTENT -->
           <div class="text-block he">
             כאן נמצאים השירים המקוריים שלי. טקסטים שנולדים מרגש, חוויה או רגע קטן שנתפס והפך לשיר.
           </div>
@@ -333,33 +327,17 @@
           <div class="text-block he">
             זו הזירה שבה מוזיקה פוגשת הומור חד ומודעות עצמית. כאן אני יוצר שירי פארודיה וסאטירה שמבוססים על מציאות יומיומית, תרבות פופולרית ואבסורדים שכולנו מזהים.
           </div>
-          <div class="text-block he">
-            אני לוקח לחנים מוכרים או סגנונות ברורים, מסובב אותם עם טקסטים חכמים, עקיצות מדויקות ופאנצ’ים שעובדים גם כשצוחקים וגם כשעוצרים לחשוב.
-          </div>
-          <div class="text-block he">
-            המטרה היא לא רק להצחיק, אלא להגיד משהו דרך הצחוק לשחרר, לעקוץ, ולפעמים גם לשים מראה מול המאזין.
-          </div>
 
-          <!-- ENGLISH CONTENT -->
           <div class="text-block en">
             Here are my original songs. Lyrics born from emotion, experience, or a small moment captured and turned into a song.
           </div>
           <div class="text-block en">
             My writing combines honesty, wordplay, and natural rhythm—no posing, no formulas. Sometimes personal and quiet, sometimes sharp and kicking, but always real.
           </div>
-          <div class="text-block en">
-            Every song is built from the connection between words, music, and breath. The goal isn't just to sound good, but to feel right and linger a moment longer with the listener.
-          </div>
 
           <h3 class="en">Parody & Satire</h3>
           <div class="text-block en">
             This is the arena where music meets sharp humor and self-awareness. Here I create parody and satire songs based on everyday reality, pop culture, and the absurdities we all recognize.
-          </div>
-          <div class="text-block en">
-            I take familiar melodies or distinct styles, twisting them with clever lyrics, precise stings, and punchlines that work both for a laugh and a moment of thought.
-          </div>
-          <div class="text-block en">
-            The goal isn't just to entertain, but to say something through the humor—to release, to sting, and sometimes to hold a mirror up to the listener.
           </div>
         </div>
       </section>
@@ -379,8 +357,7 @@
         </div>
 
         <div class="media-list" id="mediaList">
-          <!-- Dynamic Content Loaded Here -->
-        </div>
+          </div>
       </aside>
     </main>
 
@@ -420,44 +397,54 @@
       function extractDriveFileId(url) {
         try {
           const u = new URL(url);
-          if (u.hostname.includes("lh3.googleusercontent.com")) {
-            const m = u.pathname.match(/\/d\/([^/]+)/);
-            return m ? m[1] : null;
-          }
           if (u.hostname.includes("drive.google.com")) {
             if (u.pathname.includes("/file/d/")) {
               const m = u.pathname.match(/\/file\/d\/([^/]+)/);
               return m ? m[1] : null;
             }
-            if (u.pathname.includes("/thumbnail")) {
-              return u.searchParams.get("id");
-            }
           }
         } catch {}
-        const m2 = url.match(/\/file\/d\/([^/]+)/);
-        return m2 ? m2[1] : null;
+        return null;
       }
 
       function drivePreviewUrl(fileId) {
         return `https://drive.google.com/file/d/${encodeURIComponent(fileId)}/preview`;
       }
 
-      // ===== Media Sources (Playable) =====
-      const mediaUrls = [
-        
-        "https://drive.google.com/file/d/1OJzWFPxjJdy1pmBZr-utlSsRNih0Ka7z/view?usp=drive_link",
-        "https://drive.google.com/file/d/1zUGCnSIJBMdsVS4l-v2TDYAfyCFRvurd/view?usp=drive_link",
-        "https://drive.google.com/file/d/1np8jDUPZeBxOf9EDn0BlR1XWjI8VVwrl/view?usp=drive_link",
-        "https://drive.google.com/file/d/1z3QhKy2kXEC89TRp16RjQuzeoQH7DzmZ/view?usp=drive_link",
-        "https://drive.google.com/file/d/1JyTLB6MjLK0Az7c9queWMY_uZe_a2GD_/view?usp=drive_link"
-      
+      // ===== רשימת השירים - כאן אתה מעדכן את השמות =====
+      const mediaTracks = [
+        {
+          url: "https://drive.google.com/file/d/1OJzWFPxjJdy1pmBZr-utlSsRNih0Ka7z/view?usp=drive_link",
+          titleHe: "שם השיר הראשון",
+          titleEn: "First Song Name"
+        },
+        {
+          url: "https://drive.google.com/file/d/1zUGCnSIJBMdsVS4l-v2TDYAfyCFRvurd/view?usp=drive_link",
+          titleHe: "שם השיר השני",
+          titleEn: "Second Song Name"
+        },
+        {
+          url: "https://drive.google.com/file/d/1np8jDUPZeBxOf9EDn0BlR1XWjI8VVwrl/view?usp=drive_link",
+          titleHe: "שם השיר השלישי",
+          titleEn: "Third Song Name"
+        },
+        {
+          url: "https://drive.google.com/file/d/1z3QhKy2kXEC89TRp16RjQuzeoQH7DzmZ/view?usp=drive_link",
+          titleHe: "שם השיר הרביעי",
+          titleEn: "Fourth Song Name"
+        },
+        {
+          url: "https://drive.google.com/file/d/1JyTLB6MjLK0Az7c9queWMY_uZe_a2GD_/view?usp=drive_link",
+          titleHe: "שם השיר החמישי",
+          titleEn: "Fifth Song Name"
+        }
       ];
 
       // ===== Render Media Players =====
       const listContainer = document.getElementById("mediaList");
 
-      mediaUrls.forEach((url, idx) => {
-        const id = extractDriveFileId(url);
+      mediaTracks.forEach((track, idx) => {
+        const id = extractDriveFileId(track.url);
         if (!id) return;
 
         const item = document.createElement("div");
@@ -466,10 +453,11 @@
         const meta = document.createElement("div");
         meta.className = "media-meta";
         meta.innerHTML = `
-          <span>
-             <span class="he">רצועה ${idx + 1}</span>
-             <span class="en">Track ${idx + 1}</span>
-          </span>
+          <div class="media-track-info">
+             <span class="he track-name">${track.titleHe}</span>
+             <span class="en track-name">${track.titleEn}</span>
+             <span class="track-number">Track ${idx + 1}</span>
+          </div>
           <span class="media-badge">Drive Player</span>
         `;
 
@@ -479,7 +467,7 @@
         const iframe = document.createElement("iframe");
         iframe.src = drivePreviewUrl(id);
         iframe.allow = "autoplay";
-        iframe.title = `Song ${idx + 1}`;
+        iframe.title = track.titleEn;
         iframe.loading = "lazy";
 
         embedBox.appendChild(iframe);
@@ -490,7 +478,3 @@
     </script>
   </body>
 </html>
-
-
-
-
