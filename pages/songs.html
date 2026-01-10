@@ -1,22 +1,10 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl" data-lang="he">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LF9MFCZWSX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LF9MFCZWSX');
-</script>
     <meta charset="UTF-8" />
     <title>Original Songs – Tzvika Johnny</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
     <style>
       :root {
@@ -30,19 +18,15 @@
       }
 
       * { box-sizing: border-box; }
-
       body {
         margin: 0;
         min-height: 100vh;
-        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-family: "Heebo", sans-serif;
         background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
         color: var(--text-main);
         display: flex;
         flex-direction: column;
       }
-
-      a { color: var(--accent); text-decoration: none; }
-      a:hover { text-decoration: underline; }
 
       header {
         padding: 16px 24px;
@@ -51,219 +35,93 @@
         justify-content: space-between;
         border-bottom: 1px solid var(--border-color);
         backdrop-filter: blur(16px);
-        background: linear-gradient(to bottom, rgba(5, 6, 8, 0.92), rgba(5, 6, 8, 0.78));
+        background: rgba(5, 6, 8, 0.85);
         position: sticky;
         top: 0;
         z-index: 20;
-        gap: 14px;
-        flex-wrap: wrap;
       }
 
-      .logo-title { display: flex; flex-direction: column; gap: 2px; }
-      .logo-title span:first-child {
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        font-size: 13px;
-        text-transform: uppercase;
-        color: var(--text-muted);
-      }
+      .logo-title { display: flex; flex-direction: column; }
+      .logo-title span:first-child { font-weight: 600; font-size: 13px; color: var(--text-muted); text-transform: uppercase; }
       .logo-title span:last-child { font-weight: 500; font-size: 15px; }
 
-      nav { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+      nav { display: flex; gap: 10px; }
+      .nav-link { font-size: 14px; padding: 6px 12px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; }
+      .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.1); color: var(--accent); }
 
-      .nav-link {
-        font-size: 14px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid transparent;
-        color: var(--text-muted);
-        display: inline-flex;
-        gap: 6px;
-        align-items: center;
-        white-space: nowrap;
-      }
-
-      .nav-link.active {
-        border-color: var(--accent-soft);
-        background: radial-gradient(circle at top, rgba(255, 184, 108, 0.18), rgba(8, 9, 14, 0.9));
-        color: var(--accent);
-      }
-
-      .language-toggle {
-        font-size: 13px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid var(--border-color);
-        cursor: pointer;
-        background: rgba(10, 10, 16, 0.8);
-        color: var(--text-muted);
-      }
+      .language-toggle { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border-color); cursor: pointer; background: #0a0a10; color: var(--text-muted); font-size: 12px; }
 
       main {
         flex: 1;
-        padding: 32px 6vw 40px 6vw;
+        padding: 32px 6vw;
         display: grid;
         grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
         gap: 28px;
       }
 
-      @media (max-width: 900px) {
-        main { grid-template-columns: minmax(0, 1fr); }
-      }
+      @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
 
       .content-card {
-        background:
-          linear-gradient(135deg, rgba(255, 184, 108, 0.06), transparent 48%),
-          linear-gradient(200deg, rgba(145, 124, 255, 0.06), transparent 64%),
-          var(--card-bg);
+        background: var(--card-bg);
         border-radius: 20px;
-        padding: 22px 22px 20px;
+        padding: 24px;
         border: 1px solid var(--border-color);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-        position: relative;
-        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
       }
 
-      .content-inner { position: relative; z-index: 1; }
+      .pill-label { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: #0a0a10; border: 1px solid var(--border-color); font-size: 11px; margin-bottom: 15px; }
+      .pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
 
-      .pill-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 4px 10px;
-        border-radius: 999px;
-        background: rgba(10, 10, 16, 0.84);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        font-size: 11px;
-        color: var(--text-muted);
-        margin-bottom: 10px;
-      }
-
-      .pill-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 999px;
-        background: radial-gradient(circle, #ffb86c 0, #ff7e5f 65%);
-        box-shadow: 0 0 10px rgba(255, 184, 108, 0.8);
-      }
-
-      h1 { margin: 0 0 6px; font-size: clamp(26px, 3vw, 30px); letter-spacing: 0.04em; }
-      h2 { margin: 0 0 14px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
-      h3 { margin: 24px 0 10px; font-size: 16px; color: var(--accent); font-weight: 500; }
-
-      .text-block { font-size: 15px; line-height: 1.7; color: var(--text-main); margin-bottom: 14px; }
+      h1 { margin: 0; font-size: 28px; }
+      h2 { margin: 5px 0 20px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
+      .text-block { font-size: 15px; line-height: 1.7; margin-bottom: 15px; color: var(--text-main); }
 
       .media-card {
-        background:
-          radial-gradient(circle at top, rgba(255, 184, 108, 0.12), transparent 60%),
-          rgba(10, 10, 18, 0.96);
+        background: rgba(10, 10, 18, 0.96);
         border-radius: 20px;
-        padding: 18px 18px 16px;
+        padding: 20px;
         border: 1px solid var(--border-color);
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        min-height: 200px;
       }
 
-      .media-card-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; }
-      .media-title { font-size: 15px; font-weight: 500; }
-      .media-sub { font-size: 13px; color: var(--text-muted); }
-
-      .media-list {
+      .category-header {
+        margin: 25px 0 15px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--accent-soft);
+        font-size: 16px;
+        color: var(--accent);
         display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-top: 6px;
-        max-height: 80vh;
-        overflow-y: auto;
-        padding-right: 2px;
+        align-items: center;
+        gap: 8px;
       }
+
+      .media-list { display: flex; flex-direction: column; gap: 15px; }
 
       .media-item {
-        background: rgba(9, 9, 16, 0.96);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 14px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
         padding: 12px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
       }
 
-      .media-meta {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        font-size: 13px;
-        color: var(--text-main);
-      }
-
-      .media-track-info {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-
-      .track-name {
-        font-weight: 600;
-        color: var(--accent);
-        font-size: 15px;
-      }
-
-      .track-number {
-        font-size: 11px;
-        color: var(--text-muted);
-      }
-
-      .media-badge {
-        font-size: 11px;
-        color: var(--text-muted);
-        background: rgba(255,255,255,0.05);
-        padding: 2px 6px;
-        border-radius: 4px;
-      }
+      .media-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+      .track-name { font-weight: 600; font-size: 14px; color: var(--text-main); }
+      .media-badge { font-size: 10px; background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; color: var(--text-muted); }
 
       .drive-embed-container {
         position: relative;
         width: 100%;
         height: 0;
-        padding-bottom: 56.25%; 
-        background: rgba(0,0,0,0.3);
+        padding-bottom: 56.25%;
+        background: #000;
         border-radius: 8px;
         overflow: hidden;
       }
+      .drive-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-      .drive-embed-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
+      footer { padding: 20px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
 
-      /* ===== Language visibility ===== */
-      html[data-lang="en"] .hebrew, html[data-lang="en"] .he { display: none; }
-      html[data-lang="he"] .english, html[data-lang="he"] .en { display: none; }
-
-      footer {
-        border-top: 1px solid var(--border-color);
-        padding: 18px 6vw 22px 6vw;
-        font-size: 13px;
-        color: var(--text-muted);
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: space-between;
-        background: rgba(3, 3, 8, 0.98);
-      }
-
-      .footer-left, .footer-right {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px 16px;
-        align-items: center;
-      }
+      html[data-lang="en"] .he { display: none; }
+      html[data-lang="he"] .en { display: none; }
     </style>
   </head>
 
@@ -271,227 +129,129 @@
     <header>
       <div class="logo-title">
         <span>TZVIKA JOHNNY</span>
-        <span>Multimodal creative technologist</span>
+        <span class="he">מולטי־מודל קריאייטיב</span>
+        <span class="en">Multimodal Creative</span>
       </div>
-
       <nav>
-        <a href="../index.html" class="nav-link">
-          <span class="english">Home</span>
-          <span class="hebrew">ראשי</span>
-        </a>
-        <a href="creative.html" class="nav-link">
-          <span class="english">Creative</span>
-          <span class="hebrew">קריאייטיב</span>
-        </a>
-        <a href="lessons.html" class="nav-link">
-          <span class="english">Clients</span>
-          <span class="hebrew">לקוחות</span>
-        </a>
-        <a href="podcasts.html" class="nav-link">
-          <span class="english">Podcasts</span>
-          <span class="hebrew">פודקאסטים</span>
-        </a>
-        <a href="posttrauma.html" class="nav-link">
-          <span class="english">Post-Trauma</span>
-          <span class="hebrew">פוסט־טראומה</span>
-        </a>
-        <a href="satire.html" class="nav-link">
-          <span class="english">Satire</span>
-          <span class="hebrew">סאטירה</span>
-        </a>
-        <a href="songs.html" class="nav-link active">
-          <span class="english">Songs</span>
-          <span class="hebrew">שירים</span>
-        </a>
-        <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
+        <a href="songs.html" class="nav-link active"><span class="he">שירים</span><span class="en">Songs</span></a>
+        <button class="language-toggle" id="langToggle">HE / EN</button>
       </nav>
     </header>
 
     <main>
       <section class="content-card">
-        <div class="content-inner">
-          <div class="pill-label">
-            <span class="pill-dot"></span>
-            <span>Words & Melody</span>
-          </div>
-
-          <h1 class="he">שירים שיצרתי</h1>
-          <h2 class="he">חיבור בין מילים לנשימה</h2>
-
-          <h1 class="en">Original Songs</h1>
-          <h2 class="en">Words, music, and breath</h2>
-
-          <div class="text-block he">
-            כאן נמצאים השירים המקוריים שלי. טקסטים שנולדים מרגש, חוויה או רגע קטן שנתפס והפך לשיר.
-          </div>
-          <div class="text-block he">
-            הכתיבה שלי משלבת כנות, משחקי מילים וקצב טבעי, בלי פוזות ובלי נוסחאות. לפעמים זה אישי ושקט, לפעמים חד ובועט אבל תמיד אמיתי.
-          </div>
-          <div class="text-block he">
-            כל שיר נבנה מתוך חיבור בין מילים, מוזיקה ונשימה. המטרה היא לא רק להישמע טוב, אלא להרגיש נכון ולהישאר רגע נוסף אצל מי שמקשיב.
-          </div>
-
-          <h3 class="he">פארודיה וסאטירה</h3>
-          <div class="text-block he">
-            זו הזירה שבה מוזיקה פוגשת הומור חד ומודעות עצמית. כאן אני יוצר שירי פארודיה וסאטירה שמבוססים על מציאות יומיומית, תרבות פופולרית ואבסורדים שכולנו מזהים.
-          </div>
-
-          <div class="text-block en">
-            Here are my original songs. Lyrics born from emotion, experience, or a small moment captured and turned into a song.
-          </div>
-          <div class="text-block en">
-            My writing combines honesty, wordplay, and natural rhythm—no posing, no formulas. Sometimes personal and quiet, sometimes sharp and kicking, but always real.
-          </div>
-
-          <h3 class="en">Parody & Satire</h3>
-          <div class="text-block en">
-            This is the arena where music meets sharp humor and self-awareness. Here I create parody and satire songs based on everyday reality, pop culture, and the absurdities we all recognize.
-          </div>
+        <div class="pill-label"><span class="pill-dot"></span><span>Words & Melody</span></div>
+        <h1 class="he">שירים שיצרתי</h1>
+        <h1 class="en">Original Songs</h1>
+        <h2 class="he">חיבור בין מילים לנשימה</h2>
+        <h2 class="en">Words, music, and breath</h2>
+        
+        <div class="text-block he">
+          כאן נמצאים השירים המקוריים שלי. טקסטים שנולדים מרגש, חוויה או רגע קטן שנתפס והפך לשיר. הכתיבה שלי משלבת כנות, משחקי מילים וקצב טבעי.
+        </div>
+        <div class="text-block en">
+          Here are my original songs. Lyrics born from emotion, experience, or a small moment captured and turned into a song. My writing combines honesty and natural rhythm.
         </div>
       </section>
 
       <aside class="media-card">
-        <div class="media-card-header">
-          <div>
-            <div class="media-title">
-              <span class="he">נגן</span>
-              <span class="en">Player</span>
-            </div>
-            <div class="media-sub">
-              <span class="he">וידאו ואודיו</span>
-              <span class="en">Video & Audio</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="media-list" id="mediaList">
+        <div id="mediaContainer">
           </div>
       </aside>
     </main>
 
     <footer>
-      <div class="footer-left he">
-        <span>© Tzvika Johnny</span>
-        <span>מולטי־מודל קריאייטיב טכנולוגיסט</span>
-      </div>
-      <div class="footer-right">
-        <span class="he">להישאר רגע נוסף אצל מי שמקשיב.</span>
-        <a href="mailto:tzvika@example.com">tzvika@example.com</a>
-      </div>
+      <span>© Tzvika Johnny</span>
+      <span class="he">להישאר רגע נוסף אצל מי שמקשיב.</span>
     </footer>
 
     <script>
-      // ===== Language toggle =====
+      const mediaTracks = [
+        {
+          url: "https://drive.google.com/file/d/1OJzWFPxjJdy1pmBZr-utlSsRNih0Ka7z/view",
+          titleHe: "שיר מהלב 1",
+          titleEn: "Heart Song 1",
+          category: "heart"
+        },
+        {
+          url: "https://drive.google.com/file/d/1zUGCnSIJBMdsVS4l-v2TDYAfyCFRvurd/view",
+          titleHe: "שיר מהלב 2",
+          titleEn: "Heart Song 2",
+          category: "heart"
+        },
+        {
+          url: "https://drive.google.com/file/d/1np8jDUPZeBxOf9EDn0BlR1XWjI8VVwrl/view",
+          titleHe: "סאטירה 1",
+          titleEn: "Satire 1",
+          category: "satire"
+        },
+        {
+          url: "https://drive.google.com/file/d/1z3QhKy2kXEC89TRp16RjQuzeoQH7DzmZ/view",
+          titleHe: "סאטירה 2",
+          titleEn: "Satire 2",
+          category: "satire"
+        },
+        {
+          url: "https://drive.google.com/file/d/1JyTLB6MjLK0Az7c9queWMY_uZe_a2GD_/view",
+          titleHe: "סאטירה 3",
+          titleEn: "Satire 3",
+          category: "satire"
+        }
+      ];
+
       const langBtn = document.getElementById("langToggle");
       const root = document.documentElement;
-
       function setLang(lang) {
         root.setAttribute("data-lang", lang);
-        root.setAttribute("lang", lang);
         root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
-        try { localStorage.setItem("lang", lang); } catch {}
         langBtn.textContent = lang === "he" ? "EN / HE" : "HE / EN";
       }
-
       langBtn.addEventListener("click", () => {
         const current = root.getAttribute("data-lang") || "he";
         setLang(current === "he" ? "en" : "he");
       });
 
-      const savedLang = (() => { try { return localStorage.getItem("lang"); } catch { return null; } })();
-      setLang(savedLang || "he");
-
-      // ===== Drive helpers =====
       function extractDriveFileId(url) {
-        try {
-          const u = new URL(url);
-          if (u.hostname.includes("drive.google.com")) {
-            if (u.pathname.includes("/file/d/")) {
-              const m = u.pathname.match(/\/file\/d\/([^/]+)/);
-              return m ? m[1] : null;
-            }
-          }
-        } catch {}
-        return null;
+        const m = url.match(/\/file\/d\/([^/]+)/);
+        return m ? m[1] : null;
       }
 
-      function drivePreviewUrl(fileId) {
-        return `https://drive.google.com/file/d/${encodeURIComponent(fileId)}/preview`;
+      const container = document.getElementById("mediaContainer");
+
+      function createSection(type, titleHe, titleEn) {
+        const section = document.createElement("div");
+        section.innerHTML = `
+          <div class="category-header">
+            <span class="he">${titleHe}</span>
+            <span class="en">${titleEn}</span>
+          </div>
+          <div class="media-list" id="list-${type}"></div>
+        `;
+        container.appendChild(section);
+        return document.getElementById(`list-${type}`);
       }
 
-      // ===== רשימת השירים - כאן אתה מעדכן את השמות =====
-      const mediaTracks = [
-        {
-          url: "https://drive.google.com/file/d/1OJzWFPxjJdy1pmBZr-utlSsRNih0Ka7z/view?usp=drive_link",
-          titleHe: "אנושי",
-          titleEn: "emoshi"
-        },
-        {
-          url: "https://drive.google.com/file/d/1zUGCnSIJBMdsVS4l-v2TDYAfyCFRvurd/view?usp=drive_link",
-          titleHe: "רק מה שאת אוהבת",
-          titleEn: "rak ma she-at hoevet"
-        },
-        {
-          url: "https://drive.google.com/file/d/1np8jDUPZeBxOf9EDn0BlR1XWjI8VVwrl/view?usp=drive_link",
-          titleHe: "שם השיר השלישי",
-          titleEn: "Third Song Name"
-        },
-        {
-          url: "https://drive.google.com/file/d/1z3QhKy2kXEC89TRp16RjQuzeoQH7DzmZ/view?usp=drive_link",
-          titleHe: "שם השיר הרביעי",
-          titleEn: "Fourth Song Name"
-        },
-        {
-          url: "https://drive.google.com/file/d/1JyTLB6MjLK0Az7c9queWMY_uZe_a2GD_/view?usp=drive_link",
-          titleHe: "שם השיר החמישי",
-          titleEn: "Fifth Song Name"
-         },
-        {
-          url: "https://drive.google.com/file/d/1oJTrf3vFjEiefU7vvxX1l6_DwvA_yvBb/view?usp=drive_link",
-          titleHe: "רוצה קט*נ*ת",
-          titleEn: "Fifth Song Name"
-        }
-      ];
+      const heartList = createSection("heart", "❤️ שירים מהלב", "❤️ Heart Songs");
+      const satireList = createSection("satire", "🎭 סאטירה והומור", "🎭 Satire & Humor");
 
-      // ===== Render Media Players =====
-      const listContainer = document.getElementById("mediaList");
-
-      mediaTracks.forEach((track, idx) => {
+      mediaTracks.forEach(track => {
         const id = extractDriveFileId(track.url);
         if (!id) return;
-
+        const targetList = track.category === "satire" ? satireList : heartList;
         const item = document.createElement("div");
         item.className = "media-item";
-
-        const meta = document.createElement("div");
-        meta.className = "media-meta";
-        meta.innerHTML = `
-          <div class="media-track-info">
-             <span class="he track-name">${track.titleHe}</span>
-             <span class="en track-name">${track.titleEn}</span>
-             <span class="track-number">Track ${idx + 1}</span>
+        item.innerHTML = `
+          <div class="media-meta">
+            <span class="he track-name">${track.titleHe}</span>
+            <span class="en track-name">${track.titleEn}</span>
+            <span class="media-badge">${track.category}</span>
           </div>
-          <span class="media-badge">Drive Player</span>
+          <div class="drive-embed-container">
+            <iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy"></iframe>
+          </div>
         `;
-
-        const embedBox = document.createElement("div");
-        embedBox.className = "drive-embed-container";
-        
-        const iframe = document.createElement("iframe");
-        iframe.src = drivePreviewUrl(id);
-        iframe.allow = "autoplay";
-        iframe.title = track.titleEn;
-        iframe.loading = "lazy";
-
-        embedBox.appendChild(iframe);
-        item.appendChild(meta);
-        item.appendChild(embedBox);
-        listContainer.appendChild(item);
+        targetList.appendChild(item);
       });
     </script>
   </body>
 </html>
-
-
-
-
