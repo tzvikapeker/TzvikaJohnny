@@ -28,7 +28,6 @@
         flex-direction: column;
       }
 
-      /* תפריט ניווט עליון */
       header {
         padding: 16px 24px;
         display: flex;
@@ -80,7 +79,6 @@
       h2 { margin: 5px 0 20px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
       .text-block { font-size: 15px; line-height: 1.7; margin-bottom: 15px; color: var(--text-main); }
 
-      /* עיצוב נגני המוזיקה בצד */
       .media-card {
         background: rgba(10, 10, 18, 0.96);
         border-radius: 20px;
@@ -126,9 +124,9 @@
   <body>
     <header>
       <div class="logo-title">
-        <span>TZVIKA JOHNNY</span>
-        <span class="he">מולטי־מודל קריאייטיב</span>
-        <span class="en">Multimodal Creative</span>
+        <span>TZVIKA JOHNNY PEKER</span>
+        <span class="he">מולטי־מודל קריאייטיב טכנולוגיסט</span>
+        <span class="en">Multimodal Creative Technologist</span>
       </div>
       <nav>
         <a href="../index.html" class="nav-link"><span class="en">Home</span><span class="he">ראשי</span></a>
@@ -165,19 +163,18 @@
     </main>
 
     <footer>
-      <span>© Tzvika Johnny</span>
+      <span>© Tzvika Johnny Peker</span>
       <span class="he">להישאר רגע נוסף אצל מי שמקשיב.</span>
     </footer>
 
     <script>
-      // הוספת השירים לפי קטגוריות
+      // 5 השירים שלך מחולקים ל-2 קטגוריות (בלי פוסט-טראומה)
       const mediaTracks = [
         { url: "https://drive.google.com/file/d/1OJzWFPxjJdy1pmBZr-utlSsRNih0Ka7z/view", titleHe: "שיר מהלב 1", titleEn: "Heart Song 1", category: "heart" },
         { url: "https://drive.google.com/file/d/1zUGCnSIJBMdsVS4l-v2TDYAfyCFRvurd/view", titleHe: "שיר מהלב 2", titleEn: "Heart Song 2", category: "heart" },
         { url: "https://drive.google.com/file/d/1np8jDUPZeBxOf9EDn0BlR1XWjI8VVwrl/view", titleHe: "סאטירה 1", titleEn: "Satire 1", category: "satire" },
         { url: "https://drive.google.com/file/d/1z3QhKy2kXEC89TRp16RjQuzeoQH7DzmZ/view", titleHe: "סאטירה 2", titleEn: "Satire 2", category: "satire" },
-        { url: "https://drive.google.com/file/d/1JyTLB6MjLK0Az7c9queWMY_uZe_a2GD_/view", titleHe: "סאטירה 3", titleEn: "Satire 3", category: "satire" },
-        { url: "https://drive.google.com/file/d/1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q/view", titleHe: "פוסט-טראומה 1", titleEn: "Post-Trauma 1", category: "trauma" }
+        { url: "https://drive.google.com/file/d/1JyTLB6MjLK0Az7c9queWMY_uZe_a2GD_/view", titleHe: "סאטירה 3", titleEn: "Satire 3", category: "satire" }
       ];
 
       function extractDriveFileId(url) {
@@ -200,15 +197,15 @@
         return document.getElementById(`list-${type}`);
       }
 
+      // יצירת 2 רשימות השירים
       const heartList = createSection("heart", "❤️ שירים מהלב", "❤️ Heart Songs");
       const satireList = createSection("satire", "🎭 סאטירה והומור", "🎭 Satire & Humor");
-      const traumaList = createSection("trauma", "🎗️ פוסט-טראומה", "🎗️ Post-Trauma");
 
       mediaTracks.forEach(track => {
         const id = extractDriveFileId(track.url);
         if (!id) return;
         
-        let targetList = (track.category === "satire") ? satireList : (track.category === "trauma") ? traumaList : heartList;
+        const targetList = (track.category === "satire") ? satireList : heartList;
 
         const item = document.createElement("div");
         item.className = "media-item";
@@ -237,7 +234,8 @@
         const current = root.getAttribute("data-lang") || "he";
         setLang(current === "he" ? "en" : "he");
       });
-      setLang(localStorage.getItem("lang") || "he");
+      const savedLang = localStorage.getItem("lang") || "he";
+      setLang(savedLang);
     </script>
   </body>
 </html>
