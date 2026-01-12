@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl" data-lang="he">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-GTHDTELYGW');
-</script>
+    <meta charset="UTF-8" />
+    <title>Original Songs – Tzvika Johnny</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
     <style>
       :root {
         --bg-color: #050608;
@@ -30,6 +28,7 @@
         flex-direction: column;
       }
 
+      /* תפריט ניווט עליון */
       header {
         padding: 16px 24px;
         display: flex;
@@ -37,21 +36,24 @@
         justify-content: space-between;
         border-bottom: 1px solid var(--border-color);
         backdrop-filter: blur(16px);
-        background: rgba(5, 6, 8, 0.85);
+        background: rgba(5, 6, 8, 0.92);
         position: sticky;
         top: 0;
-        z-index: 20;
+        z-index: 100;
+        gap: 14px;
+        flex-wrap: wrap;
       }
 
-      .logo-title { display: flex; flex-direction: column; }
+      .logo-title { display: flex; flex-direction: column; gap: 2px; }
       .logo-title span:first-child { font-weight: 600; font-size: 13px; color: var(--text-muted); text-transform: uppercase; }
       .logo-title span:last-child { font-weight: 500; font-size: 15px; }
 
-      nav { display: flex; gap: 10px; }
-      .nav-link { font-size: 14px; padding: 6px 12px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; }
+      nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+      .nav-link { font-size: 13px; padding: 6px 12px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; transition: 0.2s; }
+      .nav-link:hover { color: var(--accent); background: rgba(255, 255, 255, 0.05); }
       .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.1); color: var(--accent); }
 
-      .language-toggle { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border-color); cursor: pointer; background: #0a0a10; color: var(--text-muted); font-size: 12px; }
+      .language-toggle { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border-color); cursor: pointer; background: #0a0a10; color: var(--text-muted); font-size: 11px; }
 
       main {
         flex: 1;
@@ -61,7 +63,7 @@
         gap: 28px;
       }
 
-      @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+      @media (max-width: 1100px) { main { grid-template-columns: 1fr; } }
 
       .content-card {
         background: var(--card-bg);
@@ -78,6 +80,7 @@
       h2 { margin: 5px 0 20px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
       .text-block { font-size: 15px; line-height: 1.7; margin-bottom: 15px; color: var(--text-main); }
 
+      /* עיצוב נגני המוזיקה בצד */
       .media-card {
         background: rgba(10, 10, 18, 0.96);
         border-radius: 20px;
@@ -86,28 +89,21 @@
       }
 
       .category-header {
-        margin: 25px 0 15px;
-        padding-bottom: 8px;
+        margin: 25px 0 12px;
+        padding-bottom: 6px;
         border-bottom: 1px solid var(--accent-soft);
-        font-size: 16px;
+        font-size: 15px;
         color: var(--accent);
         display: flex;
         align-items: center;
         gap: 8px;
       }
 
-      .media-list { display: flex; flex-direction: column; gap: 15px; }
-
-      .media-item {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid var(--border-color);
-        border-radius: 12px;
-        padding: 12px;
-      }
-
-      .media-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-      .track-name { font-weight: 600; font-size: 14px; color: var(--text-main); }
-      .media-badge { font-size: 10px; background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; color: var(--text-muted); }
+      .media-list { display: flex; flex-direction: column; gap: 12px; }
+      .media-item { background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 12px; padding: 10px; }
+      .media-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+      .track-name { font-weight: 600; font-size: 13px; color: var(--text-main); }
+      .media-badge { font-size: 9px; background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; color: var(--text-muted); text-transform: uppercase; }
 
       .drive-embed-container {
         position: relative;
@@ -115,7 +111,7 @@
         height: 0;
         padding-bottom: 56.25%;
         background: #000;
-        border-radius: 8px;
+        border-radius: 6px;
         overflow: hidden;
       }
       .drive-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
@@ -128,12 +124,6 @@
   </head>
 
   <body>
-    <nav style="text-align: center; padding: 20px; background: rgba(255,255,255,0.1);">
-    <a href="../index.html" style="color: white; margin: 10px; text-decoration: none;">חזרה לדף הבית</a>
-    <a href="podcasts.html" style="color: white; margin: 10px; text-decoration: none;">פודקאסטים</a>
-    <a href="satire.html" style="color: white; margin: 10px; text-decoration: none;">סאטירה</a>
-    <a href="songs.html" style="color: white; margin: 10px; text-decoration: none;">שירים</a>
-</nav>
     <header>
       <div class="logo-title">
         <span>TZVIKA JOHNNY</span>
@@ -141,8 +131,14 @@
         <span class="en">Multimodal Creative</span>
       </div>
       <nav>
-        <a href="songs.html" class="nav-link active"><span class="he">שירים</span><span class="en">Songs</span></a>
-        <button class="language-toggle" id="langToggle">HE / EN</button>
+        <a href="../index.html" class="nav-link"><span class="en">Home</span><span class="he">ראשי</span></a>
+        <a href="creative.html" class="nav-link"><span class="en">My Creative</span><span class="he">קריאייטיב שלי</span></a>
+        <a href="lessons.html" class="nav-link"><span class="en">Clients</span><span class="he">לקוחות מותחים את הגבולות</span></a>
+        <a href="podcasts.html" class="nav-link"><span class="en">Podcasts</span><span class="he">פודקאסטים</span></a>
+        <a href="posttrauma.html" class="nav-link"><span class="en">Post-Trauma</span><span class="he">פוסטראומה יחסנו לאן</span></a>
+        <a href="satire.html" class="nav-link"><span class="en">Satire</span><span class="he">סאטירה</span></a>
+        <a href="songs.html" class="nav-link active"><span class="en">Songs</span><span class="he">שירים</span></a>
+        <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
       </nav>
     </header>
 
@@ -155,10 +151,10 @@
         <h2 class="en">Words, music, and breath</h2>
         
         <div class="text-block he">
-          כאן נמצאים השירים המקוריים שלי. טקסטים שנולדים מרגש, חוויה או רגע קטן שנתפס והפך לשיר. הכתיבה שלי משלבת כנות, משחקי מילים וקצב טבעי.
+          כאן נמצאים השירים המקוריים שלי. טקסטים שנולדים מרגש, חוויה או רגע קטן שנתפס והפך לשיר.
         </div>
         <div class="text-block en">
-          Here are my original songs. Lyrics born from emotion, experience, or a small moment captured and turned into a song. My writing combines honesty and natural rhythm.
+          Here are my original songs. Lyrics born from emotion, experience, or a small moment captured and turned into a song.
         </div>
       </section>
 
@@ -174,50 +170,15 @@
     </footer>
 
     <script>
+      // הוספת השירים לפי קטגוריות
       const mediaTracks = [
-        {
-          url: "https://drive.google.com/file/d/1OJzWFPxjJdy1pmBZr-utlSsRNih0Ka7z/view",
-          titleHe: "אנושי",
-          titleEn: "Heart Song 1",
-          category: "heart"
-        },
-        {
-          url: "https://drive.google.com/file/d/1zUGCnSIJBMdsVS4l-v2TDYAfyCFRvurd/view",
-          titleHe: "דואט גלי עטרי עם אייל",
-          titleEn: "GALI ATARI FEAT EYAL GOLAN",
-          category: "satire"
-        },
-        {
-          url: "https://drive.google.com/file/d/1np8jDUPZeBxOf9EDn0BlR1XWjI8VVwrl/view",
-          titleHe: "אשם - סינרגיה בדואט עם אייל גולן",
-          titleEn: "SINERGIA FEAT EYAL GOLAN",
-          category: "satire"
-        },
-        {
-          url: "https://drive.google.com/file/d/1z3QhKy2kXEC89TRp16RjQuzeoQH7DzmZ/view",
-          titleHe: "שבורים",
-          titleEn: "BROKEN",
-          category: "heart"
-        },
-        {
-          url: "https://drive.google.com/file/d/1JyTLB6MjLK0Az7c9queWMY_uZe_a2GD_/view",
-          titleHe: "אמיתית עם עצמי",
-          titleEn: "AUTHENTIC WITH MYSELF AND I",
-          category: "satire / PARODY"
-        }
+        { url: "https://drive.google.com/file/d/1OJzWFPxjJdy1pmBZr-utlSsRNih0Ka7z/view", titleHe: "שיר מהלב 1", titleEn: "Heart Song 1", category: "heart" },
+        { url: "https://drive.google.com/file/d/1zUGCnSIJBMdsVS4l-v2TDYAfyCFRvurd/view", titleHe: "שיר מהלב 2", titleEn: "Heart Song 2", category: "heart" },
+        { url: "https://drive.google.com/file/d/1np8jDUPZeBxOf9EDn0BlR1XWjI8VVwrl/view", titleHe: "סאטירה 1", titleEn: "Satire 1", category: "satire" },
+        { url: "https://drive.google.com/file/d/1z3QhKy2kXEC89TRp16RjQuzeoQH7DzmZ/view", titleHe: "סאטירה 2", titleEn: "Satire 2", category: "satire" },
+        { url: "https://drive.google.com/file/d/1JyTLB6MjLK0Az7c9queWMY_uZe_a2GD_/view", titleHe: "סאטירה 3", titleEn: "Satire 3", category: "satire" },
+        { url: "https://drive.google.com/file/d/1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q/view", titleHe: "פוסט-טראומה 1", titleEn: "Post-Trauma 1", category: "trauma" }
       ];
-
-      const langBtn = document.getElementById("langToggle");
-      const root = document.documentElement;
-      function setLang(lang) {
-        root.setAttribute("data-lang", lang);
-        root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
-        langBtn.textContent = lang === "he" ? "EN / HE" : "HE / EN";
-      }
-      langBtn.addEventListener("click", () => {
-        const current = root.getAttribute("data-lang") || "he";
-        setLang(current === "he" ? "en" : "he");
-      });
 
       function extractDriveFileId(url) {
         const m = url.match(/\/file\/d\/([^/]+)/);
@@ -241,11 +202,14 @@
 
       const heartList = createSection("heart", "❤️ שירים מהלב", "❤️ Heart Songs");
       const satireList = createSection("satire", "🎭 סאטירה והומור", "🎭 Satire & Humor");
+      const traumaList = createSection("trauma", "🎗️ פוסט-טראומה", "🎗️ Post-Trauma");
 
       mediaTracks.forEach(track => {
         const id = extractDriveFileId(track.url);
         if (!id) return;
-        const targetList = track.category === "satire" ? satireList : heartList;
+        
+        let targetList = (track.category === "satire") ? satireList : (track.category === "trauma") ? traumaList : heartList;
+
         const item = document.createElement("div");
         item.className = "media-item";
         item.innerHTML = `
@@ -260,11 +224,20 @@
         `;
         targetList.appendChild(item);
       });
+
+      // לוגיקת שפה
+      const langBtn = document.getElementById("langToggle");
+      const root = document.documentElement;
+      function setLang(lang) {
+        root.setAttribute("data-lang", lang);
+        root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+        langBtn.textContent = lang === "he" ? "EN / HE" : "HE / EN";
+      }
+      langBtn.addEventListener("click", () => {
+        const current = root.getAttribute("data-lang") || "he";
+        setLang(current === "he" ? "en" : "he");
+      });
+      setLang(localStorage.getItem("lang") || "he");
     </script>
   </body>
 </html>
-
-
-
-
-
