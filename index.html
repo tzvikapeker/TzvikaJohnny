@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" data-lang="en">
 <head>
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-GTHDTELYGW');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GTHDTELYGW');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tzvika Johnny Peker | צביקה ג׳וני פקר</title>
@@ -20,13 +20,11 @@
       --text-main: #f8f8ff;
       --text-muted: #b7b7c7;
       --accent: #ffb86c;
+      --accent-soft: rgba(255, 184, 108, 0.14);
       --card-glass: rgba(22, 22, 30, 0.85);
       --border-light: rgba(255, 255, 255, 0.15);
-      --card-width: 260px; /* Width of a card */
-      --card-height: 380px; /* Height of a card */
-      /* Z-distance pushed out from center. 
-         Formula: (CardWidth / 2) / tan(180 / NumberOfItems). 
-         For 6 items: ~225px. We add extra for spacing. */
+      --card-width: 260px;
+      --card-height: 380px;
       --z-distance: 360px; 
     }
 
@@ -43,20 +41,49 @@
       overflow-x: hidden;
     }
 
-    /* ===== Language Button ===== */
+    /* ===== Header & Nav ===== */
+    header {
+      width: 100%;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-light);
+      backdrop-filter: blur(16px);
+      background: rgba(5, 6, 8, 0.7);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    
+    .nav-link { 
+      font-size: 13px; 
+      padding: 6px 12px; 
+      border-radius: 999px; 
+      color: var(--text-muted); 
+      text-decoration: none; 
+      border: 1px solid transparent; 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 6px; 
+      white-space: nowrap;
+      transition: 0.3s;
+    }
+    
+    .nav-link:hover { color: var(--accent); background: rgba(255, 255, 255, 0.05); }
+    .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.1); color: var(--accent); }
+
     #language-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border-light);
       color: var(--text-muted);
       padding: 6px 14px;
       border-radius: 20px;
       cursor: pointer;
-      font-family: inherit;
+      font-size: 11px;
       transition: all 0.3s ease;
-      z-index: 100;
     }
     #language-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -64,7 +91,6 @@
     html[data-lang="he"] { direction: rtl; }
     html[data-lang="en"] .hebrew { display: none; }
     html[data-lang="he"] .english { display: none; }
-    html[data-lang="he"] #language-toggle { right: auto; left: 20px; }
 
     /* ===== Layout ===== */
     .container {
@@ -73,41 +99,23 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
-      padding: 40px 20px;
+      padding: 60px 20px;
       position: relative;
     }
 
-    h1 {
-      font-weight: 700;
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      margin-bottom: 5px;
-      text-align: center;
-      letter-spacing: 1px;
-      z-index: 10;
-    }
+    h1 { font-weight: 700; font-size: clamp(1.8rem, 5vw, 3rem); margin-bottom: 5px; text-align: center; }
+    h2 { font-weight: 300; font-size: clamp(1rem, 3vw, 1.2rem); color: var(--text-muted); margin-bottom: 20px; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
 
-    h2 {
-      font-weight: 300;
-      font-size: clamp(1rem, 3vw, 1.4rem);
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      z-index: 10;
-    }
-
-    /* ===== 3D CAROUSEL CONTAINER ===== */
+    /* ===== 3D CAROUSEL ===== */
     .carousel-container {
       position: relative;
       width: 100%;
-      height: 500px; /* Space for the 3D sphere */
-      perspective: 1000px; /* Depth of field */
+      height: 500px;
+      perspective: 1000px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 40px 0;
+      margin: 20px 0;
     }
 
     .carousel {
@@ -115,48 +123,34 @@
       height: var(--card-height);
       position: absolute;
       transform-style: preserve-3d;
-      transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1); /* Smooth snap effect */
+      transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
-    /* The Individual Card */
     .carousel-item {
       position: absolute;
       width: var(--card-width);
       height: var(--card-height);
-      left: 0;
-      top: 0;
       border-radius: 16px;
       background: var(--card-glass);
       border: 1px solid var(--border-light);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      /* This is critical: ensures image is visible but back is hidden if we wanted */
       backface-visibility: hidden; 
       display: flex;
       flex-direction: column;
       overflow: hidden;
       cursor: pointer;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      transition: 0.3s;
     }
 
-    .carousel-item:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 25px rgba(255, 184, 108, 0.3);
-    }
+    .carousel-item:hover { border-color: var(--accent); box-shadow: 0 0 25px rgba(255, 184, 108, 0.3); }
 
-    .card-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.8);
-      transition: filter 0.3s;
-    }
+    .card-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); transition: 0.3s; }
     .carousel-item:hover .card-img { filter: brightness(1); }
 
     .card-label {
       position: absolute;
       bottom: 0;
       width: 100%;
-      padding: 15px;
+      padding: 20px 10px;
       background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
       text-align: center;
       color: white;
@@ -164,7 +158,6 @@
       font-size: 1.1rem;
     }
 
-    /* Navigation Buttons for the 3D Wheel */
     .nav-btn {
       position: absolute;
       top: 50%;
@@ -177,10 +170,7 @@
       border-radius: 50%;
       font-size: 24px;
       cursor: pointer;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      z-index: 10;
       transition: 0.2s;
     }
     .nav-btn:hover { background: var(--accent); color: black; }
@@ -196,43 +186,38 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      backdrop-filter: blur(10px);
-      margin-top: auto;
-      z-index: 10;
+      margin-top: 40px;
     }
 
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      font-size: 0.9rem;
-    }
-    .contact-details a { color: var(--text-muted); transition: 0.3s; }
+    .contact-details { display: flex; flex-direction: column; gap: 5px; font-size: 0.9rem; }
+    .contact-details a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
     .contact-details a:hover { color: var(--accent); }
-    .contact-info img { border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
 
-    @media (max-width: 700px) {
-      :root {
-        --card-width: 320px;
-        --card-height: 320px;
-        --z-distance: 280px; 
-      }
-      .carousel-container { height: 400px; }
-      .contact-info { flex-direction: column; text-align: center; }
-      .nav-btn { width: 40px; height: 40px; }
+    @media (max-width: 900px) {
+      header { flex-direction: column; gap: 15px; padding: 10px; }
+      nav { justify-content: center; }
+      :root { --z-distance: 280px; --card-width: 220px; }
     }
   </style>
 </head>
 <body>
-  <nav style="text-align: center; padding: 20px; background: rgba(255,255,255,0.1);">
-    <a href="index.html" style="color: #ffb86c; margin: 10px; text-decoration: none; font-weight: bold;">בית</a>
-    <a href="pages/podcasts.html" style="color: white; margin: 10px; text-decoration: none;">פודקאסטים</a>
-    <a href="pages/satire.html" style="color: white; margin: 10px; text-decoration: none;">סאטירה</a>
-    <a href="pages/songs.html" style="color: white; margin: 10px; text-decoration: none;">שירים</a>
-    <a href="pages/creative.html" style="color: white; margin: 10px; text-decoration: none;">קריאייטיב</a>
-</nav>
-  
-  <button id="language-toggle">עברית / English</button>
+
+  <header>
+    <div class="logo-title">
+      <span class="english" style="font-weight: 700; color: var(--accent);">TZVIKA JOHNNY</span>
+      <span class="hebrew" style="font-weight: 700; color: var(--accent);">צביקה ג׳וני פקר</span>
+    </div>
+    <nav>
+      <a href="index.html" class="nav-link active"><span class="english">Home</span><span class="hebrew">ראשי</span></a>
+      <a href="pages/creative.html" class="nav-link"><span class="english">My Creative</span><span class="hebrew">קריאייטיב שלי</span></a>
+      <a href="pages/lessons.html" class="nav-link"><span class="english">Clients</span><span class="hebrew">לקוחות מותחים את הגבולות</span></a>
+      <a href="pages/podcasts.html" class="nav-link"><span class="english">Podcasts</span><span class="hebrew">פודקאסטים</span></a>
+      <a href="pages/posttrauma.html" class="nav-link"><span class="english">Post-Trauma</span><span class="hebrew">פוסטראומה יחסנו לאן</span></a>
+      <a href="pages/satire.html" class="nav-link"><span class="english">Satire</span><span class="hebrew">סאטירה</span></a>
+      <a href="pages/songs.html" class="nav-link"><span class="english">Songs</span><span class="hebrew">שירים</span></a>
+      <button id="language-toggle">HE / EN</button>
+    </nav>
+  </header>
   
   <div class="container">
     <h1>
@@ -246,150 +231,64 @@
     
     <div class="carousel-container">
       <button class="nav-btn prev" id="prevBtn">❮</button>
-      
-      <div class="carousel" id="carousel">
-        <!-- Dynamic 3D Items injected here -->
-      </div>
-      
+      <div class="carousel" id="carousel"></div>
       <button class="nav-btn next" id="nextBtn">❯</button>
     </div>
-
-    <!-- Placeholder for floating quotes (optional visual flair) -->
-    <div id="floating-quotes-container"></div>
 
     <div class="contact-info">
       <div class="contact-details">
         <a href="https://wa.me/972528359966" target="_blank">WhatsApp: +972 52 8359966</a>
-        <a href="mailto:Tzvikasp2013@gmail.com" class="email-link">Tzvikasp2013@gmail.com</a>
+        <a href="mailto:Tzvikasp2013@gmail.com">Tzvikasp2013@gmail.com</a>
       </div>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://wa.me/972528359966" alt="WhatsApp QR Code">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://wa.me/972528359966" alt="QR">
     </div>
   </div>
 
   <script>
-    // ===== CONFIGURATION =====
     const data = [
-      {
-        en: "Creative Work",
-        he: "יצירה אישית",
-        link: "pages/creative.html",
-        imgId: "1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw"
-      },
-      {
-        en: "Clients",
-        he: "לקוחות",
-        link: "pages/lessons.html",
-        imgId: "1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J"
-      },
-      {
-        en: "Podcasts",
-        he: "פודקאסטים",
-        link: "pages/podcasts.html",
-        imgId: "1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon"
-      },
-      {
-        en: "Post-Trauma",
-        he: "פוסט־טראומה",
-        link: "pages/posttrauma.html",
-        imgId: "1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q"
-      },
-      {
-        en: "Satire",
-        he: "סאטירה",
-        link: "pages/satire.html",
-        imgId: "1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so"
-      },
-      {
-        en: "Songs",
-        he: "שירים",
-        link: "pages/songs.html",
-        imgId: "1Bx08pEL47s6mATgeDt2EP-epJq5fas5l"
-      }
+      { en: "My Creative", he: "קריאייטיב שלי", link: "pages/creative.html", imgId: "1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw" },
+      { en: "Clients", he: "לקוחות מותחים את הגבולות", link: "pages/lessons.html", imgId: "1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J" },
+      { en: "Podcasts", he: "פודקאסטים", link: "pages/podcasts.html", imgId: "1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon" },
+      { en: "Post-Trauma", he: "פוסטראומה יחסנו לאן", link: "pages/posttrauma.html", imgId: "1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q" },
+      { en: "Satire", he: "סאטירה", link: "pages/satire.html", imgId: "1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so" },
+      { en: "Songs", he: "שירים", link: "pages/songs.html", imgId: "1Bx08pEL47s6mATgeDt2EP-epJq5fas5l" }
     ];
 
     const carousel = document.getElementById('carousel');
-    const itemCount = data.length;
-    // 360 degrees divided by number of items (6) = 60 degrees per slice
-    const angleStep = 360 / itemCount; 
+    const angleStep = 360 / data.length; 
     let currentAngle = 0;
 
-    // Helper: Thumbnail URL
-    const getThumb = (id) => `https://drive.google.com/thumbnail?id=${id}&sz=w800`;
-
-    // ===== INITIALIZE 3D CAROUSEL =====
     data.forEach((item, index) => {
       const el = document.createElement('div');
       el.className = 'carousel-item';
-      
-      // Calculate rotation for this item
-      const rotation = angleStep * index;
-      // Apply the 3D transformation: Rotate Y, then push outward (Translate Z)
-      el.style.transform = `rotateY(${rotation}deg) translateZ(var(--z-distance))`;
-      
+      el.style.transform = `rotateY(${angleStep * index}deg) translateZ(var(--z-distance))`;
       el.innerHTML = `
-        <img src="${getThumb(item.imgId)}" class="card-img" alt="${item.en}">
+        <img src="https://drive.google.com/thumbnail?id=${item.imgId}&sz=w800" class="card-img">
         <div class="card-label">
           <span class="english">${item.en}</span>
           <span class="hebrew">${item.he}</span>
         </div>
       `;
-
-      // Click to Navigate
-      el.addEventListener('click', () => {
-        // Determine current "front" slot
-        const normalizedAngle = currentAngle % 360; 
-        
-        // Simple logic: If we are clicking a card, usually in 3D UX 
-        // you rotate it to front first, then click again to enter.
-        // For simplicity here, we just go to the link.
-        window.location.href = item.link;
-      });
-
+      el.onclick = () => window.location.href = item.link;
       carousel.appendChild(el);
     });
 
-    // ===== NAVIGATION CONTROLS =====
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+    const rotate = () => carousel.style.transform = `rotateY(${currentAngle}deg)`;
+    document.getElementById('prevBtn').onclick = () => { currentAngle += angleStep; rotate(); };
+    document.getElementById('nextBtn').onclick = () => { currentAngle -= angleStep; rotate(); };
 
-    function rotateCarousel() {
-      carousel.style.transform = `rotateY(${currentAngle}deg)`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-      currentAngle += angleStep; // Rotate "left"
-      rotateCarousel();
-    });
-
-    nextBtn.addEventListener('click', () => {
-      currentAngle -= angleStep; // Rotate "right"
-      rotateCarousel();
-    });
-
-    // ===== LANGUAGE TOGGLE =====
     const langBtn = document.getElementById('language-toggle');
     const root = document.documentElement;
-
-    function toggleLang() {
-      const current = root.getAttribute('data-lang');
-      const next = current === 'en' ? 'he' : 'en';
+    langBtn.onclick = () => {
+      const next = root.getAttribute('data-lang') === 'en' ? 'he' : 'en';
       root.setAttribute('data-lang', next);
       root.setAttribute('dir', next === 'he' ? 'rtl' : 'ltr');
-      try { localStorage.setItem('site-lang', next); } catch(e){}
-    }
+      localStorage.setItem('site-lang', next);
+    };
 
-    langBtn.addEventListener('click', toggleLang);
-
-    // Load Saved Lang
-    const saved = localStorage.getItem('site-lang') || 'en';
+    const saved = localStorage.getItem('site-lang') || 'he';
     root.setAttribute('data-lang', saved);
     root.setAttribute('dir', saved === 'he' ? 'rtl' : 'ltr');
-
   </script>
 </body>
 </html>
-
-
-
-
-
