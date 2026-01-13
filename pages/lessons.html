@@ -84,7 +84,6 @@
       h1 { margin: 0; font-size: 28px; font-weight: 700; }
       h2 { margin: 8px 0 24px; font-size: 18px; color: var(--text-muted); font-weight: 300; }
 
-      /* תצוגת תיקיות */
       .folder-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -132,7 +131,6 @@
       .folder-label { font-size: 13px; color: var(--text-main); line-height: 1.4; }
       .folder-year { display: block; color: var(--text-muted); font-size: 11px; }
 
-      /* תצוגת תוכן תיקייה (גלריה) */
       #folderContentView { display: none; flex-direction: column; gap: 20px; }
       
       .back-btn {
@@ -146,7 +144,6 @@
         font-size: 13px;
         display: flex; align-items: center; gap: 8px;
       }
-      .back-btn:hover { background: rgba(255,255,255,0.1); }
 
       .masonry {
         column-count: 3;
@@ -163,7 +160,6 @@
         cursor: pointer;
       }
       .masonry-item img { width: 100%; display: block; transition: 0.3s; }
-      .masonry-item:hover img { transform: scale(1.05); }
 
       footer { padding: 30px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
 
@@ -195,19 +191,13 @@
       <section class="content-card">
         <h1 class="he">לקוחות מותחים את הגבולות</h1>
         <h2 class="he">מחשבה לפני עיצוב</h2>
-        <h1 class="en">Clients Pushing Boundaries</h1>
-        <h2 class="en">Thought before design</h2>
         <div class="text-block he">לחצו על תיקיית לקוח כדי לצפות בפרויקטים שביצענו יחד.</div>
-        <div class="text-block en">Click on a client folder to view our collaborative projects.</div>
       </section>
 
       <div class="folder-grid" id="folderGrid"></div>
 
       <div id="folderContentView">
-        <button class="back-btn" onclick="showFolders()">
-            <span class="he">🔙 חזרה לתיקיות</span>
-            <span class="en">🔙 Back to Folders</span>
-        </button>
+        <button class="back-btn" onclick="showFolders()">🔙 חזרה לתיקיות</button>
         <h3 id="currentFolderName" style="margin-bottom: 15px; color: var(--accent);"></h3>
         <div class="masonry" id="galleryGrid"></div>
       </div>
@@ -219,44 +209,13 @@
     </footer>
 
     <script>
-      // הנתונים שלך - כאן אתה מוסיף את ה-ID של התמונות בתוך "items"
       const clientFolders = [
-        { 
-          id: "ayer", 
-          nameHe: "אייר - שחקנית - דיאנדי גמדה", 
-          year: "2023", 
-          items: ["1JWiocV--yYE3fGOrAV7116bLDMfmgwGf", "1Sag0RfJzwpWqzwjYDoYOR09tT_WBf0qn"] // דוגמה ל-ID
-        },
-        { 
-          id: "client3", 
-          nameHe: "לקוחה מס' 3", 
-          year: "2023", 
-          items: ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", "1XF7N4sTXip8YJUHiFjOos-OxuRn_SqdX"] 
-        },
-        { 
-          id: "client4", 
-          nameHe: "לקוחה מס' 4", 
-          year: "2024", 
-          items: ["1pUx6TuzU5iN9xGDzeDWB2dXoxRDsM0Qk"] 
-        },
-        { 
-          id: "motti", 
-          nameHe: "מוטי", 
-          year: "2025", 
-          items: [] 
-        },
-        { 
-          id: "moria", 
-          nameHe: "מוריה", 
-          year: "2025", 
-          items: [] 
-        },
-        { 
-          id: "shane", 
-          nameHe: "שיין - לקוח מס' 5", 
-          year: "2024", 
-          items: [] 
-        }
+        { id: "ayer", nameHe: "אייר - שחקנית דיאןדי גמדה - 2023", year: "2023", items: ["1sFnjTlLw5Xp3w9XmKY7Ha1CHFkVQ71nt"] },
+        { id: "client3", nameHe: "לקוחה מס' 3 - 2023", year: "2023", items: ["1que1Zg-dY4NOnujT8gNJwDVtskw9mTAJ", "1gilrvbFl1XzhNxLSSpFbYqEDQc8D8Soe", "1Tk336Tx_U-bnRiJ8jiSXUL_yAD8PHQAZ"] },
+        { id: "client4", nameHe: "לקוחה מס' 4 - 2024", year: "2024", items: ["194K5vZluodYCjIwTAUw77LStKywcDFnE", "1AWxYfW-3mn7z2Sv9rioeh1brsutXq9fP", "1k6lRsWBn7JrgYXQ2cxXQS1mvvaZpL9Wd", "1d_MbQCcxd1UcJWNQ5E7S8h1ZWjQxjbjR", "1HjvsD9uBy5eddNI0EbfSSHh5IHRKQ5AO"] },
+        { id: "motti", nameHe: "מוטי - 2025", year: "2025", items: [] },
+        { id: "moria", nameHe: "מוריה - 2024 - 2025", year: "2024-2025", items: ["1pUx6TuzU5iN9xGDzeDWB2dXoxRDsM0Qk", "1VB3xHI9hd2xHpyFrlZCPZSYEr90BgXcL", "1pM_ns8jajgtCwkmTkz9kl1B2xKbOaQTZ", "1P3Jca6VYdDrkwnEmCa99pHgNUrgNqh_b", "1uWUVr26pSl7gOWgw13CAc01GlAPwlu7w", "1ccjFN59KCsum3pcbDYWLP8bCkkjqif7U", "1DXmJBYVvXzUVis1S6JiMdHhXhMkIBw54", "1rUAntPgjSNlRkS9p5VJLzx_s8nct_pv4", "1bLK-zqsGTdAEW5fa72SyR4Nk0yGeBNQb", "1OaCWK_0scwQvddHoz8Y7vqg2PCuYzYoJ", "17yUpLH-di84m_RiPHACsjcqDrqmoZpMD", "13qQ7_sHVtOUiwzxonvYOiGNfu4NwTBME", "1emR3UXyjQ0AzUr9KLyFdcxwz9V1NBsDy", "1qIA9R71GraMv0MERQVUma9E9stk4Jagk"] },
+        { id: "shane", nameHe: "שיין - לקוח מס' 5 - 2024", year: "2024", items: ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", "1dTt5oL3s26JToyiS-3f9wa1eUy-U3AN5", "1xGs03y5iVD5dIFybanf9lo1V-h4xtHv8", "1woidZAV82Xghxch9IaPSCG_oz4wSs9Um", "19MCoYb6dopZVwSEWaKEzz0UDczdCT1MJ"] }
       ];
 
       const folderGrid = document.getElementById("folderGrid");
@@ -264,7 +223,6 @@
       const galleryGrid = document.getElementById("galleryGrid");
       const currentFolderName = document.getElementById("currentFolderName");
 
-      // יצירת התיקיות בדף
       clientFolders.forEach(folder => {
         const item = document.createElement("div");
         item.className = "folder-item";
@@ -285,16 +243,19 @@
         folderContentView.style.display = "flex";
         currentFolderName.textContent = folder.nameHe;
         galleryGrid.innerHTML = "";
-
         if (folder.items.length === 0) {
             galleryGrid.innerHTML = "<p class='text-muted'>התיקייה ריקה כרגע.</p>";
             return;
         }
-
         folder.items.forEach(fileId => {
           const imgItem = document.createElement("div");
           imgItem.className = "masonry-item";
-          imgItem.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${fileId}&sz=w800" loading="lazy">`;
+          // הצגת וידאו אם זה ID של וידאו או תמונה כברירת מחדל
+          if (fileId === "1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc") {
+             imgItem.innerHTML = `<iframe src="https://drive.google.com/file/d/${fileId}/preview" style="width:100%; height:200px; border:none;" loading="lazy"></iframe>`;
+          } else {
+             imgItem.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${fileId}&sz=w800" loading="lazy">`;
+          }
           galleryGrid.appendChild(imgItem);
         });
       }
@@ -304,7 +265,6 @@
         folderContentView.style.display = "none";
       }
 
-      // שפה
       const langBtn = document.getElementById("langToggle");
       langBtn.onclick = () => {
         const root = document.documentElement;
