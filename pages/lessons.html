@@ -52,10 +52,9 @@
       .logo-title span:last-child { font-weight: 400; font-size: 13px; color: var(--text-muted); }
 
       nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-      .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; transition: 0.3s; white-space: nowrap; }
+      .nav-link { font-size: 13px; padding: 6px 12px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; transition: 0.3s; white-space: nowrap; }
+      .nav-link:hover { color: var(--accent); background: rgba(255, 255, 255, 0.05); }
       .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.15); color: var(--accent); font-weight: 500; }
-
-      .language-toggle { padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border-color); cursor: pointer; background: #0a0a10; color: var(--text-muted); font-size: 11px; }
 
       main { flex: 1; padding: 40px 6vw; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); gap: 40px; }
       @media (max-width: 1150px) { main { grid-template-columns: 1fr; } }
@@ -63,9 +62,6 @@
       .content-card {
         background: var(--card-bg); border-radius: 24px; padding: 30px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); align-self: start;
       }
-
-      h1 { margin: 0; font-size: 28px; font-weight: 700; }
-      h2 { margin: 8px 0 24px; font-size: 18px; color: var(--text-muted); font-weight: 300; }
 
       .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 30px; }
       .folder-item { display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; transition: 0.2s; }
@@ -86,7 +82,7 @@
       @media (min-width: 768px) { .masonry { column-count: 2; } }
 
       .masonry-item { break-inside: avoid; margin-bottom: 24px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); background: #000; }
-      .masonry-item img { width: 100%; display: block; transition: 0.3s; }
+      .masonry-item img { width: 100%; display: block; }
 
       .video-container {
         position: relative; width: 100%; height: 0; padding-bottom: 56.25%; background: #000; overflow: hidden;
@@ -112,14 +108,13 @@
         <a href="posttrauma.html" class="nav-link">פוסטראומה</a>
         <a href="satire.html" class="nav-link">סאטירה</a>
         <a href="podcasts.html" class="nav-link">פודקאסטים</a>
-        <button class="language-toggle" id="langToggle">HE / EN</button>
       </nav>
     </header>
 
     <main>
       <section class="content-card">
         <h1>לקוחות מותחים את הגבולות</h1>
-        <div class="text-block">לחצו על תיקיית לקוח לצפייה בפרויקטים.</div>
+        <div class="text-block">לחצו על תיקיית לקוח לצפייה בפרויקטים ובמדיה מהדרייב.</div>
       </section>
 
       <div class="folder-grid" id="folderGrid"></div>
@@ -133,62 +128,21 @@
 
     <footer>
       <span>© Tzvika Johnny Peker</span>
-      <span class="he">תוכן שלא נעלם כשהמסך נכבה.</span>
+      <span class="he">להישאר רגע נוסף אצל מי שמקשיב.</span>
     </footer>
 
     <script>
       const clientFolders = [
-        { 
-          id: "ayer", 
-          nameHe: "אייר - שחקנית דיאןדי גמדה - 2023", 
-          year: "2023", 
-          items: ["1rrqzTRhZi913i-kLXHDjUbNttKIizckU", "1aeJGMBoX32YeDZwGcQ_iHauPTbhZJYjL"] 
-        },
-        { 
-          id: "client3", 
-          nameHe: "לקוחה מס' 3", 
-          year: "2023", 
-          items: ["1QMATved8oHk5qUnNSkr2Ai_6TAEx8r7L"] 
-        },
-        { 
-          id: "client4", 
-          nameHe: "לקוחה מס' 4", 
-          year: "2024", 
-          items: ["1UtxaXBEVVZof3GuI4Sz-vqWcgm9OSXWQ"] 
-        },
-        { 
-          id: "motti", 
-          nameHe: "מוטי - 2025", 
-          year: "2025", 
-          items: ["1jw-mDFLRHzWAt6uZNleMwEFq5NbaASHk", "1a13jkH7RVy5jakL882kBfigajOzapw6c"] 
-        },
-        { 
-          id: "moria", 
-          nameHe: "מוריה - 2024 - 2025", 
-          year: "2024-2025", 
-          items: ["1jVfAaaCHUpPC8lezc_QC0h_x4DAESb2y", "1ltZey-s-eqe4nSgEDENM127KEtsmCYkD", "1GK8wV8ZzFcW-czCUbt0vYi6NYn9rae0I", "1IuJUxCbe-mpVI2rB6507m3iky5t-Zf5T", "1TB-67MoAO5MlWU_clcF0IhVrEgyeraOO", "1lmb7oeYxewCZvn_1LPb2ugjefPFySCjj"] 
-        },
-        { 
-          id: "shane", 
-          nameHe: "שיין - לקוח מס' 5 - 2023 - 2025", 
-          year: "2023-2025", 
-          items: ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc"] 
-        },
-        { 
-          id: "hitech", 
-          nameHe: "חברת הייטק - 2025", 
-          year: "2025", 
-          items: ["1VQwT9T0D5USKpyFLQW0wVyFUXoyb6wKU"] 
-        }
+        { id: "ayer", nameHe: "אייר - שחקנית דיאןדי גמדה", year: "2023", items: ["1rrqzTRhZi913i-kLXHDjUbNttKIizckU", "1bx8pFNz0HcUrqFg9kuGGADSEvaWR1Bn8", "1qr5GomMQIC95_iCyOnYEIkVyx7AxAheO"] },
+        { id: "client3", nameHe: "לקוחה מס' 3", year: "2023", items: ["1que1Zg-dY4NOnujT8gNJwDVtskw9mTAJ", "1gilrvbFl1XzhNxLSSpFbYqEDQc8D8Soe", "1Tk336Tx_U-bnRiJ8jiSXUL_yAD8PHQAZ"] },
+        { id: "client4", nameHe: "לקוחה מס' 4", year: "2024", items: ["194K5vZluodYCjIwTAUw77LStKywcDFnE", "1AWxYfW-3mn7z2Sv9rioeh1brsutXq9fP", "1k6lRsWBn7JrgYXQ2cxXQS1mvvaZpL9Wd", "1d_MbQCcxd1UcJWNQ5E7S8h1ZWjQxjbjR", "1HjvsD9uBy5eddNI0EbfSSHh5IHRKQ5AO"] },
+        { id: "motti", nameHe: "מוטי - 2025", year: "2025", items: ["1jDz-vXe_X3xu6LelcZAu1V96y1RK3xEn"] },
+        { id: "moria", nameHe: "מוריה", year: "2024-2025", items: ["1pM_ns8jajgtCwkmTkz9kl1B2xKbOaQTZ", "1pUx6TuzU5iN9xGDzeDWB2dXoxRDsM0Qk", "1P3Jca6VYdDrkwnEmCa99pHgNUrgNqh_b", "1VB3xHI9hd2xHpyFrlZCPZSYEr90BgXcL", "1uWUVr26pSl7gOWgw13CAc01GlAPwlu7w", "1ccjFN59KCsum3pcbDYWLP8bCkkjqif7U", "1emR3UXyjQ0AzUr9KLyFdcxwz9V1NBsDy", "1DXmJBYVvXzUVis1S6JiMdHhXhMkIBw54", "1rUAntPgjSNlRkS9p5VJLzx_s8nct_pv4", "1bLK-zqsGTdAEW5fa72SyR4Nk0yGeBNQb", "1OaCWK_0scwQvddHoz8Y7vqg2PCuYzYoJ", "17yUpLH-di84m_RiPHACsjcqDrqmoZpMD", "1qIA9R71GraMv0MERQVUma9E9stk4Jagk", "13qQ7_sHVtOUiwzxonvYOiGNfu4NwTBME"] },
+        { id: "shane", nameHe: "שיין - לקוח מס' 5", year: "2024", items: ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", "1dTt5oL3s26JToyiS-3f9wa1eUy-U3AN5", "1woidZAV82Xghxch9IaPSCG_oz4wSs9Um", "1xGs03y5iVD5dIFybanf9lo1V-h4xtHv8", "19MCoYb6dopZVwSEWaKEzz0UDczdCT1MJ"] },
+        { id: "hitech", nameHe: "חברת הייטק - 2025", year: "2025", items: ["1VQwT9T0D5USKpyFLQW0wVyFUXoyb6wKU"] }
       ];
 
-      const videoIds = [
-        "1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", 
-        "1jw-mDFLRHzWAt6uZNleMwEFq5NbaASHk", 
-        "1a13jkH7RVy5jakL882kBfigajOzapw6c", 
-        "1Hk1l_u6_UWtlgQfUZu2W7nEDLa3n8DRM", 
-        "1aeJGMBoX32YeDZwGcQ_iHauPTbhZJYjL"
-      ];
+      const videoIds = ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", "1jDz-vXe_X3xu6LelcZAu1V96y1RK3xEn"];
 
       const folderGrid = document.getElementById("folderGrid");
       const folderContentView = document.getElementById("folderContentView");
@@ -215,16 +169,11 @@
         folderContentView.style.display = "flex";
         currentFolderName.textContent = folder.nameHe;
         galleryGrid.innerHTML = "";
-
         folder.items.forEach(fileId => {
           const itemDiv = document.createElement("div");
           itemDiv.className = "masonry-item";
-
           if (videoIds.includes(fileId)) {
-            itemDiv.innerHTML = `
-              <div class="video-container">
-                <iframe src="https://drive.google.com/file/d/${fileId}/preview" allow="autoplay" allowfullscreen></iframe>
-              </div>`;
+            itemDiv.innerHTML = `<div class="video-container"><iframe src="https://drive.google.com/file/d/${fileId}/preview" allow="autoplay" allowfullscreen></iframe></div>`;
           } else {
             itemDiv.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${fileId}&sz=w800" loading="lazy">`;
           }
@@ -236,15 +185,6 @@
         folderGrid.style.display = "grid";
         folderContentView.style.display = "none";
       }
-
-      const langBtn = document.getElementById("langToggle");
-      langBtn.onclick = () => {
-        const root = document.documentElement;
-        const next = root.getAttribute("data-lang") === "he" ? "en" : "he";
-        root.setAttribute("data-lang", next);
-        root.setAttribute("dir", next === "he" ? "rtl" : "ltr");
-        langBtn.textContent = next === "he" ? "EN / HE" : "HE / EN";
-      };
     </script>
   </body>
 </html>
