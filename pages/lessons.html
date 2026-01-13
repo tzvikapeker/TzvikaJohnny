@@ -22,6 +22,7 @@
         --text-main: #f8f8ff;
         --text-muted: #b7b7c7;
         --border-color: rgba(255, 255, 255, 0.1);
+        --folder-yellow: #f1d592;
         --folder-blue: #2196f3;
       }
 
@@ -35,7 +36,6 @@
         flex-direction: column;
       }
 
-      /* ניווט עליון - כל 7 הקטגוריות */
       header {
         padding: 16px 24px;
         display: flex;
@@ -66,7 +66,7 @@
         flex: 1;
         padding: 40px 6vw;
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
+        grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr);
         gap: 40px;
       }
 
@@ -83,14 +83,12 @@
 
       h1 { margin: 0; font-size: 28px; font-weight: 700; }
       h2 { margin: 8px 0 24px; font-size: 18px; color: var(--text-muted); font-weight: 300; }
-      .text-block { font-size: 16px; line-height: 1.8; margin-bottom: 20px; color: var(--text-main); }
 
-      /* === עיצוב תיקיות לקוח (כמו בתמונה) === */
+      /* תצוגת תיקיות */
       .folder-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 30px;
-        padding: 10px;
       }
 
       .folder-item {
@@ -99,68 +97,75 @@
         align-items: center;
         text-align: center;
         cursor: pointer;
-        transition: transform 0.2s;
-        text-decoration: none;
+        transition: 0.2s;
       }
-
       .folder-item:hover { transform: translateY(-5px); }
 
       .folder-icon {
         width: 100px;
         height: 80px;
-        position: relative;
-        background: #f1d592; /* צבע התיקייה הצהוב */
+        background: var(--folder-yellow);
         border-radius: 4px 10px 10px 10px;
+        position: relative;
         margin-bottom: 12px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       }
-
-      /* הלשונית של התיקייה */
       .folder-icon::before {
         content: "";
         position: absolute;
-        top: -10px;
-        left: 0;
-        width: 40px;
-        height: 10px;
-        background: #f1d592;
+        top: -10px; left: 0;
+        width: 40px; height: 10px;
+        background: var(--folder-yellow);
         border-radius: 4px 4px 0 0;
       }
-
-      /* אייקון המשתמש הכחול בתוך התיקייה */
       .user-avatar {
         position: absolute;
-        bottom: 15px;
-        left: 50%;
+        bottom: 15px; left: 50%;
         transform: translateX(-50%);
-        width: 35px;
-        height: 35px;
+        width: 35px; height: 35px;
         background: var(--folder-blue);
         border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: flex; align-items: center; justify-content: center;
         color: white;
       }
 
-      .user-avatar svg { width: 20px; height: 20px; fill: currentColor; }
+      .folder-label { font-size: 13px; color: var(--text-main); line-height: 1.4; }
+      .folder-year { display: block; color: var(--text-muted); font-size: 11px; }
 
-      .folder-label {
-        color: var(--text-main);
+      /* תצוגת תוכן תיקייה (גלריה) */
+      #folderContentView { display: none; flex-direction: column; gap: 20px; }
+      
+      .back-btn {
+        align-self: flex-start;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid var(--border-color);
+        color: var(--accent);
+        padding: 8px 16px;
+        border-radius: 999px;
+        cursor: pointer;
         font-size: 13px;
-        font-weight: 400;
-        line-height: 1.4;
-        max-width: 140px;
+        display: flex; align-items: center; gap: 8px;
       }
+      .back-btn:hover { background: rgba(255,255,255,0.1); }
 
-      .folder-year {
-        display: block;
-        color: var(--text-muted);
-        font-size: 11px;
-        margin-top: 2px;
+      .masonry {
+        column-count: 3;
+        column-gap: 16px;
       }
+      @media (max-width: 800px) { .masonry { column-count: 2; } }
 
-      footer { padding: 30px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); }
+      .masonry-item {
+        break-inside: avoid;
+        margin-bottom: 16px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+      }
+      .masonry-item img { width: 100%; display: block; transition: 0.3s; }
+      .masonry-item:hover img { transform: scale(1.05); }
+
+      footer { padding: 30px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
 
       html[data-lang="en"] .he { display: none; }
       html[data-lang="he"] .en { display: none; }
@@ -190,20 +195,22 @@
       <section class="content-card">
         <h1 class="he">לקוחות מותחים את הגבולות</h1>
         <h2 class="he">מחשבה לפני עיצוב</h2>
-        
         <h1 class="en">Clients Pushing Boundaries</h1>
         <h2 class="en">Thought before design</h2>
-
-        <div class="text-block he">
-          אני עובד עם לקוחות שמבינים שתוכן חזק מתחיל במחשבה ולא רק בעיצוב. כאלה שמחפשים רעיונות מדויקים ותוצאה שמרגישה נכונה ולא גנרית.
-        </div>
-        <div class="text-block en">
-          I work with clients who understand that strong content starts with thought, not just design. Seeking precise ideas and non-generic results.
-        </div>
+        <div class="text-block he">לחצו על תיקיית לקוח כדי לצפות בפרויקטים שביצענו יחד.</div>
+        <div class="text-block en">Click on a client folder to view our collaborative projects.</div>
       </section>
 
-      <div class="folder-grid" id="folderGrid">
-        </div>
+      <div class="folder-grid" id="folderGrid"></div>
+
+      <div id="folderContentView">
+        <button class="back-btn" onclick="showFolders()">
+            <span class="he">🔙 חזרה לתיקיות</span>
+            <span class="en">🔙 Back to Folders</span>
+        </button>
+        <h3 id="currentFolderName" style="margin-bottom: 15px; color: var(--accent);"></h3>
+        <div class="masonry" id="galleryGrid"></div>
+      </div>
     </main>
 
     <footer>
@@ -212,47 +219,99 @@
     </footer>
 
     <script>
-      // הנתונים המדויקים מהתמונה שלך
+      // הנתונים שלך - כאן אתה מוסיף את ה-ID של התמונות בתוך "items"
       const clientFolders = [
-        { nameHe: "אייר - שחקנית - דיאנדי גמדה", year: "2023", link: "#" },
-        { nameHe: "לקוחה מס' 3", year: "2023", link: "#" },
-        { nameHe: "לקוחה מס' 4", year: "2024", link: "#" },
-        { nameHe: "מוטי", year: "2025", link: "#" },
-        { nameHe: "מוריה - 2024", year: "2025", link: "#" },
-        { nameHe: "שיין - לקוח מס' 5", year: "2024", link: "#" }
+        { 
+          id: "ayer", 
+          nameHe: "אייר - שחקנית - דיאנדי גמדה", 
+          year: "2023", 
+          items: ["1JWiocV--yYE3fGOrAV7116bLDMfmgwGf", "1Sag0RfJzwpWqzwjYDoYOR09tT_WBf0qn"] // דוגמה ל-ID
+        },
+        { 
+          id: "client3", 
+          nameHe: "לקוחה מס' 3", 
+          year: "2023", 
+          items: ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", "1XF7N4sTXip8YJUHiFjOos-OxuRn_SqdX"] 
+        },
+        { 
+          id: "client4", 
+          nameHe: "לקוחה מס' 4", 
+          year: "2024", 
+          items: ["1pUx6TuzU5iN9xGDzeDWB2dXoxRDsM0Qk"] 
+        },
+        { 
+          id: "motti", 
+          nameHe: "מוטי", 
+          year: "2025", 
+          items: [] 
+        },
+        { 
+          id: "moria", 
+          nameHe: "מוריה", 
+          year: "2025", 
+          items: [] 
+        },
+        { 
+          id: "shane", 
+          nameHe: "שיין - לקוח מס' 5", 
+          year: "2024", 
+          items: [] 
+        }
       ];
 
-      const grid = document.getElementById("folderGrid");
+      const folderGrid = document.getElementById("folderGrid");
+      const folderContentView = document.getElementById("folderContentView");
+      const galleryGrid = document.getElementById("galleryGrid");
+      const currentFolderName = document.getElementById("currentFolderName");
 
+      // יצירת התיקיות בדף
       clientFolders.forEach(folder => {
-        const item = document.createElement("a");
-        item.href = folder.link;
+        const item = document.createElement("div");
         item.className = "folder-item";
+        item.onclick = () => openFolder(folder);
         item.innerHTML = `
           <div class="folder-icon">
             <div class="user-avatar">
-              <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              <svg viewBox="0 0 24 24" width="20"><path fill="white" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
             </div>
           </div>
-          <div class="folder-label">
-            ${folder.nameHe}
-            <span class="folder-year">- ${folder.year}</span>
-          </div>
+          <div class="folder-label">${folder.nameHe}<span class="folder-year">- ${folder.year}</span></div>
         `;
-        grid.appendChild(item);
+        folderGrid.appendChild(item);
       });
 
-      // לוגיקת שפה
-      const langBtn = document.getElementById("langToggle");
-      const root = document.documentElement;
-      function setLang(lang) {
-        root.setAttribute("data-lang", lang);
-        root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
-        langBtn.textContent = lang === "he" ? "EN / HE" : "HE / EN";
+      function openFolder(folder) {
+        folderGrid.style.display = "none";
+        folderContentView.style.display = "flex";
+        currentFolderName.textContent = folder.nameHe;
+        galleryGrid.innerHTML = "";
+
+        if (folder.items.length === 0) {
+            galleryGrid.innerHTML = "<p class='text-muted'>התיקייה ריקה כרגע.</p>";
+            return;
+        }
+
+        folder.items.forEach(fileId => {
+          const imgItem = document.createElement("div");
+          imgItem.className = "masonry-item";
+          imgItem.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${fileId}&sz=w800" loading="lazy">`;
+          galleryGrid.appendChild(imgItem);
+        });
       }
+
+      function showFolders() {
+        folderGrid.style.display = "grid";
+        folderContentView.style.display = "none";
+      }
+
+      // שפה
+      const langBtn = document.getElementById("langToggle");
       langBtn.onclick = () => {
+        const root = document.documentElement;
         const next = root.getAttribute("data-lang") === "he" ? "en" : "he";
-        setLang(next);
+        root.setAttribute("data-lang", next);
+        root.setAttribute("dir", next === "he" ? "rtl" : "ltr");
+        langBtn.textContent = next === "he" ? "EN / HE" : "HE / EN";
       };
     </script>
   </body>
