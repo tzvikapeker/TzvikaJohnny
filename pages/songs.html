@@ -54,12 +54,11 @@
 
       .language-toggle { padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border-color); cursor: pointer; background: #0a0a10; color: var(--text-muted); font-size: 11px; }
 
-      /* שינוי: הגדרת העמודה של השירים כרחבה יותר */
       main {
         flex: 1;
         padding: 40px 6vw;
         display: grid;
-        grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr); /* השירים (בצד ימין/ראשון) מקבלים יותר שטח */
+        grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
         gap: 40px;
       }
 
@@ -74,8 +73,16 @@
         align-self: start;
       }
 
+      .pill-label { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; border-radius: 999px; background: #000; border: 1px solid var(--border-color); font-size: 12px; margin-bottom: 20px; }
+      .pill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+
+      h1 { margin: 0; font-size: clamp(24px, 4vw, 32px); font-weight: 700; }
+      h2 { margin: 8px 0 24px; font-size: 18px; color: var(--text-muted); font-weight: 300; }
+      h3 { margin: 25px 0 12px; font-size: 18px; color: var(--accent); font-weight: 600; }
+      .text-block { font-size: 16px; line-height: 1.8; margin-bottom: 20px; color: var(--text-main); }
+
       .media-card {
-        background: transparent; /* הסרנו את הרקע הכהה כדי שהנגנים יצופו על הרקע הכללי */
+        background: transparent;
         border: none;
         padding: 0;
       }
@@ -107,12 +114,11 @@
       .track-name { font-weight: 700; font-size: 18px; color: var(--text-main); }
       .media-badge { font-size: 11px; background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 6px; color: var(--text-muted); }
 
-      /* הנגן עצמו - מוגדר לגודל מקסימלי */
       .drive-embed-container {
         position: relative;
         width: 100%;
         height: 0;
-        padding-bottom: 56.25%; /* יחס 16:9 מושלם */
+        padding-bottom: 56.25%; 
         background: #000;
         border-radius: 12px;
         overflow: hidden;
@@ -153,16 +159,39 @@
 
       <section class="content-card">
         <div class="pill-label"><span class="pill-dot"></span><span>Words & Melody</span></div>
-        <h1 class="he">שירים שיצרתי</h1>
-        <h1 class="en">Original Songs</h1>
-        <h2 class="he">חיבור בין מילים לנשימה</h2>
-        <h2 class="en">Words, music, and breath</h2>
         
-        <div class="text-block he">
-          כאן נמצאים השירים המקוריים שלי. טקסטים שנולדים מרגש, חוויה או רגע קטן שנתפס והפך לשיר. המטרה היא לא רק להישמע טוב, אלא להרגיש נכון ולהישאר רגע נוסף אצל מי שמקשיב.
+        <div class="he">
+          <h1>שירים שיצרתי</h1>
+          <h2>חיבור בין מילים לנשימה</h2>
+          
+          <div class="text-block">
+            כאן נמצאים השירים המקוריים שלי. טקסטים שנולדים מרגש, חוויה או רגע קטן שנתפס והפך לשיר.
+            <br><br>
+            הכתיבה שלי משלבת כנות, משחקי מילים וקצב טבעי, בלי פוזות ובלי נוסחאות. לפעמים זה אישי ושקט, לפעמים חד ובועט אבל תמיד אמיתי.
+            <br><br>
+            כל שיר נבנה מתוך חיבור בין מילים, מוזיקה ונשימה. המטרה היא לא רק להישמע טוב, אלא להרגיש נכון ולהישאר רגע נוסף אצל מי שמקשיב.
+          </div>
+
+          <h3>פארודיה וסאטירה</h3>
+          <div class="text-block">
+            זו הזירה שבה מוזיקה פוגשת הומור חד ומודעות עצמית. כאן אני יוצר שירי פארודיה וסאטירה שמבוססים על מציאות יומיומית, תרבות פופולרית ואבסורדים שכולנו מזהים.
+            <br><br>
+            אני לוקח לחנים מוכרים או סגנונות ברורים, מסובב אותם עם טקסטים חכמים, עקיצות מדויקות ופאנצ’ים שעובדים גם כשצוחקים וגם כשעוצרים לחשוב.
+            <br><br>
+            המטרה היא לא רק להצחיק, אלא להגיד משהו דרך הצחוק לשחרר, לעקוץ, ולפעמים גם לשים מראה מול המאזין.
+          </div>
         </div>
-        <div class="text-block en">
-          Here are my original songs. Lyrics born from emotion, experience, or a small moment captured and turned into a song. The goal isn't just to sound good, but to feel right and linger a moment longer with the listener.
+
+        <div class="en">
+          <h1>Original Songs</h1>
+          <h2>Words, music, and breath</h2>
+          <div class="text-block">
+            Here are my original songs. Lyrics born from emotion, experience, or a small moment captured and turned into a song. My writing combines honesty, wordplay, and natural rhythm—no posing, no formulas. Sometimes personal and quiet, sometimes sharp and kicking, but always real. Every song is built from the connection between words, music, and breath.
+          </div>
+          <h3>Parody & Satire</h3>
+          <div class="text-block">
+            This is the arena where music meets sharp humor and self-awareness. I create parodies based on everyday reality, pop culture, and the absurdities we all recognize.
+          </div>
         </div>
       </section>
     </main>
