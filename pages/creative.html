@@ -81,15 +81,12 @@
       #folderContentView { display: none; flex-direction: column; gap: 20px; }
       .back-btn { align-self: flex-start; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--accent); padding: 8px 16px; border-radius: 999px; cursor: pointer; font-size: 13px; margin-bottom: 10px; }
 
-      /* הגלריה - תומכת גם ב-9:16 וגם בתמונות רגילות */
-      .masonry { column-count: 1; gap: 16px; width: 100%; max-width: 800px; margin: 0 auto; }
-      @media (min-width: 768px) { .masonry { column-count: 2; } }
-
-      .masonry-item { break-inside: avoid; margin-bottom: 24px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); background: #000; }
-      .masonry-item img { width: 100%; display: block; transition: 0.3s; }
+      .masonry { display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%; max-width: 450px; margin: 0 auto; }
+      .masonry-item { width: 100%; border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+      .masonry-item img { width: 100%; display: block; }
 
       .video-container {
-        position: relative; width: 100%; height: 0; padding-bottom: 177.77%; /* יחס 9:16 לסרטונים אנכיים */
+        position: relative; width: 100%; aspect-ratio: 9 / 16;
         background: #000; overflow: hidden;
       }
       .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
@@ -119,7 +116,7 @@
     <main>
       <section class="content-card">
         <h1>קריאייטיב שלי</h1>
-        <div class="text-block">לחצו על תיקייה לצפייה בעבודות.</div>
+        <div class="text-block">לחצו על תיקייה לצפייה בעבודות המעודכנות.</div>
       </section>
 
       <div class="folder-grid" id="folderGrid"></div>
@@ -137,17 +134,15 @@
     </footer>
 
     <script>
-      // כאן אתה משבץ את ה-IDs מהדרייב בתוך הסוגריים המרובעים []
       const creativeFolders = [
-        { id: "video", nameHe: "וידאו", count: 7, items: [] },
-        { id: "ai", nameHe: "דימויי AI", count: 5, items: [] },
-        { id: "words", nameHe: "משחקי מילים", count: 4, items: [] },
-        { id: "bras", nameHe: "פרויקט החזיות", count: 3, items: [] },
-        { id: "satire", nameHe: "סאטירה", count: 6, items: [] },
-        { id: "ads", nameHe: "פרסומות", count: 5, items: [] }
+        { id: "reels", nameHe: "REELS", count: 7, items: [] },
+        { id: "photos", nameHe: "תמונות", count: 29, items: [] },
+        { id: "ads", nameHe: "פרסומות שעשיתי", count: 8, items: [] },
+        { id: "satire", nameHe: "סאטירה ופארודיה", count: 12, items: [] },
+        { id: "words", nameHe: "משחקי מילים", count: 10, items: [] },
+        { id: "heart", nameHe: "מהלב", count: 5, items: [] }
       ];
 
-      // רשימת ה-IDs של סרטונים (כדי שיוצגו בנגן 9:16)
       const videoIds = []; 
 
       const folderGrid = document.getElementById("folderGrid");
