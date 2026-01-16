@@ -53,10 +53,7 @@
 
       nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
       .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; transition: 0.3s; white-space: nowrap; }
-      .nav-link:hover { color: var(--accent); background: rgba(255, 255, 255, 0.05); }
       .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.15); color: var(--accent); font-weight: 500; }
-
-      .language-toggle { padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border-color); cursor: pointer; background: #0a0a10; color: var(--text-muted); font-size: 11px; }
 
       main { flex: 1; padding: 40px 6vw; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); gap: 40px; }
       @media (max-width: 1150px) { main { grid-template-columns: 1fr; } }
@@ -82,14 +79,14 @@
       #folderContentView { display: none; flex-direction: column; gap: 20px; }
       .back-btn { align-self: flex-start; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--accent); padding: 8px 16px; border-radius: 999px; cursor: pointer; font-size: 13px; margin-bottom: 10px; }
 
-      /* פיד סרטונים אנכי (9:16) */
+      /* פיד סרטונים אנכי 9:16 */
       .video-feed {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 50px;
         width: 100%;
-        max-width: 450px; /* רוחב אידיאלי לסרטון 9:16 */
+        max-width: 450px;
         margin: 0 auto;
         padding-bottom: 50px;
       }
@@ -106,12 +103,7 @@
       }
 
       .vertical-video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
       }
 
       footer { padding: 30px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
@@ -133,14 +125,13 @@
         <a href="posttrauma.html" class="nav-link">פוסטראומה</a>
         <a href="satire.html" class="nav-link">סאטירה</a>
         <a href="songs.html" class="nav-link">שירים</a>
-        <button class="language-toggle" id="langToggle">HE / EN</button>
       </nav>
     </header>
 
     <main>
       <section class="content-card">
         <h1>קריאייטיב שלי</h1>
-        <div class="text-block">לחצו על תיקיית הוידאו לצפייה בפיד המדויק מהדרייב.</div>
+        <div class="text-block">לחצו על תיקיית הוידאו לצפייה בפיד (9:16).</div>
       </section>
 
       <div class="folder-grid" id="folderGrid"></div>
@@ -163,13 +154,13 @@
           id: "video", 
           nameHe: "וידאו", 
           items: [
-            "1CR-Q_QB58GcG4SECUdG5MAxMl-HUY7Gi", // מכורים.mp4
-            "1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg", // הפניקס.mp4
-            "12ak2KGc2soSMa6ZRXjCOS1ip_WlMjZwI", // גלגול הנשמות של הקרדשניות.mp4
-            "1ylyREJ4EkmonHM0DLWc-r16rM8X-OOj3", // משחקי מילים.mp4
-            "1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT", // ניסוי ויזואלי 2.mp4
-            "1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ", // סאטירה וידאו.mp4
-            "1tlg0QCMMyJwAmxvVRkPGGycvsp3aabkx"  // עולם מקביל.mp4
+            "1CR-Q_QB58GcG4SECUdG5MAxMl-HUY7Gi", // מכורים
+            "1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg", // הפניקס
+            "12ak2KGc2soSMa6ZRXjCOS1ip_WlMjZwI", // קרדשיאנס
+            "1ylyREJ4EkmonHM0DLWc-r16rM8X-OOj3", // משחקי מילים
+            "1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT", // ניסוי
+            "1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ", // סאטירה
+            "1tlg0QCMMyJwAmxvVRkPGGycvsp3aabkx"  // עולם מקביל
           ] 
         }
       ];
@@ -204,12 +195,12 @@
         galleryGrid.innerHTML = "";
 
         folder.items.forEach(fileId => {
-          const videoContainer = document.createElement("div");
-          videoContainer.className = "vertical-video-container";
-          videoContainer.innerHTML = `
+          const container = document.createElement("div");
+          container.className = "vertical-video-container";
+          container.innerHTML = `
             <iframe src="https://drive.google.com/file/d/${fileId}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>
           `;
-          galleryGrid.appendChild(videoContainer);
+          galleryGrid.appendChild(container);
         });
       }
 
@@ -219,14 +210,6 @@
       }
 
       renderFolders();
-
-      const langBtn = document.getElementById("langToggle");
-      langBtn.onclick = () => {
-        const root = document.documentElement;
-        const next = root.getAttribute("data-lang") === "he" ? "en" : "he";
-        root.setAttribute("data-lang", next);
-        root.setAttribute("dir", next === "he" ? "rtl" : "ltr");
-      };
     </script>
   </body>
 </html>
