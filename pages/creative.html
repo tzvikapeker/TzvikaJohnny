@@ -77,13 +77,13 @@
       .folder-label { font-size: 13px; color: var(--text-main); line-height: 1.4; }
 
       #folderContentView { display: none; flex-direction: column; gap: 20px; }
-      .back-btn { align-self: flex-start; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); color: var(--accent); padding: 8px 16px; border-radius: 999px; cursor: pointer; font-size: 13px; margin-bottom: 10px; }
+      .back-btn { align-self: flex-start; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--accent); padding: 8px 16px; border-radius: 999px; cursor: pointer; font-size: 13px; }
 
       .masonry { column-count: 1; gap: 16px; width: 100%; max-width: 800px; margin: 0 auto; }
       @media (min-width: 768px) { .masonry { column-count: 2; } }
 
       .masonry-item { break-inside: avoid; margin-bottom: 24px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); background: #000; }
-      .masonry-item img { width: 100%; display: block; transition: 0.3s; }
+      .masonry-item img { width: 100%; display: block; }
 
       .video-container {
         position: relative; width: 100%; height: 0; padding-bottom: 56.25%; background: #000; overflow: hidden;
@@ -115,7 +115,7 @@
     <main>
       <section class="content-card">
         <h1>קריאייטיב שלי</h1>
-        <div class="text-block">לחצו על תיקייה לצפייה בעבודות הקריאייטיב מהדרייב.</div>
+        <div class="text-block">לחצו על תיקייה לצפייה בעבודות לפי קטגוריות.</div>
       </section>
 
       <div class="folder-grid" id="folderGrid"></div>
@@ -133,48 +133,33 @@
     </footer>
 
     <script>
+      // סידור הנתונים לפי התיקיות בדרייב
       const creativeFolders = [
         { 
-          id: "ads", 
-          nameHe: "פרסומות וקמפיינים", 
-          items: ["1CR-Q_QB58GcG4SECUdG5MAxMl-HUY7Gi", "1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg", "150Fuq4Iljfo_3S2595lgYHChR86j9VrI"] 
-        },
-        { 
-          id: "word_games", 
-          nameHe: "משחקי מילים וקופי", 
-          items: ["10jXvk49eHUlORzSPwbJ0jBhSg59LAR5j", "185Aus2D_CzSEebIPsWmQ9z31MbHyDwNv"] 
-        },
-        { 
-          id: "ai_design", 
-          nameHe: "דימויים ועיצוב AI", 
-          items: ["1w4XchLZ6H9AhkMu9ybWikdBq9zGPyWSd", "14-Ul7MhJvgMVdqSDYkZqrt59qO51ierw"] 
-        },
-        { 
-          id: "bras_project", 
-          nameHe: "פרויקט החזיות", 
-          items: ["1bB6URSsuUk5xVWt1iK5MjCATLKn0fbkb", "185Aus2D_CzSEebIPsWmQ9z31MbHyDwNv"] 
-        },
-        { 
-          id: "satire", 
-          nameHe: "סאטירה ופארודיה", 
-          items: ["1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ", "1tlg0QCMMyJwAmxvVRkPGGycvsp3aabkx"] 
-        },
-        { 
-          id: "video_experiments", 
-          nameHe: "וידאו וניסויים", 
-          items: ["12ak2KGc2soSMa6ZRXjCOS1ip_WlMjZwI", "1ylyREJ4EkmonHM0DLWc-r16rM8X-OOj3", "1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT"] 
+          id: "video", 
+          nameHe: "וידאו", 
+          // אלו הקבצים שנמצאו בתיקיית הוידאו ששלחת
+          items: [
+            "1CR-Q_QB58GcG4SECUdG5MAxMl-HUY7Gi", // מכורים
+            "1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg", // הפניקס
+            "12ak2KGc2soSMa6ZRXjCOS1ip_WlMjZwI", // קרדשיאנס
+            "1ylyREJ4EkmonHM0DLWc-r16rM8X-OOj3", // משחקי מילים
+            "1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT", // ניסוי
+            "1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ", // סאטירה וידאו
+            "1tlg0QCMMyJwAmxvVRkPGGycvsp3aabkx"  // וידאו נוסף
+          ] 
         }
       ];
 
+      // רשימת IDs להצגה בנגן וידאו (16:9)
       const videoIds = [
         "1CR-Q_QB58GcG4SECUdG5MAxMl-HUY7Gi", 
         "1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg", 
-        "10jXvk49eHUlORzSPwbJ0jBhSg59LAR5j", 
-        "1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ", 
-        "1tlg0QCMMyJwAmxvVRkPGGycvsp3aabkx", 
         "12ak2KGc2soSMa6ZRXjCOS1ip_WlMjZwI", 
         "1ylyREJ4EkmonHM0DLWc-r16rM8X-OOj3", 
-        "1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT"
+        "1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT", 
+        "1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ", 
+        "1tlg0QCMMyJwAmxvVRkPGGycvsp3aabkx"
       ];
 
       const folderGrid = document.getElementById("folderGrid");
@@ -182,20 +167,23 @@
       const galleryGrid = document.getElementById("galleryGrid");
       const currentFolderName = document.getElementById("currentFolderName");
 
-      creativeFolders.forEach(folder => {
-        const item = document.createElement("div");
-        item.className = "folder-item";
-        item.onclick = () => openFolder(folder);
-        item.innerHTML = `
-          <div class="folder-icon">
-            <div class="user-avatar">
-              <svg viewBox="0 0 24 24" width="20"><path fill="white" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      function renderFolders() {
+        folderGrid.innerHTML = "";
+        creativeFolders.forEach(folder => {
+          const item = document.createElement("div");
+          item.className = "folder-item";
+          item.onclick = () => openFolder(folder);
+          item.innerHTML = `
+            <div class="folder-icon">
+              <div class="user-avatar">
+                <svg viewBox="0 0 24 24" width="20"><path fill="white" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              </div>
             </div>
-          </div>
-          <div class="folder-label">${folder.nameHe}</div>
-        `;
-        folderGrid.appendChild(item);
-      });
+            <div class="folder-label">${folder.nameHe}</div>
+          `;
+          folderGrid.appendChild(item);
+        });
+      }
 
       function openFolder(folder) {
         folderGrid.style.display = "none";
@@ -218,6 +206,8 @@
         folderGrid.style.display = "grid";
         folderContentView.style.display = "none";
       }
+
+      renderFolders();
     </script>
   </body>
 </html>
