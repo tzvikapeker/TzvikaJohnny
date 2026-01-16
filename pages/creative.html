@@ -52,9 +52,11 @@
       .logo-title span:last-child { font-weight: 400; font-size: 13px; color: var(--text-muted); }
 
       nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-      .nav-link { font-size: 13px; padding: 6px 12px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; transition: 0.3s; white-space: nowrap; }
+      .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; transition: 0.3s; white-space: nowrap; }
       .nav-link:hover { color: var(--accent); background: rgba(255, 255, 255, 0.05); }
       .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.15); color: var(--accent); font-weight: 500; }
+
+      .language-toggle { padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border-color); cursor: pointer; background: #0a0a10; color: var(--text-muted); font-size: 11px; }
 
       main { flex: 1; padding: 40px 6vw; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); gap: 40px; }
       @media (max-width: 1150px) { main { grid-template-columns: 1fr; } }
@@ -75,8 +77,10 @@
         position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); width: 35px; height: 35px; background: var(--folder-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;
       }
 
+      .folder-label { font-size: 13px; color: var(--text-main); line-height: 1.4; }
+
       #folderContentView { display: none; flex-direction: column; gap: 20px; }
-      .back-btn { align-self: flex-start; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--accent); padding: 8px 16px; border-radius: 999px; cursor: pointer; font-size: 13px; }
+      .back-btn { align-self: flex-start; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--accent); padding: 8px 16px; border-radius: 999px; cursor: pointer; font-size: 13px; margin-bottom: 10px; }
 
       /* פיד סרטונים אנכי (9:16) */
       .video-feed {
@@ -85,7 +89,7 @@
         align-items: center;
         gap: 50px;
         width: 100%;
-        max-width: 500px; /* רוחב אופטימלי לסרטון עומד */
+        max-width: 450px; /* רוחב אידיאלי לסרטון 9:16 */
         margin: 0 auto;
         padding-bottom: 50px;
       }
@@ -125,22 +129,25 @@
         <a href="../index.html" class="nav-link">ראשי</a>
         <a href="creative.html" class="nav-link active">קריאייטיב שלי</a>
         <a href="lessons.html" class="nav-link">לקוחות</a>
-        <a href="songs.html" class="nav-link">שירים</a>
+        <a href="podcasts.html" class="nav-link">פודקאסטים</a>
         <a href="posttrauma.html" class="nav-link">פוסטראומה</a>
+        <a href="satire.html" class="nav-link">סאטירה</a>
+        <a href="songs.html" class="nav-link">שירים</a>
+        <button class="language-toggle" id="langToggle">HE / EN</button>
       </nav>
     </header>
 
     <main>
       <section class="content-card">
         <h1>קריאייטיב שלי</h1>
-        <div class="text-block">לחצו על התיקייה לצפייה בפיד הוידאו בפורמט 9:16.</div>
+        <div class="text-block">לחצו על תיקיית הוידאו לצפייה בפיד המדויק מהדרייב.</div>
       </section>
 
       <div class="folder-grid" id="folderGrid"></div>
 
       <div id="folderContentView">
         <button class="back-btn" onclick="showFolders()">🔙 חזרה לתיקיות</button>
-        <h3 id="currentFolderName" style="margin: 20px 0; color: var(--accent); text-align: center;"></h3>
+        <h3 id="currentFolderName" style="margin: 15px 0; color: var(--accent); text-align: center;"></h3>
         <div class="video-feed" id="galleryGrid"></div>
       </div>
     </main>
@@ -151,19 +158,18 @@
     </footer>
 
     <script>
-      // הנתונים המעודכנים של תיקיית הוידאו
       const creativeFolders = [
         { 
           id: "video", 
           nameHe: "וידאו", 
           items: [
-            "1CR-Q_QB58GcG4SECUdG5MAxMl-HUY7Gi", // מכורים
-            "1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg", // הפניקס
-            "12ak2KGc2soSMa6ZRXjCOS1ip_WlMjZwI", // קרדשיאנס
-            "1ylyREJ4EkmonHM0DLWc-r16rM8X-OOj3", // משחקי מילים
-            "1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT", // ניסוי ויזואלי
-            "1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ", // סאטירה
-            "1tlg0QCMMyJwAmxvVRkPGGycvsp3aabkx"  // וידאו נוסף
+            "1CR-Q_QB58GcG4SECUdG5MAxMl-HUY7Gi", // מכורים.mp4
+            "1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg", // הפניקס.mp4
+            "12ak2KGc2soSMa6ZRXjCOS1ip_WlMjZwI", // גלגול הנשמות של הקרדשניות.mp4
+            "1ylyREJ4EkmonHM0DLWc-r16rM8X-OOj3", // משחקי מילים.mp4
+            "1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT", // ניסוי ויזואלי 2.mp4
+            "1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ", // סאטירה וידאו.mp4
+            "1tlg0QCMMyJwAmxvVRkPGGycvsp3aabkx"  // עולם מקביל.mp4
           ] 
         }
       ];
@@ -213,6 +219,14 @@
       }
 
       renderFolders();
+
+      const langBtn = document.getElementById("langToggle");
+      langBtn.onclick = () => {
+        const root = document.documentElement;
+        const next = root.getAttribute("data-lang") === "he" ? "en" : "he";
+        root.setAttribute("data-lang", next);
+        root.setAttribute("dir", next === "he" ? "rtl" : "ltr");
+      };
     </script>
   </body>
 </html>
