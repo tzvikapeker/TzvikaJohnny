@@ -76,36 +76,23 @@
       }
 
       .folder-label { font-size: 13px; color: var(--text-main); line-height: 1.4; }
+      .file-count { display: block; font-size: 11px; color: var(--text-muted); margin-top: 4px; }
 
       #folderContentView { display: none; flex-direction: column; gap: 20px; }
-      .back-btn { align-self: flex-start; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); color: var(--accent); padding: 8px 16px; border-radius: 999px; cursor: pointer; font-size: 13px; margin-bottom: 10px; }
+      .back-btn { align-self: flex-start; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--accent); padding: 8px 16px; border-radius: 999px; cursor: pointer; font-size: 13px; margin-bottom: 10px; }
 
-      /* פיד סרטונים אנכי 9:16 (TikTok Style) */
-      .video-feed {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 50px;
-        width: 100%;
-        max-width: 450px;
-        margin: 0 auto;
-        padding-bottom: 50px;
-      }
+      /* הגלריה - תומכת גם ב-9:16 וגם בתמונות רגילות */
+      .masonry { column-count: 1; gap: 16px; width: 100%; max-width: 800px; margin: 0 auto; }
+      @media (min-width: 768px) { .masonry { column-count: 2; } }
 
-      .vertical-video-container {
-        width: 100%;
-        aspect-ratio: 9 / 16;
-        background: #000;
-        border-radius: 24px;
-        overflow: hidden;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-        position: relative;
-      }
+      .masonry-item { break-inside: avoid; margin-bottom: 24px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); background: #000; }
+      .masonry-item img { width: 100%; display: block; transition: 0.3s; }
 
-      .vertical-video-container iframe {
-        position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+      .video-container {
+        position: relative; width: 100%; height: 0; padding-bottom: 177.77%; /* יחס 9:16 לסרטונים אנכיים */
+        background: #000; overflow: hidden;
       }
+      .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
       footer { padding: 30px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
       html[data-lang="he"] { direction: rtl; }
@@ -132,7 +119,7 @@
     <main>
       <section class="content-card">
         <h1>קריאייטיב שלי</h1>
-        <div class="text-block">לחצו על תיקיית הוידאו לצפייה בפיד (9:16) המדויק מהדרייב.</div>
+        <div class="text-block">לחצו על תיקייה לצפייה בעבודות.</div>
       </section>
 
       <div class="folder-grid" id="folderGrid"></div>
@@ -140,7 +127,7 @@
       <div id="folderContentView">
         <button class="back-btn" onclick="showFolders()">🔙 חזרה לתיקיות</button>
         <h3 id="currentFolderName" style="margin: 15px 0; color: var(--accent); text-align: center;"></h3>
-        <div class="video-feed" id="galleryGrid"></div>
+        <div class="masonry" id="galleryGrid"></div>
       </div>
     </main>
 
@@ -150,21 +137,18 @@
     </footer>
 
     <script>
+      // כאן אתה משבץ את ה-IDs מהדרייב בתוך הסוגריים המרובעים []
       const creativeFolders = [
-        { 
-          id: "video", 
-          nameHe: "וידאו", 
-          items: [
-            "1CR-Q_QB58GcG4SECUdG5MAxMl-HUY7Gi", // מכורים.mp4
-            "1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg", // הפניקס.mp4
-            "12ak2KGc2soSMa6ZRXjCOS1ip_WlMjZwI", // גלגול הנשמות של הקרדשניות.mp4
-            "1ylyREJ4EkmonHM0DLWc-r16rM8X-OOj3", // משחקי מילים.mp4
-            "1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT", // ניסוי ויזואלי 2.mp4
-            "1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ", // סאטירה וידאו.mp4
-            "1tlg0QCMMyJwAmxvVRkPGGycvsp3aabkx"  // עולם מקביל.mp4
-          ] 
-        }
+        { id: "video", nameHe: "וידאו", count: 7, items: [] },
+        { id: "ai", nameHe: "דימויי AI", count: 5, items: [] },
+        { id: "words", nameHe: "משחקי מילים", count: 4, items: [] },
+        { id: "bras", nameHe: "פרויקט החזיות", count: 3, items: [] },
+        { id: "satire", nameHe: "סאטירה", count: 6, items: [] },
+        { id: "ads", nameHe: "פרסומות", count: 5, items: [] }
       ];
+
+      // רשימת ה-IDs של סרטונים (כדי שיוצגו בנגן 9:16)
+      const videoIds = []; 
 
       const folderGrid = document.getElementById("folderGrid");
       const folderContentView = document.getElementById("folderContentView");
@@ -183,7 +167,7 @@
                 <svg viewBox="0 0 24 24" width="20"><path fill="white" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               </div>
             </div>
-            <div class="folder-label">${folder.nameHe}</div>
+            <div class="folder-label">${folder.nameHe} <span class="file-count">(${folder.count} קבצים)</span></div>
           `;
           folderGrid.appendChild(item);
         });
@@ -196,12 +180,14 @@
         galleryGrid.innerHTML = "";
 
         folder.items.forEach(fileId => {
-          const container = document.createElement("div");
-          container.className = "vertical-video-container";
-          container.innerHTML = `
-            <iframe src="https://drive.google.com/file/d/${fileId}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>
-          `;
-          galleryGrid.appendChild(container);
+          const itemDiv = document.createElement("div");
+          itemDiv.className = "masonry-item";
+          if (videoIds.includes(fileId)) {
+            itemDiv.innerHTML = `<div class="video-container"><iframe src="https://drive.google.com/file/d/${fileId}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe></div>`;
+          } else {
+            itemDiv.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${fileId}&sz=w800" loading="lazy">`;
+          }
+          galleryGrid.appendChild(itemDiv);
         });
       }
 
