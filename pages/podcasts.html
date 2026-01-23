@@ -2,46 +2,37 @@
 <html lang="he" dir="rtl" data-lang="he">
   <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-GTHDTELYGW');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GTHDTELYGW');
+    </script>
     <meta charset="UTF-8" />
-    <title>Podcasts – Tzvika Johnny</title>
+    <title>Podcasts – Tzvika Johnny Peker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
     <style>
       :root {
         --bg-color: #050608;
-        --card-bg: rgba(18, 18, 24, 0.92);
+        --card-bg: rgba(18, 18, 24, 0.94);
         --accent: #ffb86c;
         --accent-soft: rgba(255, 184, 108, 0.14);
         --text-main: #f8f8ff;
         --text-muted: #b7b7c7;
-        --border-color: rgba(255, 255, 255, 0.08);
+        --border-color: rgba(255, 255, 255, 0.1);
       }
 
-      * { box-sizing: border-box; }
-
+      * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
-        margin: 0;
         min-height: 100vh;
-        font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-family: "Heebo", sans-serif;
         background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
         color: var(--text-main);
         display: flex;
         flex-direction: column;
       }
-
-      a { color: var(--accent); text-decoration: none; }
-      a:hover { text-decoration: underline; }
 
       header {
         padding: 16px 24px;
@@ -50,431 +41,142 @@
         justify-content: space-between;
         border-bottom: 1px solid var(--border-color);
         backdrop-filter: blur(16px);
-        background: linear-gradient(to bottom, rgba(5, 6, 8, 0.92), rgba(5, 6, 8, 0.78));
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        gap: 14px;
-        flex-wrap: wrap;
+        background: rgba(5, 6, 8, 0.92);
+        position: sticky; top: 0; z-index: 100; gap: 15px; flex-wrap: wrap;
       }
 
       .logo-title { display: flex; flex-direction: column; gap: 2px; }
-      .logo-title span:first-child {
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        font-size: 13px;
-        text-transform: uppercase;
-        color: var(--text-muted);
-      }
-      .logo-title span:last-child { font-weight: 500; font-size: 15px; }
+      .logo-title span:first-child { font-weight: 700; font-size: 14px; color: var(--accent); text-transform: uppercase; }
+      .logo-title span:last-child { font-weight: 400; font-size: 13px; color: var(--text-muted); }
 
-      nav { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+      nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+      .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; transition: 0.3s; white-space: nowrap; }
+      .nav-link:hover { color: var(--accent); background: rgba(255, 255, 255, 0.05); }
+      .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.15); color: var(--accent); font-weight: 500; }
 
-      .nav-link {
-        font-size: 14px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid transparent;
-        color: var(--text-muted);
-        display: inline-flex;
-        gap: 6px;
-        align-items: center;
-        white-space: nowrap;
-      }
+      .language-toggle { font-size: 12px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border-color); cursor: pointer; background: rgba(10, 10, 16, 0.8); color: var(--text-muted); }
 
-      .nav-link.active {
-        border-color: var(--accent-soft);
-        background: radial-gradient(circle at top, rgba(255, 184, 108, 0.18), rgba(8, 9, 14, 0.9));
-        color: var(--accent);
-      }
+      main { flex: 1; padding: 40px 6vw; display: flex; flex-direction: column; gap: 40px; }
 
-      .language-toggle {
-        font-size: 13px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid var(--border-color);
-        cursor: pointer;
-        background: rgba(10, 10, 16, 0.8);
-        color: var(--text-muted);
-      }
+      .content-card { background: var(--card-bg); border-radius: 24px; padding: 32px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); max-width: 800px; }
+      h1 { margin-bottom: 8px; font-size: 32px; color: var(--text-main); }
+      h2 { margin-bottom: 24px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
+      .text-block { font-size: 16px; line-height: 1.8; color: var(--text-main); margin-bottom: 20px; }
 
-      main {
-        flex: 1;
-        padding: 32px 6vw 40px 6vw;
+      /* מבנה הגריד - סרטונים אחד ליד השני */
+      .media-grid {
         display: grid;
-        grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
-        gap: 28px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        width: 100%;
       }
 
-      @media (max-width: 900px) {
-        main { grid-template-columns: minmax(0, 1fr); }
-      }
-
-      .content-card {
-        background:
-          linear-gradient(135deg, rgba(255, 184, 108, 0.06), transparent 48%),
-          linear-gradient(200deg, rgba(145, 124, 255, 0.06), transparent 64%),
-          var(--card-bg);
+      .media-item {
+        background: rgba(255, 255, 255, 0.03);
         border-radius: 20px;
-        padding: 22px 22px 20px;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .content-card::before {
-        content: "";
-        position: absolute;
-        inset: -40%;
-        background:
-          radial-gradient(circle at 0% 0%, rgba(255, 184, 108, 0.09) 0, transparent 55%),
-          radial-gradient(circle at 110% 0%, rgba(112, 97, 255, 0.08) 0, transparent 52%);
-        opacity: 0.8;
-        pointer-events: none;
-      }
-
-      .content-inner { position: relative; z-index: 1; }
-
-      .pill-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 4px 10px;
-        border-radius: 999px;
-        background: rgba(10, 10, 16, 0.84);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        font-size: 11px;
-        color: var(--text-muted);
-        margin-bottom: 10px;
-      }
-
-      .pill-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 999px;
-        background: radial-gradient(circle, #ffb86c 0, #ff7e5f 65%);
-        box-shadow: 0 0 10px rgba(255, 184, 108, 0.8);
-      }
-
-      h1 { margin: 0 0 6px; font-size: clamp(26px, 3vw, 30px); letter-spacing: 0.04em; }
-      h2 { margin: 0 0 14px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
-
-      .text-block { font-size: 15px; line-height: 1.7; color: var(--text-main); margin-bottom: 14px; }
-      .text-muted { color: var(--text-muted); font-size: 14px; }
-
-      .en { direction: ltr; text-align: left; }
-      .he { direction: rtl; text-align: right; }
-
-      /* Media List Styles (Specific to Podcasts/Audio) */
-      .media-card {
-        background:
-          radial-gradient(circle at top, rgba(255, 184, 108, 0.12), transparent 60%),
-          rgba(10, 10, 18, 0.96);
-        border-radius: 20px;
-        padding: 18px 18px 16px;
-        border: 1px solid var(--border-color);
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        min-height: 200px;
-      }
-
-      .media-card-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; }
-      .media-title { font-size: 15px; font-weight: 500; }
-      .media-sub { font-size: 13px; color: var(--text-muted); }
-
-      .podcast-list {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-top: 6px;
-        max-height: 80vh;
-        overflow-y: auto;
-        padding-right: 2px;
-      }
-
-      .podcast-item {
-        background: rgba(9, 9, 16, 0.96);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 14px;
         padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        transition: transform 0.3s;
       }
+      .media-item:hover { transform: translateY(-5px); border-color: var(--accent-soft); }
 
-      .podcast-meta {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 13px;
-        color: var(--text-main);
-      }
-      .podcast-badge {
-        font-size: 11px;
-        color: var(--text-muted);
-        background: rgba(255,255,255,0.05);
-        padding: 2px 6px;
-        border-radius: 4px;
-      }
-
+      .media-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; color: var(--accent); padding: 0 5px; }
+      
       .drive-embed-container {
         position: relative;
         width: 100%;
-        height: 0;
-        padding-bottom: 56.25%; /* 16:9 for video, can be adjusted */
-        background: rgba(0,0,0,0.3);
-        border-radius: 8px;
+        aspect-ratio: 9 / 16; /* רזולוציית טיקטוק אנכית */
+        background: #000;
+        border-radius: 12px;
         overflow: hidden;
       }
-      
-      /* For pure audio, we can make it shorter */
-      .drive-embed-container.audio-mode {
-        padding-bottom: 80px; 
-      }
+      .drive-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-      .drive-embed-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
+      footer { padding: 30px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
 
-      /* ===== Language visibility ===== */
-      html[data-lang="en"] .hebrew, html[data-lang="en"] .he { display: none; }
-      html[data-lang="he"] .english, html[data-lang="he"] .en { display: none; }
-
-      footer {
-        border-top: 1px solid var(--border-color);
-        padding: 18px 6vw 22px 6vw;
-        font-size: 13px;
-        color: var(--text-muted);
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: space-between;
-        background: rgba(3, 3, 8, 0.98);
-      }
-
-      .footer-left, .footer-right {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px 16px;
-        align-items: center;
-      }
+      html[data-lang="en"] .he, html[data-lang="he"] .en { display: none; }
+      html[data-lang="en"] { direction: ltr; }
+      html[data-lang="he"] { direction: rtl; }
     </style>
   </head>
 
   <body>
-    <nav style="text-align: center; padding: 20px; background: rgba(255,255,255,0.1);">
-    <a href="../index.html" style="color: white; margin: 10px; text-decoration: none;">חזרה לדף הבית</a>
-    <a href="podcasts.html" style="color: white; margin: 10px; text-decoration: none;">פודקאסטים</a>
-    <a href="satire.html" style="color: white; margin: 10px; text-decoration: none;">סאטירה</a>
-    <a href="songs.html" style="color: white; margin: 10px; text-decoration: none;">שירים</a>
-</nav>
-    
-    
     <header>
       <div class="logo-title">
-        <span>TZVIKA JOHNNY</span>
-        <span>Multimodal creative technologist</span>
+        <span>TZVIKA JOHNNY PEKER</span>
+        <span class="he">מולטי־מודל קריאייטיב טכנולוגיסט</span>
+        <span class="en">Multimodal creative technologist</span>
       </div>
-
       <nav>
-  <a href="../index.html" class="nav-link">
-    <span class="english">Home</span>
-    <span class="hebrew">ראשי</span>
-  </a>
-
-  <a href="creative.html" class="nav-link">
-    <span class="english">Creative</span>
-    <span class="hebrew">קריאייטיב</span>
-  </a>
-
-  <a href="lessons.html" class="nav-link">
-    <span class="english">Clients</span>
-    <span class="hebrew">לקוחות</span>
-  </a>
-
-  <!-- ACTIVE CLASS ADDED HERE -->
-  <a href="podcasts.html" class="nav-link active">
-    <span class="english">Podcasts</span>
-    <span class="hebrew">פודקאסטים</span>
-  </a>
-
-  <a href="posttrauma.html" class="nav-link">
-    <span class="english">Post-Trauma</span>
-    <span class="hebrew">פוסט־טראומה</span>
-  </a>
-
-  <a href="satire.html" class="nav-link">
-    <span class="english">Satire</span>
-    <span class="hebrew">סאטירה</span>
-  </a>
-
-  <a href="songs.html" class="nav-link">
-    <span class="english">Songs</span>
-    <span class="hebrew">שירים</span>
-  </a>
-
-  <button class="language-toggle" id="langToggle" type="button">HE / EN</button>
-</nav>
+        <a href="../index.html" class="nav-link"><span class="he">ראשי</span><span class="en">Home</span></a>
+        <a href="creative.html" class="nav-link"><span class="he">קריאייטיב</span><span class="en">Creative</span></a>
+        <a href="lessons.html" class="nav-link"><span class="he">לקוחות</span><span class="en">Clients</span></a>
+        <a href="podcasts.html" class="nav-link active"><span class="he">פודקאסטים</span><span class="en">Podcasts</span></a>
+        <a href="posttrauma.html" class="nav-link"><span class="he">פוסט־טראומה</span><span class="en">Post-Trauma</span></a>
+        <a href="satire.html" class="nav-link"><span class="he">סאטירה</span><span class="en">Satire</span></a>
+        <a href="songs.html" class="nav-link"><span class="he">שירים</span><span class="en">Songs</span></a>
+        <button class="language-toggle" id="langToggle">HE / EN</button>
+      </nav>
     </header>
-
 
     <main>
       <section class="content-card">
-        <div class="content-inner">
-          <div class="pill-label">
-            <span class="pill-dot"></span>
-            <span>Audio & Parody</span>
-          </div>
-
-          <h1 class="he">פודקאסטים</h1>
-          <h2 class="he">מה למדתי היום</h2>
-
-          <h1 class="en">Podcasts</h1>
-          <h2 class="en">What I learned today</h2>
-
-          <!-- HEBREW CONTENT -->
-          <div class="text-block he">
-            זו הזירה שבה מוזיקה פוגשת הומור חד ומודעות עצמית. כאן אני יוצר שירי פארודיה וסאטירה שמבוססים על מציאות יומיומית, תרבות פופולרית ואבסורדים שכולנו מזהים.
-          </div>
-          <div class="text-block he">
-            אני לוקח לחנים מוכרים או סגנונות ברורים, מסובב אותם עם טקסטים חכמים, עקיצות מדויקות ופאנצ’ים שעובדים גם כשצוחקים וגם כשעוצרים לחשוב.
-          </div>
-          <div class="text-block he">
-            המטרה היא לא רק להצחיק, אלא להגיד משהו דרך הצחוק לשחרר, לעקוץ, ולפעמים גם לשים מראה מול המאזין.
-          </div>
-
-          <!-- ENGLISH CONTENT -->
-          <div class="text-block en">
-            This is the arena where music meets sharp humor and self-awareness. Here I create parody and satire songs based on everyday reality, pop culture, and the absurdities we all recognize.
-          </div>
-          <div class="text-block en">
-            I take familiar melodies or distinct styles, twisting them with clever lyrics, precise stings, and punchlines that work both for a laugh and a moment of thought.
-          </div>
-          <div class="text-block en">
-            The goal isn't just to entertain, but to say something through the humor—to release, to sting, and sometimes to hold a mirror up to the listener.
-          </div>
+        <div class="he">
+          <h1>פודקאסטים</h1>
+          <h2>מה למדתי היום</h2>
+          <div class="text-block">זו הזירה שבה מוזיקה פוגשת הומור חד ומודעות עצמית. כאן אני יוצר שירי פארודיה וסאטירה שמבוססים על מציאות יומיומית, תרבות פופולרית ואבסורדים שכולנו מזהים.</div>
+        </div>
+        <div class="en">
+          <h1>Podcasts</h1>
+          <h2>What I learned today</h2>
+          <div class="text-block">The arena where music meets sharp humor and self-awareness. Parody and satire songs based on everyday reality and pop culture.</div>
         </div>
       </section>
 
-      <aside class="media-card">
-        <div class="media-card-header">
-          <div>
-            <div class="media-title">
-              <span class="he">האזנה</span>
-              <span class="en">Listen</span>
-            </div>
-            <div class="media-sub">
-              <span class="he">פרקים נבחרים</span>
-              <span class="en">Selected Episodes</span>
-            </div>
-          </div>
+      <div class="media-grid" id="podcastList">
         </div>
-
-        <div class="podcast-list" id="podcastList">
-          <!-- Dynamic Content Loaded Here -->
-        </div>
-      </aside>
     </main>
 
     <footer>
-      <div class="footer-left he">
-        <span>© Tzvika Johnny</span>
-        <span>מולטי־מודל קריאייטיב טכנולוגיסט</span>
-      </div>
-      <div class="footer-right">
-        <span class="he">להגיד משהו דרך הצחוק.</span>
-        <a href="mailto:tzvika@example.com">tzvika@example.com</a>
-      </div>
+      <span>© Tzvika Johnny Peker</span>
+      <span class="he">להגיד משהו דרך הצחוק.</span>
     </footer>
 
     <script>
-      // ===== Language toggle =====
       const langBtn = document.getElementById("langToggle");
       const root = document.documentElement;
-
-      function setLang(lang) {
-        root.setAttribute("data-lang", lang);
-        root.setAttribute("lang", lang);
-        root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
-        try { localStorage.setItem("lang", lang); } catch {}
-        langBtn.textContent = lang === "he" ? "EN / HE" : "HE / EN";
+      function setLang(l) {
+        root.setAttribute("data-lang", l);
+        root.setAttribute("lang", l);
+        root.setAttribute("dir", l === "he" ? "rtl" : "ltr");
+        langBtn.textContent = l === "he" ? "EN" : "HE";
       }
+      langBtn.addEventListener("click", () => setLang(root.getAttribute("data-lang") === "he" ? "en" : "he"));
+      setLang("he");
 
-      langBtn.addEventListener("click", () => {
-        const current = root.getAttribute("data-lang") || "he";
-        setLang(current === "he" ? "en" : "he");
-      });
-
-      const savedLang = (() => { try { return localStorage.getItem("lang"); } catch { return null; } })();
-      setLang(savedLang || "he");
-
-      // ===== Drive Logic =====
-      function extractDriveId(url) {
-        const m1 = url.match(/\/file\/d\/([^\/]+)/);
-        if (m1 && m1[1]) return m1[1];
-        const m2 = url.match(/[?&]id=([^&]+)/);
-        if (m2 && m2[1]) return m2[1];
-        return null;
-      }
-
-      function drivePreviewUrl(fileId) {
-        return `https://drive.google.com/file/d/${encodeURIComponent(fileId)}/preview`;
-      }
-
-      // ===== Media Sources =====
-      const podcastUrls = [
-        "https://drive.google.com/file/d/1N_vrYX98IkXooUWgzKYCSeX0Z_mt-jP0/view?usp=drive_link",
-        "https://drive.google.com/file/d/1GWKat4DMeBylpaEGuaWDgTX5RC1coaJ-/view?usp=drive_link",
-        "https://drive.google.com/file/d/1o04irFuakI-EYPbbspZ4NYT6LG8XZd6M/view?usp=drive_link"
+      // מזהי הפודקאסטים מהקוד המקורי שלך
+      const podcastIds = [
+        "1N_vrYX98IkXooUWgzKYCSeX0Z_mt-jP0",
+        "1GWKat4DMeBylpaEGuaWDgTX5RC1coaJ-",
+        "1o04irFuakI-EYPbbspZ4NYT6LG8XZd6M"
       ];
 
       const listContainer = document.getElementById("podcastList");
-
-      podcastUrls.forEach((url, idx) => {
-        const id = extractDriveId(url);
-        if (!id) return;
-
+      podcastIds.forEach((id, idx) => {
         const item = document.createElement("div");
-        item.className = "podcast-item";
-
-        const meta = document.createElement("div");
-        meta.className = "podcast-meta";
-        meta.innerHTML = `
-          <span>
-             <span class="he">רצועה ${idx + 1}</span>
-             <span class="en">Track ${idx + 1}</span>
-          </span>
-          <span class="podcast-badge">Drive Player</span>
+        item.className = "media-item";
+        item.innerHTML = `
+          <div class="media-meta">
+            <span>Track ${idx + 1}</span>
+          </div>
+          <div class="drive-embed-container">
+            <iframe src="https://drive.google.com/file/d/${id}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>
+          </div>
         `;
-
-        const embedBox = document.createElement("div");
-        // Using audio-mode class to make it slightly shorter, change to standard for video
-        embedBox.className = "drive-embed-container audio-mode"; 
-        
-        const iframe = document.createElement("iframe");
-        iframe.src = drivePreviewUrl(id);
-        iframe.allow = "autoplay";
-        iframe.title = `Media ${idx + 1}`;
-        iframe.loading = "lazy";
-
-        embedBox.appendChild(iframe);
-        item.appendChild(meta);
-        item.appendChild(embedBox);
         listContainer.appendChild(item);
       });
     </script>
   </body>
 </html>
-
-
-
-
-
-
