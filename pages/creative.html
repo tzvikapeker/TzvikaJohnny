@@ -1,283 +1,89 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl" data-lang="he">
-  <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GTHDTELYGW');
-    </script>
-    <meta charset="UTF-8" />
-    <title>Creative – Tzvika Johnny Peker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
-
-    <style>
-      :root {
-        --bg-color: #050608;
-        --card-bg: rgba(18, 18, 24, 0.94);
-        --accent: #ffb86c;
-        --accent-soft: rgba(255, 184, 108, 0.14);
-        --text-main: #f8f8ff;
-        --text-muted: #b7b7c7;
-        --border-color: rgba(255, 255, 255, 0.1);
-        --folder-yellow: #f1d592;
-        --folder-blue: #2196f3;
-      }
-
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      body {
-        min-height: 100vh;
-        font-family: "Heebo", sans-serif;
-        background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
-        color: var(--text-main);
-        display: flex;
-        flex-direction: column;
-      }
-
-      header {
-        padding: 16px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid var(--border-color);
-        backdrop-filter: blur(16px);
-        background: rgba(5, 6, 8, 0.92);
-        position: sticky; top: 0; z-index: 100; gap: 15px; flex-wrap: wrap;
-      }
-
-      .logo-title { display: flex; flex-direction: column; gap: 2px; }
-      .logo-title span:first-child { font-weight: 700; font-size: 14px; color: var(--accent); text-transform: uppercase; }
-      .logo-title span:last-child { font-weight: 400; font-size: 13px; color: var(--text-muted); }
-
-      nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-      .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; transition: 0.3s; white-space: nowrap; }
-      .nav-link:hover { color: var(--accent); background: rgba(255, 255, 255, 0.05); }
-      .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.15); color: var(--accent); font-weight: 500; }
-
-      main { flex: 1; padding: 40px 6vw; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); gap: 40px; }
-      @media (max-width: 1150px) { main { grid-template-columns: 1fr; } }
-
-      .content-card {
-        background: var(--card-bg); border-radius: 24px; padding: 30px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); align-self: start;
-      }
-
-      .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 30px; }
-      .folder-item { display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; transition: 0.2s; }
-      .folder-item:hover { transform: translateY(-5px); }
-
-      .folder-icon {
-        width: 100px; height: 80px; background: var(--folder-yellow); border-radius: 4px 10px 10px 10px; position: relative; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-      }
-      .folder-icon::before { content: ""; position: absolute; top: -10px; left: 0; width: 40px; height: 10px; background: var(--folder-yellow); border-radius: 4px 4px 0 0; }
-      .user-avatar {
-        position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); width: 35px; height: 35px; background: var(--folder-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;
-      }
-
-      .folder-label { font-size: 13px; color: var(--text-main); line-height: 1.4; }
-      .file-count { display: block; font-size: 11px; color: var(--text-muted); margin-top: 4px; }
-
-      #folderContentView { display: none; flex-direction: column; gap: 20px; }
-      .back-btn { align-self: flex-start; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--accent); padding: 8px 16px; border-radius: 999px; cursor: pointer; font-size: 13px; margin-bottom: 10px; }
-
-      .masonry { display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%; max-width: 450px; margin: 0 auto; }
-      .masonry-item { width: 100%; border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
-      .masonry-item img { width: 100%; display: block; }
-
-      .video-container {
-        position: relative; width: 100%; aspect-ratio: 9 / 16;
-        background: #000; overflow: hidden;
-      }
-      .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-      footer { padding: 30px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
-      html[data-lang="he"] { direction: rtl; }
-    </style>
-  </head>
-
-  <body>
-    <header>
-      <div class="logo-title">
-        <span>TZVIKA JOHNNY PEKER</span>
-        <span class="he">מולטי־מודל קריאייטיב טכנולוגיסט</span>
-      </div>
-      <nav>
-        <a href="../index.html" class="nav-link">ראשי</a>
-        <a href="creative.html" class="nav-link active">קריאייטיב שלי</a>
-        <a href="lessons.html" class="nav-link">לקוחות</a>
-        <a href="podcasts.html" class="nav-link">פודקאסטים</a>
-        <a href="posttrauma.html" class="nav-link">פוסטראומה</a>
-        <a href="satire.html" class="nav-link">סאטירה</a>
-        <a href="songs.html" class="nav-link">שירים</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="content-card">
-        <h1>קריאייטיב שלי</h1>
-        <div class="text-block">לחצו על תיקייה לצפייה בעבודות המעודכנות.</div>
-      </section>
-
-      <div class="folder-grid" id="folderGrid"></div>
-
-      <div id="folderContentView">
-        <button class="back-btn" onclick="showFolders()">🔙 חזרה לתיקיות</button>
-        <h3 id="currentFolderName" style="margin: 15px 0; color: var(--accent); text-align: center;"></h3>
-        <div class="masonry" id="galleryGrid"></div>
-      </div>
-    </main>
-
-    <footer>
-      <span>© Tzvika Johnny Peker</span>
-      <span class="he">כאן פוגשים את השכבה הכי חשופה של היצירה.</span>
-    </footer>
-
-    <script>
-      const creativeFolders = [
-        { 
-          id: "reels", 
-          nameHe: "REELS", 
-          count: 7, 
-          items: [
-            "1pJ936-J1w-5xP0hgSrD72dnAldFTlrnk",
-            "1OomQoJi0j23dkSm6L2VDf4ZRKF54EYxR",
-            "1EwZ-4b60wNygFCRk-KzJnr7LGIHdzBP3",
-            "16lemEvsbSlj4fys_vPYxb-b7auWaIGJP",
-            "13nCAZ0LjbJ6a32p8ninsxLak6dKXHPjk",
-            "1da3Cy63y2nJsKPpdOSrphZ7um8NlRdVd",
-            "1p6lJ9EFLlCkwAEjGDRIIzvBq972D2wD-"
-          ] 
-        },
-        { 
-          id: "photos", 
-          nameHe: "תמונות", 
-          count: 29, 
-          items: [
-            "185Aus2D_CzSEebIPsWmQ9z31MbHyDwNv",
-            "1bB6URSsuUk5xVWt1iK5MjCATLKn0fbkb",
-            "1W30xp_Y1ahtG4cQ_vZjK_P4hzf--7I6P",
-            "1Wb97nZUKZL8K8mg2-ed7bnC_qC8IhYI9",
-            "1oteYyFydPuJsOpq9oSBamp44aM9WLmbh",
-            "1DGeToGCG4Sy1QLd9bcUXTvfgwkwKhFlT"
-          ] 
-        },
-        { 
-          id: "ads", 
-          nameHe: "פרסומות שעשיתי", 
-          count: 8, 
-          items: [
-            "1Y3F4BSj15Z3QCf3s5Rdzw7C0JyJYuq9V",
-            "1lJXcYYAer5ZJ2vmz36aBKCDx8ZfMS_lr",
-            "1w4XchLZ6H9AhkMu9ybWikdBq9zGPyWSd",
-            "1CR-Q_QB58GcG4SECUdG5MAxMl-HUY7Gi",
-            "1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ",
-            "1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT"
-          ] 
-        },
-        { 
-          id: "satire", 
-          nameHe: "סאטירה ופארודיה", 
-          count: 12, 
-          items: [
-            "1O7gHjUrlpqSafb_blDj-IcGkIxT0d7LE",
-            "1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg",
-            "1tlg0QCMMyJwAmxvVRkPGGycvsp3aabkx",
-            "1ylyREJ4EkmonHM0DLWc-r16rM8X-OOj3",
-            "12ak2KGc2soSMa6ZRXjCOS1ip_WlMjZwI",
-            "10jXvk49eHUlORzSPwbJ0jBhSg59LAR5j"
-          ] 
-        },
-        { id: "words", nameHe: "משחקי מילים", count: 10, items: [] },
-        { 
-          id: "heart", 
-          nameHe: "מהלב", 
-          count: 5, 
-          items: [
-            "1R4J6ReW90VVtaCUd221ozzk8q9PTkMxR",
-            "150Fuq4Iljfo_3S2595lgYHChR86j9VrI",
-            "14-Ul7MhJvgMVdqSDYkZqrt59qO51ierw",
-            "14BUAoBy1A4WF388Q_0hjq6lv3B-lvGMc",
-            "1otk559-02FywZLwV8TEown-zWpElm4ai"
-          ] 
-        }
-      ];
-
-      // מזהים שיוצגו כווידאו אנכי (9:16)
-      const videoIds = [
-        "1pJ936-J1w-5xP0hgSrD72dnAldFTlrnk",
-        "1OomQoJi0j23dkSm6L2VDf4ZRKF54EYxR",
-        "1EwZ-4b60wNygFCRk-KzJnr7LGIHdzBP3",
-        "16lemEvsbSlj4fys_vPYxb-b7auWaIGJP",
-        "13nCAZ0LjbJ6a32p8ninsxLak6dKXHPjk",
-        "1da3Cy63y2nJsKPpdOSrphZ7um8NlRdVd",
-        "1p6lJ9EFLlCkwAEjGDRIIzvBq972D2wD-",
-        "1Y3F4BSj15Z3QCf3s5Rdzw7C0JyJYuq9V",
-        "1lJXcYYAer5ZJ2vmz36aBKCDx8ZfMS_lr",
-        "1w4XchLZ6H9AhkMu9ybWikdBq9zGPyWSd",
-        "1CR-Q_QB58GcG4SECUdG5MAxMl-HUY7Gi",
-        "1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ",
-        "1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT",
-        "1R4J6ReW90VVtaCUd221ozzk8q9PTkMxR",
-        "150Fuq4Iljfo_3S2595lgYHChR86j9VrI",
-        "14-Ul7MhJvgMVdqSDYkZqrt59qO51ierw",
-        "14BUAoBy1A4WF388Q_0hjq6lv3B-lvGMc",
-        "1otk559-02FywZLwV8TEown-zWpElm4ai",
-        "1O7gHjUrlpqSafb_blDj-IcGkIxT0d7LE",
-        "1_tCT9EnaiZfa5B2RvQ8deBuv3JqPNyjg",
-        "1tlg0QCMMyJwAmxvVRkPGGycvsp3aabkx",
-        "1ylyREJ4EkmonHM0DLWc-r16rM8X-OOj3",
-        "12ak2KGc2soSMa6ZRXjCOS1ip_WlMjZwI",
-        "10jXvk49eHUlORzSPwbJ0jBhSg59LAR5j"
-      ]; 
-
-      const folderGrid = document.getElementById("folderGrid");
-      const folderContentView = document.getElementById("folderContentView");
-      const galleryGrid = document.getElementById("galleryGrid");
-      const currentFolderName = document.getElementById("currentFolderName");
-
-      function renderFolders() {
-        folderGrid.innerHTML = "";
-        creativeFolders.forEach(folder => {
-          const item = document.createElement("div");
-          item.className = "folder-item";
-          item.onclick = () => openFolder(folder);
-          item.innerHTML = `
-            <div class="folder-icon">
-              <div class="user-avatar">
-                <svg viewBox="0 0 24 24" width="20"><path fill="white" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              </div>
-            </div>
-            <div class="folder-label">${folder.nameHe} <span class="file-count">(${folder.count} קבצים)</span></div>
-          `;
-          folderGrid.appendChild(item);
-        });
-      }
-
-      function openFolder(folder) {
-        folderGrid.style.display = "none";
-        folderContentView.style.display = "flex";
-        currentFolderName.textContent = folder.nameHe;
-        galleryGrid.innerHTML = "";
-
-        folder.items.forEach(fileId => {
-          const itemDiv = document.createElement("div");
-          itemDiv.className = "masonry-item";
-          if (videoIds.includes(fileId)) {
-            itemDiv.innerHTML = `<div class="video-container"><iframe src="https://drive.google.com/file/d/${fileId}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe></div>`;
-          } else {
-            itemDiv.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${fileId}&sz=w800" loading="lazy">`;
-          }
-          galleryGrid.appendChild(itemDiv);
-        });
-      }
-
-      function showFolders() {
-        folderGrid.style.display = "grid";
-        folderContentView.style.display = "none";
-      }
-
-      renderFolders();
-    </script>
-  </body>
+<html lang="he" data-lang="he" dir="rtl">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GTHDTELYGW');</script>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <title>Creative | Tzvika Johnny Peker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg-color: #050608; --card-bg: rgba(18, 18, 24, 0.94); --accent: #ffb86c; --accent-soft: rgba(255, 184, 108, 0.14); --text-main: #f8f8ff; --text-muted: #b7b7c7; --border-color: rgba(255, 255, 255, 0.1); --folder-yellow: #f1d592; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
+    html[data-lang="en"] { direction: ltr; } html[data-lang="he"] { direction: rtl; }
+    body { font-family: "Heebo", sans-serif; background: radial-gradient(circle at top, #1b1328 0, #050608 55%); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+    header { padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(16px); background: rgba(5, 6, 8, 0.92); position: sticky; top: 0; z-index: 1000; }
+    nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+    .nav-link.active { background: var(--accent-soft); color: var(--accent); }
+    .lang-toggle { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 11px; font-weight: 700; }
+    main { flex: 1; padding: 40px 6vw; display: flex; flex-direction: column; gap: 40px; }
+    .content-card { background: var(--card-bg); border-radius: 24px; padding: 30px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); max-width: 800px; }
+    .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px; }
+    .folder-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: 0.2s; }
+    .folder-icon { width: 90px; height: 70px; background: var(--folder-yellow); border-radius: 4px 10px 10px 10px; position: relative; margin-bottom: 10px; }
+    .folder-icon::before { content: ""; position: absolute; top: -10px; left: 0; width: 35px; height: 10px; background: var(--folder-yellow); border-radius: 4px 4px 0 0; }
+    #folderContentView { display: none; flex-direction: column; gap: 20px; }
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; }
+    @media (max-width: 600px) { .media-grid { grid-template-columns: 1fr; } }
+    .video-container { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); touch-action: pan-y; }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    img { width: 100%; border-radius: 12px; }
+    footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-title"><span style="color: var(--accent); font-weight: 700;">TZVIKA JOHNNY PEKER</span></div>
+    <nav>
+      <a href="../index.html" class="nav-link"><span class="en">Home</span><span class="he">ראשי</span></a>
+      <a href="creative.html" class="nav-link active"><span class="en">Creative</span><span class="he">קריאייטיב</span></a>
+      <a href="lessons.html" class="nav-link"><span class="en">Clients</span><span class="he">לקוחות</span></a>
+      <a href="podcasts.html" class="nav-link"><span class="en">Podcasts</span><span class="he">פודקאסטים</span></a>
+      <a href="posttrauma.html" class="nav-link"><span class="en">Post-Trauma</span><span class="he">פוסטראומה</span></a>
+      <a href="satire.html" class="nav-link"><span class="en">Satire</span><span class="he">סאטירה</span></a>
+      <a href="songs.html" class="nav-link"><span class="he">שירים</span><span class="en">Songs</span></a>
+      <button class="lang-toggle" id="langToggle">EN</button>
+    </nav>
+  </header>
+  <main>
+    <section class="content-card">
+      <h1 class="he">קריאייטיב שלי</h1><h1 class="en">My Creative</h1>
+      <p class="he">לחצו על תיקייה לצפייה בעבודות.</p><p class="en">Click a folder to view works.</p>
+    </section>
+    <div class="folder-grid" id="folderGrid"></div>
+    <div id="folderContentView">
+      <button onclick="showFolders()" style="padding: 8px 16px; border-radius: 20px; background: var(--accent-soft); border: none; color: var(--accent); cursor: pointer; margin-bottom: 20px;">🔙 <span class="he">חזרה</span><span class="en">Back</span></button>
+      <div class="media-grid" id="galleryGrid"></div>
+    </div>
+  </main>
+  <script>
+    const creativeFolders = [
+      { id: "reels", nameHe: "REELS", nameEn: "REELS", items: ["1pJ936-J1w-5xP0hgSrD72dnAldFTlrnk", "1OomQoJi0j23dkSm6L2VDf4ZRKF54EYxR", "1EwZ-4b60wNygFCRk-KzJnr7LGIHdzBP3", "16lemEvsbSlj4fys_vPYxb-b7auWaIGJP", "13nCAZ0LjbJ6a32p8ninsxLak6dKXHPjk", "1da3Cy63y2nJsKPpdOSrphZ7um8NlRdVd", "1p6lJ9EFLlCkwAEjGDRIIzvBq972D2wD-"], type: "video" },
+      { id: "ads", nameHe: "פרסומות", nameEn: "Ads", items: ["1Y3F4BSj15Z3QCf3s5Rdzw7C0JyJYuq9V", "1lJXcYYAer5ZJ2vmz36aBKCDx8ZfMS_lr", "1w4XchLZ6H9AhkMu9ybWikdBq9zGPyWSd", "1CR-Q_QB58GcG4SECUdG5MAxMl-HUY7Gi", "1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ", "1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT"], type: "video" },
+      { id: "heart", nameHe: "מהלב", nameEn: "From Heart", items: ["1R4J6ReW90VVtaCUd221ozzk8q9PTkMxR", "150Fuq4Iljfo_3S2595lgYHChR86j9VrI", "14-Ul7MhJvgMVdqSDYkZqrt59qO51ierw", "14BUAoBy1A4WF388Q_0hjq6lv3B-lvGMc", "1otk559-02FywZLwV8TEown-zWpElm4ai"], type: "video" },
+      { id: "photos", nameHe: "תמונות", nameEn: "Photos", items: ["185Aus2D_CzSEebIPsWmQ9z31MbHyDwNv", "1bB6URSsuUk5xVWt1iK5MjCATLKn0fbkb", "1W30xp_Y1ahtG4cQ_vZjK_P4hzf--7I6P"], type: "image" }
+    ];
+    function renderFolders() {
+      const grid = document.getElementById('folderGrid'); grid.innerHTML = "";
+      creativeFolders.forEach(f => {
+        const div = document.createElement('div'); div.className = 'folder-item'; div.onclick = () => openFolder(f);
+        div.innerHTML = `<div class="folder-icon"></div><div class="folder-label"><span class="he">${f.nameHe}</span><span class="en">${f.nameEn}</span></div>`;
+        grid.appendChild(div);
+      });
+    }
+    function openFolder(f) {
+      document.getElementById('folderGrid').style.display = 'none'; document.getElementById('folderContentView').style.display = 'flex';
+      const gallery = document.getElementById('galleryGrid');
+      gallery.innerHTML = f.items.map(id => f.type === "video" 
+        ? `<div class="video-container"><iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy"></iframe></div>`
+        : `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w800" loading="lazy">`).join('');
+    }
+    function showFolders() { document.getElementById('folderGrid').style.display = 'grid'; document.getElementById('folderContentView').style.display = 'none'; }
+    const langBtn = document.getElementById('langToggle'); const html = document.documentElement;
+    function setLang(l) { html.setAttribute('data-lang', l); html.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr'); langBtn.textContent = l === 'he' ? 'EN' : 'HE'; localStorage.setItem('siteLang', l); }
+    langBtn.onclick = () => setLang(html.getAttribute('data-lang') === 'he' ? 'en' : 'he');
+    setLang(localStorage.getItem('siteLang') || 'he'); renderFolders();
+  </script>
+</body>
 </html>
