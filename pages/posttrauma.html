@@ -54,4 +54,130 @@
       .nav-link:hover { color: var(--accent); background: rgba(255, 255, 255, 0.05); }
       .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.15); color: var(--accent); font-weight: 500; }
 
-      .language-toggle { font-size: 12px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border
+      .language-toggle { font-size: 12px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border-color); cursor: pointer; background: rgba(10, 10, 16, 0.8); color: var(--text-muted); }
+
+      /* שינוי מבנה הדף כך שהמדיה תהיה מתחת לטקסט או בפריסה רחבה */
+      main { flex: 1; padding: 40px 6vw; display: flex; flex-direction: column; gap: 40px; }
+
+      .content-card { background: var(--card-bg); border-radius: 24px; padding: 32px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); max-width: 800px; }
+      h1 { margin-bottom: 8px; font-size: 32px; color: var(--text-main); }
+      h2 { margin-bottom: 24px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
+      .text-block { font-size: 16px; line-height: 1.8; color: var(--text-main); margin-bottom: 20px; }
+
+      /* מבנה הגריד לסרטונים אחד ליד השני */
+      .media-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* יצירת טורים דינמיים */
+        gap: 25px;
+        width: 100%;
+      }
+
+      .media-item {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 20px;
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s;
+      }
+      .media-item:hover { transform: translateY(-5px); border-color: var(--accent-soft); }
+
+      .media-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; color: var(--accent); padding: 0 5px; }
+      
+      .drive-embed-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9 / 16; /* שמירה על רזולוציית טיקטוק */
+        background: #000;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .drive-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+      footer { padding: 30px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
+
+      html[data-lang="en"] .he, html[data-lang="he"] .en { display: none; }
+      html[data-lang="en"] { direction: ltr; }
+      html[data-lang="he"] { direction: rtl; }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo-title">
+        <span>TZVIKA JOHNNY PEKER</span>
+        <span class="he">מולטי־מודל קריאייטיב טכנולוגיסט</span>
+        <span class="en">Multimodal creative technologist</span>
+      </div>
+      <nav>
+        <a href="../index.html" class="nav-link"><span class="he">ראשי</span><span class="en">Home</span></a>
+        <a href="creative.html" class="nav-link"><span class="he">קריאייטיב</span><span class="en">Creative</span></a>
+        <a href="lessons.html" class="nav-link"><span class="he">לקוחות</span><span class="en">Clients</span></a>
+        <a href="podcasts.html" class="nav-link"><span class="he">פודקאסטים</span><span class="en">Podcasts</span></a>
+        <a href="posttrauma.html" class="nav-link active"><span class="he">פוסט־טראומה</span><span class="en">Post-Trauma</span></a>
+        <a href="satire.html" class="nav-link"><span class="he">סאטירה</span><span class="en">Satire</span></a>
+        <a href="songs.html" class="nav-link"><span class="he">שירים</span><span class="en">Songs</span></a>
+        <button class="language-toggle" id="langToggle">HE / EN</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="content-card">
+        <div class="he">
+          <h1>פוסט־טראומה – יחסינו לאן</h1>
+          <h2>חוויה אנושית מבפנים</h2>
+          <div class="text-block">דרך יצירה, טקסט, דימוי, וידאו ומוזיקה, אני נותן מקום למה שקשה להסביר במילים רגילות: הזיכרונות, הדריכות, הניתוקים, והמאמץ היומיומי להישאר מתפקד.</div>
+        </div>
+        <div class="en">
+          <h1>Post-Trauma</h1>
+          <h2>A Human Experience from Within</h2>
+          <div class="text-block">Through art, text, imagery, video, and music, I give space to what is hard to explain in ordinary words: the memories, the vigilance, and the daily effort to remain functional.</div>
+        </div>
+      </section>
+
+      <div class="media-grid" id="mediaList">
+        </div>
+    </main>
+
+    <footer>
+      <span>© Tzvika Johnny Peker</span>
+      <span class="he">להפוך שקט כבד ליצירה חיה.</span>
+    </footer>
+
+    <script>
+      const langBtn = document.getElementById("langToggle");
+      const root = document.documentElement;
+      function setLang(l) {
+        root.setAttribute("data-lang", l);
+        root.setAttribute("lang", l);
+        root.setAttribute("dir", l === "he" ? "rtl" : "ltr");
+        langBtn.textContent = l === "he" ? "EN" : "HE";
+      }
+      langBtn.addEventListener("click", () => setLang(root.getAttribute("data-lang") === "he" ? "en" : "he"));
+      setLang("he");
+
+      // מזהי הסרטונים המעודכנים שלך
+      const mediaIds = [
+        "1jDz-vXe_X3xu6LelcZAu1V96y1RK3xEn",
+        "1nnzrWNOIGNjbtFl9e6x6ARqHUWocqNnd",
+        "1bSiCHjh8QGAo159NxMRBTY541q1xZWE5"
+      ];
+
+      const listContainer = document.getElementById("mediaList");
+      mediaIds.forEach((id, idx) => {
+        const item = document.createElement("div");
+        item.className = "media-item";
+        item.innerHTML = `
+          <div class="media-meta">
+            <span>Part ${idx + 1}</span>
+          </div>
+          <div class="drive-embed-container">
+            <iframe src="https://drive.google.com/file/d/${id}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>
+          </div>
+        `;
+        listContainer.appendChild(item);
+      });
+    </script>
+  </body>
+</html>
