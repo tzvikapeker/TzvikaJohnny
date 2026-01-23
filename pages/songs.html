@@ -1,218 +1,69 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl" data-lang="he">
-  <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GTHDTELYGW');
-    </script>
-    <meta charset="UTF-8" />
-    <title>Original Songs – Tzvika Johnny Peker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
-
-    <style>
-      :root {
-        --bg-color: #050608;
-        --card-bg: rgba(18, 18, 24, 0.94);
-        --accent: #ffb86c;
-        --accent-soft: rgba(255, 184, 108, 0.14);
-        --text-main: #f8f8ff;
-        --text-muted: #b7b7c7;
-        --border-color: rgba(255, 255, 255, 0.1);
-      }
-
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      
-      body {
-        min-height: 100vh;
-        font-family: "Heebo", sans-serif;
-        background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
-        color: var(--text-main);
-        display: flex;
-        flex-direction: column;
-      }
-
-      header {
-        padding: 16px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid var(--border-color);
-        backdrop-filter: blur(16px);
-        background: rgba(5, 6, 8, 0.92);
-        position: sticky; top: 0; z-index: 100; gap: 15px; flex-wrap: wrap;
-      }
-
-      .logo-title { display: flex; flex-direction: column; gap: 2px; }
-      .logo-title span:first-child { font-weight: 700; font-size: 14px; color: var(--accent); text-transform: uppercase; }
-      .logo-title span:last-child { font-weight: 400; font-size: 13px; color: var(--text-muted); }
-
-      nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-      .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; transition: 0.3s; white-space: nowrap; }
-      .nav-link:hover { color: var(--accent); background: rgba(255, 255, 255, 0.05); }
-      .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.15); color: var(--accent); font-weight: 500; }
-
-      .language-toggle { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border-color); cursor: pointer; background: #0a0a10; color: var(--text-muted); font-size: 11px; }
-
-      main { flex: 1; padding: 40px 6vw; display: flex; flex-direction: column; gap: 40px; }
-
-      .content-card {
-        background: var(--card-bg);
-        border-radius: 24px;
-        padding: 32px;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        max-width: 900px;
-      }
-
-      h1 { font-size: 32px; margin-bottom: 8px; }
-      h2 { font-size: 18px; color: var(--text-muted); font-weight: 300; margin-bottom: 24px; }
-
-      .category-header {
-        margin: 20px 0;
-        padding-right: 10px;
-        border-right: 4px solid var(--accent);
-        font-size: 22px;
-        font-weight: 700;
-        color: var(--accent);
-      }
-
-      /* מבנה הגריד לשירים - אחד ליד השני */
-      .media-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        width: 100%;
-        margin-bottom: 50px;
-      }
-
-      .media-item {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 24px;
-        padding: 16px;
-        transition: transform 0.3s;
-        display: flex;
-        flex-direction: column;
-      }
-      .media-item:hover { transform: translateY(-5px); border-color: var(--accent-soft); }
-
-      .track-name { font-weight: 700; font-size: 16px; margin-bottom: 12px; color: var(--text-main); display: block; text-align: center; }
-
-      .drive-embed-container {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 9 / 16; /* TikTok Style Resolution */
-        background: #000;
-        border-radius: 14px;
-        overflow: hidden;
-      }
-      .drive-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-      footer { padding: 30px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); }
-
-      html[data-lang="en"] .he { display: none; }
-      html[data-lang="he"] .en { display: none; }
-    </style>
-  </head>
-
-  <body>
-    <header>
-      <div class="logo-title">
-        <span>TZVIKA JOHNNY PEKER</span>
-        <span class="he">מולטי־מודל קריאייטיב טכנולוגיסט</span>
-        <span class="en">Multimodal Creative Technologist</span>
-      </div>
-      <nav>
-        <a href="../index.html" class="nav-link"><span class="he">ראשי</span><span class="en">Home</span></a>
-        <a href="creative.html" class="nav-link"><span class="he">קריאייטיב</span><span class="en">Creative</span></a>
-        <a href="lessons.html" class="nav-link"><span class="he">לקוחות</span><span class="en">Clients</span></a>
-        <a href="podcasts.html" class="nav-link"><span class="he">פודקאסטים</span><span class="en">Podcasts</span></a>
-        <a href="posttrauma.html" class="nav-link"><span class="he">פוסטראומה</span><span class="en">Post-Trauma</span></a>
-        <a href="satire.html" class="nav-link"><span class="he">סאטירה</span><span class="en">Satire</span></a>
-        <a href="songs.html" class="nav-link active"><span class="he">שירים</span><span class="en">Songs</span></a>
-        <button class="language-toggle" id="langToggle">HE / EN</button>
-      </nav>
-    </header>
-
-    <main>
-      <section class="content-card">
-        <div class="he">
-          <h1>שירים שיצרתי</h1>
-          <h2>חיבור בין מילים לנשימה</h2>
-          <p>כאן נמצאים השירים שלי. טקסטים שנולדים מרגש, חוויה או רגע קטן שהפך ליצירה. הכתיבה משלבת כנות, משחקי מילים וקצב טבעי - בלי פוזות.</p>
-        </div>
-        <div class="en">
-          <h1>Original Songs</h1>
-          <h2>Words, Music, and Breath</h2>
-          <p>Lyrics born from emotion and experience. My writing combines honesty, wordplay, and natural rhythm—no posing, just real creation.</p>
-        </div>
-      </section>
-
-      <div id="mediaContainer"></div>
-    </main>
-
-    <footer>
-      <span>© Tzvika Johnny Peker</span>
-      <span class="he">להישאר רגע נוסף אצל מי שמקשיב.</span>
-    </footer>
-
-    <script>
-      const mediaTracks = [
-        // מהלב
-        { id: "1OJzWFPxjJdy1pmBZr-utlSsRNih0Ka7z", titleHe: "אנושי", titleEn: "Human", category: "heart" },
-        { id: "1z3QhKy2kXEC89TRp16RjQuzeoQH7DzmZ", titleHe: "שבורים", titleEn: "Broken", category: "heart" },
-        { id: "1Z55ddllpyOpTHa0JP0J-X316erwZmCXO", titleHe: "שיר מקורי נוסף", titleEn: "Original Track", category: "heart" },
-        { id: "1r4pqAHk0uSZLDaZKcZlC-BbLnMfYZ_fc", titleHe: "רצועה מהלב", titleEn: "From the Heart", category: "heart" },
-        
-        // סאטירה והומור
-        { id: "1zUGCnSIJBMdsVS4l-v2TDYAfyCFRvurd", titleHe: "דואט - גלי עטרי ואייל גולן", titleEn: "Duet: Gali & Eyal", category: "satire" },
-        { id: "1np8jDUPZeBxOf9EDn0BlR1XWjI8VVwrl", titleHe: "אשם - סינרגיה ואייל גולן", titleEn: "Duet: Sinergia & Eyal", category: "satire" },
-        { id: "1JyTLB6MjLK0Az7c9queWMY_uZe_a2GD_", titleHe: "אמיתית עם עצמי", titleEn: "Shimdura Alay", category: "satire" },
-        { id: "1g7sWVWcPoDjUkPrdEtWcdY8Dl2CZy0rS", titleHe: "פארודיה מוזיקלית", titleEn: "Musical Parody", category: "satire" }
-      ];
-
-      const container = document.getElementById("mediaContainer");
-
-      function renderCategory(catId, titleHe, titleEn) {
-        const header = document.createElement("div");
-        header.className = "category-header";
-        header.innerHTML = `<span class="he">${titleHe}</span><span class="en">${titleEn}</span>`;
-        container.appendChild(header);
-
-        const grid = document.createElement("div");
-        grid.className = "media-grid";
-        
-        mediaTracks.filter(t => t.category === catId).forEach(track => {
-          const item = document.createElement("div");
-          item.className = "media-item";
-          item.innerHTML = `
-            <span class="track-name"><span class="he">${track.titleHe}</span><span class="en">${track.titleEn}</span></span>
-            <div class="drive-embed-container">
-              <iframe src="https://drive.google.com/file/d/${track.id}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>
-            </div>
-          `;
-          grid.appendChild(item);
-        });
-        container.appendChild(grid);
-      }
-
-      renderCategory("heart", "❤️ שירים מהלב", "❤️ Original Songs");
-      renderCategory("satire", "🎭 סאטירה והומור", "🎭 Satire & Humor");
-
-      // Language Switcher
-      const langBtn = document.getElementById("langToggle");
-      const root = document.documentElement;
-      function setLang(lang) {
-        root.setAttribute("data-lang", lang);
-        root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
-        langBtn.textContent = lang === "he" ? "EN" : "HE";
-      }
-      langBtn.addEventListener("click", () => setLang(root.getAttribute("data-lang") === "he" ? "en" : "he"));
-      setLang("he");
-    </script>
-  </body>
+<html lang="he" data-lang="he" dir="rtl">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GTHDTELYGW');</script>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <title>Songs | Tzvika Johnny Peker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg-color: #050608; --card-bg: rgba(18, 18, 24, 0.94); --accent: #ffb86c; --accent-soft: rgba(255, 184, 108, 0.14); --text-main: #f8f8ff; --text-muted: #b7b7c7; --border-color: rgba(255, 255, 255, 0.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
+    html[data-lang="en"] { direction: ltr; } html[data-lang="he"] { direction: rtl; }
+    body { font-family: "Heebo", sans-serif; background: radial-gradient(circle at top, #1b1328 0, #050608 55%); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+    header { padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(16px); background: rgba(5, 6, 8, 0.92); position: sticky; top: 0; z-index: 1000; }
+    nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+    .nav-link.active { background: var(--accent-soft); color: var(--accent); }
+    .lang-toggle { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 11px; font-weight: 700; }
+    main { flex: 1; padding: 40px 6vw; display: flex; flex-direction: column; gap: 40px; }
+    .category-header { font-size: 24px; color: var(--accent); margin: 30px 0 15px; border-right: 4px solid var(--accent); padding-right: 15px; }
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 100%; }
+    @media (max-width: 600px) { .media-grid { grid-template-columns: 1fr; } }
+    .video-container { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); touch-action: pan-y; }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-title"><span style="color: var(--accent); font-weight: 700;">TZVIKA JOHNNY PEKER</span></div>
+    <nav>
+      <a href="../index.html" class="nav-link"><span class="en">Home</span><span class="he">ראשי</span></a>
+      <a href="creative.html" class="nav-link"><span class="en">Creative</span><span class="he">קריאייטיב</span></a>
+      <a href="lessons.html" class="nav-link"><span class="en">Clients</span><span class="he">לקוחות</span></a>
+      <a href="podcasts.html" class="nav-link"><span class="en">Podcasts</span><span class="he">פודקאסטים</span></a>
+      <a href="posttrauma.html" class="nav-link"><span class="en">Post-Trauma</span><span class="he">פוסטראומה</span></a>
+      <a href="satire.html" class="nav-link"><span class="en">Satire</span><span class="he">סאטירה</span></a>
+      <a href="songs.html" class="nav-link active"><span class="he">שירים</span><span class="en">Songs</span></a>
+      <button class="lang-toggle" id="langToggle">EN</button>
+    </nav>
+  </header>
+  <main id="mediaContainer"></main>
+  <script>
+    const tracks = [
+      { id: "1OJzWFPxjJdy1pmBZr-utlSsRNih0Ka7z", he: "אנושי", en: "Human", cat: "heart" },
+      { id: "1z3QhKy2kXEC89TRp16RjQuzeoQH7DzmZ", he: "שבורים", en: "Broken", cat: "heart" },
+      { id: "1zUGCnSIJBMdsVS4l-v2TDYAfyCFRvurd", he: "דואט גלי ואייל", en: "Duet Gali & Eyal", cat: "satire" },
+      { id: "1np8jDUPZeBxOf9EDn0BlR1XWjI8VVwrl", he: "אשם - סינרגיה", en: "Sinergia Cover", cat: "satire" }
+    ];
+    const container = document.getElementById("mediaContainer");
+    function render(cat, labelHe, labelEn) {
+      const h3 = document.createElement("h3"); h3.className="category-header"; h3.innerHTML = `<span class="he">${labelHe}</span><span class="en">${labelEn}</span>`;
+      const grid = document.createElement("div"); grid.className="media-grid";
+      tracks.filter(t => t.cat === cat).forEach(t => {
+        const item = document.createElement("div"); item.className="video-container";
+        item.innerHTML = `<iframe src="https://drive.google.com/file/d/${t.id}/preview" loading="lazy"></iframe>`;
+        grid.appendChild(item);
+      });
+      container.appendChild(h3); container.appendChild(grid);
+    }
+    render("heart", "❤️ שירים מהלב", "❤️ Heart Songs"); render("satire", "🎭 סאטירה", "🎭 Satire");
+    const langBtn = document.getElementById('langToggle'); const html = document.documentElement;
+    function setLang(l) { html.setAttribute('data-lang', l); html.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr'); langBtn.textContent = l === 'he' ? 'EN' : 'HE'; localStorage.setItem('siteLang', l); }
+    langBtn.onclick = () => setLang(html.getAttribute('data-lang') === 'he' ? 'en' : 'he');
+    setLang(localStorage.getItem('siteLang') || 'he');
+  </script>
+</body>
 </html>
