@@ -1,250 +1,65 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl" data-lang="he">
-  <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GTHDTELYGW');
-    </script>
-    <meta charset="UTF-8" />
-    <title>Political Satire – Tzvika Johnny Peker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
-
-    <style>
-      :root {
-        --bg-color: #050608;
-        --card-bg: rgba(18, 18, 24, 0.94);
-        --accent: #ffb86c;
-        --accent-soft: rgba(255, 184, 108, 0.14);
-        --text-main: #f8f8ff;
-        --text-muted: #b7b7c7;
-        --border-color: rgba(255, 255, 255, 0.1);
-        --folder-yellow: #f1d592;
-        --folder-blue: #2196f3;
-      }
-
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      body {
-        min-height: 100vh;
-        font-family: "Heebo", sans-serif;
-        background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
-        color: var(--text-main);
-        display: flex;
-        flex-direction: column;
-      }
-
-      header {
-        padding: 16px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid var(--border-color);
-        backdrop-filter: blur(16px);
-        background: rgba(5, 6, 8, 0.92);
-        position: sticky; top: 0; z-index: 100; gap: 15px; flex-wrap: wrap;
-      }
-
-      .logo-title { display: flex; flex-direction: column; gap: 2px; }
-      .logo-title span:first-child { font-weight: 700; font-size: 14px; color: var(--accent); text-transform: uppercase; }
-      .logo-title span:last-child { font-weight: 400; font-size: 13px; color: var(--text-muted); }
-
-      nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-      .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; transition: 0.3s; white-space: nowrap; }
-      .nav-link:hover { color: var(--accent); background: rgba(255, 255, 255, 0.05); }
-      .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.15); color: var(--accent); font-weight: 500; }
-
-      main { flex: 1; padding: 40px 6vw; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); gap: 40px; }
-      @media (max-width: 1150px) { main { grid-template-columns: 1fr; } }
-
-      .content-card {
-        background: var(--card-bg); border-radius: 24px; padding: 30px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); align-self: start;
-      }
-
-      .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 30px; }
-      .folder-item { display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; transition: 0.2s; }
-      .folder-item:hover { transform: translateY(-5px); }
-
-      .folder-icon {
-        width: 100px; height: 80px; background: var(--folder-yellow); border-radius: 4px 10px 10px 10px; position: relative; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-      }
-      .folder-icon::before { content: ""; position: absolute; top: -10px; left: 0; width: 40px; height: 10px; background: var(--folder-yellow); border-radius: 4px 4px 0 0; }
-      .user-avatar {
-        position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); width: 35px; height: 35px; background: var(--folder-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;
-      }
-
-      .folder-label { font-size: 14px; color: var(--text-main); font-weight: 500; }
-
-      #folderContentView { display: none; flex-direction: column; gap: 20px; }
-      .back-btn { align-self: flex-start; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--accent); padding: 8px 16px; border-radius: 999px; cursor: pointer; font-size: 13px; margin-bottom: 10px; }
-
-      .masonry { display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%; max-width: 450px; margin: 0 auto; }
-      .masonry-item { width: 100%; border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
-      .masonry-item img { width: 100%; display: block; }
-
-      .video-container {
-        position: relative; width: 100%; aspect-ratio: 9 / 16;
-        background: #000; overflow: hidden;
-      }
-      .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-      footer { padding: 30px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
-      html[data-lang="he"] { direction: rtl; }
-    </style>
-  </head>
-
-  <body>
-    <header>
-      <div class="logo-title">
-        <span>TZVIKA JOHNNY PEKER</span>
-        <span class="he">מולטי־מודל קריאייטיב טכנולוגיסט</span>
-      </div>
-      <nav>
-        <a href="../index.html" class="nav-link">ראשי</a>
-        <a href="creative.html" class="nav-link">קריאייטיב</a>
-        <a href="lessons.html" class="nav-link">לקוחות</a>
-        <a href="podcasts.html" class="nav-link">פודקאסטים</a>
-        <a href="posttrauma.html" class="nav-link">פוסטראומה</a>
-        <a href="satire.html" class="nav-link active">סאטירה פוליטית</a>
-        <a href="songs.html" class="nav-link">שירים</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="content-card">
-        <h1>סאטירה פוליטית</h1>
-        <div class="text-block">לחצו על תיקייה לצפייה בתכנים הסאטיריים המעודכנים.</div>
-      </section>
-
-      <div class="folder-grid" id="folderGrid"></div>
-
-      <div id="folderContentView">
-        <button class="back-btn" onclick="showFolders()">🔙 חזרה לתיקיות</button>
-        <h3 id="currentFolderName" style="margin: 15px 0; color: var(--accent); text-align: center;"></h3>
-        <div class="masonry" id="galleryGrid"></div>
-      </div>
-    </main>
-
-    <footer>
-      <span>© Tzvika Johnny Peker</span>
-      <span class="he">צחוק שמציל שפיות.</span>
-    </footer>
-
-    <script>
-      const satireFolders = [
-        { 
-          id: "photos", 
-          nameHe: "תמונות", 
-          items: [
-            "1YyffcMub35FYd1iBsCFtvreT4PZ4EILf",
-            "1CclLZT4DxJ_VVP7JI24ie350IVv4VueT",
-            "1DhaQJF-_FTdqpE29g1Iifwk6TpDeur_E",
-            "1xZwHCbZdBdiyR1z4RBXjUpGDxl2VOG51",
-            "1J-k8Gwarrl96rm8L5h2OluVqFNTxG4av",
-            "1tuLEZiJgl_ONd3kLY0puqdkhHh10HOk8",
-            "1490TltDAEtv8wXTuJlYk-vKqiJZRxj1R",
-            "1OBDTd23ze0-C2ZEeV_pSAH3mq-QTo0Xo"
-          ] 
-        },
-        { 
-          id: "videos", 
-          nameHe: "סרטונים", 
-          items: [
-            "1-22RkJTOfGGuCL5C_yUg1yl8zOMhKlnC",
-            "12mvN-_f2H8e9qFmrhXJw6IRKWy-0iNqm",
-            "1pEUPd_poUMCnyH7Yjryv5rdR4wpG3Pu4",
-            "1AjR0fZmLHtxg8NXx7OdiBBOSqlxy38vl",
-            "1xcRv0Rg3-zM_f2qz62SH9RCOVNrXr-sO",
-            "1CSmfGwBj_vONRNiEwW318b9lIj_zOZqP",
-            "1KGvXIt_QBqXyoMlLljCG2RVW1h1oD3PQ",
-            "1BNgS2zIP7R5EigGYusJIT7zztAaeWve5",
-            "1yykKPSBhmawNFc5u5amWbF6_4vr5qjBY",
-            "15-kLxerh4uDtxCCVIcZP0GQL0x44UE-t",
-            "103B94Tkss7ZtfjIK_Nha3hdsvE9L_Cn5",
-            "1akLfun0ILEAC7osA8dDVB2iKjAX1R3Oe",
-            "1FPp4Inz2AS-MoGGCKaRQ_sWyzK-I_9SB",
-            "1x-GUPM1cCzlX8_eIL-YeRbN5b5xzbzbJ",
-            "1XWaTGatmPjjBRZAhg15b2Dkd3RaK4tNv",
-            "1HEeNJ4ugoFS-FctanKgK0P-0HwXPnf9U",
-            "1X8Foic7a-Sp5t8HdVCbQjCgxDzcGGn_y",
-            "1plmi9jhBLxj0ShU27j0LbW3NYHUHrC9q",
-            "1fJBJVsEyyzmrxPIiTK_ezWhM5ONw4A_i"
-          ] 
-        }
-      ];
-
-      //IDs של כל הסרטונים כדי שיקבלו נגן 9:16
-      const videoIds = [
-        "1-22RkJTOfGGuCL5C_yUg1yl8zOMhKlnC",
-        "12mvN-_f2H8e9qFmrhXJw6IRKWy-0iNqm",
-        "1pEUPd_poUMCnyH7Yjryv5rdR4wpG3Pu4",
-        "1AjR0fZmLHtxg8NXx7OdiBBOSqlxy38vl",
-        "1xcRv0Rg3-zM_f2qz62SH9RCOVNrXr-sO",
-        "1CSmfGwBj_vONRNiEwW318b9lIj_zOZqP",
-        "1KGvXIt_QBqXyoMlLljCG2RVW1h1oD3PQ",
-        "1BNgS2zIP7R5EigGYusJIT7zztAaeWve5",
-        "1yykKPSBhmawNFc5u5amWbF6_4vr5qjBY",
-        "15-kLxerh4uDtxCCVIcZP0GQL0x44UE-t",
-        "103B94Tkss7ZtfjIK_Nha3hdsvE9L_Cn5",
-        "1akLfun0ILEAC7osA8dDVB2iKjAX1R3Oe",
-        "1FPp4Inz2AS-MoGGCKaRQ_sWyzK-I_9SB",
-        "1x-GUPM1cCzlX8_eIL-YeRbN5b5xzbzbJ",
-        "1XWaTGatmPjjBRZAhg15b2Dkd3RaK4tNv",
-        "1HEeNJ4ugoFS-FctanKgK0P-0HwXPnf9U",
-        "1X8Foic7a-Sp5t8HdVCbQjCgxDzcGGn_y",
-        "1plmi9jhBLxj0ShU27j0LbW3NYHUHrC9q",
-        "1fJBJVsEyyzmrxPIiTK_ezWhM5ONw4A_i"
-      ]; 
-
-      const folderGrid = document.getElementById("folderGrid");
-      const folderContentView = document.getElementById("folderContentView");
-      const galleryGrid = document.getElementById("galleryGrid");
-      const currentFolderName = document.getElementById("currentFolderName");
-
-      function renderFolders() {
-        folderGrid.innerHTML = "";
-        satireFolders.forEach(folder => {
-          const item = document.createElement("div");
-          item.className = "folder-item";
-          item.onclick = () => openFolder(folder);
-          item.innerHTML = `
-            <div class="folder-icon">
-              <div class="user-avatar">
-                <svg viewBox="0 0 24 24" width="20"><path fill="white" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              </div>
-            </div>
-            <div class="folder-label">${folder.nameHe}</div>
-          `;
-          folderGrid.appendChild(item);
-        });
-      }
-
-      function openFolder(folder) {
-        folderGrid.style.display = "none";
-        folderContentView.style.display = "flex";
-        currentFolderName.textContent = folder.nameHe;
-        galleryGrid.innerHTML = "";
-
-        folder.items.forEach(fileId => {
-          const itemDiv = document.createElement("div");
-          itemDiv.className = "masonry-item";
-          if (videoIds.includes(fileId)) {
-            itemDiv.innerHTML = `<div class="video-container"><iframe src="https://drive.google.com/file/d/${fileId}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe></div>`;
-          } else {
-            itemDiv.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${fileId}&sz=w800" loading="lazy">`;
-          }
-          galleryGrid.appendChild(itemDiv);
-        });
-      }
-
-      function showFolders() {
-        folderGrid.style.display = "grid";
-        folderContentView.style.display = "none";
-      }
-
-      renderFolders();
-    </script>
-  </body>
+<html lang="he" data-lang="he" dir="rtl">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GTHDTELYGW');</script>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <title>Post-Trauma | Tzvika Johnny Peker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg-color: #050608; --card-bg: rgba(18, 18, 24, 0.94); --accent: #ffb86c; --accent-soft: rgba(255, 184, 108, 0.14); --text-main: #f8f8ff; --text-muted: #b7b7c7; --border-color: rgba(255, 255, 255, 0.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
+    html[data-lang="en"] { direction: ltr; } html[data-lang="he"] { direction: rtl; }
+    body { font-family: "Heebo", sans-serif; background: radial-gradient(circle at top, #1b1328 0, #050608 55%); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+    header { padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(16px); background: rgba(5, 6, 8, 0.92); position: sticky; top: 0; z-index: 1000; }
+    nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+    .nav-link.active { background: var(--accent-soft); color: var(--accent); }
+    .lang-toggle { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 11px; font-weight: 700; }
+    main { flex: 1; padding: 40px 6vw; display: flex; flex-direction: column; gap: 40px; }
+    .content-card { background: var(--card-bg); border-radius: 24px; padding: 32px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); max-width: 800px; }
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 100%; }
+    @media (max-width: 600px) { .media-grid { grid-template-columns: 1fr; } }
+    .video-container { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); touch-action: pan-y; }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-title"><span style="color: var(--accent); font-weight: 700;">TZVIKA JOHNNY PEKER</span></div>
+    <nav>
+      <a href="../index.html" class="nav-link"><span class="en">Home</span><span class="he">ראשי</span></a>
+      <a href="creative.html" class="nav-link"><span class="en">Creative</span><span class="he">קריאייטיב</span></a>
+      <a href="lessons.html" class="nav-link"><span class="en">Clients</span><span class="he">לקוחות</span></a>
+      <a href="podcasts.html" class="nav-link"><span class="en">Podcasts</span><span class="he">פודקאסטים</span></a>
+      <a href="posttrauma.html" class="nav-link active"><span class="en">Post-Trauma</span><span class="he">פוסטראומה</span></a>
+      <a href="satire.html" class="nav-link"><span class="en">Satire</span><span class="he">סאטירה</span></a>
+      <a href="songs.html" class="nav-link"><span class="he">שירים</span><span class="en">Songs</span></a>
+      <button class="lang-toggle" id="langToggle">EN</button>
+    </nav>
+  </header>
+  <main>
+    <section class="content-card">
+      <h1 class="he">פוסט־טראומה</h1><h1 class="en">Post-Trauma</h1>
+      <p class="he">דרך יצירה, טקסט, דימוי, וידאו ומוזיקה, אני נותן מקום למה שקשה להסביר במילים רגילות.</p>
+      <p class="en">Through art, text, imagery, video, and music, I give space to what is hard to explain in ordinary words.</p>
+    </section>
+    <div class="media-grid" id="mediaList"></div>
+  </main>
+  <script>
+    const mediaIds = ["1jDz-vXe_X3xu6LelcZAu1V96y1RK3xEn", "1nnzrWNOIGNjbtFl9e6x6ARqHUWocqNnd", "1bSiCHjh8QGAo159NxMRBTY541q1xZWE5"];
+    const list = document.getElementById("mediaList");
+    mediaIds.forEach((id, idx) => {
+      const div = document.createElement("div"); div.className = "video-container";
+      div.innerHTML = `<iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy"></iframe>`;
+      list.appendChild(div);
+    });
+    const langBtn = document.getElementById('langToggle'); const html = document.documentElement;
+    function setLang(l) { html.setAttribute('data-lang', l); html.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr'); langBtn.textContent = l === 'he' ? 'EN' : 'HE'; localStorage.setItem('siteLang', l); }
+    langBtn.onclick = () => setLang(html.getAttribute('data-lang') === 'he' ? 'en' : 'he');
+    setLang(localStorage.getItem('siteLang') || 'he');
+  </script>
+</body>
 </html>
