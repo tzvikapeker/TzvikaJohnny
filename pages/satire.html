@@ -4,10 +4,10 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GTHDTELYGW');</script>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-  <title>Post-Trauma | Tzvika Johnny Peker</title>
+  <title>Satire | Tzvika Johnny Peker</title>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
-    :root { --bg-color: #050608; --card-bg: rgba(18, 18, 24, 0.94); --accent: #ffb86c; --accent-soft: rgba(255, 184, 108, 0.14); --text-main: #f8f8ff; --text-muted: #b7b7c7; --border-color: rgba(255, 255, 255, 0.1); }
+    :root { --bg-color: #050608; --card-bg: rgba(18, 18, 24, 0.94); --accent: #ffb86c; --accent-soft: rgba(255, 184, 108, 0.14); --text-main: #f8f8ff; --text-muted: #b7b7c7; --border-color: rgba(255, 255, 255, 0.1); --folder-yellow: #f1d592; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
     html[data-lang="en"] { direction: ltr; } html[data-lang="he"] { direction: rtl; }
@@ -18,11 +18,17 @@
     .nav-link.active { background: var(--accent-soft); color: var(--accent); }
     .lang-toggle { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 11px; font-weight: 700; }
     main { flex: 1; padding: 40px 6vw; display: flex; flex-direction: column; gap: 40px; }
-    .content-card { background: var(--card-bg); border-radius: 24px; padding: 32px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); max-width: 800px; }
-    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 100%; }
+    .content-card { background: var(--card-bg); border-radius: 24px; padding: 30px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); max-width: 800px; }
+    .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px; }
+    .folder-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: 0.2s; }
+    .folder-icon { width: 90px; height: 70px; background: var(--folder-yellow); border-radius: 4px 10px 10px 10px; position: relative; margin-bottom: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
+    .folder-icon::before { content: ""; position: absolute; top: -10px; left: 0; width: 35px; height: 10px; background: var(--folder-yellow); border-radius: 4px 4px 0 0; }
+    #folderContentView { display: none; flex-direction: column; gap: 20px; }
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; }
     @media (max-width: 600px) { .media-grid { grid-template-columns: 1fr; } }
     .video-container { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); touch-action: pan-y; }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    img { width: 100%; border-radius: 12px; }
     footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--text-muted); }
   </style>
 </head>
@@ -34,32 +40,48 @@
       <a href="creative.html" class="nav-link"><span class="en">Creative</span><span class="he">קריאייטיב</span></a>
       <a href="lessons.html" class="nav-link"><span class="en">Clients</span><span class="he">לקוחות</span></a>
       <a href="podcasts.html" class="nav-link"><span class="en">Podcasts</span><span class="he">פודקאסטים</span></a>
-      <a href="posttrauma.html" class="nav-link active"><span class="en">Post-Trauma</span><span class="he">פוסטראומה</span></a>
-      <a href="satire.html" class="nav-link"><span class="en">Satire</span><span class="he">סאטירה</span></a>
+      <a href="posttrauma.html" class="nav-link"><span class="en">Post-Trauma</span><span class="he">פוסטראומה</span></a>
+      <a href="satire.html" class="nav-link active"><span class="en">Satire</span><span class="he">סאטירה</span></a>
       <a href="songs.html" class="nav-link"><span class="he">שירים</span><span class="en">Songs</span></a>
       <button class="lang-toggle" id="langToggle">EN</button>
     </nav>
   </header>
   <main>
     <section class="content-card">
-      <h1 class="he">פוסט־טראומה</h1><h1 class="en">Post-Trauma</h1>
-      <p class="he">דרך יצירה, טקסט, דימוי, וידאו ומוזיקה, אני נותן מקום למה שקשה להסביר במילים רגילות.</p>
-      <p class="en">Through art, text, imagery, video, and music, I give space to what is hard to explain in ordinary words.</p>
+      <h1 class="he">סאטירה פוליטית</h1><h1 class="en">Political Satire</h1>
+      <p class="he">המציאות עם עקיצה. לחצו על תיקייה לצפייה.</p><p class="en">Reality with a sting. Click a folder to view.</p>
     </section>
-    <div class="media-grid" id="mediaList"></div>
+    <div class="folder-grid" id="folderGrid"></div>
+    <div id="folderContentView">
+      <button onclick="showFolders()" style="padding: 8px 16px; border-radius: 20px; background: var(--accent-soft); border: none; color: var(--accent); cursor: pointer; margin-bottom: 20px;">🔙 <span class="he">חזרה</span><span class="en">Back</span></button>
+      <div class="media-grid" id="galleryGrid"></div>
+    </div>
   </main>
   <script>
-    const mediaIds = ["1jDz-vXe_X3xu6LelcZAu1V96y1RK3xEn", "1nnzrWNOIGNjbtFl9e6x6ARqHUWocqNnd", "1bSiCHjh8QGAo159NxMRBTY541q1xZWE5"];
-    const list = document.getElementById("mediaList");
-    mediaIds.forEach((id, idx) => {
-      const div = document.createElement("div"); div.className = "video-container";
-      div.innerHTML = `<iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy"></iframe>`;
-      list.appendChild(div);
-    });
+    const satireFolders = [
+      { id: "videos", nameHe: "סרטונים", nameEn: "Videos", type: "video", items: ["1-22RkJTOfGGuCL5C_yUg1yl8zOMhKlnC", "12mvN-_f2H8e9qFmrhXJw6IRKWy-0iNqm", "1pEUPd_poUMCnyH7Yjryv5rdR4wpG3Pu4", "1AjR0fZmLHtxg8NXx7OdiBBOSqlxy38vl", "1xcRv0Rg3-zM_f2qz62SH9RCOVNrXr-sO", "1CSmfGwBj_vONRNiEwW318b9lIj_zOZqP", "1KGvXIt_QBqXyoMlLljCG2RVW1h1oD3PQ", "1BNgS2zIP7R5EigGYusJIT7zztAaeWve5", "1yykKPSBhmawNFc5u5amWbF6_4vr5qjBY", "15-kLxerh4uDtxCCVIcZP0GQL0x44UE-t", "103B94Tkss7ZtfjIK_Nha3hdsvE9L_Cn5", "1akLfun0ILEAC7osA8dDVB2iKjAX1R3Oe", "1FPp4Inz2AS-MoGGCKaRQ_sWyzK-I_9SB", "1x-GUPM1cCzlX8_eIL-YeRbN5b5xzbzbJ", "1XWaTGatmPjjBRZAhg15b2Dkd3RaK4tNv", "1HEeNJ4ugoFS-FctanKgK0P-0HwXPnf9U", "1X8Foic7a-Sp5t8HdVCbQjCgxDzcGGn_y", "1plmi9jhBLxj0ShU27j0LbW3NYHUHrC9q", "1fJBJVsEyyzmrxPIiTK_ezWhM5ONw4A_i"] },
+      { id: "photos", nameHe: "תמונות", nameEn: "Photos", type: "image", items: ["1YyffcMub35FYd1iBsCFtvreT4PZ4EILf", "1CclLZT4DxJ_VVP7JI24ie350IVv4VueT", "1DhaQJF-_FTdqpE29g1Iifwk6TpDeur_E", "1xZwHCbZdBdiyR1z4RBXjUpGDxl2VOG51", "1J-k8Gwarrl96rm8L5h2OluVqFNTxG4av", "1tuLEZiJgl_ONd3kLY0puqdkhHh10HOk8", "1490TltDAEtv8wXTuJlYk-vKqiJZRxj1R", "1OBDTd23ze0-C2ZEeV_pSAH3mq-QTo0Xo"] }
+    ];
+    function renderFolders() {
+      const grid = document.getElementById('folderGrid'); grid.innerHTML = "";
+      satireFolders.forEach(f => {
+        const div = document.createElement('div'); div.className = 'folder-item'; div.onclick = () => openFolder(f);
+        div.innerHTML = `<div class="folder-icon"></div><div class="folder-label"><span class="he">${f.nameHe}</span><span class="en">${f.nameEn}</span></div>`;
+        grid.appendChild(div);
+      });
+    }
+    function openFolder(f) {
+      document.getElementById('folderGrid').style.display = 'none'; document.getElementById('folderContentView').style.display = 'flex';
+      const gallery = document.getElementById('galleryGrid');
+      gallery.innerHTML = f.items.map(id => f.type === "video" 
+        ? `<div class="video-container"><iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy"></iframe></div>`
+        : `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w800" loading="lazy">`).join('');
+    }
+    function showFolders() { document.getElementById('folderGrid').style.display = 'grid'; document.getElementById('folderContentView').style.display = 'none'; }
     const langBtn = document.getElementById('langToggle'); const html = document.documentElement;
     function setLang(l) { html.setAttribute('data-lang', l); html.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr'); langBtn.textContent = l === 'he' ? 'EN' : 'HE'; localStorage.setItem('siteLang', l); }
     langBtn.onclick = () => setLang(html.getAttribute('data-lang') === 'he' ? 'en' : 'he');
-    setLang(localStorage.getItem('siteLang') || 'he');
+    setLang(localStorage.getItem('siteLang') || 'he'); renderFolders();
   </script>
 </body>
 </html>
