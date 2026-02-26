@@ -1,183 +1,144 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl" data-lang="he">
-  <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GTHDTELYGW');
-    </script>
-    <meta charset="UTF-8" />
-    <title>Post-Trauma – Tzvika Johnny Peker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<html lang="he" data-lang="he" dir="rtl">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GTHDTELYGW');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+  <title>Post-Trauma | Tzvika Johnny Peker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
-    <style>
-      :root {
-        --bg-color: #050608;
-        --card-bg: rgba(18, 18, 24, 0.94);
-        --accent: #ffb86c;
-        --accent-soft: rgba(255, 184, 108, 0.14);
-        --text-main: #f8f8ff;
-        --text-muted: #b7b7c7;
-        --border-color: rgba(255, 255, 255, 0.1);
-      }
+  <style>
+    :root { --bg-color: #050608; --card-bg: rgba(18, 18, 24, 0.94); --accent: #ffb86c; --accent-soft: rgba(255, 184, 108, 0.14); --text-main: #f8f8ff; --text-muted: #b7b7c7; --border-color: rgba(255, 255, 255, 0.1); }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    
+    /* לוגיקת שפות גלובלית מסונכרנת */
+    html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
+    html[data-lang="en"] { direction: ltr; } html[data-lang="he"] { direction: rtl; }
+    
+    body { font-family: "Heebo", sans-serif; background: radial-gradient(circle at top, #1b1328 0, #050608 55%); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+    
+    header { padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(20px); background: rgba(5, 6, 8, 0.85); position: sticky; top: 0; z-index: 1000; }
+    
+    .logo-title { display: flex; flex-direction: column; gap: 2px; }
+    .logo-title span:first-child { font-weight: 800; font-size: 1.1rem; color: var(--accent); }
 
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      body {
-        min-height: 100vh;
-        font-family: "Heebo", sans-serif;
-        background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
-        color: var(--text-main);
-        display: flex;
-        flex-direction: column;
-      }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-link { font-size: 12px; padding: 10px 14px; border-radius: 999px; color: #b7b7c7; text-decoration: none; transition: 0.2s; font-weight: 500; }
+    .nav-link.active { background: var(--accent-soft); color: var(--accent); }
 
-      header {
-        padding: 16px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid var(--border-color);
-        backdrop-filter: blur(16px);
-        background: rgba(5, 6, 8, 0.92);
-        position: sticky; top: 0; z-index: 100; gap: 15px; flex-wrap: wrap;
-      }
+    .lang-toggle { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 700; }
 
-      .logo-title { display: flex; flex-direction: column; gap: 2px; }
-      .logo-title span:first-child { font-weight: 700; font-size: 14px; color: var(--accent); text-transform: uppercase; }
-      .logo-title span:last-child { font-weight: 400; font-size: 13px; color: var(--text-muted); }
+    main { flex: 1; padding: 30px 5vw; display: flex; flex-direction: column; gap: 40px; }
 
-      nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-      .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; transition: 0.3s; white-space: nowrap; }
-      .nav-link:hover { color: var(--accent); background: rgba(255, 255, 255, 0.05); }
-      .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.15); color: var(--accent); font-weight: 500; }
+    .content-card { background: var(--card-bg); border-radius: 20px; padding: 25px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 800px; }
+    h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 8px; color: var(--text-main); }
+    h2 { margin-bottom: 20px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
+    .text-block { font-size: 16px; line-height: 1.8; color: var(--text-main); margin-bottom: 15px; }
 
-      .language-toggle { font-size: 12px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border-color); cursor: pointer; background: rgba(10, 10, 16, 0.8); color: var(--text-muted); }
+    /* הגריד של הסרטונים */
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 100%; }
 
-      /* שינוי מבנה הדף כך שהמדיה תהיה מתחת לטקסט או בפריסה רחבה */
-      main { flex: 1; padding: 40px 6vw; display: flex; flex-direction: column; gap: 40px; }
+    .media-item { background: rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 15px; border: 1px solid var(--border-color); display: flex; flex-direction: column; }
+    .media-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 15px; font-weight: 700; color: var(--text-main); text-align: center; display: block; }
+    
+    .drive-embed-container {
+      position: relative; width: 100%; aspect-ratio: 9 / 16; /* רזולוציית טיקטוק */
+      background: #000; border-radius: 12px; overflow: hidden;
+      touch-action: pan-y; /* קריטי למובייל - לא חוסם גלילה */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    .drive-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-      .content-card { background: var(--card-bg); border-radius: 24px; padding: 32px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); max-width: 800px; }
-      h1 { margin-bottom: 8px; font-size: 32px; color: var(--text-main); }
-      h2 { margin-bottom: 24px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
-      .text-block { font-size: 16px; line-height: 1.8; color: var(--text-main); margin-bottom: 20px; }
+    @media (max-width: 600px) { 
+      .media-grid { grid-template-columns: 1fr; } 
+      header { flex-direction: column; gap: 15px; padding: 10px; }
+      nav { justify-content: center; gap: 4px; }
+      .nav-link { padding: 8px 12px; font-size: 12px; }
+    }
 
-      /* מבנה הגריד לסרטונים אחד ליד השני */
-      .media-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* יצירת טורים דינמיים */
-        gap: 25px;
-        width: 100%;
-      }
+    footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--text-muted); }
+  </style>
+</head>
 
-      .media-item {
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 20px;
-        padding: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.3s;
-      }
-      .media-item:hover { transform: translateY(-5px); border-color: var(--accent-soft); }
+<body>
+  <header>
+    <div class="logo-title">
+      <span class="en">TZVIKA JOHNNY PEKER</span>
+      <span class="he">צביקה ג׳וני פקר</span>
+    </div>
+    <nav>
+      <a href="../index.html" class="nav-link"><span class="he">ראשי</span><span class="en">Home</span></a>
+      <a href="creative.html" class="nav-link"><span class="he">קריאייטיב</span><span class="en">Creative</span></a>
+      <a href="lessons.html" class="nav-link"><span class="he">לקוחות</span><span class="en">Clients</span></a>
+      <a href="podcasts.html" class="nav-link"><span class="he">פודקאסטים</span><span class="en">Podcasts</span></a>
+      <a href="posttrauma.html" class="nav-link active"><span class="he">פוסט־טראומה</span><span class="en">Post-Trauma</span></a>
+      <a href="satire.html" class="nav-link"><span class="he">סאטירה</span><span class="en">Satire</span></a>
+      <a href="songs.html" class="nav-link"><span class="he">שירים</span><span class="en">Songs</span></a>
+      <button class="lang-toggle" id="langToggle">EN</button>
+    </nav>
+  </header>
 
-      .media-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; color: var(--accent); padding: 0 5px; }
-      
-      .drive-embed-container {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 9 / 16; /* שמירה על רזולוציית טיקטוק */
-        background: #000;
-        border-radius: 12px;
-        overflow: hidden;
-      }
-      .drive-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-      footer { padding: 30px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
-
-      html[data-lang="en"] .he, html[data-lang="he"] .en { display: none; }
-      html[data-lang="en"] { direction: ltr; }
-      html[data-lang="he"] { direction: rtl; }
-    </style>
-  </head>
-
-  <body>
-    <header>
-      <div class="logo-title">
-        <span>TZVIKA JOHNNY PEKER</span>
-        <span class="he">מולטי־מודל קריאייטיב טכנולוגיסט</span>
-        <span class="en">Multimodal creative technologist</span>
+  <main>
+    <section class="content-card">
+      <div class="he">
+        <h1>פוסט־טראומה – יחסינו לאן</h1>
+        <h2>חוויה אנושית מבפנים</h2>
+        <div class="text-block">דרך יצירה, טקסט, דימוי, וידאו ומוזיקה, אני נותן מקום למה שקשה להסביר במילים רגילות: הזיכרונות, הדריכות, הניתוקים, והמאמץ היומיומי להישאר מתפקד.</div>
       </div>
-      <nav>
-        <a href="../index.html" class="nav-link"><span class="he">ראשי</span><span class="en">Home</span></a>
-        <a href="creative.html" class="nav-link"><span class="he">קריאייטיב</span><span class="en">Creative</span></a>
-        <a href="lessons.html" class="nav-link"><span class="he">לקוחות</span><span class="en">Clients</span></a>
-        <a href="podcasts.html" class="nav-link"><span class="he">פודקאסטים</span><span class="en">Podcasts</span></a>
-        <a href="posttrauma.html" class="nav-link active"><span class="he">פוסט־טראומה</span><span class="en">Post-Trauma</span></a>
-        <a href="satire.html" class="nav-link"><span class="he">סאטירה</span><span class="en">Satire</span></a>
-        <a href="songs.html" class="nav-link"><span class="he">שירים</span><span class="en">Songs</span></a>
-        <button class="language-toggle" id="langToggle">HE / EN</button>
-      </nav>
-    </header>
+      <div class="en">
+        <h1>Post-Trauma</h1>
+        <h2>A Human Experience from Within</h2>
+        <div class="text-block">Through art, text, imagery, video, and music, I give space to what is hard to explain in ordinary words: the memories, the vigilance, and the daily effort to remain functional.</div>
+      </div>
+    </section>
 
-    <main>
-      <section class="content-card">
-        <div class="he">
-          <h1>פוסט־טראומה – יחסינו לאן</h1>
-          <h2>חוויה אנושית מבפנים</h2>
-          <div class="text-block">דרך יצירה, טקסט, דימוי, וידאו ומוזיקה, אני נותן מקום למה שקשה להסביר במילים רגילות: הזיכרונות, הדריכות, הניתוקים, והמאמץ היומיומי להישאר מתפקד.</div>
+    <div class="media-grid" id="mediaList"></div>
+  </main>
+
+  <footer>
+    <span>© Tzvika Johnny Peker</span>
+    <span class="he">להפוך שקט כבד ליצירה חיה.</span>
+  </footer>
+
+  <script>
+    // מזהי הסרטונים המעודכנים שלך
+    const mediaIds = [
+      "1jDz-vXe_X3xu6LelcZAu1V96y1RK3xEn",
+      "1nnzrWNOIGNjbtFl9e6x6ARqHUWocqNnd",
+      "1bSiCHjh8QGAo159NxMRBTY541q1xZWE5"
+    ];
+
+    const listContainer = document.getElementById("mediaList");
+    mediaIds.forEach((id, idx) => {
+      const item = document.createElement("div");
+      item.className = "media-item";
+      item.innerHTML = `
+        <div class="media-meta">
+          <span class="en">Part ${idx + 1}</span>
+          <span class="he">חלק ${idx + 1}</span>
         </div>
-        <div class="en">
-          <h1>Post-Trauma</h1>
-          <h2>A Human Experience from Within</h2>
-          <div class="text-block">Through art, text, imagery, video, and music, I give space to what is hard to explain in ordinary words: the memories, the vigilance, and the daily effort to remain functional.</div>
+        <div class="drive-embed-container">
+          <iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
-      </section>
+      `;
+      listContainer.appendChild(item);
+    });
 
-      <div class="media-grid" id="mediaList">
-        </div>
-    </main>
-
-    <footer>
-      <span>© Tzvika Johnny Peker</span>
-      <span class="he">להפוך שקט כבד ליצירה חיה.</span>
-    </footer>
-
-    <script>
-      const langBtn = document.getElementById("langToggle");
-      const root = document.documentElement;
-      function setLang(l) {
-        root.setAttribute("data-lang", l);
-        root.setAttribute("lang", l);
-        root.setAttribute("dir", l === "he" ? "rtl" : "ltr");
-        langBtn.textContent = l === "he" ? "EN" : "HE";
-      }
-      langBtn.addEventListener("click", () => setLang(root.getAttribute("data-lang") === "he" ? "en" : "he"));
-      setLang("he");
-
-      // מזהי הסרטונים המעודכנים שלך
-      const mediaIds = [
-        "1jDz-vXe_X3xu6LelcZAu1V96y1RK3xEn",
-        "1nnzrWNOIGNjbtFl9e6x6ARqHUWocqNnd",
-        "1bSiCHjh8QGAo159NxMRBTY541q1xZWE5"
-      ];
-
-      const listContainer = document.getElementById("mediaList");
-      mediaIds.forEach((id, idx) => {
-        const item = document.createElement("div");
-        item.className = "media-item";
-        item.innerHTML = `
-          <div class="media-meta">
-            <span>Part ${idx + 1}</span>
-          </div>
-          <div class="drive-embed-container">
-            <iframe src="https://drive.google.com/file/d/${id}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>
-          </div>
-        `;
-        listContainer.appendChild(item);
-      });
-    </script>
-  </body>
+    // סנכרון שפה חכם
+    const langBtn = document.getElementById('langToggle'); 
+    const html = document.documentElement;
+    
+    function setLang(l) { 
+      html.setAttribute('data-lang', l); 
+      html.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr'); 
+      langBtn.textContent = l === 'he' ? 'EN' : 'HE'; 
+      localStorage.setItem('siteLang', l); 
+    }
+    
+    langBtn.onclick = () => setLang(html.getAttribute('data-lang') === 'he' ? 'en' : 'he');
+    setLang(localStorage.getItem('siteLang') || 'he'); 
+  </script>
+</body>
 </html>
