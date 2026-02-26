@@ -3,38 +3,68 @@
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GTHDTELYGW');</script>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
   <title>Satire | Tzvika Johnny Peker</title>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  
   <style>
     :root { --bg-color: #050608; --card-bg: rgba(18, 18, 24, 0.94); --accent: #ffb86c; --accent-soft: rgba(255, 184, 108, 0.14); --text-main: #f8f8ff; --text-muted: #b7b7c7; --border-color: rgba(255, 255, 255, 0.1); --folder-yellow: #f1d592; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    /* מניעת סימון כחול בסמארטפון */
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    
     html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
     html[data-lang="en"] { direction: ltr; } html[data-lang="he"] { direction: rtl; }
-    body { font-family: "Heebo", sans-serif; background: radial-gradient(circle at top, #1b1328 0, #050608 55%); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
-    header { padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(16px); background: rgba(5, 6, 8, 0.92); position: sticky; top: 0; z-index: 1000; }
-    nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-    .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+    
+    body { font-family: "Heebo", sans-serif; background: radial-gradient(circle at top, #1b1328 0, #050608 55%); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+    
+    header { padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(20px); background: rgba(5, 6, 8, 0.85); position: sticky; top: 0; z-index: 1000; }
+    
+    .logo-title { display: flex; flex-direction: column; gap: 2px; }
+    .logo-title span:first-child { font-weight: 800; font-size: 1.1rem; color: var(--accent); }
+
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-link { font-size: 12px; padding: 10px 14px; border-radius: 999px; color: #b7b7c7; text-decoration: none; transition: 0.2s; font-weight: 500; }
     .nav-link.active { background: var(--accent-soft); color: var(--accent); }
-    .lang-toggle { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 11px; font-weight: 700; }
-    main { flex: 1; padding: 40px 6vw; display: flex; flex-direction: column; gap: 40px; }
-    .content-card { background: var(--card-bg); border-radius: 24px; padding: 30px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); max-width: 800px; }
+    .lang-toggle { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 700; }
+    
+    main { flex: 1; padding: 30px 5vw; display: flex; flex-direction: column; gap: 40px; }
+    .content-card { background: var(--card-bg); border-radius: 20px; padding: 25px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 800px; }
+    h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 10px; }
+    
     .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px; }
-    .folder-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: 0.2s; }
+    .folder-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: 0.2s; padding: 15px; border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid transparent; }
+    .folder-item:hover { border-color: var(--accent-soft); background: rgba(255,255,255,0.05); }
     .folder-icon { width: 90px; height: 70px; background: var(--folder-yellow); border-radius: 4px 10px 10px 10px; position: relative; margin-bottom: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
     .folder-icon::before { content: ""; position: absolute; top: -10px; left: 0; width: 35px; height: 10px; background: var(--folder-yellow); border-radius: 4px 4px 0 0; }
+    .folder-label { font-size: 14px; font-weight: 600; text-align: center; }
+
     #folderContentView { display: none; flex-direction: column; gap: 20px; }
-    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; }
-    @media (max-width: 600px) { .media-grid { grid-template-columns: 1fr; } }
-    .video-container { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); touch-action: pan-y; }
+    
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 100%; align-items: start; }
+    
+    /* מונע תקיעת גלילה במסכי מגע (touch-action) */
+    .video-container { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); touch-action: pan-y; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-    img { width: 100%; border-radius: 12px; }
+    .image-container img { width: 100%; border-radius: 16px; border: 1px solid var(--border-color); display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+    
+    @media (max-width: 600px) { 
+      .media-grid { grid-template-columns: 1fr; } 
+      header { flex-direction: column; gap: 15px; padding: 10px; }
+      nav { justify-content: center; gap: 4px; }
+      .nav-link { padding: 8px 12px; font-size: 12px; }
+    }
+    
     footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--text-muted); }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo-title"><span style="color: var(--accent); font-weight: 700;">TZVIKA JOHNNY PEKER</span></div>
+    <div class="logo-title">
+      <span class="en">TZVIKA JOHNNY PEKER</span>
+      <span class="he">צביקה ג׳וני פקר</span>
+    </div>
     <nav>
       <a href="../index.html" class="nav-link"><span class="en">Home</span><span class="he">ראשי</span></a>
       <a href="creative.html" class="nav-link"><span class="en">Creative</span><span class="he">קריאייטיב</span></a>
@@ -46,22 +76,34 @@
       <button class="lang-toggle" id="langToggle">EN</button>
     </nav>
   </header>
+
   <main>
-    <section class="content-card">
+    <section class="content-card" id="mainHeader">
       <h1 class="he">סאטירה פוליטית</h1><h1 class="en">Political Satire</h1>
       <p class="he">המציאות עם עקיצה. לחצו על תיקייה לצפייה.</p><p class="en">Reality with a sting. Click a folder to view.</p>
     </section>
+
     <div class="folder-grid" id="folderGrid"></div>
+
     <div id="folderContentView">
-      <button onclick="showFolders()" style="padding: 8px 16px; border-radius: 20px; background: var(--accent-soft); border: none; color: var(--accent); cursor: pointer; margin-bottom: 20px;">🔙 <span class="he">חזרה</span><span class="en">Back</span></button>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+        <button onclick="showFolders()" style="padding: 10px 20px; border-radius: 999px; background: transparent; border: 1px solid var(--accent); color: var(--accent); cursor: pointer; font-weight: 700;">🔙 <span class="he">חזרה לתיקיות</span><span class="en">Back to Folders</span></button>
+        <h2 id="currentFolderName" style="margin: 0; color: var(--accent); font-size: 1.2rem;"></h2>
+      </div>
       <div class="media-grid" id="galleryGrid"></div>
     </div>
   </main>
+
+  <footer>
+    <span>© Tzvika Johnny Peker</span>
+  </footer>
+
   <script>
     const satireFolders = [
       { id: "videos", nameHe: "סרטונים", nameEn: "Videos", type: "video", items: ["1-22RkJTOfGGuCL5C_yUg1yl8zOMhKlnC", "12mvN-_f2H8e9qFmrhXJw6IRKWy-0iNqm", "1pEUPd_poUMCnyH7Yjryv5rdR4wpG3Pu4", "1AjR0fZmLHtxg8NXx7OdiBBOSqlxy38vl", "1xcRv0Rg3-zM_f2qz62SH9RCOVNrXr-sO", "1CSmfGwBj_vONRNiEwW318b9lIj_zOZqP", "1KGvXIt_QBqXyoMlLljCG2RVW1h1oD3PQ", "1BNgS2zIP7R5EigGYusJIT7zztAaeWve5", "1yykKPSBhmawNFc5u5amWbF6_4vr5qjBY", "15-kLxerh4uDtxCCVIcZP0GQL0x44UE-t", "103B94Tkss7ZtfjIK_Nha3hdsvE9L_Cn5", "1akLfun0ILEAC7osA8dDVB2iKjAX1R3Oe", "1FPp4Inz2AS-MoGGCKaRQ_sWyzK-I_9SB", "1x-GUPM1cCzlX8_eIL-YeRbN5b5xzbzbJ", "1XWaTGatmPjjBRZAhg15b2Dkd3RaK4tNv", "1HEeNJ4ugoFS-FctanKgK0P-0HwXPnf9U", "1X8Foic7a-Sp5t8HdVCbQjCgxDzcGGn_y", "1plmi9jhBLxj0ShU27j0LbW3NYHUHrC9q", "1fJBJVsEyyzmrxPIiTK_ezWhM5ONw4A_i"] },
       { id: "photos", nameHe: "תמונות", nameEn: "Photos", type: "image", items: ["1YyffcMub35FYd1iBsCFtvreT4PZ4EILf", "1CclLZT4DxJ_VVP7JI24ie350IVv4VueT", "1DhaQJF-_FTdqpE29g1Iifwk6TpDeur_E", "1xZwHCbZdBdiyR1z4RBXjUpGDxl2VOG51", "1J-k8Gwarrl96rm8L5h2OluVqFNTxG4av", "1tuLEZiJgl_ONd3kLY0puqdkhHh10HOk8", "1490TltDAEtv8wXTuJlYk-vKqiJZRxj1R", "1OBDTd23ze0-C2ZEeV_pSAH3mq-QTo0Xo"] }
     ];
+
     function renderFolders() {
       const grid = document.getElementById('folderGrid'); grid.innerHTML = "";
       satireFolders.forEach(f => {
@@ -70,18 +112,39 @@
         grid.appendChild(div);
       });
     }
+
     function openFolder(f) {
-      document.getElementById('folderGrid').style.display = 'none'; document.getElementById('folderContentView').style.display = 'flex';
+      document.getElementById('folderGrid').style.display = 'none'; 
+      document.getElementById('mainHeader').style.display = 'none'; 
+      document.getElementById('folderContentView').style.display = 'flex';
+      
+      const isHe = document.documentElement.getAttribute('data-lang') === 'he';
+      document.getElementById('currentFolderName').textContent = isHe ? f.nameHe : f.nameEn;
+
       const gallery = document.getElementById('galleryGrid');
       gallery.innerHTML = f.items.map(id => f.type === "video" 
         ? `<div class="video-container"><iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy"></iframe></div>`
-        : `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w800" loading="lazy">`).join('');
+        : `<div class="image-container"><img src="https://drive.google.com/thumbnail?id=${id}&sz=w800" loading="lazy"></div>`).join('');
     }
-    function showFolders() { document.getElementById('folderGrid').style.display = 'grid'; document.getElementById('folderContentView').style.display = 'none'; }
+
+    function showFolders() { 
+      document.getElementById('folderGrid').style.display = 'grid'; 
+      document.getElementById('mainHeader').style.display = 'block'; 
+      document.getElementById('folderContentView').style.display = 'none'; 
+      // הניקוי החשוב! מונע קריסה של הדפדפן בנייד
+      document.getElementById('galleryGrid').innerHTML = ''; 
+    }
+
+    // סנכרון שפה חכם
     const langBtn = document.getElementById('langToggle'); const html = document.documentElement;
-    function setLang(l) { html.setAttribute('data-lang', l); html.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr'); langBtn.textContent = l === 'he' ? 'EN' : 'HE'; localStorage.setItem('siteLang', l); }
+    function setLang(l) { 
+      html.setAttribute('data-lang', l); html.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr'); 
+      langBtn.textContent = l === 'he' ? 'EN' : 'HE'; localStorage.setItem('siteLang', l); 
+    }
     langBtn.onclick = () => setLang(html.getAttribute('data-lang') === 'he' ? 'en' : 'he');
-    setLang(localStorage.getItem('siteLang') || 'he'); renderFolders();
+    setLang(localStorage.getItem('siteLang') || 'he'); 
+    
+    renderFolders();
   </script>
 </body>
 </html>
