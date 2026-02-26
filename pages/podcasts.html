@@ -9,8 +9,8 @@
       gtag('config', 'G-GTHDTELYGW');
     </script>
     <meta charset="UTF-8" />
-    <title>Podcasts – Tzvika Johnny Peker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+    <title>Podcasts | Tzvika Johnny Peker</title>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
     <style>
@@ -24,7 +24,13 @@
         --border-color: rgba(255, 255, 255, 0.1);
       }
 
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+      * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+      
+      /* לוגיקת שפות גלובלית מסונכרנת */
+      html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
+      html[data-lang="en"] { direction: ltr; } 
+      html[data-lang="he"] { direction: rtl; }
+      
       body {
         min-height: 100vh;
         font-family: "Heebo", sans-serif;
@@ -32,92 +38,76 @@
         color: var(--text-main);
         display: flex;
         flex-direction: column;
+        overflow-x: hidden;
       }
 
       header {
-        padding: 16px 24px;
+        padding: 12px 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid var(--border-color);
-        backdrop-filter: blur(16px);
-        background: rgba(5, 6, 8, 0.92);
-        position: sticky; top: 0; z-index: 100; gap: 15px; flex-wrap: wrap;
+        backdrop-filter: blur(20px);
+        background: rgba(5, 6, 8, 0.85);
+        position: sticky; top: 0; z-index: 1000;
       }
 
       .logo-title { display: flex; flex-direction: column; gap: 2px; }
-      .logo-title span:first-child { font-weight: 700; font-size: 14px; color: var(--accent); text-transform: uppercase; }
-      .logo-title span:last-child { font-weight: 400; font-size: 13px; color: var(--text-muted); }
+      .logo-title span:first-child { font-weight: 800; font-size: 1.1rem; color: var(--accent); }
 
-      nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-      .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; transition: 0.3s; white-space: nowrap; }
-      .nav-link:hover { color: var(--accent); background: rgba(255, 255, 255, 0.05); }
-      .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.15); color: var(--accent); font-weight: 500; }
+      nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+      .nav-link { font-size: 12px; padding: 10px 14px; border-radius: 999px; color: #b7b7c7; text-decoration: none; transition: 0.2s; font-weight: 500; }
+      .nav-link.active { background: var(--accent-soft); color: var(--accent); }
 
-      .language-toggle { font-size: 12px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border-color); cursor: pointer; background: rgba(10, 10, 16, 0.8); color: var(--text-muted); }
+      .lang-toggle { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 700; }
 
-      main { flex: 1; padding: 40px 6vw; display: flex; flex-direction: column; gap: 40px; }
+      main { flex: 1; padding: 30px 5vw; display: flex; flex-direction: column; gap: 40px; }
 
-      .content-card { background: var(--card-bg); border-radius: 24px; padding: 32px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); max-width: 800px; }
-      h1 { margin-bottom: 8px; font-size: 32px; color: var(--text-main); }
-      h2 { margin-bottom: 24px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
-      .text-block { font-size: 16px; line-height: 1.8; color: var(--text-main); margin-bottom: 20px; }
+      .content-card { background: var(--card-bg); border-radius: 20px; padding: 25px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 800px; }
+      h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 8px; color: var(--text-main); }
+      h2 { margin-bottom: 20px; font-size: 18px; color: var(--text-muted); font-weight: 400; }
+      .text-block { font-size: 16px; line-height: 1.8; color: var(--text-main); margin-bottom: 15px; }
 
-      /* מבנה הגריד - סרטונים אחד ליד השני */
-      .media-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-        width: 100%;
-      }
+      /* הגריד של הפודקאסטים */
+      .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 100%; }
 
-      .media-item {
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 20px;
-        padding: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.3s;
-      }
-      .media-item:hover { transform: translateY(-5px); border-color: var(--accent-soft); }
-
-      .media-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; color: var(--accent); padding: 0 5px; }
+      .media-item { background: rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 15px; border: 1px solid var(--border-color); display: flex; flex-direction: column; }
+      .media-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 15px; font-weight: 700; color: var(--text-main); text-align: center; display: block; }
       
       .drive-embed-container {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 9 / 16; /* רזולוציית טיקטוק אנכית */
-        background: #000;
-        border-radius: 12px;
-        overflow: hidden;
+        position: relative; width: 100%; aspect-ratio: 9 / 16; /* רזולוציית טיקטוק אנכית */
+        background: #000; border-radius: 12px; overflow: hidden;
+        touch-action: pan-y; /* קריטי למובייל - לא חוסם גלילה */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
       }
       .drive-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-      footer { padding: 30px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
+      @media (max-width: 600px) { 
+        .media-grid { grid-template-columns: 1fr; } 
+        header { flex-direction: column; gap: 15px; padding: 10px; }
+        nav { justify-content: center; gap: 4px; }
+        .nav-link { padding: 8px 12px; font-size: 12px; }
+      }
 
-      html[data-lang="en"] .he, html[data-lang="he"] .en { display: none; }
-      html[data-lang="en"] { direction: ltr; }
-      html[data-lang="he"] { direction: rtl; }
+      footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--text-muted); }
     </style>
   </head>
 
   <body>
     <header>
       <div class="logo-title">
-        <span>TZVIKA JOHNNY PEKER</span>
-        <span class="he">מולטי־מודל קריאייטיב טכנולוגיסט</span>
-        <span class="en">Multimodal creative technologist</span>
+        <span class="en">TZVIKA JOHNNY PEKER</span>
+        <span class="he">צביקה ג׳וני פקר</span>
       </div>
       <nav>
         <a href="../index.html" class="nav-link"><span class="he">ראשי</span><span class="en">Home</span></a>
         <a href="creative.html" class="nav-link"><span class="he">קריאייטיב</span><span class="en">Creative</span></a>
         <a href="lessons.html" class="nav-link"><span class="he">לקוחות</span><span class="en">Clients</span></a>
         <a href="podcasts.html" class="nav-link active"><span class="he">פודקאסטים</span><span class="en">Podcasts</span></a>
-        <a href="posttrauma.html" class="nav-link"><span class="he">פוסט־טראומה</span><span class="en">Post-Trauma</span></a>
+        <a href="posttrauma.html" class="nav-link"><span class="he">פוסטראומה</span><span class="en">Post-Trauma</span></a>
         <a href="satire.html" class="nav-link"><span class="he">סאטירה</span><span class="en">Satire</span></a>
         <a href="songs.html" class="nav-link"><span class="he">שירים</span><span class="en">Songs</span></a>
-        <button class="language-toggle" id="langToggle">HE / EN</button>
+        <button class="lang-toggle" id="langToggle">EN</button>
       </nav>
     </header>
 
@@ -135,8 +125,7 @@
         </div>
       </section>
 
-      <div class="media-grid" id="podcastList">
-        </div>
+      <div class="media-grid" id="podcastList"></div>
     </main>
 
     <footer>
@@ -145,18 +134,7 @@
     </footer>
 
     <script>
-      const langBtn = document.getElementById("langToggle");
-      const root = document.documentElement;
-      function setLang(l) {
-        root.setAttribute("data-lang", l);
-        root.setAttribute("lang", l);
-        root.setAttribute("dir", l === "he" ? "rtl" : "ltr");
-        langBtn.textContent = l === "he" ? "EN" : "HE";
-      }
-      langBtn.addEventListener("click", () => setLang(root.getAttribute("data-lang") === "he" ? "en" : "he"));
-      setLang("he");
-
-      // מזהי הפודקאסטים מהקוד המקורי שלך
+      // מזהי הפודקאסטים המקוריים שלך
       const podcastIds = [
         "1N_vrYX98IkXooUWgzKYCSeX0Z_mt-jP0",
         "1GWKat4DMeBylpaEGuaWDgTX5RC1coaJ-",
@@ -169,14 +147,29 @@
         item.className = "media-item";
         item.innerHTML = `
           <div class="media-meta">
-            <span>Track ${idx + 1}</span>
+            <span class="en">Track ${idx + 1}</span>
+            <span class="he">רצועה ${idx + 1}</span>
           </div>
           <div class="drive-embed-container">
-            <iframe src="https://drive.google.com/file/d/${id}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
           </div>
         `;
         listContainer.appendChild(item);
       });
+
+      // סנכרון שפה חכם
+      const langBtn = document.getElementById('langToggle'); 
+      const html = document.documentElement;
+      
+      function setLang(l) { 
+        html.setAttribute('data-lang', l); 
+        html.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr'); 
+        langBtn.textContent = l === 'he' ? 'EN' : 'HE'; 
+        localStorage.setItem('siteLang', l); 
+      }
+      
+      langBtn.onclick = () => setLang(html.getAttribute('data-lang') === 'he' ? 'en' : 'he');
+      setLang(localStorage.getItem('siteLang') || 'he'); 
     </script>
   </body>
 </html>
