@@ -1,207 +1,157 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl" data-lang="he">
-  <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GTHDTELYGW');
-    </script>
-    <meta charset="UTF-8" />
-    <title>Clients – Tzvika Johnny Peker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<html lang="he" data-lang="he" dir="rtl">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GTHDTELYGW');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+  <title>Clients | Tzvika Johnny Peker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
-    <style>
-      :root {
-        --bg-color: #050608;
-        --card-bg: rgba(18, 18, 24, 0.94);
-        --accent: #ffb86c;
-        --accent-soft: rgba(255, 184, 108, 0.14);
-        --text-main: #f8f8ff;
-        --text-muted: #b7b7c7;
-        --border-color: rgba(255, 255, 255, 0.1);
-        --folder-yellow: #f1d592;
-        --folder-blue: #2196f3;
-      }
+  <style>
+    :root { --bg-color: #050608; --card-bg: rgba(18, 18, 24, 0.94); --accent: #ffb86c; --accent-soft: rgba(255, 184, 108, 0.14); --text-main: #f8f8ff; --text-muted: #b7b7c7; --border-color: rgba(255, 255, 255, 0.1); --folder-yellow: #f1d592; --folder-blue: #2196f3; }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    
+    html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
+    html[data-lang="en"] { direction: ltr; } html[data-lang="he"] { direction: rtl; }
+    
+    body { font-family: "Heebo", sans-serif; background: radial-gradient(circle at top, #1b1328 0, #050608 55%); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+    
+    header { padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(20px); background: rgba(5, 6, 8, 0.85); position: sticky; top: 0; z-index: 1000; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-link { font-size: 12px; padding: 10px 14px; border-radius: 999px; color: #b7b7c7; text-decoration: none; transition: 0.2s; font-weight: 500; }
+    .nav-link.active { background: var(--accent-soft); color: var(--accent); }
+    .lang-toggle { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 700; }
 
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      body {
-        min-height: 100vh;
-        font-family: "Heebo", sans-serif;
-        background: radial-gradient(circle at top, #1b1328 0, #050608 55%);
-        color: var(--text-main);
-        display: flex;
-        flex-direction: column;
-      }
+    main { flex: 1; padding: 30px 5vw; display: flex; flex-direction: column; gap: 40px; }
+    .content-card { background: var(--card-bg); border-radius: 20px; padding: 25px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 800px; }
+    h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 10px; }
+    
+    .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px; }
+    .folder-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: 0.2s; padding: 15px; border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid transparent; }
+    .folder-item:hover { border-color: var(--accent-soft); background: rgba(255,255,255,0.05); }
+    .folder-icon { width: 90px; height: 70px; background: var(--folder-yellow); border-radius: 4px 10px 10px 10px; position: relative; margin-bottom: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
+    .folder-icon::before { content: ""; position: absolute; top: -10px; left: 0; width: 35px; height: 10px; background: var(--folder-yellow); border-radius: 4px 4px 0 0; }
+    .user-avatar { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); width: 30px; height: 30px; background: var(--folder-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
+    
+    .folder-label { font-size: 14px; font-weight: 600; text-align: center; }
+    .folder-year { display: block; font-size: 11px; color: var(--text-muted); font-weight: 400; margin-top: 4px; }
 
-      header {
-        padding: 16px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid var(--border-color);
-        backdrop-filter: blur(16px);
-        background: rgba(5, 6, 8, 0.92);
-        position: sticky; top: 0; z-index: 100; gap: 15px; flex-wrap: wrap;
-      }
+    #folderContentView { display: none; flex-direction: column; gap: 20px; }
+    
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 100%; align-items: start; }
+    
+    .video-container { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); touch-action: pan-y; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    .image-container img { width: 100%; border-radius: 16px; border: 1px solid var(--border-color); display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+    
+    @media (max-width: 600px) { 
+      .media-grid { grid-template-columns: 1fr; } 
+      header { flex-direction: column; gap: 15px; padding: 10px; }
+      nav { justify-content: center; gap: 4px; }
+      .nav-link { padding: 8px 12px; font-size: 12px; }
+    }
+    
+    footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--text-muted); }
+  </style>
+</head>
 
-      .logo-title { display: flex; flex-direction: column; gap: 2px; }
-      .logo-title span:first-child { font-weight: 700; font-size: 14px; color: var(--accent); text-transform: uppercase; }
-      .logo-title span:last-child { font-weight: 400; font-size: 13px; color: var(--text-muted); }
+<body>
+  <header>
+    <div class="logo-title"><span style="color: var(--accent); font-weight: 800; font-size: 1.1rem;">TZVIKA JOHNNY PEKER</span></div>
+    <nav>
+      <a href="../index.html" class="nav-link"><span class="en">Home</span><span class="he">ראשי</span></a>
+      <a href="creative.html" class="nav-link"><span class="en">Creative</span><span class="he">קריאייטיב</span></a>
+      <a href="lessons.html" class="nav-link active"><span class="en">Clients</span><span class="he">לקוחות</span></a>
+      <a href="podcasts.html" class="nav-link"><span class="en">Podcasts</span><span class="he">פודקאסטים</span></a>
+      <a href="posttrauma.html" class="nav-link"><span class="en">Post-Trauma</span><span class="he">פוסטראומה</span></a>
+      <a href="satire.html" class="nav-link"><span class="en">Satire</span><span class="he">סאטירה</span></a>
+      <a href="songs.html" class="nav-link"><span class="he">שירים</span><span class="en">Songs</span></a>
+      <button class="lang-toggle" id="langToggle">EN</button>
+    </nav>
+  </header>
 
-      nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-      .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; transition: 0.3s; white-space: nowrap; }
-      .nav-link:hover { color: var(--accent); background: rgba(255, 255, 255, 0.05); }
-      .nav-link.active { border-color: var(--accent-soft); background: rgba(255, 184, 108, 0.15); color: var(--accent); font-weight: 500; }
+  <main>
+    <section class="content-card" id="mainHeader">
+      <h1 class="he">לקוחות מותחים את הגבולות</h1><h1 class="en">Clients Pushing Boundaries</h1>
+      <p class="he">לחצו על תיקיית לקוח לצפייה בפרויקטים ובמדיה המעודכנת.</p>
+      <p class="en">Click a client folder to view updated projects and media.</p>
+    </section>
 
-      .language-toggle { padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border-color); cursor: pointer; background: #0a0a10; color: var(--text-muted); font-size: 11px; }
+    <div class="folder-grid" id="folderGrid"></div>
 
-      main { flex: 1; padding: 40px 6vw; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); gap: 40px; }
-      @media (max-width: 1150px) { main { grid-template-columns: 1fr; } }
-
-      .content-card {
-        background: var(--card-bg); border-radius: 24px; padding: 30px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); align-self: start;
-      }
-
-      .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 30px; }
-      .folder-item { display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; transition: 0.2s; }
-      .folder-item:hover { transform: translateY(-5px); }
-
-      .folder-icon {
-        width: 100px; height: 80px; background: var(--folder-yellow); border-radius: 4px 10px 10px 10px; position: relative; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-      }
-      .folder-icon::before { content: ""; position: absolute; top: -10px; left: 0; width: 40px; height: 10px; background: var(--folder-yellow); border-radius: 4px 4px 0 0; }
-      .user-avatar {
-        position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); width: 35px; height: 35px; background: var(--folder-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;
-      }
-
-      #folderContentView { display: none; flex-direction: column; gap: 20px; }
-      .back-btn { align-self: flex-start; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--accent); padding: 8px 16px; border-radius: 999px; cursor: pointer; font-size: 13px; margin-bottom: 10px; }
-
-      .masonry { column-count: 1; gap: 16px; width: 100%; max-width: 800px; margin: 0 auto; }
-      @media (min-width: 768px) { .masonry { column-count: 2; } }
-
-      .masonry-item { break-inside: avoid; margin-bottom: 24px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); background: #000; }
-      .masonry-item img { width: 100%; display: block; transition: 0.3s; }
-
-      .video-container {
-        position: relative; width: 100%; height: 0; padding-bottom: 56.25%; background: #000; overflow: hidden;
-      }
-      .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-      footer { padding: 30px 6vw; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
-      html[data-lang="he"] { direction: rtl; }
-    </style>
-  </head>
-
-  <body>
-    <header>
-      <div class="logo-title">
-        <span>TZVIKA JOHNNY PEKER</span>
-        <span class="he">מולטי־מודל קריאייטיב טכנולוגיסט</span>
+    <div id="folderContentView">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+        <button onclick="showFolders()" style="padding: 10px 20px; border-radius: 999px; background: transparent; border: 1px solid var(--accent); color: var(--accent); cursor: pointer; font-weight: 700;">🔙 <span class="he">חזרה לתיקיות</span><span class="en">Back to Folders</span></button>
+        <h2 id="currentFolderName" style="margin: 0; color: var(--accent); font-size: 1.2rem;"></h2>
       </div>
-      <nav>
-        <a href="../index.html" class="nav-link">ראשי</a>
-        <a href="creative.html" class="nav-link">קריאייטיב שלי</a>
-        <a href="lessons.html" class="nav-link active">לקוחות מותחים את הגבולות</a>
-        <a href="podcasts.html" class="nav-link">פודקאסטים</a>
-        <a href="posttrauma.html" class="nav-link">פוסטראומה יחסנו לאן</a>
-        <a href="satire.html" class="nav-link">סאטירה</a>
-        <a href="songs.html" class="nav-link">שירים</a>
-        <button class="language-toggle" id="langToggle">HE / EN</button>
-      </nav>
-    </header>
+      <div class="media-grid" id="galleryGrid"></div>
+    </div>
+  </main>
 
-    <main>
-      <section class="content-card">
-        <h1>לקוחות מותחים את הגבולות</h1>
-        <div class="text-block">לחצו על תיקיית לקוח לצפייה בפרויקטים ובמדיה המעודכנת.</div>
-      </section>
+  <footer>
+    <span>© Tzvika Johnny Peker</span>
+  </footer>
 
-      <div class="folder-grid" id="folderGrid"></div>
+  <script>
+    const clientFolders = [
+      { id: "powerup", nameHe: "פאוראפ - Powerup", nameEn: "Powerup", year: "2025", items: ["1XF7N4sTXip8YJUHiFjOos-OxuRn_SqdX"] },
+      { id: "ayer", nameHe: "אייר - שחקנית דיאןדי", nameEn: "Ayer - D&D Actress", year: "2023", items: ["1rrqzTRhZi913i-kLXHDjUbNttKIizckU", "1qr5GomMQIC95_iCyOnYEIkVyx7AxAheO", "1bx8pFNz0HcUrqFg9kuGGADSEvaWR1Bn8"] },
+      { id: "client3", nameHe: "לקוחה מס' 3", nameEn: "Client #3", year: "2023", items: ["1que1Zg-dY4NOnujT8gNJwDVtskw9mTAJ", "1gilrvbFl1XzhNxLSSpFbYqEDQc8D8Soe", "1Tk336Tx_U-bnRiJ8jiSXUL_yAD8PHQAZ"] },
+      { id: "client4", nameHe: "לקוחה מס' 4", nameEn: "Client #4", year: "2024", items: ["194K5vZluodYCjIwTAUw77LStKywcDFnE", "1AWxYfW-3mn7z2Sv9rioeh1brsutXq9fP", "1k6lRsWBn7JrgYXQ2cxXQS1mvvaZpL9Wd", "1d_MbQCcxd1UcJWNQ5E7S8h1ZWjQxjbjR", "1HjvsD9uBy5eddNI0EbfSSHh5IHRKQ5AO"] },
+      { id: "motti", nameHe: "מוטי", nameEn: "Motti", year: "2025", items: ["19HPaXdUBJBJtcdJHftcTVRV2fdlEbBFz"] },
+      { id: "moria", nameHe: "מוריה", nameEn: "Moria", year: "2024-2025", items: ["1uWUVr26pSl7gOWgw13CAc01GlAPwlu7w", "1pM_ns8jajgtCwkmTkz9kl1B2xKbOaQTZ", "1emR3UXyjQ0AzUr9KLyFdcxwz9V1NBsDy", "1DXmJBYVvXzUVis1S6JiMdHhXhMkIBw54", "1ccjFN59KCsum3pcbDYWLP8bCkkjqif7U", "1pUx6TuzU5iN9xGDzeDWB2dXoxRDsM0Qk", "1VB3xHI9hd2xHpyFrlZCPZSYEr90BgXcL", "1P3Jca6VYdDrkwnEmCa99pHgNUrgNqh_b", "1rUAntPgjSNlRkS9p5VJLzx_s8nct_pv4", "1bLK-zqsGTdAEW5fa72SyR4Nk0yGeBNQb", "1OaCWK_0scwQvddHoz8Y7vqg2PCuYzYoJ", "17yUpLH-di84m_RiPHACsjcqDrqmoZpMD", "1qIA9R71GraMv0MERQVUma9E9stk4Jagk", "13qQ7_sHVtOUiwzxonvYOiGNfu4NwTBME"] },
+      { id: "shane", nameHe: "שיין - לקוח מס' 5", nameEn: "Shane - Client #5", year: "2024", items: ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", "1dTt5oL3s26JToyiS-3f9wa1eUy-U3AN5", "1woidZAV82Xghxch9IaPSCG_oz4wSs9Um", "1xGs03y5iVD5dIFybanf9lo1V-h4xtHv8", "19MCoYb6dopZVwSEWaKEzz0UDczdCT1MJ"] }
+    ];
 
-      <div id="folderContentView">
-        <button class="back-btn" onclick="showFolders()">🔙 חזרה לתיקיות</button>
-        <h3 id="currentFolderName" style="margin: 15px 0; color: var(--accent);"></h3>
-        <div class="masonry" id="galleryGrid"></div>
-      </div>
-    </main>
+    const videoIds = ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", "19HPaXdUBJBJtcdJHftcTVRV2fdlEbBFz", "1XF7N4sTXip8YJUHiFjOos-OxuRn_SqdX"];
 
-    <footer>
-      <span>© Tzvika Johnny Peker</span>
-      <span class="he">להישאר רגע נוסף אצל מי שמקשיב.</span>
-    </footer>
-
-    <script>
-      const clientFolders = [
-        { id: "powerup", nameHe: "פאוראפ - Powerup", year: "2025", items: ["1XF7N4sTXip8YJUHiFjOos-OxuRn_SqdX"] },
-        { id: "ayer", nameHe: "אייר - שחקנית דיאןדי גמדה", year: "2023", items: ["1rrqzTRhZi913i-kLXHDjUbNttKIizckU", "1qr5GomMQIC95_iCyOnYEIkVyx7AxAheO", "1bx8pFNz0HcUrqFg9kuGGADSEvaWR1Bn8"] },
-        { id: "client3", nameHe: "לקוחה מס' 3", year: "2023", items: ["1que1Zg-dY4NOnujT8gNJwDVtskw9mTAJ", "1gilrvbFl1XzhNxLSSpFbYqEDQc8D8Soe", "1Tk336Tx_U-bnRiJ8jiSXUL_yAD8PHQAZ"] },
-        { id: "client4", nameHe: "לקוחה מס' 4", year: "2024", items: ["194K5vZluodYCjIwTAUw77LStKywcDFnE", "1AWxYfW-3mn7z2Sv9rioeh1brsutXq9fP", "1k6lRsWBn7JrgYXQ2cxXQS1mvvaZpL9Wd", "1d_MbQCcxd1UcJWNQ5E7S8h1ZWjQxjbjR", "1HjvsD9uBy5eddNI0EbfSSHh5IHRKQ5AO"] },
-        { id: "motti", nameHe: "מוטי - 2025", year: "2025", items: ["19HPaXdUBJBJtcdJHftcTVRV2fdlEbBFz"] },
-        { id: "moria", nameHe: "מוריה", year: "2024-2025", items: ["1uWUVr26pSl7gOWgw13CAc01GlAPwlu7w", "1pM_ns8jajgtCwkmTkz9kl1B2xKbOaQTZ", "1emR3UXyjQ0AzUr9KLyFdcxwz9V1NBsDy", "1DXmJBYVvXzUVis1S6JiMdHhXhMkIBw54", "1ccjFN59KCsum3pcbDYWLP8bCkkjqif7U", "1pUx6TuzU5iN9xGDzeDWB2dXoxRDsM0Qk", "1VB3xHI9hd2xHpyFrlZCPZSYEr90BgXcL", "1P3Jca6VYdDrkwnEmCa99pHgNUrgNqh_b", "1rUAntPgjSNlRkS9p5VJLzx_s8nct_pv4", "1bLK-zqsGTdAEW5fa72SyR4Nk0yGeBNQb", "1OaCWK_0scwQvddHoz8Y7vqg2PCuYzYoJ", "17yUpLH-di84m_RiPHACsjcqDrqmoZpMD", "1qIA9R71GraMv0MERQVUma9E9stk4Jagk", "13qQ7_sHVtOUiwzxonvYOiGNfu4NwTBME"] },
-        { id: "shane", nameHe: "שיין - לקוח מס' 5", year: "2024", items: ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", "1dTt5oL3s26JToyiS-3f9wa1eUy-U3AN5", "1woidZAV82Xghxch9IaPSCG_oz4wSs9Um", "1xGs03y5iVD5dIFybanf9lo1V-h4xtHv8", "19MCoYb6dopZVwSEWaKEzz0UDczdCT1MJ"] }
-      ];
-
-      // רשימת ה-IDs של סרטונים שקודדו מחדש (MP4)
-      const videoIds = [
-          "1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", 
-          "19HPaXdUBJBJtcdJHftcTVRV2fdlEbBFz", 
-          "1XF7N4sTXip8YJUHiFjOos-OxuRn_SqdX"
-      ];
-
-      const folderGrid = document.getElementById("folderGrid");
-      const folderContentView = document.getElementById("folderContentView");
-      const galleryGrid = document.getElementById("galleryGrid");
-      const currentFolderName = document.getElementById("currentFolderName");
-
-      clientFolders.forEach(folder => {
-        const item = document.createElement("div");
-        item.className = "folder-item";
-        item.onclick = () => openFolder(folder);
-        item.innerHTML = `
+    function renderFolders() {
+      const grid = document.getElementById('folderGrid'); grid.innerHTML = "";
+      clientFolders.forEach(f => {
+        const div = document.createElement('div'); div.className = 'folder-item'; div.onclick = () => openFolder(f);
+        div.innerHTML = `
           <div class="folder-icon">
-            <div class="user-avatar">
-              <svg viewBox="0 0 24 24" width="20"><path fill="white" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-            </div>
+            <div class="user-avatar"><svg viewBox="0 0 24 24" width="16"><path fill="white" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
           </div>
-          <div class="folder-label">${folder.nameHe}<span class="folder-year">- ${folder.year}</span></div>
+          <div class="folder-label"><span class="he">${f.nameHe}</span><span class="en">${f.nameEn}</span><span class="folder-year">${f.year}</span></div>
         `;
-        folderGrid.appendChild(item);
+        grid.appendChild(div);
       });
+    }
 
-      function openFolder(folder) {
-        folderGrid.style.display = "none";
-        folderContentView.style.display = "flex";
-        currentFolderName.textContent = folder.nameHe;
-        galleryGrid.innerHTML = "";
-        folder.items.forEach(fileId => {
-          const itemDiv = document.createElement("div");
-          itemDiv.className = "masonry-item";
-          if (videoIds.includes(fileId)) {
-            itemDiv.innerHTML = `<div class="video-container"><iframe src="https://drive.google.com/file/d/${fileId}/preview" allow="autoplay" allowfullscreen></iframe></div>`;
-          } else {
-            itemDiv.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${fileId}&sz=w800" loading="lazy">`;
-          }
-          galleryGrid.appendChild(itemDiv);
-        });
-      }
+    function openFolder(f) {
+      document.getElementById('folderGrid').style.display = 'none'; 
+      document.getElementById('mainHeader').style.display = 'none'; 
+      document.getElementById('folderContentView').style.display = 'flex';
+      
+      const isHe = document.documentElement.getAttribute('data-lang') === 'he';
+      document.getElementById('currentFolderName').textContent = isHe ? f.nameHe : f.nameEn;
 
-      function showFolders() {
-        folderGrid.style.display = "grid";
-        folderContentView.style.display = "none";
-      }
+      const gallery = document.getElementById('galleryGrid');
+      gallery.innerHTML = f.items.map(id => videoIds.includes(id) 
+        ? `<div class="video-container"><iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy"></iframe></div>`
+        : `<div class="image-container"><img src="https://drive.google.com/thumbnail?id=${id}&sz=w800" loading="lazy"></div>`).join('');
+    }
 
-      const langBtn = document.getElementById("langToggle");
-      langBtn.onclick = () => {
-        const root = document.documentElement;
-        const next = root.getAttribute("data-lang") === "he" ? "en" : "he";
-        root.setAttribute("data-lang", next);
-        root.setAttribute("dir", next === "he" ? "rtl" : "ltr");
-        langBtn.textContent = next === "he" ? "EN / HE" : "HE / EN";
-      };
-    </script>
-  </body>
+    function showFolders() { 
+      document.getElementById('folderGrid').style.display = 'grid'; 
+      document.getElementById('mainHeader').style.display = 'block'; 
+      document.getElementById('folderContentView').style.display = 'none'; 
+      document.getElementById('galleryGrid').innerHTML = ''; // מנקה את הזיכרון כדי למנוע עומס במובייל
+    }
+
+    // סנכרון שפה
+    const langBtn = document.getElementById('langToggle'); const html = document.documentElement;
+    function setLang(l) { 
+      html.setAttribute('data-lang', l); html.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr'); 
+      langBtn.textContent = l === 'he' ? 'EN' : 'HE'; localStorage.setItem('siteLang', l); 
+    }
+    langBtn.onclick = () => setLang(html.getAttribute('data-lang') === 'he' ? 'en' : 'he');
+    setLang(localStorage.getItem('siteLang') || 'he'); 
+    
+    renderFolders();
+  </script>
+</body>
 </html>
