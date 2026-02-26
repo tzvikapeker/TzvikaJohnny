@@ -3,38 +3,58 @@
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GTHDTELYGW');</script>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
   <title>Creative | Tzvika Johnny Peker</title>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root { --bg-color: #050608; --card-bg: rgba(18, 18, 24, 0.94); --accent: #ffb86c; --accent-soft: rgba(255, 184, 108, 0.14); --text-main: #f8f8ff; --text-muted: #b7b7c7; --border-color: rgba(255, 255, 255, 0.1); --folder-yellow: #f1d592; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    /* מניעת סימון כחול בסמארטפונים בלחיצה */
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    
     html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
     html[data-lang="en"] { direction: ltr; } html[data-lang="he"] { direction: rtl; }
-    body { font-family: "Heebo", sans-serif; background: radial-gradient(circle at top, #1b1328 0, #050608 55%); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
-    header { padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(16px); background: rgba(5, 6, 8, 0.92); position: sticky; top: 0; z-index: 1000; }
-    nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-    .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+    body { font-family: "Heebo", sans-serif; background: radial-gradient(circle at top, #1b1328 0, #050608 55%); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+    
+    header { padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(20px); background: rgba(5, 6, 8, 0.85); position: sticky; top: 0; z-index: 1000; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-link { font-size: 12px; padding: 10px 14px; border-radius: 999px; color: #b7b7c7; text-decoration: none; transition: 0.2s; font-weight: 500; }
     .nav-link.active { background: var(--accent-soft); color: var(--accent); }
-    .lang-toggle { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 11px; font-weight: 700; }
-    main { flex: 1; padding: 40px 6vw; display: flex; flex-direction: column; gap: 40px; }
-    .content-card { background: var(--card-bg); border-radius: 24px; padding: 30px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.4); max-width: 800px; }
+    .lang-toggle { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 700; }
+    
+    main { flex: 1; padding: 30px 5vw; display: flex; flex-direction: column; gap: 40px; }
+    .content-card { background: var(--card-bg); border-radius: 20px; padding: 25px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 800px; }
+    h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 10px; }
+    
     .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px; }
-    .folder-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: 0.2s; }
-    .folder-icon { width: 90px; height: 70px; background: var(--folder-yellow); border-radius: 4px 10px 10px 10px; position: relative; margin-bottom: 10px; }
+    .folder-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: 0.2s; padding: 15px; border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid transparent; }
+    .folder-item:hover { border-color: var(--accent-soft); background: rgba(255,255,255,0.05); }
+    .folder-icon { width: 90px; height: 70px; background: var(--folder-yellow); border-radius: 4px 10px 10px 10px; position: relative; margin-bottom: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
     .folder-icon::before { content: ""; position: absolute; top: -10px; left: 0; width: 35px; height: 10px; background: var(--folder-yellow); border-radius: 4px 4px 0 0; }
+    .folder-label { font-size: 14px; font-weight: 600; text-align: center; }
+
     #folderContentView { display: none; flex-direction: column; gap: 20px; }
-    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; }
-    @media (max-width: 600px) { .media-grid { grid-template-columns: 1fr; } }
-    .video-container { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); touch-action: pan-y; }
+    
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 100%; }
+    
+    .video-container { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); touch-action: pan-y; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-    img { width: 100%; border-radius: 12px; }
+    img { width: 100%; border-radius: 16px; border: 1px solid var(--border-color); }
+    
+    @media (max-width: 600px) { 
+      .media-grid { grid-template-columns: 1fr; } 
+      header { flex-direction: column; gap: 15px; padding: 10px; }
+      nav { justify-content: center; gap: 4px; }
+      .nav-link { padding: 8px 12px; font-size: 12px; }
+    }
+    
     footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--text-muted); }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo-title"><span style="color: var(--accent); font-weight: 700;">TZVIKA JOHNNY PEKER</span></div>
+    <div class="logo-title"><span style="color: var(--accent); font-weight: 800; font-size: 1.1rem;">TZVIKA JOHNNY PEKER</span></div>
     <nav>
       <a href="../index.html" class="nav-link"><span class="en">Home</span><span class="he">ראשי</span></a>
       <a href="creative.html" class="nav-link active"><span class="en">Creative</span><span class="he">קריאייטיב</span></a>
@@ -47,16 +67,26 @@
     </nav>
   </header>
   <main>
-    <section class="content-card">
+    <section class="content-card" id="mainHeader">
       <h1 class="he">קריאייטיב שלי</h1><h1 class="en">My Creative</h1>
       <p class="he">לחצו על תיקייה לצפייה בעבודות.</p><p class="en">Click a folder to view works.</p>
     </section>
+    
     <div class="folder-grid" id="folderGrid"></div>
+    
     <div id="folderContentView">
-      <button onclick="showFolders()" style="padding: 8px 16px; border-radius: 20px; background: var(--accent-soft); border: none; color: var(--accent); cursor: pointer; margin-bottom: 20px;">🔙 <span class="he">חזרה</span><span class="en">Back</span></button>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+        <button onclick="showFolders()" style="padding: 10px 20px; border-radius: 999px; background: transparent; border: 1px solid var(--accent); color: var(--accent); cursor: pointer; font-weight: 700;">🔙 <span class="he">חזרה לתיקיות</span><span class="en">Back to Folders</span></button>
+        <h2 id="currentFolderName" style="margin: 0; color: var(--accent); font-size: 1.2rem;"></h2>
+      </div>
       <div class="media-grid" id="galleryGrid"></div>
     </div>
   </main>
+  
+  <footer>
+    <span>© Tzvika Johnny Peker</span>
+  </footer>
+
   <script>
     const creativeFolders = [
       { id: "reels", nameHe: "REELS", nameEn: "REELS", items: ["1pJ936-J1w-5xP0hgSrD72dnAldFTlrnk", "1OomQoJi0j23dkSm6L2VDf4ZRKF54EYxR", "1EwZ-4b60wNygFCRk-KzJnr7LGIHdzBP3", "16lemEvsbSlj4fys_vPYxb-b7auWaIGJP", "13nCAZ0LjbJ6a32p8ninsxLak6dKXHPjk", "1da3Cy63y2nJsKPpdOSrphZ7um8NlRdVd", "1p6lJ9EFLlCkwAEjGDRIIzvBq972D2wD-"], type: "video" },
@@ -64,6 +94,7 @@
       { id: "heart", nameHe: "מהלב", nameEn: "From Heart", items: ["1R4J6ReW90VVtaCUd221ozzk8q9PTkMxR", "150Fuq4Iljfo_3S2595lgYHChR86j9VrI", "14-Ul7MhJvgMVdqSDYkZqrt59qO51ierw", "14BUAoBy1A4WF388Q_0hjq6lv3B-lvGMc", "1otk559-02FywZLwV8TEown-zWpElm4ai"], type: "video" },
       { id: "photos", nameHe: "תמונות", nameEn: "Photos", items: ["185Aus2D_CzSEebIPsWmQ9z31MbHyDwNv", "1bB6URSsuUk5xVWt1iK5MjCATLKn0fbkb", "1W30xp_Y1ahtG4cQ_vZjK_P4hzf--7I6P"], type: "image" }
     ];
+
     function renderFolders() {
       const grid = document.getElementById('folderGrid'); grid.innerHTML = "";
       creativeFolders.forEach(f => {
@@ -72,18 +103,38 @@
         grid.appendChild(div);
       });
     }
+
     function openFolder(f) {
-      document.getElementById('folderGrid').style.display = 'none'; document.getElementById('folderContentView').style.display = 'flex';
+      document.getElementById('folderGrid').style.display = 'none'; 
+      document.getElementById('mainHeader').style.display = 'none'; 
+      document.getElementById('folderContentView').style.display = 'flex';
+      
+      const isHe = document.documentElement.getAttribute('data-lang') === 'he';
+      document.getElementById('currentFolderName').textContent = isHe ? f.nameHe : f.nameEn;
+
       const gallery = document.getElementById('galleryGrid');
       gallery.innerHTML = f.items.map(id => f.type === "video" 
         ? `<div class="video-container"><iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy"></iframe></div>`
         : `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w800" loading="lazy">`).join('');
     }
-    function showFolders() { document.getElementById('folderGrid').style.display = 'grid'; document.getElementById('folderContentView').style.display = 'none'; }
+
+    function showFolders() { 
+      document.getElementById('folderGrid').style.display = 'grid'; 
+      document.getElementById('mainHeader').style.display = 'block'; 
+      document.getElementById('folderContentView').style.display = 'none'; 
+      // ניקוי הנגנים לחסכון בזיכרון במובייל
+      document.getElementById('galleryGrid').innerHTML = ''; 
+    }
+
     const langBtn = document.getElementById('langToggle'); const html = document.documentElement;
-    function setLang(l) { html.setAttribute('data-lang', l); html.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr'); langBtn.textContent = l === 'he' ? 'EN' : 'HE'; localStorage.setItem('siteLang', l); }
+    function setLang(l) { 
+      html.setAttribute('data-lang', l); html.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr'); 
+      langBtn.textContent = l === 'he' ? 'EN' : 'HE'; localStorage.setItem('siteLang', l); 
+    }
     langBtn.onclick = () => setLang(html.getAttribute('data-lang') === 'he' ? 'en' : 'he');
-    setLang(localStorage.getItem('siteLang') || 'he'); renderFolders();
+    setLang(localStorage.getItem('siteLang') || 'he'); 
+    
+    renderFolders();
   </script>
 </body>
 </html>
