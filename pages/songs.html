@@ -3,32 +3,52 @@
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GTHDTELYGW');</script>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
   <title>Songs | Tzvika Johnny Peker</title>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root { --bg-color: #050608; --card-bg: rgba(18, 18, 24, 0.94); --accent: #ffb86c; --accent-soft: rgba(255, 184, 108, 0.14); --text-main: #f8f8ff; --text-muted: #b7b7c7; --border-color: rgba(255, 255, 255, 0.1); }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    
+    /* לוגיקת שפות גלובלית */
     html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
     html[data-lang="en"] { direction: ltr; } html[data-lang="he"] { direction: rtl; }
-    body { font-family: "Heebo", sans-serif; background: radial-gradient(circle at top, #1b1328 0, #050608 55%); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
-    header { padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(16px); background: rgba(5, 6, 8, 0.92); position: sticky; top: 0; z-index: 1000; }
-    nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-    .nav-link { font-size: 13px; padding: 6px 14px; border-radius: 999px; color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+    
+    body { font-family: "Heebo", sans-serif; background: radial-gradient(circle at top, #1b1328 0, #050608 55%); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+    
+    header { padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(16px); background: rgba(5, 6, 8, 0.92); position: sticky; top: 0; z-index: 1000; }
+    nav { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-link { font-size: 13px; padding: 6px 12px; border-radius: 999px; color: var(--text-muted); text-decoration: none; transition: 0.3s; font-weight: 500; }
     .nav-link.active { background: var(--accent-soft); color: var(--accent); }
-    .lang-toggle { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 11px; font-weight: 700; }
-    main { flex: 1; padding: 40px 6vw; display: flex; flex-direction: column; gap: 40px; }
-    .category-header { font-size: 24px; color: var(--accent); margin: 30px 0 15px; border-right: 4px solid var(--accent); padding-right: 15px; }
+    .lang-toggle { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 11px; font-weight: 700; }
+    
+    main { flex: 1; padding: 30px 5vw; display: flex; flex-direction: column; gap: 40px; }
+    
+    .category-header { font-size: 24px; color: var(--accent); margin: 20px 0 10px; border-right: 4px solid var(--accent); padding-right: 15px; }
+    
+    /* פריסת גריד עם התאמה למובייל */
     .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 100%; }
-    @media (max-width: 600px) { .media-grid { grid-template-columns: 1fr; } }
-    .video-container { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); touch-action: pan-y; }
+    
+    .video-item { background: rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 15px; border: 1px solid var(--border-color); }
+    .track-title { font-weight: 700; font-size: 15px; margin-bottom: 12px; text-align: center; color: var(--text-main); }
+    
+    .video-container { position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 12px; overflow: hidden; touch-action: pan-y; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    
     footer { padding: 30px; text-align: center; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--text-muted); }
+
+    @media (max-width: 600px) { 
+      .media-grid { grid-template-columns: 1fr; } 
+      header { flex-direction: column; gap: 15px; padding: 10px; }
+      nav { justify-content: center; }
+      .nav-link { font-size: 12px; padding: 8px 10px; }
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo-title"><span style="color: var(--accent); font-weight: 700;">TZVIKA JOHNNY PEKER</span></div>
+    <div class="logo-title"><span style="color: var(--accent); font-weight: 800; font-size: 1.1rem;">TZVIKA JOHNNY PEKER</span></div>
     <nav>
       <a href="../index.html" class="nav-link"><span class="en">Home</span><span class="he">ראשי</span></a>
       <a href="creative.html" class="nav-link"><span class="en">Creative</span><span class="he">קריאייטיב</span></a>
@@ -40,28 +60,62 @@
       <button class="lang-toggle" id="langToggle">EN</button>
     </nav>
   </header>
+  
   <main id="mediaContainer"></main>
+  
+  <footer>
+    <span>© Tzvika Johnny Peker</span>
+  </footer>
+
   <script>
     const tracks = [
       { id: "1OJzWFPxjJdy1pmBZr-utlSsRNih0Ka7z", he: "אנושי", en: "Human", cat: "heart" },
       { id: "1z3QhKy2kXEC89TRp16RjQuzeoQH7DzmZ", he: "שבורים", en: "Broken", cat: "heart" },
+      { id: "1MIuvNnoRVBT38fakpI-Ur0-hFECStgn2", he: "שיר חדש", en: "New Song", cat: "heart" }, // <-- הנה השיר החדש שהוספתי
       { id: "1zUGCnSIJBMdsVS4l-v2TDYAfyCFRvurd", he: "דואט גלי ואייל", en: "Duet Gali & Eyal", cat: "satire" },
       { id: "1np8jDUPZeBxOf9EDn0BlR1XWjI8VVwrl", he: "אשם - סינרגיה", en: "Sinergia Cover", cat: "satire" }
     ];
+
     const container = document.getElementById("mediaContainer");
+    
     function render(cat, labelHe, labelEn) {
-      const h3 = document.createElement("h3"); h3.className="category-header"; h3.innerHTML = `<span class="he">${labelHe}</span><span class="en">${labelEn}</span>`;
-      const grid = document.createElement("div"); grid.className="media-grid";
+      const h3 = document.createElement("h3"); 
+      h3.className = "category-header"; 
+      h3.innerHTML = `<span class="he">${labelHe}</span><span class="en">${labelEn}</span>`;
+      
+      const grid = document.createElement("div"); 
+      grid.className = "media-grid";
+      
       tracks.filter(t => t.cat === cat).forEach(t => {
-        const item = document.createElement("div"); item.className="video-container";
-        item.innerHTML = `<iframe src="https://drive.google.com/file/d/${t.id}/preview" loading="lazy"></iframe>`;
+        const item = document.createElement("div"); 
+        item.className = "video-item";
+        item.innerHTML = `
+          <div class="track-title"><span class="he">${t.he}</span><span class="en">${t.en}</span></div>
+          <div class="video-container">
+            <iframe src="https://drive.google.com/file/d/${t.id}/preview" loading="lazy"></iframe>
+          </div>
+        `;
         grid.appendChild(item);
       });
-      container.appendChild(h3); container.appendChild(grid);
+      
+      container.appendChild(h3); 
+      container.appendChild(grid);
     }
-    render("heart", "❤️ שירים מהלב", "❤️ Heart Songs"); render("satire", "🎭 סאטירה", "🎭 Satire");
-    const langBtn = document.getElementById('langToggle'); const html = document.documentElement;
-    function setLang(l) { html.setAttribute('data-lang', l); html.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr'); langBtn.textContent = l === 'he' ? 'EN' : 'HE'; localStorage.setItem('siteLang', l); }
+    
+    render("heart", "❤️ שירים מהלב", "❤️ Heart Songs"); 
+    render("satire", "🎭 סאטירה", "🎭 Satire");
+    
+    // סנכרון שפה
+    const langBtn = document.getElementById('langToggle'); 
+    const html = document.documentElement;
+    
+    function setLang(l) { 
+      html.setAttribute('data-lang', l); 
+      html.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr'); 
+      langBtn.textContent = l === 'he' ? 'EN' : 'HE'; 
+      localStorage.setItem('siteLang', l); 
+    }
+    
     langBtn.onclick = () => setLang(html.getAttribute('data-lang') === 'he' ? 'en' : 'he');
     setLang(localStorage.getItem('siteLang') || 'he');
   </script>
