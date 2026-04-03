@@ -11,11 +11,11 @@
   
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes" name="viewport"/>
-  <title>Post-Trauma | Tzvika Johnny Peker</title>
+  <title>Post-Trauma | Tzvika Johnny Peker 2036</title>
   
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   
-  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;700;900&family=Manrope:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;700;900&family=Manrope:wght@300;400;600&family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   
   <script id="tailwind-config">
@@ -24,8 +24,8 @@
       theme: {
         extend: {
           colors: {
-            "primary": "#050608",
-            "accent": "#ffb86c",
+            "cyber-cyan": "#00f2ff",
+            "cyber-pink": "#ebb2ff"
           }
         }
       }
@@ -39,92 +39,120 @@
     html[data-lang="he"] { direction: rtl; }
     
     * { -webkit-tap-highlight-color: transparent; }
-    body { background-color: #050608; }
+    body { background-color: #050608; color: #f8f8ff; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
+    .material-symbols-outlined { font-size: 32px; display: inline-block; line-height: 1; vertical-align: middle; }
     
-    .glass-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+    /* אפקטים מזוהים מ-2036 */
+    .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    
+    @keyframes neon-glow {
+      0%, 100% { text-shadow: 0 0 15px rgba(0,242,255,0.6), 0 0 30px rgba(0,242,255,0.2); opacity: 1; }
+      50% { text-shadow: 0 0 30px rgba(0,242,255,1), 0 0 50px rgba(0,242,255,0.6); opacity: 0.8; }
+    }
+    .neon-text { animation: neon-glow 3s infinite ease-in-out; }
+
+    @keyframes badge-pulse {
+      0%, 100% { box-shadow: 0 0 15px rgba(235,178,255,0.3); border-color: rgba(235,178,255,0.5); transform: scale(1); }
+      50% { box-shadow: 0 0 40px rgba(235,178,255,0.8); border-color: rgba(235,178,255,1); transform: scale(1.05); }
+    }
+    .badge-pulse { animation: badge-pulse 2.5s infinite ease-in-out; }
+
+    /* כרטיסיות מדיה */
+    .media-card:hover {
+      box-shadow: 0 0 35px rgba(0, 242, 255, 0.25);
+      border-color: rgba(0, 242, 255, 0.5);
+      transform: translateY(-8px);
     }
 
+    /* נגן דרייב חסין */
     .drive-embed-container {
       position: relative; width: 100%; aspect-ratio: 9 / 16; 
       background: #000; border-radius: 16px; overflow: hidden;
       touch-action: pan-y; 
       box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(0, 242, 255, 0.2);
+      transition: all 0.3s;
+    }
+    .media-card:hover .drive-embed-container {
+        border-color: rgba(0, 242, 255, 0.6);
+        box-shadow: 0 10px 40px rgba(0,242,255,0.4);
     }
     .drive-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 
-<body class="text-slate-300 font-['Manrope'] overflow-x-hidden pb-24 selection:bg-cyan-500/30">
-
-  <div class="fixed inset-0 z-[-1] bg-[#121318]">
-    <div class="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-fuchsia-900/20 via-cyan-900/10 to-transparent"></div>
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-50"></div>
+<body class="pb-40">
+  <div class="fixed inset-0 z-[-1] bg-[#050608]">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PC9zdmc+')] opacity-25"></div>
+    <div class="absolute top-0 w-full h-[600px] bg-gradient-to-b from-cyan-900/20 to-transparent"></div>
   </div>
 
-  <header class="fixed top-0 w-full z-50 p-4 lg:px-8 flex justify-between items-center glass-card border-b-0 border-white/5">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-500 flex items-center justify-center text-black font-bold font-['Epilogue']">JP</div>
-      <div class="font-['Epilogue'] font-bold tracking-[0.15em] text-sm hidden sm:block text-white">TZVIKA JOHNNY</div>
+  <header class="fixed top-0 w-full z-[100] px-6 py-4 flex justify-between items-center glass-card border-b border-white/10">
+    <div class="flex items-center gap-4">
+      <button onclick="toggleMenu()" class="text-cyber-cyan p-2 hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-4xl">menu</span>
+      </button>
+      <img src="../AIRetouch_20260208_120431073.jpg" alt="Logo" class="w-14 h-14 rounded-full border-2 border-cyber-cyan/40 shadow-[0_0_15px_rgba(0,242,255,0.3)] object-cover" onerror="this.src='https://ui-avatars.com/api/?name=JP&background=00f2ff&color=000&rounded=true'">
     </div>
-    
-    <button id="langToggle" class="relative group overflow-hidden rounded-full px-5 py-1.5 border border-white/20 hover:border-cyan-400 transition-colors">
-      <span class="relative z-10 font-['Space_Grotesk'] text-xs font-bold tracking-widest text-cyan-400 group-hover:text-white transition-colors">EN</span>
-      <div class="absolute inset-0 bg-cyan-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+    <button onclick="toggleLang()" class="px-6 py-2 rounded-full border-2 border-cyber-cyan text-xs font-black text-cyber-cyan uppercase tracking-widest hover:bg-cyber-cyan hover:text-black transition-all">
+      <span class="he">ENGLISH</span><span class="en">עברית</span>
     </button>
   </header>
 
-  <main class="relative pt-32 pb-10 px-6 max-w-7xl mx-auto flex flex-col items-center min-h-[80vh]">
+  <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] bg-zinc-950/98 backdrop-blur-3xl translate-x-full transition-transform duration-500 p-10 flex flex-col border-l border-white/10">
+    <button onclick="toggleMenu()" class="self-start text-white p-2 mb-12 hover:rotate-90 transition-transform"><span class="material-symbols-outlined text-4xl">close</span></button>
+    <nav class="flex flex-col gap-8 text-white font-['Epilogue']">
+      <a href="../index.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">ראשי</span><span class="en">HOME</span></a>
+      <a href="creative.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">יצירה</span><span class="en">CREATIVE</span></a>
+      <a href="satire.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">סאטירה</span><span class="en">SATIRE</span></a>
+      <a href="podcasts.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">פודקאסטים</span><span class="en">PODCASTS</span></a>
+      <a href="lessons.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">לקוחות</span><span class="en">CLIENTS</span></a>
+      <a href="posttrauma.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4"><span class="he">פוסטראומה</span><span class="en">TRAUMA</span></a>
+      <a href="songs.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">שירים</span><span class="en">SONGS</span></a>
+    </nav>
+  </aside>
+
+  <main class="relative pt-36 px-6 max-w-7xl mx-auto flex flex-col items-center min-h-[80vh]">
     
-    <div class="text-center space-y-4 z-10 w-full mb-16 glass-card p-8 rounded-3xl max-w-3xl">
-      <div class="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-2">
-        <span class="font-['Space_Grotesk'] text-xs tracking-[0.2em] text-fuchsia-400 flex items-center justify-center gap-2">
-          <span class="material-symbols-outlined text-sm">psychology</span>
-          A HUMAN EXPERIENCE
+    <div class="text-center space-y-6 z-10 w-full mb-16 max-w-4xl">
+      <div class="inline-block px-8 py-2 rounded-full bg-white/5 border-2 border-cyber-pink text-cyber-pink backdrop-blur-md badge-pulse">
+        <span class="font-['Space_Grotesk'] text-sm md:text-base tracking-[0.2em] font-black uppercase flex items-center justify-center gap-3">
+          <span class="material-symbols-outlined text-xl animate-pulse">psychology</span>
+          <span class="he">חוויה אנושית</span><span class="en">A HUMAN EXPERIENCE</span>
         </span>
       </div>
       
-      <h1 class="font-['Epilogue'] font-black text-4xl md:text-5xl lg:text-6xl text-white tracking-tight drop-shadow-xl">
-        <span class="en">Post-Trauma</span><span class="he">פוסט־טראומה</span>
+      <h1 class="font-['Epilogue'] font-black text-6xl md:text-8xl text-white tracking-tighter uppercase neon-text">
+        <span class="he">פוסט־טראומה</span><span class="en">POST-TRAUMA</span>
       </h1>
-      <p class="text-slate-400 text-lg font-light max-w-xl mx-auto leading-relaxed">
+      
+      <p class="text-slate-300 text-xl md:text-2xl font-light max-w-3xl mx-auto italic opacity-90 leading-relaxed">
         <span class="he">דרך יצירה, טקסט, דימוי, וידאו ומוזיקה, אני נותן מקום למה שקשה להסביר במילים רגילות: הזיכרונות, הדריכות, הניתוקים, והמאמץ היומיומי להישאר מתפקד.</span>
         <span class="en">Through art, text, imagery, video, and music, I give space to what is hard to explain in ordinary words: the memories, the vigilance, and the daily effort to remain functional.</span>
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-5xl" id="mediaList"></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-6xl" id="mediaList"></div>
 
   </main>
 
-  <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-[#1a1b23]/90 backdrop-blur-xl border border-white/10 rounded-2xl px-4 py-3 sm:px-6 sm:py-4 flex justify-between sm:justify-center gap-2 sm:gap-8 items-center z-50 shadow-[0_20px_40px_rgba(0,0,0,0.8)] w-[calc(100%-2rem)] sm:w-auto max-w-lg mx-auto">
-    
-    <a href="../index.html" class="flex flex-col items-center justify-center text-slate-500 hover:text-cyan-400 transition-all w-14">
-      <span class="material-symbols-outlined text-[22px]">home</span>
-      <span class="text-[9px] font-['Space_Grotesk'] tracking-wider uppercase mt-1"><span class="en">Home</span><span class="he">ראשי</span></span>
-    </a>
-    
-    <a href="creative.html" class="flex flex-col items-center justify-center text-slate-500 hover:text-fuchsia-400 transition-all w-14">
-      <span class="material-symbols-outlined text-[22px]">palette</span>
-      <span class="text-[9px] font-['Space_Grotesk'] tracking-wider uppercase mt-1"><span class="en">Creative</span><span class="he">יצירה</span></span>
-    </a>
-    
-    <a href="satire.html" class="flex flex-col items-center justify-center text-slate-500 hover:text-fuchsia-400 transition-all w-14">
-      <span class="material-symbols-outlined text-[22px]">theater_comedy</span>
-      <span class="text-[9px] font-['Space_Grotesk'] tracking-wider uppercase mt-1"><span class="en">Satire</span><span class="he">סאטירה</span></span>
-    </a>
-    
-    <a href="podcasts.html" class="flex flex-col items-center justify-center text-slate-500 hover:text-fuchsia-400 transition-all w-14">
-      <span class="material-symbols-outlined text-[22px]">podcasts</span>
-      <span class="text-[9px] font-['Space_Grotesk'] tracking-wider uppercase mt-1"><span class="en">Podcast</span><span class="he">פודקאסט</span></span>
-    </a>
+  <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/90 backdrop-blur-3xl border-2 border-white/10 rounded-[2.5rem] p-3 z-50 overflow-x-auto hide-scrollbar flex items-center gap-10 px-12 shadow-2xl">
+      <a href="../index.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">home</span><span class="text-[10px] font-black uppercase mt-1"><span class="he">ראשי</span><span class="en">HOME</span></span></a>
+      <a href="creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">palette</span><span class="text-[10px] uppercase mt-1"><span class="he">יצירה</span><span class="en">CREATIVE</span></span></a>
+      <a href="satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">theater_comedy</span><span class="text-[10px] uppercase mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span></span></a>
+      <a href="podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">podcasts</span><span class="text-[10px] uppercase mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span></span></a>
+      <a href="lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">handshake</span><span class="text-[10px] uppercase mt-1"><span class="he">לקוחות</span><span class="en">CLIENTS</span></span></a>
+      <a href="songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">music_note</span><span class="text-[10px] uppercase mt-1"><span class="he">שירים</span><span class="en">SONGS</span></span></a>
+      <a href="posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-125 neon-text"><span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">psychology</span><span class="text-[10px] uppercase mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span></span></a>
   </nav>
 
   <script>
+    function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
+
+    // מזהי הקבצים (חלק 1, 2, 3)
     const mediaIds = [
       "1jDz-vXe_X3xu6LelcZAu1V96y1RK3xEn",
       "1nnzrWNOIGNjbtFl9e6x6ARqHUWocqNnd",
@@ -135,12 +163,12 @@
     
     mediaIds.forEach((id, idx) => {
       const item = document.createElement("div");
-      item.className = "glass-card p-4 rounded-2xl flex flex-col gap-4 hover-glow transition-all duration-300";
+      item.className = "glass-card p-6 rounded-[2rem] flex flex-col gap-4 media-card transition-all duration-300";
       item.innerHTML = `
         <div class="flex justify-between items-center px-2">
-          <span class="en font-['Epilogue'] font-bold text-cyan-400">Part 0${idx + 1}</span>
-          <span class="he font-['Epilogue'] font-bold text-cyan-400">חלק 0${idx + 1}</span>
-          <span class="material-symbols-outlined text-white/50 text-sm">visibility</span>
+          <span class="en font-['Epilogue'] font-black text-xl text-cyber-cyan tracking-widest">PART 0${idx + 1}</span>
+          <span class="he font-['Epilogue'] font-black text-xl text-cyber-cyan tracking-widest">חלק 0${idx + 1}</span>
+          <span class="material-symbols-outlined text-cyber-cyan/50 animate-pulse text-2xl">visibility</span>
         </div>
         <div class="drive-embed-container">
           <iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
@@ -149,21 +177,17 @@
       listContainer.appendChild(item);
     });
 
-    // סנכרון שפות
-    const langBtn = document.getElementById('langToggle'); 
     const htmlTag = document.documentElement;
-
     function setLang(lang) {
       htmlTag.setAttribute('data-lang', lang);
       htmlTag.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
-      langBtn.querySelector('span.relative').textContent = lang === 'he' ? 'EN' : 'HE';
       localStorage.setItem('siteLang', lang);
     }
 
-    langBtn.addEventListener('click', () => {
+    function toggleLang() {
       const nextLang = htmlTag.getAttribute('data-lang') === 'en' ? 'he' : 'en';
       setLang(nextLang);
-    });
+    }
 
     const savedLang = localStorage.getItem('siteLang') || 'he';
     setLang(savedLang); 
