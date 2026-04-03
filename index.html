@@ -14,7 +14,6 @@
   <title>Tzvika Johnny Peker | 2036 Portfolio</title>
   
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  
   <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;700;900&family=Manrope:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   
@@ -25,7 +24,6 @@
         extend: {
           colors: {
             "primary": "#050608",
-            "accent": "#ffb86c",
             "cyber-cyan": "#00f2ff",
             "cyber-pink": "#ebb2ff"
           }
@@ -35,212 +33,164 @@
   </script>
 
   <style>
-    /* לוגיקת שפות */
     html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
     html[data-lang="en"] { direction: ltr; } 
     html[data-lang="he"] { direction: rtl; }
+    body { background-color: #050608; min-height: 100vh; font-family: 'Manrope', sans-serif; }
     
-    * { -webkit-tap-highlight-color: transparent; }
-    body { background-color: #050608; min-height: 100vh; }
+    .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
     
-    .glass-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
+    /* קוביית 3D */
+    .cube-container { perspective: 1200px; width: 280px; height: 280px; margin: 40px auto; }
+    .cube { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1); cursor: grab; }
+    .cube-face { position: absolute; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 24px; background: rgba(18, 19, 24, 0.95); backface-visibility: hidden; overflow: hidden; }
     
-    .hover-glow:hover {
-      box-shadow: 0 0 30px rgba(0, 242, 255, 0.25);
-      border-color: rgba(0, 242, 255, 0.5);
-    }
+    /* מיקומי פאות הקובייה */
+    .face-front  { transform: rotateY(0deg) translateZ(140px); }
+    .face-back   { transform: rotateY(180deg) translateZ(140px); }
+    .face-right  { transform: rotateY(90deg) translateZ(140px); }
+    .face-left   { transform: rotateY(-90deg) translateZ(140px); }
+    .face-top    { transform: rotateX(90deg) translateZ(140px); }
+    .face-bottom { transform: rotateX(-90deg) translateZ(140px); }
 
-    /* הסתרת פס גלילה לתפריט התחתון */
     .hide-scrollbar::-webkit-scrollbar { display: none; }
-    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-    /* אנימציית נשימה לכפתור פעיל */
-    @keyframes pulse-glow {
-      0%, 100% { filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.8)); opacity: 1; }
-      50% { filter: drop-shadow(0 0 15px rgba(0, 242, 255, 1)); opacity: 0.8; }
-    }
-    .active-glow { animation: pulse-glow 2s infinite; }
+    .accessibility-active { filter: contrast(1.5) brightness(1.1); font-size: 1.1em; }
   </style>
 </head>
 
-<body class="text-slate-300 font-['Manrope'] overflow-x-hidden pb-32">
+<body class="text-slate-200 selection:bg-cyber-cyan/30">
 
-  <div class="fixed inset-0 z-[-1] bg-[#121318]">
-    <div class="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-fuchsia-900/20 via-cyan-900/10 to-transparent text-white"></div>
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-50"></div>
+  <div class="fixed inset-0 z-[-1] bg-[#050608]">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIi8+PC9zdmc+')] opacity-20 text-white"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-cyan-500/10 blur-[120px] rounded-full"></div>
   </div>
 
-  <header class="fixed top-0 w-full z-50 p-4 lg:px-8 flex justify-between items-center glass-card border-b-0 border-white/5">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-500 flex items-center justify-center text-black font-bold font-['Epilogue']">JP</div>
-      <div class="font-['Epilogue'] font-bold tracking-[0.15em] text-sm hidden sm:block text-white uppercase">Tzvika Johnny</div>
+  <header class="fixed top-0 w-full z-[100] px-6 py-4 flex justify-between items-center glass-card">
+    <div class="flex items-center gap-4">
+      <button onclick="toggleMenu()" class="material-symbols-outlined text-cyber-cyan text-3xl">menu</button>
+      <div class="font-['Epilogue'] font-black tracking-tighter text-xl text-white">JP 2036</div>
     </div>
-    
-    <button id="langToggle" class="relative group overflow-hidden rounded-full px-5 py-1.5 border border-white/20 hover:border-cyan-400 transition-colors">
-      <span class="relative z-10 font-['Space_Grotesk'] text-xs font-bold tracking-widest text-cyan-400 group-hover:text-white transition-colors">EN</span>
-      <div class="absolute inset-0 bg-cyan-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-    </button>
+    <button id="langToggle" class="px-4 py-1.5 rounded-full border border-white/20 text-xs font-bold font-['Space_Grotesk'] text-cyber-cyan hover:bg-cyber-cyan/10 transition-all">EN</button>
   </header>
 
-  <main class="relative pt-32 pb-10 px-6 max-w-7xl mx-auto flex flex-col items-center">
-    <div class="text-center space-y-6 z-10 w-full">
-      
-      <div class="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-4">
-        <span class="font-['Space_Grotesk'] text-[10px] md:text-xs tracking-wider text-cyan-400 flex items-center justify-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-          <span class="en text-center leading-tight uppercase text-white">Multimodal AI Creator / Future Technologist <span class="opacity-60">(You live in 2026, I live in 2036)</span></span>
-          <span class="he text-center leading-tight text-white">יוצר AI מולטי-מודולרי / טכנולוג העתיד <span class="opacity-60 text-white">(אתם חיים ב-2026 אני חי ב-2036)</span></span>
-        </span>
-      </div>
-      
-      <h1 class="font-['Epilogue'] font-black text-5xl md:text-7xl lg:text-8xl text-white tracking-tight drop-shadow-2xl">
-        <span class="en text-white">TZVIKA JOHNNY<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500">PEKER</span></span>
-        <span class="he text-white">צביקה ג׳וני<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500">פקר</span></span>
-      </h1>
-      
-      <p class="max-w-2xl mx-auto text-slate-400 text-lg md:text-xl font-light">
-        <span class="en">Pushing clients' boundaries and combining art, humor, technology, and satire. Dive right in.</span>
-        <span class="he">מותח את גבולות הלקוחות ומשלב בין אמנות, הומור, טכנולוגיה וסאטירה. מוזמנים לצלול פנימה.</span>
-      </p>
+  <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] glass-card translate-x-full transition-transform duration-500 p-8 flex flex-col gap-6">
+    <button onclick="toggleMenu()" class="self-start material-symbols-outlined text-white text-3xl mb-8 text-white">close</button>
+    <nav class="flex flex-col gap-4 text-white">
+      <a href="index.html" class="text-2xl font-bold text-cyber-cyan border-b border-white/10 pb-2">ראשי</a>
+      <a href="pages/creative.html" class="text-xl hover:text-cyber-cyan transition-colors">יצירה</a>
+      <a href="pages/satire.html" class="text-xl hover:text-cyber-cyan transition-colors">סאטירה</a>
+      <a href="pages/podcasts.html" class="text-xl hover:text-cyber-cyan transition-colors">פודקאסטים</a>
+      <a href="pages/lessons.html" class="text-xl hover:text-cyber-cyan transition-colors">לקוחות</a>
+      <a href="pages/posttrauma.html" class="text-xl hover:text-cyber-cyan transition-colors">פוסטראומה</a>
+      <a href="pages/songs.html" class="text-xl hover:text-cyber-cyan transition-colors">שירים</a>
+    </nav>
+  </aside>
+
+  <main class="relative pt-32 pb-10 px-6 max-w-5xl mx-auto flex flex-col items-center">
+    <div class="inline-block px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8">
+      <span class="font-['Space_Grotesk'] text-sm md:text-lg tracking-widest text-cyber-cyan text-white">
+        <span class="en uppercase">Multimodal AI Creator / Future Technologist <br> <span class="text-cyber-pink">(You live in 2026, I live in 2036)</span></span>
+        <span class="he">יוצר AI מולטי-מודולרי / טכנולוג העתיד <br> <span class="text-cyber-pink text-white">(אתם חיים ב-2026 אני חי ב-2036)</span></span>
+      </span>
     </div>
 
-    <div class="w-full mt-20">
-      <div class="flex items-center gap-4 mb-8">
-        <h2 class="font-['Epilogue'] font-bold text-2xl text-white tracking-wide"><span class="en">EXPLORE PORTALS</span><span class="he text-white">העולמות שלי</span></h2>
-        <div class="h-[1px] flex-1 bg-gradient-to-r from-white/20 to-transparent text-white"></div>
-      </div>
+    <h1 class="font-['Epilogue'] font-black text-6xl md:text-8xl text-white text-center tracking-tighter mb-8 text-white">
+      צביקה ג׳וני פקר
+    </h1>
+    
+    <p class="text-xl md:text-2xl text-slate-400 text-center font-light max-w-2xl leading-relaxed mb-12">
+      <span class="he">מותח את גבולות הלקוחות ומשלב בין אמנות, הומור, טכנולוגיה וסאטירה. מוזמנים לצלול פנימה.</span>
+    </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <a href="pages/creative.html" class="group relative overflow-hidden rounded-3xl glass-card hover-glow transition-all duration-500">
-          <div class="aspect-[4/3] w-full overflow-hidden">
-            <img src="https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" alt="Creative">
-          </div>
-          <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-[#050608] to-transparent">
-            <h3 class="font-['Epilogue'] text-2xl font-bold text-white mb-2"><span class="en">My Creative</span><span class="he">קריאייטיב שלי</span></h3>
-            <span class="text-cyan-400 text-sm font-['Space_Grotesk'] flex items-center gap-2 group-hover:translate-x-2 transition-transform uppercase"><span class="en">Enter</span><span class="he">כניסה</span> <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
-          </div>
+    <div class="cube-container" id="cubeContainer">
+      <div class="cube" id="cube">
+        <a href="pages/creative.html" class="cube-face face-front">
+          <img src="https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w500" class="absolute inset-0 w-full h-full object-cover opacity-50">
+          <span class="relative z-10 text-2xl font-bold text-white uppercase">יצירה</span>
         </a>
-
-        <a href="pages/satire.html" class="group relative overflow-hidden rounded-3xl glass-card hover-glow transition-all duration-500">
-          <div class="aspect-[4/3] w-full overflow-hidden text-white">
-            <img src="https://drive.google.com/thumbnail?id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so&sz=w800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" alt="Satire">
-          </div>
-          <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-[#050608] to-transparent">
-            <h3 class="font-['Epilogue'] text-2xl font-bold text-white mb-2"><span class="en">Satire</span><span class="he">סאטירה</span></h3>
-            <span class="text-cyan-400 text-sm font-['Space_Grotesk'] flex items-center gap-2 group-hover:translate-x-2 transition-transform uppercase"><span class="en text-white">Enter</span><span class="he">כניסה</span> <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
-          </div>
+        <a href="pages/satire.html" class="cube-face face-back text-white">
+          <img src="https://drive.google.com/thumbnail?id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so&sz=w500" class="absolute inset-0 w-full h-full object-cover opacity-50 text-white">
+          <span class="relative z-10 text-2xl font-bold text-white uppercase text-white">סאטירה</span>
         </a>
-
-        <a href="pages/podcasts.html" class="group relative overflow-hidden rounded-3xl glass-card hover-glow transition-all duration-500">
-          <div class="aspect-[4/3] w-full overflow-hidden">
-            <img src="https://drive.google.com/thumbnail?id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon&sz=w800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" alt="Podcasts">
-          </div>
-          <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-[#050608] to-transparent">
-            <h3 class="font-['Epilogue'] text-2xl font-bold text-white mb-2"><span class="en">Podcasts</span><span class="he">פודקאסטים</span></h3>
-            <span class="text-cyan-400 text-sm font-['Space_Grotesk'] flex items-center gap-2 group-hover:translate-x-2 transition-transform uppercase"><span class="en">Enter</span><span class="he">כניסה</span> <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
-          </div>
+        <a href="pages/podcasts.html" class="cube-face face-right">
+          <img src="https://drive.google.com/thumbnail?id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon&sz=w500" class="absolute inset-0 w-full h-full object-cover opacity-50">
+          <span class="relative z-10 text-2xl font-bold text-white uppercase">פודקאסטים</span>
         </a>
-
-        <a href="pages/songs.html" class="group relative overflow-hidden rounded-3xl glass-card hover-glow transition-all duration-500">
-          <div class="aspect-[4/3] w-full overflow-hidden">
-            <img src="https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" alt="Songs">
-          </div>
-          <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-[#050608] to-transparent">
-            <h3 class="font-['Epilogue'] text-2xl font-bold text-white mb-2"><span class="en">Songs</span><span class="he">שירים</span></h3>
-            <span class="text-cyan-400 text-sm font-['Space_Grotesk'] flex items-center gap-2 group-hover:translate-x-2 transition-transform uppercase"><span class="en">Enter</span><span class="he">כניסה</span> <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
-          </div>
+        <a href="pages/lessons.html" class="cube-face face-left text-white">
+          <img src="https://drive.google.com/thumbnail?id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J&sz=w500" class="absolute inset-0 w-full h-full object-cover opacity-50 text-white">
+          <span class="relative z-10 text-2xl font-bold text-white uppercase text-white">לקוחות</span>
         </a>
-
-        <a href="pages/posttrauma.html" class="group relative overflow-hidden rounded-3xl glass-card hover-glow transition-all duration-500">
-          <div class="aspect-[4/3] w-full overflow-hidden text-white">
-            <img src="https://drive.google.com/thumbnail?id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q&sz=w800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" alt="Post-Trauma">
-          </div>
-          <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-[#050608] to-transparent text-white">
-            <h3 class="font-['Epilogue'] text-2xl font-bold text-white mb-2"><span class="en">Post-Trauma</span><span class="he">פוסטראומה</span></h3>
-            <span class="text-cyan-400 text-sm font-['Space_Grotesk'] flex items-center gap-2 group-hover:translate-x-2 transition-transform uppercase"><span class="en">Enter</span><span class="he">כניסה</span> <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
-          </div>
+        <a href="pages/posttrauma.html" class="cube-face face-top text-white">
+          <img src="https://drive.google.com/thumbnail?id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q&sz=w500" class="absolute inset-0 w-full h-full object-cover opacity-50 text-white">
+          <span class="relative z-10 text-2xl font-bold text-white uppercase text-white">פוסטראומה</span>
         </a>
-
-        <a href="pages/lessons.html" class="group relative overflow-hidden rounded-3xl glass-card hover-glow transition-all duration-500">
-          <div class="aspect-[4/3] w-full overflow-hidden">
-            <img src="https://drive.google.com/thumbnail?id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J&sz=w800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" alt="Clients">
-          </div>
-          <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-[#050608] to-transparent">
-            <h3 class="font-['Epilogue'] text-2xl font-bold text-white mb-2"><span class="en text-white">Clients</span><span class="he text-white">לקוחות</span></h3>
-            <span class="text-cyan-400 text-sm font-['Space_Grotesk'] flex items-center gap-2 group-hover:translate-x-2 transition-transform uppercase"><span class="en text-white">Enter</span><span class="he text-white">כניסה</span> <span class="material-symbols-outlined text-sm text-white">arrow_forward</span></span>
-          </div>
+        <a href="pages/songs.html" class="cube-face face-bottom">
+          <img src="https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w500" class="absolute inset-0 w-full h-full object-cover opacity-50">
+          <span class="relative z-10 text-2xl font-bold text-white uppercase">שירים</span>
         </a>
-
       </div>
     </div>
+    <p class="text-cyber-cyan animate-pulse mt-4 font-bold tracking-widest text-sm uppercase">סובבו את הקובייה לניווט</p>
   </main>
 
-  <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-[#121318]/85 backdrop-blur-2xl border border-white/20 rounded-2xl p-2 z-50 shadow-[0_0_40px_rgba(0,242,255,0.15)] w-[calc(100%-2rem)] sm:w-auto max-w-full sm:max-w-2xl mx-auto">
-    <div class="flex items-center gap-2 sm:gap-6 overflow-x-auto hide-scrollbar px-2 py-1 snap-x snap-mandatory">
-      
-      <a href="index.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-cyan-400 scale-110 -translate-y-1 drop-shadow-[0_0_15px_rgba(0,242,255,0.8)] transition-all duration-300 w-[65px] relative group">
-        <div class="absolute -bottom-2 w-1.5 h-1.5 bg-cyan-400 rounded-full active-glow"></div>
-        <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">home</span>
-        <span class="text-[9px] font-['Space_Grotesk'] tracking-widest uppercase mt-1 font-bold"><span class="en">Home</span><span class="he">ראשי</span></span>
-      </a>
-      
-      <a href="pages/creative.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-slate-300 hover:text-white hover:scale-110 hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all duration-300 w-[65px] group">
-        <span class="material-symbols-outlined text-[24px]">palette</span>
-        <span class="text-[9px] font-['Space_Grotesk'] tracking-widest uppercase mt-1 opacity-80"><span class="en">Works</span><span class="he">יצירה</span></span>
-      </a>
+  <button onclick="toggleAccessibility()" class="fixed bottom-24 right-6 w-14 h-14 bg-cyber-pink text-black rounded-full shadow-[0_0_20px_rgba(235,178,255,0.5)] z-[100] flex items-center justify-center">
+    <span class="material-symbols-outlined text-3xl">accessibility_new</span>
+  </button>
 
-      <a href="pages/satire.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-slate-300 hover:text-white hover:scale-110 hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all duration-300 w-[65px] group">
-        <span class="material-symbols-outlined text-[24px]">theater_comedy</span>
-        <span class="text-[9px] font-['Space_Grotesk'] tracking-widest uppercase mt-1 opacity-80"><span class="en">Satire</span><span class="he">סאטירה</span></span>
-      </a>
-      
-      <a href="pages/lessons.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-slate-300 hover:text-white hover:scale-110 hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all duration-300 w-[65px] group text-white">
-        <span class="material-symbols-outlined text-[24px]">handshake</span>
-        <span class="text-[9px] font-['Space_Grotesk'] tracking-widest uppercase mt-1 opacity-80"><span class="en">Clients</span><span class="he text-white">לקוחות</span></span>
-      </a>
-
-      <a href="pages/podcasts.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-slate-300 hover:text-white hover:scale-110 hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all duration-300 w-[65px] group">
-        <span class="material-symbols-outlined text-[24px]">podcasts</span>
-        <span class="text-[9px] font-['Space_Grotesk'] tracking-widest uppercase mt-1 opacity-80"><span class="en">Podcast</span><span class="he">פודקאסט</span></span>
-      </a>
-
-      <a href="pages/songs.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-slate-300 hover:text-white hover:scale-110 hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all duration-300 w-[65px] group">
-        <span class="material-symbols-outlined text-[24px]">music_note</span>
-        <span class="text-[9px] font-['Space_Grotesk'] tracking-widest uppercase mt-1 opacity-80"><span class="en">Songs</span><span class="he">שירים</span></span>
-      </a>
-
-      <a href="pages/posttrauma.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-slate-300 hover:text-white hover:scale-110 hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all duration-300 w-[65px] group">
-        <span class="material-symbols-outlined text-[24px]">psychology</span>
-        <span class="text-[9px] font-['Space_Grotesk'] tracking-widest uppercase mt-1 opacity-80"><span class="en text-white">Trauma</span><span class="he text-white">טראומה</span></span>
-      </a>
-
-    </div>
+  <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-[#121318]/85 backdrop-blur-2xl border border-white/20 rounded-2xl p-2 z-50 w-[calc(100%-2rem)] sm:w-auto overflow-x-auto hide-scrollbar flex items-center gap-6 px-4">
+      <a href="index.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan drop-shadow-[0_0_10px_rgba(0,242,255,0.8)]"><span class="material-symbols-outlined">home</span><span class="text-[10px]">ראשי</span></a>
+      <a href="pages/creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined">palette</span><span class="text-[10px]">יצירה</span></a>
+      <a href="pages/satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined">theater_comedy</span><span class="text-[10px]">סאטירה</span></a>
+      <a href="pages/podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined">podcasts</span><span class="text-[10px]">פודקאסט</span></a>
+      <a href="pages/lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 text-white"><span class="material-symbols-outlined">handshake</span><span class="text-[10px] text-white">לקוחות</span></a>
+      <a href="pages/songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined">music_note</span><span class="text-[10px]">שירים</span></a>
+      <a href="pages/posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 text-white"><span class="material-symbols-outlined">psychology</span><span class="text-[10px] text-white">טראומה</span></a>
   </nav>
 
   <script>
+    // תפריט המבורגר
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('translate-x-full');
+    }
+
+    // נגישות
+    function toggleAccessibility() {
+      document.body.classList.toggle('accessibility-active');
+    }
+
+    // סיבוב קובייה
+    const cube = document.getElementById('cube');
+    let isDragging = false;
+    let startX, startY;
+    let currentX = -15, currentY = -15;
+
+    document.addEventListener('mousedown', (e) => { isDragging = true; startX = e.pageX; startY = e.pageY; });
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const dx = (e.pageX - startX) * 0.5;
+      const dy = (e.pageY - startY) * 0.5;
+      cube.style.transform = `rotateX(${currentY - dy}deg) rotateY(${currentX + dx}deg)`;
+    });
+    document.addEventListener('mouseup', (e) => {
+      if (isDragging) {
+        currentX += (e.pageX - startX) * 0.5;
+        currentY -= (e.pageY - startY) * 0.5;
+        isDragging = false;
+      }
+    });
+
+    // סנכרון שפות
     const langBtn = document.getElementById('langToggle');
     const htmlTag = document.documentElement;
-
     function setLang(lang) {
       htmlTag.setAttribute('data-lang', lang);
       htmlTag.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
-      langBtn.querySelector('span.relative').textContent = lang === 'he' ? 'EN' : 'HE';
+      langBtn.textContent = lang === 'he' ? 'EN' : 'HE';
       localStorage.setItem('siteLang', lang);
     }
-
-    langBtn.addEventListener('click', () => {
-      const nextLang = htmlTag.getAttribute('data-lang') === 'en' ? 'he' : 'en';
-      setLang(nextLang);
-    });
-
-    const savedLang = localStorage.getItem('siteLang') || 'he';
-    setLang(savedLang);
+    langBtn.addEventListener('click', () => setLang(htmlTag.getAttribute('data-lang') === 'en' ? 'he' : 'en'));
+    setLang(localStorage.getItem('siteLang') || 'he');
   </script>
 </body>
 </html>
