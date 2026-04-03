@@ -106,7 +106,7 @@
   </style>
 </head>
 
-<body class="pb-40">
+<body class="pb-40 selection:bg-cyan-500/30">
   <div class="fixed inset-0 z-[-1] bg-[#050608]">
     <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PC9zdmc+')] opacity-25"></div>
     <div class="absolute top-0 w-full h-[600px] bg-gradient-to-b from-cyan-900/20 to-transparent"></div>
@@ -181,7 +181,7 @@
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
-    // התוכן המעודכן ונקי מכפילויות
+    // מערך התוכן המעודכן עם פודקאסטים במקום קטעי שמע
     const satireFolders = [
       { 
         id: "videos", 
@@ -213,9 +213,9 @@
         ] 
       },
       { 
-        id: "audio", 
-        nameHe: "קטעי שמע", 
-        nameEn: "PARODY AUDIO", 
+        id: "podcasts", 
+        nameHe: "פודקאסטים", 
+        nameEn: "PODCASTS", 
         type: "video", 
         items: [
           "1gqRcA3Z5nT264xW5_6pZ4TffoXX4L25y", "12b_6ZQz0JLoY4SQ7ZClifyw1ZhP3YZ0b", 
