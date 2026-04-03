@@ -57,21 +57,19 @@
     }
     .badge-pulse { animation: badge-pulse 2.5s infinite ease-in-out; }
 
-    /* עיצוב כרטיסיות פודקאסט עתידניות */
+    /* נגן דרייב חסין */
+    .drive-embed-container {
+      position: relative; width: 100%; aspect-ratio: 9 / 16; 
+      background: #000; border-radius: 20px; overflow: hidden;
+      touch-action: pan-y; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      border: 2px solid rgba(0, 242, 255, 0.2);
+      transition: all 0.3s;
+    }
     .podcast-card:hover {
       box-shadow: 0 0 35px rgba(0, 242, 255, 0.25);
       border-color: rgba(0, 242, 255, 0.5);
       transform: translateY(-8px);
-    }
-
-    /* נגן דרייב חסין */
-    .drive-embed-container {
-      position: relative; width: 100%; aspect-ratio: 9 / 16; 
-      background: #000; border-radius: 16px; overflow: hidden;
-      touch-action: pan-y; 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      border: 1px solid rgba(0, 242, 255, 0.2);
-      transition: all 0.3s;
     }
     .podcast-card:hover .drive-embed-container {
         border-color: rgba(0, 242, 255, 0.6);
@@ -135,7 +133,7 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-6xl" id="podcastList"></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full max-w-7xl" id="podcastList"></div>
 
   </main>
 
@@ -152,11 +150,16 @@
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
-    // מזהי הפודקאסטים והרינדור
+    // רשימת כל ה-IDs המעודכנת (8 רצועות)
     const podcastIds = [
       "1N_vrYX98IkXooUWgzKYCSeX0Z_mt-jP0",
       "1GWKat4DMeBylpaEGuaWDgTX5RC1coaJ-",
-      "1o04irFuakI-EYPbbspZ4NYT6LG8XZd6M"
+      "1o04irFuakI-EYPbbspZ4NYT6LG8XZd6M",
+      "1t5qIpQ993Sr9BflVgCvOdso7lh1LsGqe",
+      "1FQeIEccfmqvJV3LqU7A7fJXK21OQ0Ql-",
+      "1pK3MzJDv2oZXqnLATzZ5stCBdAdhl830",
+      "10lIZJ9_0402MkLFmUGbG8mnjYUomVwcV",
+      "1tyC7XFFj08YbHMefhSE2O3SBaLNuNvrv"
     ];
 
     const listContainer = document.getElementById("podcastList");
@@ -177,9 +180,7 @@
       listContainer.appendChild(item);
     });
 
-    // לוגיקת שפות שמתקשרת עם כל האתר
     const htmlTag = document.documentElement;
-
     function setLang(lang) {
       htmlTag.setAttribute('data-lang', lang);
       htmlTag.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
@@ -191,7 +192,6 @@
       setLang(nextLang);
     }
 
-    // טעינת שפה התחלתית
     const savedLang = localStorage.getItem('siteLang') || 'he';
     setLang(savedLang); 
   </script>
