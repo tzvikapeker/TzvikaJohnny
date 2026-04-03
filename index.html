@@ -33,7 +33,7 @@
   </script>
 
   <style>
-    /* לוגיקת שפות גלובלית - חובה */
+    /* לוגיקת שפות גלובלית */
     html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
     html[data-lang="en"] { direction: ltr; } 
     html[data-lang="he"] { direction: rtl; }
@@ -41,7 +41,6 @@
     * { -webkit-tap-highlight-color: transparent; }
     body { background-color: #050608; }
     
-    /* אפקטים מיוחדים מהעיצוב החדש */
     .glass-card {
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(16px);
@@ -53,10 +52,14 @@
       box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
       border-color: rgba(0, 242, 255, 0.5);
     }
+
+    /* קריטי: מעלים את פס הגלילה המכוער בניווט התחתון אבל משאיר את הגלילה */
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 
-<body class="text-slate-300 font-['Manrope'] overflow-x-hidden pb-24 selection:bg-cyan-500/30">
+<body class="text-slate-300 font-['Manrope'] overflow-x-hidden pb-28 selection:bg-cyan-500/30">
 
   <div class="fixed inset-0 z-[-1] bg-[#121318]">
     <div class="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-fuchsia-900/20 via-cyan-900/10 to-transparent"></div>
@@ -178,27 +181,46 @@
 
   </main>
 
-  <nav class="fixed bottom-6 inset-x-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 bg-[#1a1b23]/90 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex justify-between md:justify-center md:gap-12 items-center z-50 shadow-[0_20px_40px_rgba(0,0,0,0.8)] max-w-md mx-auto">
+  <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-[#1a1b23]/90 backdrop-blur-xl border border-white/10 rounded-2xl p-2 z-50 shadow-[0_20px_40px_rgba(0,0,0,0.8)] w-[calc(100%-2rem)] sm:w-auto max-w-full sm:max-w-2xl mx-auto">
     
-    <a href="index.html" class="flex flex-col items-center justify-center text-cyan-400 drop-shadow-[0_0_10px_rgba(0,242,255,0.8)] transition-all">
-      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
-      <span class="text-[10px] font-['Space_Grotesk'] tracking-widest uppercase mt-1"><span class="en">Home</span><span class="he">ראשי</span></span>
-    </a>
-    
-    <a href="pages/creative.html" class="flex flex-col items-center justify-center text-slate-500 hover:text-fuchsia-400 active:scale-110 transition-all">
-      <span class="material-symbols-outlined">palette</span>
-      <span class="text-[10px] font-['Space_Grotesk'] tracking-widest uppercase mt-1"><span class="en">Creative</span><span class="he">יצירה</span></span>
-    </a>
-    
-    <a href="pages/satire.html" class="flex flex-col items-center justify-center text-slate-500 hover:text-fuchsia-400 active:scale-110 transition-all">
-      <span class="material-symbols-outlined">theater_comedy</span>
-      <span class="text-[10px] font-['Space_Grotesk'] tracking-widest uppercase mt-1"><span class="en">Satire</span><span class="he">סאטירה</span></span>
-    </a>
-    
-    <a href="pages/podcasts.html" class="flex flex-col items-center justify-center text-slate-500 hover:text-fuchsia-400 active:scale-110 transition-all">
-      <span class="material-symbols-outlined">podcasts</span>
-      <span class="text-[10px] font-['Space_Grotesk'] tracking-widest uppercase mt-1"><span class="en">Podcast</span><span class="he">פודקאסט</span></span>
-    </a>
+    <div class="flex items-center gap-3 sm:gap-6 overflow-x-auto hide-scrollbar px-2 py-1 snap-x snap-mandatory">
+      
+      <a href="index.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-cyan-400 drop-shadow-[0_0_10px_rgba(0,242,255,0.8)] transition-all w-[60px]">
+        <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">home</span>
+        <span class="text-[9px] font-['Space_Grotesk'] tracking-wider uppercase mt-1"><span class="en">Home</span><span class="he">ראשי</span></span>
+      </a>
+      
+      <a href="pages/creative.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-slate-500 hover:text-fuchsia-400 transition-all w-[60px]">
+        <span class="material-symbols-outlined text-[24px]">palette</span>
+        <span class="text-[9px] font-['Space_Grotesk'] tracking-wider uppercase mt-1"><span class="en">Creative</span><span class="he">יצירה</span></span>
+      </a>
+
+      <a href="pages/satire.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-slate-500 hover:text-fuchsia-400 transition-all w-[60px]">
+        <span class="material-symbols-outlined text-[24px]">theater_comedy</span>
+        <span class="text-[9px] font-['Space_Grotesk'] tracking-wider uppercase mt-1"><span class="en">Satire</span><span class="he">סאטירה</span></span>
+      </a>
+      
+      <a href="pages/lessons.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-slate-500 hover:text-fuchsia-400 transition-all w-[60px]">
+        <span class="material-symbols-outlined text-[24px]">handshake</span>
+        <span class="text-[9px] font-['Space_Grotesk'] tracking-wider uppercase mt-1"><span class="en">Clients</span><span class="he">לקוחות</span></span>
+      </a>
+
+      <a href="pages/podcasts.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-slate-500 hover:text-fuchsia-400 transition-all w-[60px]">
+        <span class="material-symbols-outlined text-[24px]">podcasts</span>
+        <span class="text-[9px] font-['Space_Grotesk'] tracking-wider uppercase mt-1"><span class="en">Podcast</span><span class="he">פודקאסט</span></span>
+      </a>
+
+      <a href="pages/songs.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-slate-500 hover:text-fuchsia-400 transition-all w-[60px]">
+        <span class="material-symbols-outlined text-[24px]">music_note</span>
+        <span class="text-[9px] font-['Space_Grotesk'] tracking-wider uppercase mt-1"><span class="en">Songs</span><span class="he">שירים</span></span>
+      </a>
+
+      <a href="pages/posttrauma.html" class="snap-center flex-shrink-0 flex flex-col items-center justify-center text-slate-500 hover:text-fuchsia-400 transition-all w-[60px]">
+        <span class="material-symbols-outlined text-[24px]">psychology</span>
+        <span class="text-[9px] font-['Space_Grotesk'] tracking-wider uppercase mt-1"><span class="en">Trauma</span><span class="he">טראומה</span></span>
+      </a>
+
+    </div>
   </nav>
 
   <script>
@@ -208,10 +230,7 @@
     function setLang(lang) {
       htmlTag.setAttribute('data-lang', lang);
       htmlTag.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
-      
-      // החלפת טקסט כפתור השפה
       langBtn.querySelector('span.relative').textContent = lang === 'he' ? 'EN' : 'HE';
-      
       localStorage.setItem('siteLang', lang);
     }
 
@@ -220,7 +239,6 @@
       setLang(nextLang);
     });
 
-    // טעינה ראשונית לפי הזיכרון
     const savedLang = localStorage.getItem('siteLang') || 'he';
     setLang(savedLang);
   </script>
