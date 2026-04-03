@@ -40,11 +40,12 @@
     
     .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
     
-    /* קובייה ענקית */
+    /* קובייה 2036 */
     .cube-stage { perspective: 1500px; width: 300px; height: 300px; position: relative; }
     .cube { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     .cube-face { position: absolute; width: 300px; height: 300px; border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 24px; background: rgba(18, 19, 24, 0.95); backface-visibility: hidden; overflow: hidden; }
     
+    /* מיקומי פאות */
     .face-front  { transform: rotateY(0deg) translateZ(150px); }
     .face-back   { transform: rotateY(180deg) translateZ(150px); }
     .face-right  { transform: rotateY(90deg) translateZ(150px); }
@@ -52,7 +53,7 @@
     .face-top    { transform: rotateX(90deg) translateZ(150px); }
     .face-bottom { transform: rotateX(-90deg) translateZ(150px); }
 
-    .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s; cursor: pointer; }
+    .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s; cursor: pointer; color: white; }
     .nav-arrow:hover { background: #00f2ff; color: black; box-shadow: 0 0 20px rgba(0,242,255,0.5); transform: scale(1.1); }
 
     .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -60,11 +61,11 @@
 
     .accessibility-active { filter: contrast(1.2) brightness(1.1); font-size: 1.1em; }
     
-    @keyframes breathing {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.8; }
+    @keyframes glow-text {
+      0%, 100% { text-shadow: 0 0 10px rgba(0,242,255,0.3); opacity: 1; }
+      50% { text-shadow: 0 0 20px rgba(0,242,255,0.8); opacity: 0.9; }
     }
-    .active-portal-label { animation: breathing 3s infinite ease-in-out; }
+    .active-portal-label { animation: glow-text 3s infinite ease-in-out; }
   </style>
 </head>
 
@@ -75,15 +76,15 @@
     <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIi8+PC9zdmc+')] opacity-30"></div>
   </div>
 
-  <header class="fixed top-0 w-full z-[100] px-6 py-4 flex justify-between items-center glass-card border-b-0">
+  <header class="fixed top-0 w-full z-[100] px-6 py-4 flex justify-between items-center bg-black/40 backdrop-blur-xl border-b border-white/5">
     <div class="flex items-center gap-4">
       <button onclick="toggleMenu()" class="material-symbols-outlined text-cyber-cyan text-3xl">menu</button>
-      <div class="font-['Epilogue'] font-black tracking-tighter text-xl text-white uppercase tracking-[0.1em]">צביקה ג׳וני פקר</div>
+      <div class="font-['Epilogue'] font-black tracking-tighter text-xl text-white uppercase">צביקה ג׳וני פקר</div>
     </div>
     <button id="langToggle" class="px-5 py-1.5 rounded-full border border-cyber-cyan text-xs font-bold font-['Space_Grotesk'] text-cyber-cyan">EN</button>
   </header>
 
-  <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] glass-card translate-x-full transition-transform duration-500 p-8 flex flex-col gap-6">
+  <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] bg-zinc-950/95 backdrop-blur-2xl translate-x-full transition-transform duration-500 p-8 flex flex-col border-l border-white/10">
     <button onclick="toggleMenu()" class="material-symbols-outlined text-white text-3xl mb-8">close</button>
     <nav class="flex flex-col gap-5 text-white">
       <a href="index.html" class="text-2xl font-bold text-cyber-cyan border-b border-white/10 pb-2">ראשי</a>
@@ -100,12 +101,12 @@
     
     <div class="inline-block px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8 text-center">
       <span class="font-['Space_Grotesk'] text-sm md:text-base tracking-widest text-cyber-cyan uppercase">
-        <span class="he leading-relaxed">יוצר AI מולטי-מודולרי / טכנולוג העתיד <br> <span class="text-white font-bold">(אתם חיים ב-2026 אני חי ב-2036)</span></span>
-        <span class="en leading-relaxed">Multimodal AI Creator / Future Technologist <br> <span class="text-white font-bold">(You live in 2026, I live in 2036)</span></span>
+        <span class="he leading-relaxed text-white">יוצר AI מולטי-מודולרי / טכנולוג העתיד <br> <span class="text-cyber-pink font-bold">(אתם חיים ב-2026 אני חי ב-2036)</span></span>
+        <span class="en leading-relaxed text-white">Multimodal AI Creator / Future Technologist <br> <span class="text-cyber-pink font-bold">(You live in 2026, I live in 2036)</span></span>
       </span>
     </div>
 
-    <h1 class="font-['Epilogue'] font-black text-6xl md:text-8xl text-white text-center tracking-tighter mb-6">
+    <h1 class="font-['Epilogue'] font-black text-6xl md:text-8xl text-white text-center tracking-tighter mb-6 uppercase">
       צביקה ג׳וני פקר
     </h1>
     
@@ -117,7 +118,7 @@
     <div class="flex flex-col items-center gap-8 w-full">
       
       <div class="text-center active-portal-label">
-        <div id="portalLabel" class="font-['Epilogue'] font-black text-3xl md:text-5xl text-cyber-cyan uppercase tracking-widest drop-shadow-[0_0_15px_rgba(0,242,255,0.6)]">יצירה</div>
+        <div id="portalLabel" class="font-['Epilogue'] font-black text-3xl md:text-5xl text-cyber-cyan uppercase tracking-widest">יצירה</div>
         <div class="h-1 w-24 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent mx-auto mt-2"></div>
       </div>
 
@@ -149,51 +150,44 @@
     <span class="material-symbols-outlined text-3xl">accessibility_new</span>
   </button>
 
-  <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 z-50 overflow-x-auto hide-scrollbar flex items-center gap-6 px-6 shadow-2xl">
-      <a href="index.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan drop-shadow-[0_0_10px_rgba(0,242,255,0.8)]"><span class="material-symbols-outlined text-3xl">home</span><span class="text-[9px] uppercase mt-1">ראשי</span></a>
-      <a href="pages/creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">palette</span><span class="text-[9px] uppercase mt-1">יצירה</span></a>
-      <a href="pages/satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">theater_comedy</span><span class="text-[9px] uppercase mt-1">סאטירה</span></a>
-      <a href="pages/podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">podcasts</span><span class="text-[9px] uppercase mt-1">פודקאסט</span></a>
-      <a href="pages/lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">handshake</span><span class="text-[9px] uppercase mt-1">לקוחות</span></a>
-      <a href="pages/songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">music_note</span><span class="text-[9px] uppercase mt-1">שירים</span></a>
-      <a href="pages/posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">psychology</span><span class="text-[9px] uppercase mt-1">טראומה</span></a>
+  <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/80 backdrop-blur-2xl border border-white/20 rounded-3xl p-3 z-50 w-[calc(100%-2rem)] sm:w-auto overflow-x-auto hide-scrollbar flex items-center gap-8 px-6 shadow-2xl">
+      <a href="index.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan drop-shadow-[0_0_12px_rgba(0,242,255,0.8)] scale-110"><span class="material-symbols-outlined text-3xl">home</span><span class="text-xs font-bold mt-1">ראשי</span></a>
+      <a href="pages/creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-300 hover:text-white"><span class="material-symbols-outlined text-3xl">palette</span><span class="text-xs mt-1">יצירה</span></a>
+      <a href="pages/satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-300 hover:text-white"><span class="material-symbols-outlined text-3xl">theater_comedy</span><span class="text-xs mt-1">סאטירה</span></a>
+      <a href="pages/podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-300 hover:text-white"><span class="material-symbols-outlined text-3xl">podcasts</span><span class="text-xs mt-1">פודקאסט</span></a>
+      <a href="pages/lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-300 hover:text-white"><span class="material-symbols-outlined text-3xl">handshake</span><span class="text-xs mt-1">לקוחות</span></a>
+      <a href="pages/songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-300 hover:text-white"><span class="material-symbols-outlined text-3xl">music_note</span><span class="text-xs mt-1">שירים</span></a>
+      <a href="pages/posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-300 hover:text-white"><span class="material-symbols-outlined text-3xl">psychology</span><span class="text-xs mt-1">טראומה</span></a>
   </nav>
 
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
     function toggleAccessibility() { document.body.classList.toggle('accessibility-active'); }
 
-    // לוגיקת קובייה וטקסט מעליה
+    // לוגיקת סיבוב קובייה לכל 6 הפאות
     const cube = document.getElementById('mainCube');
     const label = document.getElementById('portalLabel');
-    let angleY = 0;
+    let currentIndex = 0;
     
-    // מפת שמות לפי זוויות
-    const portals = {
-        0: "יצירה",
-        90: "לקוחות",
-        180: "סאטירה",
-        270: "פודקאסטים",
-        "-90": "פודקאסטים",
-        "-180": "סאטירה",
-        "-270": "לקוחות"
-    };
+    // רצף סיבובים לכל הפאות
+    const states = [
+      { transform: 'rotateX(0deg) rotateY(0deg)', he: 'יצירה' },
+      { transform: 'rotateX(0deg) rotateY(-90deg)', he: 'פודקאסטים' },
+      { transform: 'rotateX(0deg) rotateY(-180deg)', he: 'סאטירה' },
+      { transform: 'rotateX(0deg) rotateY(-270deg)', he: 'לקוחות' },
+      { transform: 'rotateX(-90deg) rotateY(0deg)', he: 'פוסטראומה' },
+      { transform: 'rotateX(90deg) rotateY(0deg)', he: 'שירים' }
+    ];
 
     function rotateCube(dir) {
-        if(dir === 'next') angleY -= 90;
-        else angleY += 90;
-        
-        cube.style.transform = `rotateY(${angleY}deg)`;
-        
-        // עדכון הטקסט מעל הקובייה
-        const normalizedAngle = ((angleY % 360) + 360) % 360;
-        if(normalizedAngle === 0) label.innerText = "יצירה";
-        else if(normalizedAngle === 90) label.innerText = "לקוחות";
-        else if(normalizedAngle === 180) label.innerText = "סאטירה";
-        else if(normalizedAngle === 270) label.innerText = "פודקאסטים";
+      if(dir === 'next') currentIndex = (currentIndex + 1) % states.length;
+      else currentIndex = (currentIndex - 1 + states.length) % states.length;
+      
+      cube.style.transform = states[currentIndex].transform;
+      label.innerText = states[currentIndex].he;
     }
 
-    // שפות
+    // סנכרון שפות
     const langBtn = document.getElementById('langToggle');
     function setLang(l) {
       document.documentElement.setAttribute('data-lang', l);
@@ -201,7 +195,7 @@
       langBtn.textContent = l === 'he' ? 'EN' : 'HE';
       localStorage.setItem('siteLang', l);
     }
-    langBtn.onclick = () => setLang(document.documentElement.getAttribute('data-lang') === 'en' ? 'he' : 'en');
+    langBtn.addEventListener('click', () => setLang(document.documentElement.getAttribute('data-lang') === 'en' ? 'he' : 'en'));
     setLang(localStorage.getItem('siteLang') || 'he');
   </script>
 </body>
