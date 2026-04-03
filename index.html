@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="he" data-lang="he" dir="rtl" class="dark">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GTHDTELYGW');</script>
-  
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=5" name="viewport"/>
-  <title>Tzvika Johnny Peker | Portfolio 2036</title>
+  <title>צביקה ג׳וני פקר | 2036 Portfolio</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&family=Manrope:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
@@ -20,39 +17,38 @@
   </script>
 
   <style>
-    /* הגדרות בסיס */
-    html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
-    html[data-lang="en"] { direction: ltr; } html[data-lang="he"] { direction: rtl; }
+    /* לוגיקת החלפת שפות */
+    [data-lang="en"] .he { display: none !important; }
+    [data-lang="he"] .en { display: none !important; }
+    html[data-lang="en"] { direction: ltr; } 
+    html[data-lang="he"] { direction: rtl; }
+
     body { background-color: #050608; color: #f8f8ff; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
-    
-    .material-symbols-outlined { font-size: 24px; display: inline-block; line-height: 1; white-space: nowrap; }
+    .material-symbols-outlined { font-size: 24px; display: inline-block; line-height: 1; vertical-align: middle; }
 
-    /* קוביית 2036 - 6 פאות */
-    .cube-stage { perspective: 1500px; width: 300px; height: 300px; position: relative; }
+    /* קובייה */
+    .cube-stage { perspective: 1500px; width: 280px; height: 280px; position: relative; }
     .cube { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .cube-face { position: absolute; width: 300px; height: 300px; border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 30px; background: #121318; backface-visibility: hidden; overflow: hidden; box-shadow: 0 0 30px rgba(0, 242, 255, 0.1); }
+    .cube-face { position: absolute; width: 280px; height: 280px; border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 30px; background: #121318; backface-visibility: hidden; overflow: hidden; }
     
-    .face-front  { transform: rotateY(0deg) translateZ(150px); }
-    .face-right  { transform: rotateY(90deg) translateZ(150px); }
-    .face-back   { transform: rotateY(180deg) translateZ(150px); }
-    .face-left   { transform: rotateY(-90deg) translateZ(150px); }
-    .face-top    { transform: rotateX(90deg) translateZ(150px); }
-    .face-bottom { transform: rotateX(-90deg) translateZ(150px); }
+    .face-front  { transform: rotateY(0deg) translateZ(140px); }
+    .face-right  { transform: rotateY(90deg) translateZ(140px); }
+    .face-back   { transform: rotateY(180deg) translateZ(140px); }
+    .face-left   { transform: rotateY(-90deg) translateZ(140px); }
+    .face-top    { transform: rotateX(90deg) translateZ(140px); }
+    .face-bottom { transform: rotateX(-90deg) translateZ(140px); }
 
-    /* חיצי ניווט */
-    .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; width: 55px; height: 55px; display: flex; items-center; justify-content: center; cursor: pointer; color: white; transition: 0.3s; }
+    .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; color: white; }
     .nav-arrow:hover { background: #00f2ff; color: black; transform: scale(1.1); box-shadow: 0 0 20px rgba(0,242,255,0.5); }
 
-    /* עיצוב כללי */
     .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
     .hide-scrollbar::-webkit-scrollbar { display: none; }
     .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    @keyframes glow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.05); } }
-    .active-glow { animation: glow 3s infinite ease-in-out; }
-
-    @keyframes neon-breath { 0%, 100% { filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.5)); } 50% { filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.8)); } }
-    .logo-neon { animation: neon-breath 2s infinite; }
+    @keyframes glow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.03); } }
+    .active-label { animation: glow 3s infinite ease-in-out; }
+    
+    .logo-neon { filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.5)); border: 1px solid rgba(0, 242, 255, 0.3); }
   </style>
 </head>
 
@@ -67,21 +63,23 @@
       <button onclick="toggleMenu()" class="text-cyber-cyan p-2 hover:scale-110 transition-transform">
         <span class="material-symbols-outlined text-3xl">menu</span>
       </button>
-      <img src="https://drive.google.com/thumbnail?id=1VO1GyokRkNFjts6vH4Y9WDQJKuTYraWR&sz=w500" alt="Johnny Logo" class="w-12 h-12 rounded-full border border-cyber-cyan/30 logo-neon object-cover">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4QAqRXhpZgAASUkqAAgAAA... (הקוד של התמונה שלך) ..." alt="Logo" class="w-12 h-12 rounded-full logo-neon object-cover">
     </div>
-    <button id="langToggle" class="px-5 py-1.5 rounded-full border border-cyber-cyan text-xs font-bold text-cyber-cyan uppercase tracking-widest hover:bg-cyber-cyan/10">EN</button>
+    <button onclick="toggleLang()" class="px-5 py-1.5 rounded-full border border-cyber-cyan text-xs font-bold text-cyber-cyan uppercase tracking-widest hover:bg-cyber-cyan/10">
+      <span class="he">EN</span><span class="en">עברית</span>
+    </button>
   </header>
 
   <aside id="sidebar" class="fixed inset-y-0 right-0 w-72 z-[110] bg-zinc-950/98 backdrop-blur-3xl translate-x-full transition-transform duration-500 p-8 flex flex-col border-l border-white/10">
     <button onclick="toggleMenu()" class="self-start text-white p-2 mb-10"><span class="material-symbols-outlined text-3xl">close</span></button>
     <nav class="flex flex-col gap-6 text-white font-['Epilogue']">
-      <a href="index.html" class="text-2xl font-bold text-cyber-cyan border-b border-white/10 pb-4">ראשי</a>
-      <a href="pages/creative.html" class="text-xl hover:text-cyber-cyan transition-colors">יצירה</a>
-      <a href="pages/satire.html" class="text-xl hover:text-cyber-cyan transition-colors">סאטירה</a>
-      <a href="pages/podcasts.html" class="text-xl hover:text-cyber-cyan transition-colors">פודקאסטים</a>
-      <a href="pages/lessons.html" class="text-xl hover:text-cyber-cyan transition-colors">לקוחות</a>
-      <a href="pages/posttrauma.html" class="text-xl hover:text-cyber-cyan transition-colors">פוסטראומה</a>
-      <a href="pages/songs.html" class="text-xl hover:text-cyber-cyan transition-colors">שירים</a>
+      <a href="index.html" class="text-2xl font-bold text-cyber-cyan border-b border-white/10 pb-4"><span class="he">ראשי</span><span class="en">Home</span></a>
+      <a href="pages/creative.html" class="text-xl hover:text-cyber-cyan"><span class="he">יצירה</span><span class="en">Creative</span></a>
+      <a href="pages/satire.html" class="text-xl hover:text-cyber-cyan"><span class="he">סאטירה</span><span class="en">Satire</span></a>
+      <a href="pages/podcasts.html" class="text-xl hover:text-cyber-cyan"><span class="he">פודקאסטים</span><span class="en">Podcasts</span></a>
+      <a href="pages/lessons.html" class="text-xl hover:text-cyber-cyan"><span class="he">לקוחות</span><span class="en">Clients</span></a>
+      <a href="pages/posttrauma.html" class="text-xl hover:text-cyber-cyan"><span class="he">פוסטראומה</span><span class="en">Trauma</span></a>
+      <a href="pages/songs.html" class="text-xl hover:text-cyber-cyan"><span class="he">שירים</span><span class="en">Songs</span></a>
     </nav>
   </aside>
 
@@ -89,29 +87,28 @@
     
     <div class="inline-block px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 text-center shadow-lg">
       <span class="font-['Space_Grotesk'] text-xs md:text-sm tracking-widest text-cyber-cyan uppercase">
-        <span class="he leading-relaxed">יוצר AI מולטי-מודולרי / טכנולוג העתיד <br> <span class="text-white font-bold animate-pulse">(אתם חיים ב-2026 אני חי ב-2036)</span></span>
-        <span class="en leading-relaxed">Multimodal AI Creator / Future Technologist <br> (You live in 2026, I live in 2036)</span>
+        <span class="he">יוצר AI מולטי-מודולרי / טכנולוג העתיד <br> <span class="text-white font-bold animate-pulse">(אתם חיים ב-2026 אני חי ב-2036)</span></span>
+        <span class="en">Multimodal AI Creator / Future Technologist <br> <span class="text-white font-bold animate-pulse">(You live in 2026, I live in 2036)</span></span>
       </span>
     </div>
 
-    <h1 class="font-['Epilogue'] font-black text-6xl md:text-8xl lg:text-9xl text-white text-center tracking-tighter mb-8 uppercase drop-shadow-2xl">
-      צביקה ג׳וני פקר
+    <h1 class="font-['Epilogue'] font-black text-5xl md:text-8xl text-white text-center tracking-tighter mb-8 uppercase drop-shadow-2xl">
+      <span class="he">צביקה ג׳וני פקר</span><span class="en">Tzvika Johnny Peker</span>
     </h1>
     
-    <p class="text-xl md:text-2xl text-slate-300 text-center font-light max-w-3xl leading-relaxed mb-16 italic opacity-90">
+    <p class="text-xl md:text-2xl text-slate-400 text-center font-light max-w-3xl leading-relaxed mb-16 italic">
       <span class="he">מותח את גבולות הלקוחות ומשלב בין אמנות, הומור, טכנולוגיה וסאטירה. <br> מוזמנים לצלול פנימה.</span>
+      <span class="en">Pushing clients' boundaries and combining art, humor, technology, and satire. <br> Welcome to dive in.</span>
     </p>
 
     <div class="flex flex-col items-center gap-8 w-full">
-      
-      <div class="text-center active-glow">
+      <div class="text-center active-label">
         <div id="portalLabel" class="font-['Epilogue'] font-black text-4xl md:text-6xl text-white uppercase tracking-widest drop-shadow-[0_0_15px_rgba(0,242,255,0.4)]">יצירה</div>
         <div class="h-1 w-24 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent mx-auto mt-4"></div>
       </div>
 
       <div class="flex items-center justify-center w-full gap-4 md:gap-16 mt-4">
-        <button onclick="rotateCube('prev')" class="nav-arrow"><span class="material-symbols-outlined text-3xl">arrow_back_ios_new</span></button>
-
+        <button onclick="rotateCube('prev')" class="nav-arrow"><span class="material-symbols-outlined">arrow_back_ios_new</span></button>
         <div class="cube-stage">
           <div class="cube" id="mainCube">
             <a href="pages/creative.html" class="cube-face face-front group"><img src="https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w600" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700"></a>
@@ -122,57 +119,67 @@
             <a href="pages/songs.html" class="cube-face face-bottom group"><img src="https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w600" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700"></a>
           </div>
         </div>
-
-        <button onclick="rotateCube('next')" class="nav-arrow"><span class="material-symbols-outlined text-3xl">arrow_forward_ios</span></button>
+        <button onclick="rotateCube('next')" class="nav-arrow"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
       </div>
     </div>
   </main>
 
-  <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 z-50 overflow-x-auto hide-scrollbar flex items-center gap-6 px-8 shadow-2xl">
-      <a href="index.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan drop-shadow-[0_0_10px_rgba(0,242,255,0.8)] scale-110 font-bold"><span class="material-symbols-outlined text-3xl">home</span><span class="text-[9px] uppercase mt-1">ראשי</span></a>
-      <a href="pages/creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-colors"><span class="material-symbols-outlined text-3xl">palette</span><span class="text-[9px] uppercase mt-1">יצירה</span></a>
-      <a href="pages/satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-colors"><span class="material-symbols-outlined text-3xl">theater_comedy</span><span class="text-[9px] uppercase mt-1">סאטירה</span></a>
-      <a href="pages/podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-colors"><span class="material-symbols-outlined text-3xl">podcasts</span><span class="text-[9px] uppercase mt-1">פודקאסט</span></a>
-      <a href="pages/lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-colors"><span class="material-symbols-outlined text-3xl">handshake</span><span class="text-[9px] uppercase mt-1">לקוחות</span></a>
-      <a href="pages/songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-colors"><span class="material-symbols-outlined text-3xl">music_note</span><span class="text-[9px] uppercase mt-1">שירים</span></a>
-      <a href="pages/posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-colors"><span class="material-symbols-outlined text-3xl">psychology</span><span class="text-[9px] uppercase mt-1">טראומה</span></a>
+  <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/90 backdrop-blur-3xl border border-white/10 rounded-3xl p-2 z-50 overflow-x-auto hide-scrollbar flex items-center gap-6 px-8 shadow-2xl">
+      <a href="index.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-110 font-bold"><span class="material-symbols-outlined text-3xl">home</span><span class="text-[9px] uppercase mt-1"><span class="he">ראשי</span><span class="en">Home</span></span></a>
+      <a href="pages/creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">palette</span><span class="text-[9px] uppercase mt-1"><span class="he">יצירה</span><span class="en">Works</span></span></a>
+      <a href="pages/satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">theater_comedy</span><span class="text-[9px] uppercase mt-1"><span class="he">סאטירה</span><span class="en">Satire</span></span></a>
+      <a href="pages/podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">podcasts</span><span class="text-[9px] uppercase mt-1"><span class="he">פודקאסט</span><span class="en">Podcast</span></span></a>
+      <a href="pages/lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">handshake</span><span class="text-[9px] uppercase mt-1"><span class="he">לקוחות</span><span class="en">Clients</span></span></a>
+      <a href="pages/songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">music_note</span><span class="text-[9px] uppercase mt-1"><span class="he">שירים</span><span class="en">Songs</span></span></a>
+      <a href="pages/posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">psychology</span><span class="text-[9px] uppercase mt-1"><span class="he">טראומה</span><span class="en">Trauma</span></span></a>
   </nav>
 
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
+    // לוגיקת קובייה
     const cube = document.getElementById('mainCube');
     const label = document.getElementById('portalLabel');
     let currentIndex = 0;
     
-    // סדר כל 6 הקטגוריות
     const states = [
-      { transform: 'rotateX(0deg) rotateY(0deg)', name: 'יצירה' },
-      { transform: 'rotateX(0deg) rotateY(-90deg)', name: 'פודקאסטים' },
-      { transform: 'rotateX(0deg) rotateY(-180deg)', name: 'סאטירה' },
-      { transform: 'rotateX(0deg) rotateY(-270deg)', name: 'לקוחות' },
-      { transform: 'rotateX(-90deg) rotateY(0deg)', name: 'פוסטראומה' },
-      { transform: 'rotateX(90deg) rotateY(0deg)', name: 'שירים' }
+      { transform: 'rotateX(0deg) rotateY(0deg)', he: 'יצירה', en: 'Creative' },
+      { transform: 'rotateX(0deg) rotateY(-90deg)', he: 'פודקאסטים', en: 'Podcasts' },
+      { transform: 'rotateX(0deg) rotateY(-180deg)', he: 'סאטירה', en: 'Satire' },
+      { transform: 'rotateX(0deg) rotateY(-270deg)', he: 'לקוחות', en: 'Clients' },
+      { transform: 'rotateX(-90deg) rotateY(0deg)', he: 'פוסטראומה', en: 'Trauma' },
+      { transform: 'rotateX(90deg) rotateY(0deg)', he: 'שירים', en: 'Songs' }
     ];
 
     function rotateCube(dir) {
       if(dir === 'next') currentIndex = (currentIndex + 1) % states.length;
       else currentIndex = (currentIndex - 1 + states.length) % states.length;
-      
       cube.style.transform = states[currentIndex].transform;
-      label.innerText = states[currentIndex].name;
+      updateLabel();
     }
 
-    // סנכרון שפות בסיסי
-    const langBtn = document.getElementById('langToggle');
-    function setLang(l) {
-      document.documentElement.setAttribute('data-lang', l);
-      document.documentElement.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr');
-      langBtn.textContent = l === 'he' ? 'EN' : 'HE';
-      localStorage.setItem('siteLang', l);
+    function updateLabel() {
+      const lang = document.documentElement.getAttribute('data-lang');
+      label.innerText = lang === 'he' ? states[currentIndex].he : states[currentIndex].en;
     }
-    langBtn.onclick = () => setLang(document.documentElement.getAttribute('data-lang') === 'en' ? 'he' : 'en');
-    setLang(localStorage.getItem('siteLang') || 'he');
+
+    // לוגיקת שפות
+    function toggleLang() {
+      const html = document.documentElement;
+      const currentLang = html.getAttribute('data-lang');
+      const newLang = currentLang === 'he' ? 'en' : 'he';
+      
+      html.setAttribute('data-lang', newLang);
+      html.setAttribute('dir', newLang === 'he' ? 'rtl' : 'ltr');
+      localStorage.setItem('siteLang', newLang);
+      updateLabel();
+    }
+
+    // טעינת שפה שמורה
+    const savedLang = localStorage.getItem('siteLang') || 'he';
+    document.documentElement.setAttribute('data-lang', savedLang);
+    document.documentElement.setAttribute('dir', savedLang === 'he' ? 'rtl' : 'ltr');
+    updateLabel();
   </script>
 </body>
 </html>
