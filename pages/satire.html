@@ -190,4 +190,106 @@
         type: "video", 
         items: [
           "10TlRjXq_Sbnj_IYZYdCaeWAp-jAiOVzq", "1oU2CDGhO7etNaJGWZWYlLo8MUkGuNEpE", "1teOGWoYwaH7y02rxzvvLYDTovtAk9Tij", 
-          "1mTmBwAM9TnUJhks3QngjjYPw2adIISy7", "1rGCnr_yB1YJXE5m2FhirNIZquc5p
+          "1mTmBwAM9TnUJhks3QngjjYPw2adIISy7", "1rGCnr_yB1YJXE5m2FhirNIZquc5p0ZNg", "1uOa8PFg_HeTurFmkXLtBPwXlnUbFslSp", 
+          "1d8nT8jrFPl-oKRfDpxLdc2W65c2Bez2Z", "1rXZX-dfXtQ1vSVE43iiZBWQuayvg33Mk", "1qZWNusMR6m9xy3Y5zF_Ea_9fOfF0vZJr", 
+          "1uzwMhiPQerJtp4YXqDpA-kcz_9IAmQxz", "1Ob7CFA6ICJI6vac0JIoQUwG9f1SkiKyH", "1QiRaC8FDDvgYip2ka4sWjPK2wH7gZGDR", 
+          "1EUbcR8S0Xnw5gAeB_uO5kXGeeabyxV4R", "1Sh5-MtMW250wWujrk4lmtU4NOFs1QeN3", "1w-C9H5bN4BRHB3BVHgGC03vuyha_n1eh", 
+          "1aNvL87g_mlL8W0O8lzADQmJOKwh5kshU", "1uEvPqi82SYx5h8KiQs7gRhdEkA6g5TbZ", "1w8eI8LHsuynN1DOtCFBVzLkDXv9CvepV", 
+          "1_MPp6oATxhXVJ5u3lfkAdX7EGU1x28ak", "1RKZZKRm3HZ2kAWaeBvgrEwuqz5ADR7TU", "1JDZbAHwOnIk5F4tmOtq1xVTRp4wQfVcv", 
+          "17mySf2Kq7i0Zm5y9lsLfzLitFTnpafrq"
+        ] 
+      },
+      { 
+        id: "photos", 
+        nameHe: "תמונות", 
+        nameEn: "PHOTOS", 
+        type: "image", 
+        items: [
+          "1s2QGj81IALt13WViKFbf91N31bKZqb8T", "13NxPpc_-w1fS5Q8wa1N5B6K_AtglvKyJ", "1md5El_ckgwt17NCouQ1c0I2WuUmqORf0", 
+          "1x_VOGuC85kxphXQfuW8gnbwPCiQHB-i0", "1TYAdWoXjQSGqqDkr9F9qTyDLsGhfuMp2", "1VGjp2oUXncPqMJNXOaLd2XLRxgzoogAf", 
+          "1cBhThW5_uDeDNAPwE6iNPvRa8G3XSELl", "18zBGOn77AfZBBHOQlVfkGU1Je10sQA41", "1qZOWDC1NyGarM825wwGLpIHR8sEtq_bK", 
+          "1FdMG20PsF0OOkNvpz_ZXm63WrwmFjFbr", "1j7xiMTRzOrbHCSM2osiZgzEqXt60Z5eT", "1XMyv3je712CUDY07L-naCa9VHdTKmGcm", 
+          "16-pR1sGzKPvSTmUA-nTYgAahXItm52T-", "1NdUWRbOSbf9-dm0jF0ZsklPBT2k6Bwxs", "1u0NDKRnzYxCBlEfq2qO2rXWJNQw_4U3t"
+        ] 
+      },
+      { 
+        id: "audio", 
+        nameHe: "קטעי שמע", 
+        nameEn: "PARODY AUDIO", 
+        type: "video", 
+        items: [
+          "1gqRcA3Z5nT264xW5_6pZ4TffoXX4L25y", "12b_6ZQz0JLoY4SQ7ZClifyw1ZhP3YZ0b", 
+          "1cdXWhosYEojOYQKZbUY6Wc7zh1SpjXJI", "1z90HZQlr_lTdECeyylQHnW7P8yM4VpkL"
+        ] 
+      }
+    ];
+
+    function renderFolders() {
+      const grid = document.getElementById('folderGrid'); 
+      grid.innerHTML = "";
+      satireFolders.forEach(f => {
+        const div = document.createElement('div'); 
+        div.className = 'glass-card rounded-[2.5rem] p-8 flex flex-col items-center justify-center cursor-pointer folder-card transition-all duration-300 group'; 
+        div.onclick = () => openFolder(f);
+        div.innerHTML = `
+          <div class="folder-icon-modern group-hover:scale-110 transition-transform duration-500 mb-6">
+             <div class="bg-black/30 p-2 rounded-full backdrop-blur-sm"><span class="material-symbols-outlined text-white text-[24px]">theater_comedy</span></div>
+          </div>
+          <div class="font-['Epilogue'] font-black text-white text-xl tracking-widest text-center uppercase drop-shadow-md group-hover:text-cyber-cyan transition-colors">
+            <span class="he">${f.nameHe}</span><span class="en">${f.nameEn}</span>
+          </div>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    function openFolder(f) {
+      document.getElementById('folderGrid').classList.add('hidden'); 
+      document.getElementById('mainHeader').classList.add('hidden'); 
+      document.getElementById('folderContentView').classList.remove('hidden');
+      document.getElementById('folderContentView').classList.add('flex');
+      
+      const isHe = document.documentElement.getAttribute('data-lang') === 'he';
+      document.getElementById('currentFolderName').textContent = isHe ? f.nameHe : f.nameEn;
+
+      const gallery = document.getElementById('galleryGrid');
+      gallery.innerHTML = f.items.map(id => f.type === "video" 
+        ? `<div class="media-container"><iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay"></iframe></div>`
+        : `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w800" class="w-full rounded-3xl border-2 border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.6)] object-cover hover:border-cyber-cyan/50 hover:scale-[1.02] transition-all" loading="lazy">`).join('');
+    }
+
+    function showFolders() { 
+      document.getElementById('folderGrid').classList.remove('hidden'); 
+      document.getElementById('mainHeader').classList.remove('hidden'); 
+      document.getElementById('folderContentView').classList.add('hidden');
+      document.getElementById('folderContentView').classList.remove('flex'); 
+      document.getElementById('galleryGrid').innerHTML = ''; 
+    }
+
+    const htmlTag = document.documentElement;
+    function setLang(lang) {
+      htmlTag.setAttribute('data-lang', lang);
+      htmlTag.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+      localStorage.setItem('siteLang', lang);
+      
+      const activeFolderText = document.getElementById('currentFolderName').textContent;
+      if (activeFolderText) {
+        const currentFolderObj = satireFolders.find(f => f.nameHe === activeFolderText || f.nameEn === activeFolderText);
+        if(currentFolderObj) {
+            document.getElementById('currentFolderName').textContent = lang === 'he' ? currentFolderObj.nameHe : currentFolderObj.nameEn;
+        }
+      }
+    }
+
+    function toggleLang() {
+      const nextLang = htmlTag.getAttribute('data-lang') === 'en' ? 'he' : 'en';
+      setLang(nextLang);
+    }
+
+    const savedLang = localStorage.getItem('siteLang') || 'he';
+    setLang(savedLang); 
+    
+    renderFolders();
+  </script>
+</body>
+</html>
