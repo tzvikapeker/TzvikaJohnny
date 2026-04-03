@@ -11,12 +11,12 @@
   
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes" name="viewport"/>
-  <title>Podcasts | Tzvika Johnny Peker 2036</title>
+  <title>Post-Trauma | Tzvika Johnny Peker 2036</title>
   
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   
   <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;700;900&family=Manrope:wght@300;400;600&family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   
   <script id="tailwind-config">
     tailwind.config = {
@@ -57,19 +57,25 @@
     }
     .badge-pulse { animation: badge-pulse 2.5s infinite ease-in-out; }
 
-    /* נגן דרייב עתידני */
+    /* כרטיסיות מדיה */
+    .media-card:hover {
+      box-shadow: 0 0 35px rgba(0, 242, 255, 0.25);
+      border-color: rgba(0, 242, 255, 0.5);
+      transform: translateY(-8px);
+    }
+
+    /* נגן דרייב חסין */
     .drive-embed-container {
       position: relative; width: 100%; aspect-ratio: 9 / 16; 
-      background: #000; border-radius: 20px; overflow: hidden;
+      background: #000; border-radius: 16px; overflow: hidden;
       touch-action: pan-y; 
       box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      border: 2px solid rgba(0, 242, 255, 0.2);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(0, 242, 255, 0.2);
+      transition: all 0.3s;
     }
-    .podcast-card:hover .drive-embed-container {
-      border-color: rgba(0, 242, 255, 0.6);
-      box-shadow: 0 0 30px rgba(0,242,255,0.4);
-      transform: scale(1.02);
+    .media-card:hover .drive-embed-container {
+        border-color: rgba(0, 242, 255, 0.6);
+        box-shadow: 0 10px 40px rgba(0,242,255,0.4);
     }
     .drive-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
@@ -89,7 +95,7 @@
       <button onclick="toggleMenu()" class="text-cyber-cyan p-2 hover:scale-110 transition-transform">
         <span class="material-symbols-outlined text-4xl">menu</span>
       </button>
-      <img src="../AIRetouch_20260208_120431073.jpg" alt="Logo" class="w-14 h-14 rounded-full border-2 border-cyber-cyan/40 shadow-lg object-cover" onerror="this.src='https://ui-avatars.com/api/?name=JP&background=00f2ff&color=000&rounded=true'">
+      <img src="../AIRetouch_20260208_120431073.jpg" alt="Logo" class="w-14 h-14 rounded-full border-2 border-cyber-cyan/40 shadow-[0_0_15px_rgba(0,242,255,0.3)] object-cover" onerror="this.src='https://ui-avatars.com/api/?name=JP&background=00f2ff&color=000&rounded=true'">
     </div>
     <button onclick="toggleLang()" class="px-6 py-2 rounded-full border-2 border-cyber-cyan text-xs font-black text-cyber-cyan uppercase tracking-widest hover:bg-cyber-cyan hover:text-black transition-all">
       <span class="he">ENGLISH</span><span class="en">עברית</span>
@@ -102,9 +108,9 @@
       <a href="../index.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">ראשי</span><span class="en">HOME</span></a>
       <a href="creative.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">יצירה</span><span class="en">CREATIVE</span></a>
       <a href="satire.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">סאטירה</span><span class="en">SATIRE</span></a>
-      <a href="podcasts.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4"><span class="he">פודקאסטים</span><span class="en">PODCASTS</span></a>
+      <a href="podcasts.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">פודקאסטים</span><span class="en">PODCASTS</span></a>
       <a href="lessons.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">לקוחות</span><span class="en">CLIENTS</span></a>
-      <a href="posttrauma.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">פוסטראומה</span><span class="en">TRAUMA</span></a>
+      <a href="posttrauma.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4"><span class="he">פוסטראומה</span><span class="en">TRAUMA</span></a>
       <a href="songs.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">שירים</span><span class="en">SONGS</span></a>
     </nav>
   </aside>
@@ -114,22 +120,22 @@
     <div class="text-center space-y-6 z-10 w-full mb-16 max-w-4xl">
       <div class="inline-block px-8 py-2 rounded-full bg-white/5 border-2 border-cyber-pink text-cyber-pink backdrop-blur-md badge-pulse">
         <span class="font-['Space_Grotesk'] text-sm md:text-base tracking-[0.2em] font-black uppercase flex items-center justify-center gap-3">
-          <span class="material-symbols-outlined text-xl animate-pulse">podcasts</span>
-          <span class="he">מה למדתי היום?</span><span class="en">WHAT I LEARNED TODAY</span>
+          <span class="material-symbols-outlined text-xl animate-pulse">psychology</span>
+          <span class="he">חוויה אנושית</span><span class="en">A HUMAN EXPERIENCE</span>
         </span>
       </div>
       
       <h1 class="font-['Epilogue'] font-black text-6xl md:text-8xl text-white tracking-tighter uppercase neon-text">
-        <span class="he">פודקאסטים</span><span class="en">PODCASTS</span>
+        <span class="he">פוסט־טראומה</span><span class="en">POST-TRAUMA</span>
       </h1>
       
       <p class="text-slate-300 text-xl md:text-2xl font-light max-w-3xl mx-auto italic opacity-90 leading-relaxed">
-        <span class="he">זו הזירה שבה מוזיקה פוגשת הומור חד ומודעות עצמית. כאן אני יוצר שירי פארודיה וסאטירה שמבוססים על מציאות יומיומית.</span>
-        <span class="en">The arena where music meets sharp humor and self-awareness. Creating parody and satire songs based on daily reality.</span>
+        <span class="he">דרך יצירה, טקסט, דימוי, וידאו ומוזיקה, אני נותן מקום למה שקשה להסביר במילים רגילות: הזיכרונות, הדריכות, הניתוקים, והמאמץ היומיומי להישאר מתפקד.</span>
+        <span class="en">Through art, text, imagery, video, and music, I give space to what is hard to explain in ordinary words: the memories, the vigilance, and the daily effort to remain functional.</span>
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 w-full max-w-7xl" id="podcastList"></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-6xl" id="mediaList"></div>
 
   </main>
 
@@ -137,44 +143,35 @@
       <a href="../index.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">home</span><span class="text-[10px] font-black uppercase mt-1"><span class="he">ראשי</span><span class="en">HOME</span></span></a>
       <a href="creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">palette</span><span class="text-[10px] uppercase mt-1"><span class="he">יצירה</span><span class="en">CREATIVE</span></span></a>
       <a href="satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">theater_comedy</span><span class="text-[10px] uppercase mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span></span></a>
-      <a href="podcasts.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-125 neon-text"><span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">podcasts</span><span class="text-[10px] uppercase mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span></span></a>
+      <a href="podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">podcasts</span><span class="text-[10px] uppercase mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span></span></a>
       <a href="lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">handshake</span><span class="text-[10px] uppercase mt-1"><span class="he">לקוחות</span><span class="en">CLIENTS</span></span></a>
       <a href="songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">music_note</span><span class="text-[10px] uppercase mt-1"><span class="he">שירים</span><span class="en">SONGS</span></span></a>
-      <a href="posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">psychology</span><span class="text-[10px] uppercase mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span></span></a>
+      <a href="posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-125 neon-text"><span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">psychology</span><span class="text-[10px] uppercase mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span></span></a>
   </nav>
 
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
-    // רשימה מאוחדת ונקייה (8 רצועות סה"כ)
-    const podcastIds = [
-      "1N_vrYX98IkXooUWgzKYCSeX0Z_mt-jP0",
-      "1GWKat4DMeBylpaEGuaWDgTX5RC1coaJ-",
-      "1o04irFuakI-EYPbbspZ4NYT6LG8XZd6M",
-      "1t5qIpQ993Sr9BflVgCvOdso7lh1LsGqe",
-      "1FQeIEccfmqvJV3LqU7A7fJXK21OQ0Ql-",
-      "1pK3MzJDv2oZXqnLATzZ5stCBdAdhl830",
-      "10lIZJ9_0402MkLFmUGbG8mnjYUomVwcV",
-      "1tyC7XFFj08YbHMefhSE2O3SBaLNuNvrv"
+    // מזהי הקבצים (חלק 1, 2, 3)
+    const mediaIds = [
+      "1jDz-vXe_X3xu6LelcZAu1V96y1RK3xEn",
+      "1nnzrWNOIGNjbtFl9e6x6ARqHUWocqNnd",
+      "1bSiCHjh8QGAo159NxMRBTY541q1xZWE5"
     ];
 
-    const listContainer = document.getElementById("podcastList");
+    const listContainer = document.getElementById("mediaList");
     
-    podcastIds.forEach((id, idx) => {
+    mediaIds.forEach((id, idx) => {
       const item = document.createElement("div");
-      item.className = "glass-card p-6 rounded-[2.5rem] flex flex-col gap-5 podcast-card transition-all duration-300";
+      item.className = "glass-card p-6 rounded-[2rem] flex flex-col gap-4 media-card transition-all duration-300";
       item.innerHTML = `
         <div class="flex justify-between items-center px-2">
-          <span class="en font-['Epilogue'] font-black text-xl text-cyber-cyan tracking-widest uppercase">Track 0${idx + 1}</span>
-          <span class="he font-['Epilogue'] font-black text-xl text-cyber-cyan tracking-widest uppercase">רצועה 0${idx + 1}</span>
-          <div class="flex gap-1">
-            <div class="w-1 h-4 bg-cyber-cyan/40 animate-pulse"></div>
-            <div class="w-1 h-6 bg-cyber-cyan animate-pulse" style="animation-delay: 0.2s"></div>
-            <div class="w-1 h-3 bg-cyber-cyan/60 animate-pulse" style="animation-delay: 0.4s"></div>
-          </div>
+          <span class="en font-['Epilogue'] font-black text-xl text-cyber-cyan tracking-widest">PART 0${idx + 1}</span>
+          <span class="he font-['Epilogue'] font-black text-xl text-cyber-cyan tracking-widest">חלק 0${idx + 1}</span>
+          <span class="material-symbols-outlined text-cyber-cyan/50 animate-pulse text-2xl">visibility</span>
         </div>
         <div class="drive-embed-container">
-          <iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay"></iframe>
+          <iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
       `;
       listContainer.appendChild(item);
