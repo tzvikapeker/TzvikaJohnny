@@ -16,7 +16,7 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   
   <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;700;900&family=Manrope:wght@300;400;600&family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
   
   <script id="tailwind-config">
     tailwind.config = {
@@ -57,23 +57,19 @@
     }
     .badge-pulse { animation: badge-pulse 2.5s infinite ease-in-out; }
 
-    /* נגן דרייב חסין */
+    /* נגן דרייב עתידני */
     .drive-embed-container {
       position: relative; width: 100%; aspect-ratio: 9 / 16; 
       background: #000; border-radius: 20px; overflow: hidden;
       touch-action: pan-y; 
       box-shadow: 0 10px 30px rgba(0,0,0,0.6);
       border: 2px solid rgba(0, 242, 255, 0.2);
-      transition: all 0.3s;
-    }
-    .podcast-card:hover {
-      box-shadow: 0 0 35px rgba(0, 242, 255, 0.25);
-      border-color: rgba(0, 242, 255, 0.5);
-      transform: translateY(-8px);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .podcast-card:hover .drive-embed-container {
-        border-color: rgba(0, 242, 255, 0.6);
-        box-shadow: 0 10px 40px rgba(0,242,255,0.4);
+      border-color: rgba(0, 242, 255, 0.6);
+      box-shadow: 0 0 30px rgba(0,242,255,0.4);
+      transform: scale(1.02);
     }
     .drive-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
@@ -93,7 +89,7 @@
       <button onclick="toggleMenu()" class="text-cyber-cyan p-2 hover:scale-110 transition-transform">
         <span class="material-symbols-outlined text-4xl">menu</span>
       </button>
-      <img src="../AIRetouch_20260208_120431073.jpg" alt="Logo" class="w-14 h-14 rounded-full border-2 border-cyber-cyan/40 shadow-[0_0_15px_rgba(0,242,255,0.3)] object-cover" onerror="this.src='https://ui-avatars.com/api/?name=JP&background=00f2ff&color=000&rounded=true'">
+      <img src="../AIRetouch_20260208_120431073.jpg" alt="Logo" class="w-14 h-14 rounded-full border-2 border-cyber-cyan/40 shadow-lg object-cover" onerror="this.src='https://ui-avatars.com/api/?name=JP&background=00f2ff&color=000&rounded=true'">
     </div>
     <button onclick="toggleLang()" class="px-6 py-2 rounded-full border-2 border-cyber-cyan text-xs font-black text-cyber-cyan uppercase tracking-widest hover:bg-cyber-cyan hover:text-black transition-all">
       <span class="he">ENGLISH</span><span class="en">עברית</span>
@@ -128,12 +124,12 @@
       </h1>
       
       <p class="text-slate-300 text-xl md:text-2xl font-light max-w-3xl mx-auto italic opacity-90 leading-relaxed">
-        <span class="he">זו הזירה שבה מוזיקה פוגשת הומור חד ומודעות עצמית. כאן אני יוצר שירי פארודיה וסאטירה שמבוססים על מציאות יומיומית, תרבות פופולרית ואבסורדים שכולנו מזהים.</span>
-        <span class="en">The arena where music meets sharp humor and self-awareness. Parody and satire songs based on everyday reality and pop culture.</span>
+        <span class="he">זו הזירה שבה מוזיקה פוגשת הומור חד ומודעות עצמית. כאן אני יוצר שירי פארודיה וסאטירה שמבוססים על מציאות יומיומית.</span>
+        <span class="en">The arena where music meets sharp humor and self-awareness. Creating parody and satire songs based on daily reality.</span>
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full max-w-7xl" id="podcastList"></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 w-full max-w-7xl" id="podcastList"></div>
 
   </main>
 
@@ -150,7 +146,7 @@
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
-    // רשימת כל ה-IDs המעודכנת (8 רצועות)
+    // רשימה מאוחדת ונקייה (8 רצועות סה"כ)
     const podcastIds = [
       "1N_vrYX98IkXooUWgzKYCSeX0Z_mt-jP0",
       "1GWKat4DMeBylpaEGuaWDgTX5RC1coaJ-",
@@ -166,15 +162,19 @@
     
     podcastIds.forEach((id, idx) => {
       const item = document.createElement("div");
-      item.className = "glass-card p-6 rounded-[2rem] flex flex-col gap-4 podcast-card transition-all duration-300";
+      item.className = "glass-card p-6 rounded-[2.5rem] flex flex-col gap-5 podcast-card transition-all duration-300";
       item.innerHTML = `
         <div class="flex justify-between items-center px-2">
-          <span class="en font-['Epilogue'] font-black text-xl text-cyber-cyan tracking-widest">TRACK 0${idx + 1}</span>
-          <span class="he font-['Epilogue'] font-black text-xl text-cyber-cyan tracking-widest">רצועה 0${idx + 1}</span>
-          <span class="material-symbols-outlined text-cyber-cyan/50 animate-pulse text-2xl">graphic_eq</span>
+          <span class="en font-['Epilogue'] font-black text-xl text-cyber-cyan tracking-widest uppercase">Track 0${idx + 1}</span>
+          <span class="he font-['Epilogue'] font-black text-xl text-cyber-cyan tracking-widest uppercase">רצועה 0${idx + 1}</span>
+          <div class="flex gap-1">
+            <div class="w-1 h-4 bg-cyber-cyan/40 animate-pulse"></div>
+            <div class="w-1 h-6 bg-cyber-cyan animate-pulse" style="animation-delay: 0.2s"></div>
+            <div class="w-1 h-3 bg-cyber-cyan/60 animate-pulse" style="animation-delay: 0.4s"></div>
+          </div>
         </div>
         <div class="drive-embed-container">
-          <iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
+          <iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay"></iframe>
         </div>
       `;
       listContainer.appendChild(item);
