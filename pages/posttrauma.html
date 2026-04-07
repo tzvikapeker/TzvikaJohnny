@@ -64,7 +64,7 @@
       transform: translateY(-8px);
     }
 
-    /* נגן דרייב חסין */
+    /* נגן דרייב חסין עם מסך מלא */
     .drive-embed-container {
       position: relative; width: 100%; aspect-ratio: 9 / 16; 
       background: #000; border-radius: 16px; overflow: hidden;
@@ -84,7 +84,7 @@
   </style>
 </head>
 
-<body class="pb-40">
+<body class="pb-40 selection:bg-cyan-500/30">
   <div class="fixed inset-0 z-[-1] bg-[#050608]">
     <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PC9zdmc+')] opacity-25"></div>
     <div class="absolute top-0 w-full h-[600px] bg-gradient-to-b from-cyan-900/20 to-transparent"></div>
@@ -135,7 +135,7 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-6xl" id="mediaList"></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-7xl" id="mediaList"></div>
 
   </main>
 
@@ -152,11 +152,12 @@
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
-    // מזהי הקבצים (חלק 1, 2, 3)
+    // 4 מזהי הקבצים החדשים שהעלית
     const mediaIds = [
-      "1jDz-vXe_X3xu6LelcZAu1V96y1RK3xEn",
-      "1nnzrWNOIGNjbtFl9e6x6ARqHUWocqNnd",
-      "1bSiCHjh8QGAo159NxMRBTY541q1xZWE5"
+      "1C9nU4cyrPZwumEceiR7sCP0H06GS0h23",
+      "1qdTJd14mIWnNIdmMGQDIQp0BqViIkLUS",
+      "1LTWCNLHm4O5PORa5XfjA2edgO_yuoEq2",
+      "1s0tzblHz_73nR-VFNR0SnA2ugj82GsHi"
     ];
 
     const listContainer = document.getElementById("mediaList");
@@ -171,7 +172,7 @@
           <span class="material-symbols-outlined text-cyber-cyan/50 animate-pulse text-2xl">visibility</span>
         </div>
         <div class="drive-embed-container">
-          <iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
+          <iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
         </div>
       `;
       listContainer.appendChild(item);
