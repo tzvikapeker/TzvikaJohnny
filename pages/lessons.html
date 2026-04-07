@@ -33,10 +33,11 @@
   </script>
 
   <style>
-    /* לוגיקת שפות גלובלית */
-    html[data-lang="en"] .he, html[data-lang="he"] .en { display: none !important; }
-    html[data-lang="en"] { direction: ltr; } 
-    html[data-lang="he"] { direction: rtl; }
+    /* לוגיקת 4 שפות הרמטית */
+    html:not([data-lang="he"]) .he { display: none !important; }
+    html:not([data-lang="en"]) .en { display: none !important; }
+    html:not([data-lang="ru"]) .ru { display: none !important; }
+    html:not([data-lang="ar"]) .ar { display: none !important; }
     
     * { -webkit-tap-highlight-color: transparent; }
     body { background-color: #050608; color: #f8f8ff; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
@@ -105,7 +106,7 @@
       transform-style: preserve-3d;
     }
     .tiktok-player iframe, .tiktok-player img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 32px; }
-    .tiktok-player img { object-fit: contain; } /* מונע חיתוך תמונות */
+    .tiktok-player img { object-fit: contain; } /* מונע חיתוך תמונות לקוחות */
 
     .swipe-next { animation: swipeNextAnim 0.6s forwards; }
     .swipe-prev { animation: swipePrevAnim 0.6s forwards; }
@@ -137,21 +138,40 @@
       </button>
       <img src="../AIRetouch_20260208_120431073.jpg" alt="Logo" class="w-14 h-14 rounded-full border-2 border-cyber-cyan/40 shadow-[0_0_15px_rgba(0,242,255,0.3)] object-cover" onerror="this.src='https://ui-avatars.com/api/?name=JP&background=00f2ff&color=000&rounded=true'">
     </div>
-    <button onclick="toggleLang()" class="px-6 py-2 rounded-full border-2 border-cyber-cyan text-xs font-black text-cyber-cyan uppercase tracking-widest hover:bg-cyber-cyan hover:text-black transition-all">
-      <span class="he">ENGLISH</span><span class="en">עברית</span>
+    
+    <button onclick="toggleLang()" class="px-5 py-2 rounded-full border-2 border-cyber-cyan text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-black transition-all flex items-center gap-2 uppercase">
+      <span class="material-symbols-outlined text-lg">language</span>
+      <span class="he">עברית</span>
+      <span class="en">ENGLISH</span>
+      <span class="ru">РУССКИЙ</span>
+      <span class="ar">العربية</span>
     </button>
   </header>
 
   <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] bg-zinc-950/98 backdrop-blur-3xl translate-x-full transition-transform duration-500 p-10 flex flex-col border-l border-white/10">
     <button onclick="toggleMenu()" class="self-start text-white p-2 mb-12 hover:rotate-90 transition-transform"><span class="material-symbols-outlined text-4xl">close</span></button>
-    <nav class="flex flex-col gap-8 text-white font-['Epilogue']">
-      <a href="../index.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">ראשי</span><span class="en">HOME</span></a>
-      <a href="creative.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">יצירה</span><span class="en">CREATIVE</span></a>
-      <a href="satire.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">סאטירה</span><span class="en">SATIRE</span></a>
-      <a href="podcasts.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">פודקאסטים</span><span class="en">PODCASTS</span></a>
-      <a href="lessons.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4"><span class="he">לקוחות</span><span class="en">CLIENTS</span></a>
-      <a href="posttrauma.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">פוסטראומה</span><span class="en">TRAUMA</span></a>
-      <a href="songs.html" class="text-2xl hover:text-cyber-cyan transition-colors"><span class="he">שירים</span><span class="en">SONGS</span></a>
+    <nav class="flex flex-col gap-8 text-white font-['Epilogue'] uppercase">
+      <a href="../index.html" class="text-2xl hover:text-cyber-cyan">
+        <span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span>
+      </a>
+      <a href="creative.html" class="text-2xl hover:text-cyber-cyan">
+        <span class="he">יצירה</span><span class="en">CREATIVE</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span>
+      </a>
+      <a href="satire.html" class="text-2xl hover:text-cyber-cyan">
+        <span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span>
+      </a>
+      <a href="podcasts.html" class="text-2xl hover:text-cyber-cyan">
+        <span class="he">פודקאסטים</span><span class="en">PODCASTS</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span>
+      </a>
+      <a href="lessons.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4">
+        <span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span>
+      </a>
+      <a href="posttrauma.html" class="text-2xl hover:text-cyber-cyan">
+        <span class="he">פוסטראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span>
+      </a>
+      <a href="songs.html" class="text-2xl hover:text-cyber-cyan">
+        <span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span>
+      </a>
     </nav>
   </aside>
 
@@ -160,18 +180,20 @@
     <div id="mainHeader" class="text-center space-y-6 z-10 w-full mb-16 max-w-4xl">
       <div class="inline-block px-8 py-2 rounded-full bg-white/5 border-2 border-cyber-pink text-cyber-pink backdrop-blur-md badge-pulse">
         <span class="font-['Space_Grotesk'] text-sm md:text-base tracking-[0.2em] font-black uppercase flex items-center justify-center gap-3">
-          <span class="material-symbols-outlined text-xl animate-pulse">handshake</span>
-          <span class="he">פרויקטים ולקוחות</span><span class="en">CLIENTS & PROJECTS</span>
+          <span class="material-symbols-outlined text-xl">handshake</span>
+          <span class="he">פרויקטים ולקוחות</span><span class="en">CLIENTS & PROJECTS</span><span class="ru">ПРОЕКТЫ И КЛИЕНТЫ</span><span class="ar">مشاريع وعملاء</span>
         </span>
       </div>
       
       <h1 class="font-['Epilogue'] font-black text-6xl md:text-8xl text-white tracking-tighter uppercase neon-text">
-        <span class="he">מותחים גבולות</span><span class="en">PUSHING BOUNDARIES</span>
+        <span class="he">מותחים גבולות</span><span class="en">PUSHING BOUNDARIES</span><span class="ru">РАЗДВИГАЯ ГРАНИЦЫ</span><span class="ar">تجاوز الحدود</span>
       </h1>
       
       <p class="text-slate-300 text-xl md:text-2xl font-light max-w-3xl mx-auto italic opacity-90 leading-relaxed">
         <span class="he">לחצו על תיקיית לקוח לצפייה בפרויקטים העדכניים.</span>
         <span class="en">Click a client folder to view updated projects.</span>
+        <span class="ru">Нажмите на папку клиента для просмотра проектов.</span>
+        <span class="ar">اضغط على مجلد العميل لعرض المشاريع المحدثة.</span>
       </p>
     </div>
 
@@ -181,7 +203,7 @@
       <div class="flex flex-col sm:flex-row items-center justify-between gap-6 glass-card p-6 rounded-3xl border-white/10">
         <button onclick="showFolders()" class="group flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 hover:bg-cyber-cyan/10 border-2 border-white/20 hover:border-cyber-cyan transition-all font-['Space_Grotesk'] text-sm md:text-base tracking-[0.1em] font-bold text-white uppercase">
           <span class="material-symbols-outlined text-2xl group-hover:-translate-x-2 transition-transform">arrow_back</span>
-          <span class="he">חזרה ללקוחות</span><span class="en">BACK TO CLIENTS</span>
+          <span class="he">חזרה ללקוחות</span><span class="en">BACK TO CLIENTS</span><span class="ru">НАЗАД К КЛИЕНТАМ</span><span class="ar">العودة للعملاء</span>
         </button>
         <h2 id="currentFolderName" class="font-['Epilogue'] font-black text-3xl md:text-4xl text-cyber-cyan uppercase m-0 drop-shadow-[0_0_10px_rgba(0,242,255,0.6)]"></h2>
       </div>
@@ -194,7 +216,7 @@
           
           <div class="text-center w-full">
             <div class="inline-block bg-cyber-cyan/10 border border-cyber-cyan/30 px-5 py-1 rounded-full text-cyber-cyan font-['Space_Grotesk'] text-sm tracking-[0.3em] font-bold uppercase mb-2">
-              <span class="en">ITEM</span><span class="he">פריט</span> <span id="mediaCounter">1 / X</span>
+              <span class="he">פריט</span><span class="en">ITEM</span><span class="ru">ЭЛЕМЕНТ</span><span class="ar">عنصر</span>  <span id="mediaCounter">1 / X</span>
             </div>
           </div>
 
@@ -217,30 +239,31 @@
   </main>
 
   <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/90 backdrop-blur-3xl border-2 border-white/10 rounded-[2.5rem] p-3 z-50 overflow-x-auto hide-scrollbar flex items-center gap-10 px-12 shadow-2xl">
-      <a href="../index.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">home</span><span class="text-[10px] font-black uppercase mt-1"><span class="he">ראשי</span><span class="en">HOME</span></span></a>
-      <a href="creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">palette</span><span class="text-[10px] uppercase mt-1"><span class="he">יצירה</span><span class="en">CREATIVE</span></span></a>
-      <a href="satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">theater_comedy</span><span class="text-[10px] uppercase mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span></span></a>
-      <a href="podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">podcasts</span><span class="text-[10px] uppercase mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span></span></a>
-      <a href="lessons.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-125 neon-text"><span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">handshake</span><span class="text-[10px] uppercase mt-1"><span class="he">לקוחות</span><span class="en">CLIENTS</span></span></a>
-      <a href="songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">music_note</span><span class="text-[10px] uppercase mt-1"><span class="he">שירים</span><span class="en">SONGS</span></span></a>
-      <a href="posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">psychology</span><span class="text-[10px] uppercase mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span></span></a>
+      <a href="../index.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">home</span><span class="text-[10px] font-black mt-1"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></span></a>
+      <a href="creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">palette</span><span class="text-[10px] mt-1"><span class="he">יצירה</span><span class="en">CREAT</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span></span></a>
+      <a href="satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">theater_comedy</span><span class="text-[10px] mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span></span></a>
+      <a href="podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">podcasts</span><span class="text-[10px] mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span></span></a>
+      <a href="lessons.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-125 neon-text uppercase"><span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">handshake</span><span class="text-[10px] mt-1"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></span></a>
+      <a href="songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">music_note</span><span class="text-[10px] mt-1"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span></span></a>
+      <a href="posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">psychology</span><span class="text-[10px] mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span></span></a>
   </nav>
 
   <script>
     const clientFolders = [
-      { id: "powerup", nameHe: "פאוראפ - Powerup", nameEn: "POWERUP", year: "2025", items: ["1XF7N4sTXip8YJUHiFjOos-OxuRn_SqdX"] },
-      { id: "ayer", nameHe: "אייר - שחקנית D&D", nameEn: "AYER - D&D ACTRESS", year: "2023", items: ["1rrqzTRhZi913i-kLXHDjUbNttKIizckU", "1qr5GomMQIC95_iCyOnYEIkVyx7AxAheO", "1bx8pFNz0HcUrqFg9kuGGADSEvaWR1Bn8"] },
-      { id: "client3", nameHe: "לקוחה מס' 3", nameEn: "CLIENT #3", year: "2023", items: ["1que1Zg-dY4NOnujT8gNJwDVtskw9mTAJ", "1gilrvbFl1XzhNxLSSpFbYqEDQc8D8Soe", "1Tk336Tx_U-bnRiJ8jiSXUL_yAD8PHQAZ"] },
-      { id: "client4", nameHe: "לקוחה מס' 4", nameEn: "CLIENT #4", year: "2024", items: ["194K5vZluodYCjIwTAUw77LStKywcDFnE", "1AWxYfW-3mn7z2Sv9rioeh1brsutXq9fP", "1k6lRsWBn7JrgYXQ2cxXQS1mvvaZpL9Wd", "1d_MbQCcxd1UcJWNQ5E7S8h1ZWjQxjbjR", "1HjvsD9uBy5eddNI0EbfSSHh5IHRKQ5AO"] },
-      { id: "motti", nameHe: "מוטי", nameEn: "MOTTI", year: "2025", items: ["19HPaXdUBJBJtcdJHftcTVRV2fdlEbBFz"] },
-      { id: "moria", nameHe: "מוריה", nameEn: "MORIA", year: "2024-2025", items: ["1uWUVr26pSl7gOWgw13CAc01GlAPwlu7w", "1pM_ns8jajgtCwkmTkz9kl1B2xKbOaQTZ", "1emR3UXyjQ0AzUr9KLyFdcxwz9V1NBsDy", "1DXmJBYVvXzUVis1S6JiMdHhXhMkIBw54", "1ccjFN59KCsum3pcbDYWLP8bCkkjqif7U", "1pUx6TuzU5iN9xGDzeDWB2dXoxRDsM0Qk", "1VB3xHI9hd2xHpyFrlZCPZSYEr90BgXcL", "1P3Jca6VYdDrkwnEmCa99pHgNUrgNqh_b", "1rUAntPgjSNlRkS9p5VJLzx_s8nct_pv4", "1bLK-zqsGTdAEW5fa72SyR4Nk0yGeBNQb", "1OaCWK_0scwQvddHoz8Y7vqg2PCuYzYoJ", "17yUpLH-di84m_RiPHACsjcqDrqmoZpMD", "1qIA9R71GraMv0MERQVUma9E9stk4Jagk", "13qQ7_sHVtOUiwzxonvYOiGNfu4NwTBME"] },
-      { id: "shane", nameHe: "שיין - לקוח מס' 5", nameEn: "SHANE - CLIENT #5", year: "2024", items: ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", "1dTt5oL3s26JToyiS-3f9wa1eUy-U3AN5", "1woidZAV82Xghxch9IaPSCG_oz4wSs9Um", "1xGs03y5iVD5dIFybanf9lo1V-h4xtHv8", "19MCoYb6dopZVwSEWaKEzz0UDczdCT1MJ"] }
+      { id: "powerup", nameHe: "פאוראפ - Powerup", nameEn: "POWERUP", nameRu: "ПАУЭРАП (POWERUP)", nameAr: "باورأب", year: "2025", items: ["1XF7N4sTXip8YJUHiFjOos-OxuRn_SqdX"] },
+      { id: "ayer", nameHe: "אייר - שחקנית D&D", nameEn: "AYER - D&D ACTRESS", nameRu: "АЙЕР - АКТРИСА D&D", nameAr: "آير - ممثلة D&D", year: "2023", items: ["1rrqzTRhZi913i-kLXHDjUbNttKIizckU", "1qr5GomMQIC95_iCyOnYEIkVyx7AxAheO", "1bx8pFNz0HcUrqFg9kuGGADSEvaWR1Bn8"] },
+      { id: "client3", nameHe: "לקוחה מס' 3", nameEn: "CLIENT #3", nameRu: "КЛИЕНТ #3", nameAr: "عميل #3", year: "2023", items: ["1que1Zg-dY4NOnujT8gNJwDVtskw9mTAJ", "1gilrvbFl1XzhNxLSSpFbYqEDQc8D8Soe", "1Tk336Tx_U-bnRiJ8jiSXUL_yAD8PHQAZ"] },
+      { id: "client4", nameHe: "לקוחה מס' 4", nameEn: "CLIENT #4", nameRu: "КЛИЕНТ #4", nameAr: "عميل #4", year: "2024", items: ["194K5vZluodYCjIwTAUw77LStKywcDFnE", "1AWxYfW-3mn7z2Sv9rioeh1brsutXq9fP", "1k6lRsWBn7JrgYXQ2cxXQS1mvvaZpL9Wd", "1d_MbQCcxd1UcJWNQ5E7S8h1ZWjQxjbjR", "1HjvsD9uBy5eddNI0EbfSSHh5IHRKQ5AO"] },
+      { id: "motti", nameHe: "מוטי", nameEn: "MOTTI", nameRu: "МОТИ", nameAr: "موتي", year: "2025", items: ["19HPaXdUBJBJtcdJHftcTVRV2fdlEbBFz"] },
+      { id: "moria", nameHe: "מוריה", nameEn: "MORIA", nameRu: "МОРИЯ", nameAr: "موريا", year: "2024-2025", items: ["1uWUVr26pSl7gOWgw13CAc01GlAPwlu7w", "1pM_ns8jajgtCwkmTkz9kl1B2xKbOaQTZ", "1emR3UXyjQ0AzUr9KLyFdcxwz9V1NBsDy", "1DXmJBYVvXzUVis1S6JiMdHhXhMkIBw54", "1ccjFN59KCsum3pcbDYWLP8bCkkjqif7U", "1pUx6TuzU5iN9xGDzeDWB2dXoxRDsM0Qk", "1VB3xHI9hd2xHpyFrlZCPZSYEr90BgXcL", "1P3Jca6VYdDrkwnEmCa99pHgNUrgNqh_b", "1rUAntPgjSNlRkS9p5VJLzx_s8nct_pv4", "1bLK-zqsGTdAEW5fa72SyR4Nk0yGeBNQb", "1OaCWK_0scwQvddHoz8Y7vqg2PCuYzYoJ", "17yUpLH-di84m_RiPHACsjcqDrqmoZpMD", "1qIA9R71GraMv0MERQVUma9E9stk4Jagk", "13qQ7_sHVtOUiwzxonvYOiGNfu4NwTBME"] },
+      { id: "shane", nameHe: "שיין - לקוח מס' 5", nameEn: "SHANE - CLIENT #5", nameRu: "ШЕЙН - КЛИЕНТ #5", nameAr: "شين - عميل #5", year: "2024", items: ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", "1dTt5oL3s26JToyiS-3f9wa1eUy-U3AN5", "1woidZAV82Xghxch9IaPSCG_oz4wSs9Um", "1xGs03y5iVD5dIFybanf9lo1V-h4xtHv8", "19MCoYb6dopZVwSEWaKEzz0UDczdCT1MJ"] }
     ];
 
     const videoIds = ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", "19HPaXdUBJBJtcdJHftcTVRV2fdlEbBFz", "1XF7N4sTXip8YJUHiFjOos-OxuRn_SqdX"];
 
     let currentFolderItems = [];
     let currentMediaIndex = 0;
+    let currentFolderObj = null;
 
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
@@ -256,7 +279,7 @@
              <div class="bg-black/30 p-2 rounded-full backdrop-blur-sm"><span class="material-symbols-outlined text-white text-[24px]">person</span></div>
           </div>
           <div class="font-['Epilogue'] font-black text-white text-xl tracking-widest text-center uppercase drop-shadow-md group-hover:text-cyber-cyan transition-colors">
-            <span class="he">${f.nameHe}</span><span class="en">${f.nameEn}</span>
+            <span class="he">${f.nameHe}</span><span class="en">${f.nameEn}</span><span class="ru">${f.nameRu}</span><span class="ar">${f.nameAr}</span>
           </div>
           <div class="text-cyber-cyan/70 text-sm font-bold font-['Space_Grotesk'] mt-3 tracking-widest bg-cyber-cyan/10 px-3 py-1 rounded-full">${f.year}</div>
         `;
@@ -270,8 +293,8 @@
       document.getElementById('folderContentView').classList.remove('hidden');
       document.getElementById('folderContentView').classList.add('flex');
       
-      const isHe = document.documentElement.getAttribute('data-lang') === 'he';
-      document.getElementById('currentFolderName').textContent = isHe ? f.nameHe : f.nameEn;
+      currentFolderObj = f;
+      updateFolderName();
 
       currentFolderItems = f.items;
       currentMediaIndex = 0;
@@ -318,30 +341,39 @@
       document.getElementById('folderContentView').classList.add('hidden');
       document.getElementById('folderContentView').classList.remove('flex'); 
       document.getElementById('mediaBox').innerHTML = ''; 
+      currentFolderObj = null;
     }
 
-    const htmlTag = document.documentElement;
-    function setLang(lang) {
-      htmlTag.setAttribute('data-lang', lang);
-      htmlTag.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
-      localStorage.setItem('siteLang', lang);
-      
-      const activeFolderText = document.getElementById('currentFolderName').textContent;
-      if (activeFolderText) {
-        const currentFolderObj = clientFolders.find(f => f.nameHe === activeFolderText || f.nameEn === activeFolderText);
-        if(currentFolderObj) {
-            document.getElementById('currentFolderName').textContent = lang === 'he' ? currentFolderObj.nameHe : currentFolderObj.nameEn;
-        }
-      }
+    function updateFolderName() {
+      if(!currentFolderObj) return;
+      const lang = document.documentElement.getAttribute('data-lang');
+      let text = currentFolderObj.nameHe;
+      if(lang === 'en') text = currentFolderObj.nameEn;
+      if(lang === 'ru') text = currentFolderObj.nameRu;
+      if(lang === 'ar') text = currentFolderObj.nameAr;
+      document.getElementById('currentFolderName').textContent = text;
     }
 
+    // מנוע 4 שפות
+    const languages = ['he', 'en', 'ru', 'ar'];
+    
     function toggleLang() {
-      const nextLang = htmlTag.getAttribute('data-lang') === 'en' ? 'he' : 'en';
-      setLang(nextLang);
+      const html = document.documentElement;
+      let currentLang = html.getAttribute('data-lang');
+      let nextIndex = (languages.indexOf(currentLang) + 1) % languages.length;
+      let newLang = languages[nextIndex];
+      
+      html.setAttribute('data-lang', newLang);
+      html.setAttribute('dir', (newLang === 'he' || newLang === 'ar') ? 'rtl' : 'ltr');
+      localStorage.setItem('siteLang', newLang);
+      
+      updateFolderName();
     }
 
+    // טעינה ראשונית
     const savedLang = localStorage.getItem('siteLang') || 'he';
-    setLang(savedLang); 
+    document.documentElement.setAttribute('data-lang', savedLang);
+    document.documentElement.setAttribute('dir', (savedLang === 'he' || savedLang === 'ar') ? 'rtl' : 'ltr');
     
     renderFolders();
   </script>
