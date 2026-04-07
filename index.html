@@ -25,7 +25,7 @@
   </script>
 
   <style>
-    /* לוגיקת החלפת 4 שפות הרמטית */
+    /* לוגיקת החלפת שפות הרמטית */
     html:not([data-lang="he"]) .he { display: none !important; }
     html:not([data-lang="en"]) .en { display: none !important; }
     html:not([data-lang="ru"]) .ru { display: none !important; }
@@ -47,19 +47,23 @@
     }
 
     /* הקובייה */
-    .cube-stage { perspective: 1500px; width: var(--cube-size); height: var(--cube-size); position: relative; }
+    .cube-stage { perspective: 1500px; width: var(--cube-size); height: var(--cube-size); position: relative; cursor: pointer; }
     .cube { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     
-    /* מנגנון חסימת הלחיצות */
+    /* מנגנון חסימת הלחיצות על הפאות (הלינק הוא חיצוני כעת) */
     .cube-face { 
         position: absolute; width: var(--cube-size); height: var(--cube-size); 
         border: 3px solid rgba(0, 242, 255, 0.4); border-radius: 40px; background: #121318; 
         backface-visibility: hidden; overflow: hidden; box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
-        pointer-events: none;
         transition: border-color 0.3s, box-shadow 0.3s;
+        pointer-events: none; /* הפאות עצמן לא חוסמות */
     }
-    .cube-face.is-active { pointer-events: auto; }
-    .cube-face.is-active:hover { border-color: rgba(0, 242, 255, 0.8); box-shadow: 0 0 40px rgba(0, 242, 255, 0.5); }
+    
+    /* אפקט האובר על כל הלינק המרכזי */
+    .master-portal-link:hover .cube-face {
+        border-color: rgba(0, 242, 255, 0.8);
+        box-shadow: 0 0 40px rgba(0, 242, 255, 0.5);
+    }
     
     /* מיקומי הפאות */
     .face-front  { transform: rotateY(0deg) translateZ(var(--cube-half)); }
@@ -70,7 +74,7 @@
     .face-bottom { transform: rotateX(-90deg) translateZ(var(--cube-half)); }
 
     /* חיצי ניווט */
-    .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; }
+    .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; z-index: 60; position: relative; }
     .nav-arrow:hover { background: #00f2ff; color: black; transform: scale(1.2); box-shadow: 0 0 40px #00f2ff; }
 
     /* אנימציות */
@@ -85,6 +89,13 @@
       50% { box-shadow: 0 0 40px rgba(235,178,255,0.8); border-color: rgba(235,178,255,1); transform: scale(1.05); }
     }
     .badge-pulse { animation: badge-pulse 2.5s infinite ease-in-out; }
+
+    /* אייקון היד הזוהר מהתמונה */
+    @keyframes icon-pulse {
+      0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px #00f2ff); }
+      50% { opacity: 0.6; filter: drop-shadow(0 0 15px #00f2ff); }
+    }
+    .tap-icon-glow { color: #00f2ff; animation: icon-pulse 2s infinite ease-in-out; vertical-align: middle; }
 
     .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); }
     .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -162,7 +173,7 @@
       <span class="he">מותח את גבולות הלקוחות ומשלב בין אמנות, הומור, טכנולוגיה וסאטירה. <br> מוזמנים לצלול פנימה.</span>
       <span class="en">Pushing clients' boundaries and combining art, humor, technology, and satire. <br> Welcome to dive in.</span>
       <span class="ru">Раздвигая границы возможного, сочетая искусство, юмор, технологии и сатиру. <br> Добро пожаловать.</span>
-      <span class="ar">نتجاوز حدود العملاء ونجمع بين الفن والفكاهة والتكنولوجيا والسخرية. <br> مرحبًا بكم في الغوص معنا.</span>
+      <span class="ar">نتجاوز حدود العملاء ونجمع בין الفن والفكاهة والتكنولوجيا والسخرية. <br> مرحبًا بكم في الغوص معنا.</span>
     </p>
 
     <div class="inline-block px-8 py-3 rounded-full bg-white/5 border-2 border-cyber-pink text-cyber-pink backdrop-blur-md mb-24 badge-pulse">
@@ -175,28 +186,30 @@
     </div>
 
     <div class="flex flex-col items-center gap-12 w-full pb-10">
-      <div class="text-center">
+      <div class="text-center relative z-10">
         <div id="portalLabel" class="font-['Epilogue'] font-black text-5xl md:text-8xl text-white uppercase tracking-widest neon-text">
             </div>
         <div class="h-2 w-40 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent mx-auto mt-6"></div>
       </div>
 
-      <div class="flex flex-col md:flex-row items-center justify-center w-full gap-8 md:gap-24">
+      <div class="flex flex-col md:flex-row items-center justify-center w-full gap-8 md:gap-24 relative">
         
         <button onclick="rotateCube('prev')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_back_ios_new</span></button>
         
-        <div class="cube-stage">
-          <div class="cube" id="mainCube">
-            <a href="pages/creative.html" class="cube-face face-front group"><img src="https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></a>
-            <a href="pages/podcasts.html" class="cube-face face-right group"><img src="https://drive.google.com/thumbnail?id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></a>
-            <a href="pages/satire.html" class="cube-face face-back group"><img src="https://drive.google.com/thumbnail?id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></a>
-            <a href="pages/lessons.html" class="cube-face face-left group"><img src="https://drive.google.com/thumbnail?id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></a>
-            <a href="pages/posttrauma.html" class="cube-face face-top group"><img src="https://drive.google.com/thumbnail?id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></a>
-            <a href="pages/songs.html" class="cube-face face-bottom group"><img src="https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></a>
-          </div>
-        </div>
+        <a href="pages/creative.html" id="cubePortalLink" class="master-portal-link relative z-10">
+            <div class="cube-stage group">
+              <div class="cube" id="mainCube">
+                <div class="cube-face face-front"><img src="https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                <div class="cube-face face-right"><img src="https://drive.google.com/thumbnail?id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                <div class="cube-face face-back"><img src="https://drive.google.com/thumbnail?id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                <div class="cube-face face-left"><img src="https://drive.google.com/thumbnail?id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                <div class="cube-face face-top"><img src="https://drive.google.com/thumbnail?id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                <div class="cube-face face-bottom"><img src="https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></div>
+              </div>
+            </div>
+        </a>
         
-        <div class="flex md:hidden gap-10 mt-4">
+        <div class="flex md:hidden gap-10 mt-4 relative z-20">
             <button onclick="rotateCube('prev')" class="nav-arrow w-14 h-14"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button>
             <button onclick="rotateCube('next')" class="nav-arrow w-14 h-14"><span class="material-symbols-outlined text-2xl">arrow_forward_ios</span></button>
         </div>
@@ -205,12 +218,15 @@
 
       </div>
 
-      <p class="text-cyber-cyan font-bold tracking-[0.2em] md:tracking-[0.5em] uppercase text-xs animate-pulse mt-6 text-center">
-        <span class="he">לחצו על הקובייה כדי להיכנס</span>
-        <span class="en">TAP CUBE TO ENTER PORTAL</span>
-        <span class="ru">НАЖМИТЕ НА КУБ ДЛЯ ВХОДА</span>
-        <span class="ar">اضغط على المكعب للدخول</span>
-      </p>
+      <a href="pages/creative.html" id="cubePortalLinkText" class="master-portal-link relative z-10 text-center">
+          <p class="text-cyber-cyan font-bold tracking-[0.1em] md:tracking-[0.3em] uppercase text-sm md:text-lg mt-6 group flex items-center justify-center gap-3">
+            <span class="material-symbols-outlined tap-icon-glow text-3xl md:text-4xl" style="font-variation-settings: 'FILL' 1;">back_hand</span>
+            <span class="he">לחצו על הקובייה כדי להיכנס</span>
+            <span class="en">TAP CUBE TO ENTER PORTAL</span>
+            <span class="ru">НАЖМИТЕ НА КУБ ДЛЯ ВХОДА</span>
+            <span class="ar">اضغط على المكعب للدخول</span>
+          </p>
+      </a>
     </div>
   </main>
 
@@ -229,16 +245,18 @@
 
     const cube = document.getElementById('mainCube');
     const label = document.getElementById('portalLabel');
+    const masterLink = document.getElementById('cubePortalLink');
+    const masterLinkText = document.getElementById('cubePortalLinkText');
     let currentIndex = 0;
     
-    // מערך התוכן המלא ל-4 שפות
+    // מערך התוכן המלא ל-4 שפות + לינקים תואמים
     const states = [
-      { transform: 'rotateX(0deg) rotateY(0deg)', he: 'יצירה', en: 'CREATIVE', ru: 'КРЕАТИВ', ar: 'إبداع' },
-      { transform: 'rotateX(0deg) rotateY(-90deg)', he: 'פודקאסטים', en: 'PODCASTS', ru: 'ПОДКАСТЫ', ar: 'بودكاست' },
-      { transform: 'rotateX(0deg) rotateY(-180deg)', he: 'סאטירה', en: 'SATIRE', ru: 'САТИРА', ar: 'سخرية' },
-      { transform: 'rotateX(0deg) rotateY(-270deg)', he: 'לקוחות', en: 'CLIENTS', ru: 'КЛИЕНТЫ', ar: 'عملاء' },
-      { transform: 'rotateX(-90deg) rotateY(0deg)', he: 'פוסטראומה', en: 'TRAUMA', ru: 'ТРАВМА', ar: 'صدمة' },
-      { transform: 'rotateX(90deg) rotateY(0deg)', he: 'שירים', en: 'SONGS', ru: 'ПЕСНИ', ar: 'أغاني' }
+      { transform: 'rotateX(0deg) rotateY(0deg)', he: 'יצירה', en: 'CREATIVE', ru: 'КРЕАТИВ', ar: 'إبداع', url: 'pages/creative.html' },
+      { transform: 'rotateX(0deg) rotateY(-90deg)', he: 'פודקאסטים', en: 'PODCASTS', ru: 'ПОДКАСТЫ', ar: 'بودكاست', url: 'pages/podcasts.html' },
+      { transform: 'rotateX(0deg) rotateY(-180deg)', he: 'סאטירה', en: 'SATIRE', ru: 'САТИРА', ar: 'سخرية', url: 'pages/satire.html' },
+      { transform: 'rotateX(0deg) rotateY(-270deg)', he: 'לקוחות', en: 'CLIENTS', ru: 'КЛИЕНТЫ', ar: 'عملاء', url: 'pages/lessons.html' },
+      { transform: 'rotateX(-90deg) rotateY(0deg)', he: 'פוסטראומה', en: 'TRAUMA', ru: 'ТРАВМА', ar: 'صدمة', url: 'pages/posttrauma.html' },
+      { transform: 'rotateX(90deg) rotateY(0deg)', he: 'שירים', en: 'SONGS', ru: 'ПЕСНИ', ar: 'أغاني', url: 'pages/songs.html' }
     ];
 
     function rotateCube(dir) {
@@ -250,13 +268,14 @@
 
     function updateLabel() {
       const lang = document.documentElement.getAttribute('data-lang');
-      label.innerText = states[currentIndex][lang] || states[currentIndex].he;
+      const currentState = states[currentIndex];
       
-      const faces = document.querySelectorAll('.cube-face');
-      faces.forEach((face, index) => {
-        if (index === currentIndex) face.classList.add('is-active');
-        else face.classList.remove('is-active');
-      });
+      // עדכון הכותרת הגדולה
+      label.innerText = currentState[lang] || currentState.he;
+      
+      // עדכון הלינק המרכזי (גם לקובייה וגם לטקסט שמתחתיה)
+      masterLink.setAttribute('href', currentState.url);
+      masterLinkText.setAttribute('href', currentState.url);
     }
 
     // מנוע 4 שפות
