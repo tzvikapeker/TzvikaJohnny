@@ -42,7 +42,6 @@
     body { background-color: #050608; color: #f8f8ff; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
     .material-symbols-outlined { font-size: 32px; display: inline-block; line-height: 1; vertical-align: middle; }
     
-    /* אפקטים מזוהים מ-2036 */
     .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); }
     
     @keyframes neon-glow {
@@ -57,7 +56,6 @@
     }
     .badge-pulse { animation: badge-pulse 2.5s infinite ease-in-out; }
 
-    /* ניווט הטיקטוק / קובייה */
     .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; z-index: 50; }
     .nav-arrow:hover { background: #00f2ff; color: black; transform: scale(1.2); box-shadow: 0 0 40px #00f2ff; }
 
@@ -90,7 +88,6 @@
     }
 
     .hide-scrollbar::-webkit-scrollbar { display: none; }
-    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 
@@ -105,7 +102,7 @@
       <button onclick="toggleMenu()" class="text-cyber-cyan p-2 hover:scale-110 transition-transform">
         <span class="material-symbols-outlined text-4xl">menu</span>
       </button>
-      <img src="../AIRetouch_20260208_120431073.jpg" alt="Logo" class="w-14 h-14 rounded-full border-2 border-cyber-cyan/40 shadow-[0_0_15px_rgba(0,242,255,0.3)] object-cover" onerror="this.src='https://ui-avatars.com/api/?name=JP&background=00f2ff&color=000&rounded=true'">
+      <img src="../AIRetouch_20260208_120431073.jpg" alt="Logo" class="w-14 h-14 rounded-full border-2 border-cyber-cyan/40 shadow-lg object-cover" onerror="this.src='https://ui-avatars.com/api/?name=JP&background=00f2ff&color=000&rounded=true'">
     </div>
     <button onclick="toggleLang()" class="px-6 py-2 rounded-full border-2 border-cyber-cyan text-xs font-black text-cyber-cyan uppercase tracking-widest hover:bg-cyber-cyan hover:text-black transition-all">
       <span class="he">ENGLISH</span><span class="en">עברית</span>
@@ -135,13 +132,13 @@
         </span>
       </div>
       
-      <h1 class="font-['Epilogue'] font-black text-6xl md:text-8xl text-white tracking-tighter uppercase neon-text">
+      <h1 class="font-['Epilogue'] font-black text-5xl md:text-7xl text-white tracking-tighter uppercase neon-text">
         <span class="he">פוסט־טראומה</span><span class="en">POST-TRAUMA</span>
       </h1>
       
-      <p class="text-slate-300 text-xl md:text-2xl font-light max-w-3xl mx-auto italic opacity-90 leading-relaxed">
-        <span class="he">דרך יצירה, אני נותן מקום למה שקשה להסביר במילים: הזיכרונות, הדריכות, והמאמץ להישאר מתפקד. נווטו להאזנה וצפייה.</span>
-        <span class="en">Through art, I give space to what is hard to explain in words: memories, vigilance, and the effort to function. Use arrows to view.</span>
+      <p class="text-slate-300 text-lg md:text-xl font-light max-w-2xl mx-auto italic opacity-90 leading-relaxed">
+        <span class="he">דרך יצירה, אני נותן מקום למה שקשה להסביר במילים: הזיכרונות והמאמץ להישאר מתפקד. נווטו עם החיצים לצפייה.</span>
+        <span class="en">Through art, I give space to what is hard to explain in words. Use arrows to view.</span>
       </p>
     </div>
 
@@ -153,9 +150,9 @@
         
         <div class="text-center w-full">
           <h2 id="mediaTitle" class="font-['Epilogue'] font-black text-3xl md:text-4xl text-cyber-cyan uppercase tracking-widest drop-shadow-[0_0_10px_rgba(0,242,255,0.6)] mb-2 transition-opacity duration-300">
-             </h2>
+          </h2>
           <div class="inline-block bg-cyber-cyan/10 border border-cyber-cyan/30 px-5 py-1 rounded-full text-cyber-cyan font-['Space_Grotesk'] text-sm tracking-[0.3em] font-bold uppercase mb-2">
-            <span class="en">PART</span><span class="he">חלק</span> <span id="mediaCounter">1 / 4</span>
+            <span class="en">PART</span><span class="he">חלק</span> <span id="mediaCounter">1 / 5</span>
           </div>
         </div>
 
@@ -173,11 +170,10 @@
       <button onclick="changeMedia('next')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined">arrow_back_ios_new</span></button>
       
     </div>
-
   </main>
 
   <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/90 backdrop-blur-3xl border-2 border-white/10 rounded-[2.5rem] p-3 z-50 overflow-x-auto hide-scrollbar flex items-center gap-10 px-12 shadow-2xl">
-      <a href="../index.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">home</span><span class="text-[10px] font-black uppercase mt-1"><span class="he">ראשי</span><span class="en">HOME</span></span></a>
+      <a href="../index.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">home</span><span class="text-[10px] uppercase mt-1"><span class="he">ראשי</span><span class="en">HOME</span></span></a>
       <a href="creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">palette</span><span class="text-[10px] uppercase mt-1"><span class="he">יצירה</span><span class="en">CREATIVE</span></span></a>
       <a href="satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">theater_comedy</span><span class="text-[10px] uppercase mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span></span></a>
       <a href="podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all"><span class="material-symbols-outlined text-4xl">podcasts</span><span class="text-[10px] uppercase mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span></span></a>
@@ -189,12 +185,12 @@
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
-    // 4 הסרטונים החדשים
     const traumaVideos = [
       { id: "1C9nU4cyrPZwumEceiR7sCP0H06GS0h23", he: "חלק 01", en: "PART 01" },
       { id: "1qdTJd14mIWnNIdmMGQDIQp0BqViIkLUS", he: "חלק 02", en: "PART 02" },
       { id: "1LTWCNLHm4O5PORa5XfjA2edgO_yuoEq2", he: "חלק 03", en: "PART 03" },
-      { id: "1s0tzblHz_73nR-VFNR0SnA2ugj82GsHi", he: "חלק 04", en: "PART 04" }
+      { id: "1s0tzblHz_73nR-VFNR0SnA2ugj82GsHi", he: "חלק 04", en: "PART 04" },
+      { id: "1OqoYt4V4JHygGTJSqVUICiUqrNSLIZ3D", he: "חלק 05", en: "PART 05" }
     ];
 
     let currentIndex = 0;
@@ -206,17 +202,14 @@
     function loadCurrentMedia() {
       const video = traumaVideos[currentIndex];
       const lang = document.documentElement.getAttribute('data-lang') || 'he';
-      
-      // הטמעת הוידאו עם הרשאות מסך מלא
       playerFrame.src = `https://drive.google.com/file/d/${video.id}/preview`;
-      
       mediaTitle.innerHTML = `<span class="he">${video.he}</span><span class="en">${video.en}</span>`;
       mediaCounter.textContent = `${currentIndex + 1} / ${traumaVideos.length}`;
     }
 
     function changeMedia(direction) {
       playerWrapper.classList.remove('swipe-next', 'swipe-prev');
-      void playerWrapper.offsetWidth; // Trigger reflow
+      void playerWrapper.offsetWidth; 
 
       if (direction === 'next') {
         currentIndex = (currentIndex + 1) % traumaVideos.length;
@@ -233,7 +226,6 @@
       htmlTag.setAttribute('data-lang', lang);
       htmlTag.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
       localStorage.setItem('siteLang', lang);
-      
       loadCurrentMedia();
     }
 
