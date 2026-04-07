@@ -88,10 +88,11 @@
     .nav-arrow:hover { background: #00f2ff; color: black; transform: scale(1.2); box-shadow: 0 0 40px #00f2ff; }
 
     .tiktok-container { perspective: 1500px; }
+    
+    /* הנגן עצמו - מסתמך על הרוחב של הדיב שעוטף אותו (Responsive) */
     .tiktok-player {
       position: relative; 
       width: 100%; 
-      max-width: 380px;
       aspect-ratio: 9 / 16; 
       background: #000; 
       border-radius: 35px; 
@@ -153,7 +154,7 @@
 
   <main class="relative pt-36 px-6 max-w-7xl mx-auto flex flex-col items-center min-h-[80vh]">
     
-    <div id="mainHeader" class="text-center space-y-6 z-10 w-full mb-16 max-w-4xl">
+    <div id="mainHeader" class="text-center space-y-6 z-10 w-full mb-16">
       <div class="inline-block px-8 py-2 rounded-full bg-white/5 border-2 border-cyber-pink text-cyber-pink backdrop-blur-md badge-pulse">
         <span class="font-['Space_Grotesk'] text-sm md:text-base tracking-[0.2em] font-black uppercase flex items-center justify-center gap-3">
           <span class="material-symbols-outlined text-xl">palette</span>
@@ -183,11 +184,11 @@
         <h2 id="currentFolderName" class="font-['Epilogue'] font-black text-3xl md:text-4xl text-cyber-cyan uppercase m-0 drop-shadow-[0_0_10px_rgba(0,242,255,0.6)]"></h2>
       </div>
       
-      <div class="flex items-center justify-center gap-4 md:gap-16 w-full max-w-5xl mx-auto mb-10 tiktok-container">
+      <div class="flex items-center justify-center gap-4 md:gap-16 w-full max-w-6xl mx-auto mb-10 tiktok-container">
         
         <button onclick="changeMedia('prev')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
 
-        <div class="flex flex-col items-center gap-6 w-full max-w-[380px]">
+        <div class="flex flex-col items-center gap-6 w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] lg:max-w-[460px]">
           
           <div class="text-center w-full">
             <div class="inline-block bg-cyber-cyan/10 border border-cyber-cyan/30 px-5 py-1 rounded-full text-cyber-cyan font-['Space_Grotesk'] text-sm tracking-[0.3em] font-bold uppercase mb-2">
@@ -278,12 +279,11 @@
       const mediaBox = document.getElementById('mediaBox');
       const counter = document.getElementById('mediaCounter');
       
-      // בדיקה האם מדובר בוידאו או תמונה והטמעה בהתאם
+      // תמיכה מלאה במסך מלא (allowfullscreen)
       if (currentMediaType === 'video') {
-          mediaBox.innerHTML = `<iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay"></iframe>`;
+          mediaBox.innerHTML = `<iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>`;
       } else {
-          // תמונה
-          mediaBox.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w800" loading="lazy" alt="Creative Photo">`;
+          mediaBox.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w1000" loading="lazy" alt="Creative Photo" class="w-full h-full object-cover">`;
       }
       
       counter.textContent = `${currentMediaIndex + 1} / ${currentFolderItems.length}`;
