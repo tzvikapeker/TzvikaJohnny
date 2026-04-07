@@ -92,7 +92,7 @@
 
     .tiktok-container { perspective: 1500px; }
     
-    /* הנגן עצמו - מסתמך על הרוחב של הדיב שעוטף אותו (Responsive) */
+    /* הנגן עצמו */
     .tiktok-player {
       position: relative; 
       width: 100%; 
@@ -105,7 +105,9 @@
       transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
       transform-style: preserve-3d;
     }
-    .tiktok-player iframe, .tiktok-player img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 32px; object-fit: cover; }
+    .tiktok-player iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 32px; }
+    /* תיקון התמונות שלא יחתכו */
+    .tiktok-player img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 32px; object-fit: contain; }
 
     .swipe-next { animation: swipeNextAnim 0.6s forwards; }
     .swipe-prev { animation: swipePrevAnim 0.6s forwards; }
@@ -177,7 +179,7 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full max-w-5xl" id="folderGrid"></div>
 
-    <div id="folderContentView" class="hidden flex-col w-full max-w-6xl gap-10">
+    <div id="folderContentView" class="hidden flex-col w-full max-w-7xl gap-10">
       
       <div class="flex flex-col sm:flex-row items-center justify-between gap-6 glass-card p-6 rounded-3xl border-white/10">
         <button onclick="showFolders()" class="group flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 hover:bg-cyber-cyan/10 border-2 border-white/20 hover:border-cyber-cyan transition-all font-['Space_Grotesk'] text-sm md:text-base tracking-[0.1em] font-bold text-white uppercase">
@@ -230,7 +232,6 @@
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
-    // מערך התוכן המעודכן עם הפודקאסטים וכל הלינקים הנקיים
     const satireFolders = [
       { 
         id: "videos", 
@@ -305,7 +306,6 @@
       const isHe = document.documentElement.getAttribute('data-lang') === 'he';
       document.getElementById('currentFolderName').textContent = isHe ? f.nameHe : f.nameEn;
 
-      // טעינת מערך הנתונים של התיקייה לתוך המנגנון
       currentFolderItems = f.items;
       currentMediaType = f.type;
       currentMediaIndex = 0;
@@ -320,12 +320,11 @@
       const mediaBox = document.getElementById('mediaBox');
       const counter = document.getElementById('mediaCounter');
       
-      // תמיכה מלאה במסך מלא (allowfullscreen)
       if (currentMediaType === 'video') {
           mediaBox.innerHTML = `<iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>`;
       } else {
-          // תמונה
-          mediaBox.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w1000" loading="lazy" alt="Creative Photo" class="w-full h-full object-cover">`;
+          // תמונה - השתמשנו ב-object-contain כדי למנוע חיתוך
+          mediaBox.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w1000" loading="lazy" alt="Creative Photo" class="w-full h-full object-contain">`;
       }
       
       counter.textContent = `${currentMediaIndex + 1} / ${currentFolderItems.length}`;
@@ -334,7 +333,7 @@
     function changeMedia(direction) {
       const wrapper = document.getElementById('playerWrapper');
       wrapper.classList.remove('swipe-next', 'swipe-prev');
-      void wrapper.offsetWidth; // Trigger reflow
+      void wrapper.offsetWidth; 
       
       if (direction === 'next') {
         currentMediaIndex = (currentMediaIndex + 1) % currentFolderItems.length;
@@ -352,7 +351,7 @@
       document.getElementById('mainHeader').classList.remove('hidden'); 
       document.getElementById('folderContentView').classList.add('hidden');
       document.getElementById('folderContentView').classList.remove('flex'); 
-      document.getElementById('mediaBox').innerHTML = ''; // מניעת טעינת וידאו ברקע
+      document.getElementById('mediaBox').innerHTML = ''; 
     }
 
     const htmlTag = document.documentElement;
