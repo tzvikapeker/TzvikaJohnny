@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html lang="he" data-lang="he" dir="rtl" class="dark">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GTHDTELYGW');
+  </script>
+  
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5" name="viewport"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes" name="viewport"/>
   <title>צביקה ג׳וני פקר | 2036 Portfolio</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
@@ -26,18 +34,32 @@
     body { background-color: #050608; color: #f8f8ff; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
     .material-symbols-outlined { font-size: 32px; display: inline-block; line-height: 1; vertical-align: middle; }
 
-    /* קובייה ענקית 320px */
-    .cube-stage { perspective: 1500px; width: 320px; height: 320px; position: relative; }
-    .cube { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .cube-face { position: absolute; width: 320px; height: 320px; border: 3px solid rgba(0, 242, 255, 0.4); border-radius: 40px; background: #121318; backface-visibility: hidden; overflow: hidden; box-shadow: 0 0 30px rgba(0, 242, 255, 0.2); }
-    
-    .face-front  { transform: rotateY(0deg) translateZ(160px); }
-    .face-right  { transform: rotateY(90deg) translateZ(160px); }
-    .face-back   { transform: rotateY(180deg) translateZ(160px); }
-    .face-left   { transform: rotateY(-90deg) translateZ(160px); }
-    .face-top    { transform: rotateX(90deg) translateZ(160px); }
-    .face-bottom { transform: rotateX(-90deg) translateZ(160px); }
+    /* הגדרת גודל הקובייה החכם */
+    :root {
+      --cube-size: 340px; /* גודל למובייל */
+      --cube-half: 170px;
+    }
+    @media (min-width: 768px) {
+      :root {
+        --cube-size: 460px; /* גודל ענק למסכי מחשב */
+        --cube-half: 230px;
+      }
+    }
 
+    /* הקובייה עצמה תוך שימוש במשתנים החכמים */
+    .cube-stage { perspective: 1500px; width: var(--cube-size); height: var(--cube-size); position: relative; }
+    .cube { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .cube-face { position: absolute; width: var(--cube-size); height: var(--cube-size); border: 3px solid rgba(0, 242, 255, 0.4); border-radius: 40px; background: #121318; backface-visibility: hidden; overflow: hidden; box-shadow: 0 0 30px rgba(0, 242, 255, 0.2); }
+    
+    /* מיקומי הפאות שמסתנכרנים אוטומטית לגודל */
+    .face-front  { transform: rotateY(0deg) translateZ(var(--cube-half)); }
+    .face-right  { transform: rotateY(90deg) translateZ(var(--cube-half)); }
+    .face-back   { transform: rotateY(180deg) translateZ(var(--cube-half)); }
+    .face-left   { transform: rotateY(-90deg) translateZ(var(--cube-half)); }
+    .face-top    { transform: rotateX(90deg) translateZ(var(--cube-half)); }
+    .face-bottom { transform: rotateX(-90deg) translateZ(var(--cube-half)); }
+
+    /* חיצי ניווט */
     .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; }
     .nav-arrow:hover { background: #00f2ff; color: black; transform: scale(1.2); box-shadow: 0 0 40px #00f2ff; }
 
@@ -60,7 +82,7 @@
   </style>
 </head>
 
-<body class="pb-40">
+<body class="pb-40 selection:bg-cyan-500/30">
   <div class="fixed inset-0 z-[-1] bg-[#050608]">
     <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PC9zdmc+')] opacity-25"></div>
     <div class="absolute top-0 w-full h-[600px] bg-gradient-to-b from-cyan-900/20 to-transparent"></div>
@@ -120,23 +142,31 @@
         <div class="h-2 w-40 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent mx-auto mt-6"></div>
       </div>
 
-      <div class="flex items-center justify-center w-full gap-6 md:gap-24">
-        <button onclick="rotateCube('prev')" class="nav-arrow"><span class="material-symbols-outlined text-4xl">arrow_back_ios_new</span></button>
+      <div class="flex flex-col md:flex-row items-center justify-center w-full gap-8 md:gap-24">
+        
+        <button onclick="rotateCube('prev')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_back_ios_new</span></button>
         
         <div class="cube-stage">
           <div class="cube" id="mainCube">
-            <a href="pages/creative.html" class="cube-face face-front group"><img src="https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w800" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></a>
-            <a href="pages/podcasts.html" class="cube-face face-right group"><img src="https://drive.google.com/thumbnail?id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon&sz=w800" class="w-full h-full object-cover opacity-70 group-hover:opacity-100"></a>
-            <a href="pages/satire.html" class="cube-face face-back group"><img src="https://drive.google.com/thumbnail?id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so&sz=w800" class="w-full h-full object-cover opacity-70 group-hover:opacity-100"></a>
-            <a href="pages/lessons.html" class="cube-face face-left group"><img src="https://drive.google.com/thumbnail?id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J&sz=w800" class="w-full h-full object-cover opacity-70 group-hover:opacity-100"></a>
-            <a href="pages/posttrauma.html" class="cube-face face-top group"><img src="https://drive.google.com/thumbnail?id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q&sz=w800" class="w-full h-full object-cover opacity-70 group-hover:opacity-100"></a>
-            <a href="pages/songs.html" class="cube-face face-bottom group"><img src="https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w800" class="w-full h-full object-cover opacity-70 group-hover:opacity-100"></a>
+            <a href="pages/creative.html" class="cube-face face-front group"><img src="https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></a>
+            <a href="pages/podcasts.html" class="cube-face face-right group"><img src="https://drive.google.com/thumbnail?id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></a>
+            <a href="pages/satire.html" class="cube-face face-back group"><img src="https://drive.google.com/thumbnail?id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></a>
+            <a href="pages/lessons.html" class="cube-face face-left group"><img src="https://drive.google.com/thumbnail?id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></a>
+            <a href="pages/posttrauma.html" class="cube-face face-top group"><img src="https://drive.google.com/thumbnail?id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></a>
+            <a href="pages/songs.html" class="cube-face face-bottom group"><img src="https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></a>
           </div>
         </div>
         
-        <button onclick="rotateCube('next')" class="nav-arrow"><span class="material-symbols-outlined text-4xl">arrow_forward_ios</span></button>
+        <div class="flex md:hidden gap-10 mt-4">
+            <button onclick="rotateCube('prev')" class="nav-arrow w-14 h-14"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button>
+            <button onclick="rotateCube('next')" class="nav-arrow w-14 h-14"><span class="material-symbols-outlined text-2xl">arrow_forward_ios</span></button>
+        </div>
+
+        <button onclick="rotateCube('next')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_forward_ios</span></button>
+
       </div>
-      <p class="text-cyber-cyan font-bold tracking-[0.5em] uppercase text-xs animate-pulse mt-6">Tap Cube to Enter Portal</p>
+
+      <p class="text-cyber-cyan font-bold tracking-[0.5em] uppercase text-xs animate-pulse mt-6 text-center">Tap Cube to Enter Portal</p>
     </div>
   </main>
 
