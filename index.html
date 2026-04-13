@@ -20,68 +20,81 @@
   <script>
     tailwind.config = {
       darkMode: "class",
-      theme: { extend: { colors: { "cyber-cyan": "#00f2ff", "premium-dark": "#050608" } } }
+      theme: { extend: { colors: { "cyber-cyan": "#00f2ff", "premium-dark": "#050505" } } }
     }
   </script>
 
   <style>
-    /* לוגיקת החלפת שפות הרמטית */
+    /* לוגיקת החלפת שפות */
     html:not([data-lang="he"]) .he { display: none !important; }
     html:not([data-lang="en"]) .en { display: none !important; }
     html:not([data-lang="ru"]) .ru { display: none !important; }
     html:not([data-lang="ar"]) .ar { display: none !important; }
 
-    body { background-color: #050608; color: #f8f8ff; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
+    body { background-color: #050505; color: #f8f8ff; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
     .material-symbols-outlined { font-size: 32px; display: inline-block; line-height: 1; vertical-align: middle; }
 
-    /* תפריט עליון פרימיום */
-    .glass-header { background: rgba(5, 6, 8, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    /* תפריט עליון יוקרתי */
+    .glass-header { background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 
-    /* כרטיסיות פרימיום של הגריד */
-    .portfolio-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.05);
-      background: #0a0a0c;
-      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-      cursor: pointer;
-      display: block;
+    /* הגדרת גודל הקובייה החכם */
+    :root {
+      --cube-size: 340px; 
+      --cube-half: 170px;
     }
-    
-    .portfolio-card img {
-      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-      opacity: 0.7;
-    }
-    
-    .portfolio-overlay {
-      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
-      transition: opacity 0.5s ease;
-      opacity: 0.8;
+    @media (min-width: 768px) {
+      :root {
+        --cube-size: 460px; 
+        --cube-half: 230px;
+      }
     }
 
-    .portfolio-content {
-      transform: translateY(20px);
-      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    /* הקובייה - עיצוב פרימיום מעודן */
+    .cube-stage { perspective: 2000px; width: var(--cube-size); height: var(--cube-size); position: relative; cursor: pointer; }
+    .cube { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1); }
+    
+    .cube-face { 
+        position: absolute; width: var(--cube-size); height: var(--cube-size); 
+        border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 24px; background: #0a0a0c; 
+        backface-visibility: hidden; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+        transition: border-color 0.5s, box-shadow 0.5s, transform 0.5s;
+        pointer-events: none;
     }
     
-    .portfolio-action {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.4s ease 0.1s;
+    /* אפקט הובר יוקרתי לקובייה */
+    .master-portal-link:hover .cube-face {
+        border-color: rgba(0, 242, 255, 0.5);
+        box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 40px rgba(0, 242, 255, 0.15);
     }
+    
+    /* הכהיית התמונות והבהרה במעבר עכבר (פרימיום לוק) */
+    .cube-face img { opacity: 0.6; transition: opacity 0.5s, transform 0.7s; object-fit: cover; width: 100%; height: 100%; }
+    .master-portal-link:hover .cube-face img { opacity: 0.9; transform: scale(1.03); }
 
-    /* אפקט ריחוף */
-    .portfolio-card:hover { border-color: rgba(0,242,255,0.3); box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
-    .portfolio-card:hover img { transform: scale(1.08); opacity: 0.5; }
-    .portfolio-card:hover .portfolio-overlay { opacity: 1; }
-    .portfolio-card:hover .portfolio-content { transform: translateY(0); }
-    .portfolio-card:hover .portfolio-action { opacity: 1; transform: translateY(0); }
+    .face-front  { transform: rotateY(0deg) translateZ(var(--cube-half)); }
+    .face-right  { transform: rotateY(90deg) translateZ(var(--cube-half)); }
+    .face-back   { transform: rotateY(180deg) translateZ(var(--cube-half)); }
+    .face-left   { transform: rotateY(-90deg) translateZ(var(--cube-half)); }
+    .face-top    { transform: rotateX(90deg) translateZ(var(--cube-half)); }
+    .face-bottom { transform: rotateX(-90deg) translateZ(var(--cube-half)); }
+
+    /* חיצי ניווט פרימיום */
+    .nav-arrow { background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); color: white; z-index: 60; position: relative; }
+    .nav-arrow:hover { background: white; color: black; transform: scale(1.1); border-color: white; box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+
+    /* טקסטים חדים (ללא צלליות מוגזמות) */
+    .premium-title { letter-spacing: -0.04em; line-height: 1; }
+
+    @keyframes icon-pulse {
+      0%, 100% { opacity: 0.7; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-3px); }
+    }
+    .tap-icon-glow { color: #00f2ff; animation: icon-pulse 3s infinite ease-in-out; vertical-align: middle; }
 
     .hide-scrollbar::-webkit-scrollbar { display: none; }
     .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* הגדרות נגישות */
+    /* נגישות */
     .access-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 10px; border-radius: 12px; color: white; font-size: 12px; font-weight: bold; text-transform: uppercase; transition: all 0.3s; text-align: center; width: 100%; display: block;}
     .access-btn:hover { background: #00f2ff; color: black; }
     .access-btn.active { background: #fff; color: black; border-color: #fff; }
@@ -90,15 +103,17 @@
     body.high-contrast * { color: #ffff00 !important; border-color: #ffff00 !important; }
     body.high-contrast img { filter: none !important; }
     body.large-text { font-size: 1.25rem !important; }
-    body.large-text h1, body.large-text h2, body.large-text h3 { font-size: 1.2em !important; }
+    body.large-text h1 { font-size: 1.1em !important; }
     body.highlight-links a, body.highlight-links button { border: 2px solid #ffff00 !important; text-decoration: underline !important; background: rgba(255, 255, 0, 0.1) !important; color: #fff !important; }
     body.no-animations * { animation: none !important; transition: none !important; transform: none !important; }
+    body.no-animations .cube { transform: rotateX(-15deg) rotateY(15deg) !important; }
   </style>
 </head>
 
 <body class="pb-40 selection:bg-cyan-500/30">
-  <div class="fixed inset-0 z-[-1] bg-[#050608]">
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PC9zdmc+')] opacity-10"></div>
+  <div class="fixed inset-0 z-[-1] bg-[#050505]">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0a1929]/30 via-transparent to-transparent"></div>
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PC9zdmc+')] opacity-5"></div>
   </div>
 
   <header class="fixed top-0 w-full z-[100] px-6 py-4 flex justify-between items-center glass-header">
@@ -109,7 +124,7 @@
       <img src="https://drive.google.com/thumbnail?id=1VO1GyokRkNFjts6vH4Y9WDQJKuTYraWR&sz=w500" alt="Logo" class="w-12 h-12 rounded-full border border-white/20 object-cover opacity-90 hover:opacity-100 transition-opacity">
     </div>
     
-    <button onclick="toggleLang()" class="px-5 py-2 rounded-full border border-white/20 text-xs font-bold text-white tracking-[0.2em] hover:border-cyber-cyan hover:text-cyber-cyan transition-all flex items-center gap-2 uppercase bg-white/5">
+    <button onclick="toggleLang()" class="px-5 py-2 rounded-full border border-white/20 text-xs font-bold text-white tracking-[0.2em] hover:border-white hover:bg-white hover:text-black transition-all flex items-center gap-2 uppercase bg-white/5">
       <span class="material-symbols-outlined text-[16px]">language</span>
       <span class="he">עברית</span>
       <span class="en">ENGLISH</span>
@@ -118,7 +133,7 @@
     </button>
   </header>
 
-  <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] bg-[#050608]/98 backdrop-blur-3xl translate-x-full transition-transform duration-700 p-10 flex flex-col border-l border-white/5">
+  <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] bg-[#050505]/98 backdrop-blur-3xl translate-x-full transition-transform duration-700 p-10 flex flex-col border-l border-white/5">
     <button onclick="toggleMenu()" class="self-start text-white/50 p-2 mb-12 hover:text-white transition-colors"><span class="material-symbols-outlined text-4xl">close</span></button>
     <nav class="flex flex-col gap-8 text-white/70 font-['Space_Grotesk'] uppercase tracking-[0.1em] font-light">
       <a href="index.html" class="text-2xl font-bold text-white flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-cyber-cyan"></span><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></a>
@@ -133,132 +148,87 @@
 
   <main class="relative pt-36 px-6 max-w-6xl mx-auto flex flex-col items-center">
     
-    <div class="text-center mb-16 w-full">
-      <div class="inline-block px-5 py-2 rounded-full border border-white/10 text-white/50 backdrop-blur-sm mb-6 text-xs tracking-[0.3em] uppercase">
-        <span class="he">תיק עבודות</span>
-        <span class="en">PORTFOLIO 2036</span>
-        <span class="ru">ПОРТФОЛИО</span>
-        <span class="ar">محفظة الأعمال</span>
+    <div class="text-center w-full mb-12">
+      <div class="inline-block px-6 py-2 rounded-full border border-white/10 text-white/50 bg-white/5 backdrop-blur-sm mb-6 text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">
+        <span class="he">ברוכים הבאים ל-2036</span>
+        <span class="en">WELCOME TO 2036</span>
+        <span class="ru">ДОБРО ПОЖАЛОВАТЬ В 2036</span>
+        <span class="ar">مرحبًا بكم في 2036</span>
       </div>
       
-      <h1 class="font-['Epilogue'] font-black text-6xl md:text-8xl lg:text-9xl text-white uppercase tracking-tighter mb-4 leading-none">
-        <span class="he">צביקה ג׳וני פקר</span>
-        <span class="en">TZVIKA JOHNNY PEKER</span>
-        <span class="ru">ЦВИКА ДЖОННИ ПЕКЕР</span>
-        <span class="ar">تسفيكا جوني بيكر</span>
+      <h1 class="font-['Epilogue'] premium-title font-black text-6xl md:text-8xl lg:text-[9rem] text-white uppercase mb-4 text-center">
+        <span class="he">צביקה ג׳וני<br>פקר</span>
+        <span class="en block text-5xl md:text-7xl lg:text-8xl">TZVIKA JOHNNY<br>PEKER</span>
+        <span class="ru block text-4xl md:text-6xl lg:text-7xl">ЦВИКА ДЖОННИ<br>ПЕКЕР</span>
+        <span class="ar block text-5xl md:text-7xl lg:text-8xl">تسفيكا جوني<br>بيكر</span>
       </h1>
 
-      <p class="text-cyber-cyan text-lg md:text-2xl font-light tracking-widest uppercase mb-16">
-        <span class="he">יוצר מולטי-מודולרי / טכנולוג העתיד</span>
-        <span class="en">MULTIMODAL CREATOR / FUTURE TECHNOLOGIST</span>
+      <p class="text-white/60 text-sm md:text-xl font-['Space_Grotesk'] tracking-[0.2em] md:tracking-[0.4em] uppercase mt-8">
+        <span class="he">יוצר AI מולטי-מודולרי / טכנולוג העתיד</span>
+        <span class="en">MULTIMODAL AI CREATOR / FUTURE TECHNOLOGIST</span>
         <span class="ru">МУЛЬТИМОДАЛЬНЫЙ КРЕАТОР / ТЕХНОЛОГ БУДУЩЕГО</span>
-        <span class="ar">مبدع متعدد الوسائط / تكنولوجي المستقبل</span>
+        <span class="ar">مبدع ذكاء اصطناعي متعدد الوسائط</span>
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+    <div class="flex flex-col items-center gap-12 w-full mt-8 pb-10">
       
-      <a href="pages/creative.html" class="portfolio-card aspect-[4/3] md:aspect-[3/2] group">
-        <img src="https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w1000" class="absolute inset-0 w-full h-full object-cover">
-        <div class="portfolio-overlay absolute inset-0"></div>
-        <div class="portfolio-content absolute bottom-0 left-0 w-full p-8 text-white">
-          <h3 class="font-['Epilogue'] text-4xl font-black uppercase mb-2">
-            <span class="he">יצירה</span><span class="en">CREATIVE</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span>
-          </h3>
-          <div class="portfolio-action flex items-center gap-2 text-cyber-cyan">
-            <span class="text-xs font-bold tracking-widest uppercase"><span class="he">לצפייה</span><span class="en">VIEW PROJECT</span><span class="ru">СМОТРЕТЬ</span><span class="ar">عرض المشروع</span></span>
-            <span class="material-symbols-outlined text-lg">arrow_outward</span>
-          </div>
-        </div>
-      </a>
+      <div class="text-center relative z-10 h-20 flex flex-col justify-end">
+        <div id="portalLabel" class="font-['Epilogue'] premium-title font-black text-4xl md:text-6xl text-white uppercase tracking-tight"></div>
+      </div>
 
-      <a href="pages/podcasts.html" class="portfolio-card aspect-[4/3] md:aspect-[3/2] group">
-        <img src="https://drive.google.com/thumbnail?id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon&sz=w1000" class="absolute inset-0 w-full h-full object-cover">
-        <div class="portfolio-overlay absolute inset-0"></div>
-        <div class="portfolio-content absolute bottom-0 left-0 w-full p-8 text-white">
-          <h3 class="font-['Epilogue'] text-4xl font-black uppercase mb-2">
-            <span class="he">פודקאסטים</span><span class="en">PODCASTS</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span>
-          </h3>
-          <div class="portfolio-action flex items-center gap-2 text-cyber-cyan">
-            <span class="text-xs font-bold tracking-widest uppercase"><span class="he">לצפייה</span><span class="en">VIEW PROJECT</span><span class="ru">СМОТРЕТЬ</span><span class="ar">عرض المشروع</span></span>
-            <span class="material-symbols-outlined text-lg">arrow_outward</span>
-          </div>
+      <div class="flex flex-col md:flex-row items-center justify-center w-full gap-8 md:gap-24 relative">
+        
+        <button onclick="rotateCube('prev')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-3xl">west</span></button>
+        
+        <a href="pages/creative.html" id="cubePortalLink" class="master-portal-link relative z-10">
+            <div class="cube-stage group">
+              <div class="cube" id="mainCube">
+                <div class="cube-face face-front"><img src="https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w1000" alt="Creative"></div>
+                <div class="cube-face face-right"><img src="https://drive.google.com/thumbnail?id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon&sz=w1000" alt="Podcasts"></div>
+                <div class="cube-face face-back"><img src="https://drive.google.com/thumbnail?id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so&sz=w1000" alt="Satire"></div>
+                <div class="cube-face face-left"><img src="https://drive.google.com/thumbnail?id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J&sz=w1000" alt="Clients"></div>
+                <div class="cube-face face-top"><img src="https://drive.google.com/thumbnail?id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q&sz=w1000" alt="Post Trauma"></div>
+                <div class="cube-face face-bottom"><img src="https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w1000" alt="Songs"></div>
+              </div>
+            </div>
+        </a>
+        
+        <div class="flex md:hidden gap-10 mt-4 relative z-20">
+            <button onclick="rotateCube('prev')" class="nav-arrow w-14 h-14"><span class="material-symbols-outlined text-2xl">east</span></button>
+            <button onclick="rotateCube('next')" class="nav-arrow w-14 h-14"><span class="material-symbols-outlined text-2xl">west</span></button>
         </div>
-      </a>
 
-      <a href="pages/satire.html" class="portfolio-card aspect-[4/3] md:aspect-[3/2] group">
-        <img src="https://drive.google.com/thumbnail?id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so&sz=w1000" class="absolute inset-0 w-full h-full object-cover">
-        <div class="portfolio-overlay absolute inset-0"></div>
-        <div class="portfolio-content absolute bottom-0 left-0 w-full p-8 text-white">
-          <h3 class="font-['Epilogue'] text-4xl font-black uppercase mb-2">
-            <span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span>
-          </h3>
-          <div class="portfolio-action flex items-center gap-2 text-cyber-cyan">
-            <span class="text-xs font-bold tracking-widest uppercase"><span class="he">לצפייה</span><span class="en">VIEW PROJECT</span><span class="ru">СМОТРЕТЬ</span><span class="ar">عرض المشروع</span></span>
-            <span class="material-symbols-outlined text-lg">arrow_outward</span>
-          </div>
-        </div>
-      </a>
+        <button onclick="rotateCube('next')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-3xl">east</span></button>
 
-      <a href="pages/lessons.html" class="portfolio-card aspect-[4/3] md:aspect-[3/2] group">
-        <img src="https://drive.google.com/thumbnail?id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J&sz=w1000" class="absolute inset-0 w-full h-full object-cover">
-        <div class="portfolio-overlay absolute inset-0"></div>
-        <div class="portfolio-content absolute bottom-0 left-0 w-full p-8 text-white">
-          <h3 class="font-['Epilogue'] text-4xl font-black uppercase mb-2">
-            <span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span>
-          </h3>
-          <div class="portfolio-action flex items-center gap-2 text-cyber-cyan">
-            <span class="text-xs font-bold tracking-widest uppercase"><span class="he">לצפייה</span><span class="en">VIEW PROJECT</span><span class="ru">СМОТРЕТЬ</span><span class="ar">عرض المشروع</span></span>
-            <span class="material-symbols-outlined text-lg">arrow_outward</span>
-          </div>
-        </div>
-      </a>
+      </div>
 
-      <a href="pages/posttrauma.html" class="portfolio-card aspect-[4/3] md:aspect-[3/2] group">
-        <img src="https://drive.google.com/thumbnail?id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q&sz=w1000" class="absolute inset-0 w-full h-full object-cover">
-        <div class="portfolio-overlay absolute inset-0"></div>
-        <div class="portfolio-content absolute bottom-0 left-0 w-full p-8 text-white">
-          <h3 class="font-['Epilogue'] text-4xl font-black uppercase mb-2">
-            <span class="he">פוסטראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span>
-          </h3>
-          <div class="portfolio-action flex items-center gap-2 text-cyber-cyan">
-            <span class="text-xs font-bold tracking-widest uppercase"><span class="he">לצפייה</span><span class="en">VIEW PROJECT</span><span class="ru">СМОТРЕТЬ</span><span class="ar">عرض المشروع</span></span>
-            <span class="material-symbols-outlined text-lg">arrow_outward</span>
-          </div>
-        </div>
+      <a href="pages/creative.html" id="cubePortalLinkText" class="master-portal-link relative z-10 text-center mt-4">
+          <p class="text-white/40 font-['Space_Grotesk'] font-bold tracking-[0.2em] md:tracking-[0.4em] uppercase text-xs md:text-sm group flex items-center justify-center gap-3 hover:text-cyber-cyan transition-colors">
+            <span class="material-symbols-outlined tap-icon-glow text-2xl" style="font-variation-settings: 'FILL' 1;">back_hand</span>
+            <span class="he">לחצו על הקובייה לכניסה</span>
+            <span class="en">TAP CUBE TO ENTER</span>
+            <span class="ru">НАЖМИТЕ НА КУБ</span>
+            <span class="ar">اضغط على المكعب للدخول</span>
+          </p>
       </a>
-
-      <a href="pages/songs.html" class="portfolio-card aspect-[4/3] md:aspect-[3/2] group">
-        <img src="https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w1000" class="absolute inset-0 w-full h-full object-cover">
-        <div class="portfolio-overlay absolute inset-0"></div>
-        <div class="portfolio-content absolute bottom-0 left-0 w-full p-8 text-white">
-          <h3 class="font-['Epilogue'] text-4xl font-black uppercase mb-2">
-            <span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span>
-          </h3>
-          <div class="portfolio-action flex items-center gap-2 text-cyber-cyan">
-            <span class="text-xs font-bold tracking-widest uppercase"><span class="he">לצפייה</span><span class="en">VIEW PROJECT</span><span class="ru">СМОТРЕТЬ</span><span class="ar">عرض المشروع</span></span>
-            <span class="material-symbols-outlined text-lg">arrow_outward</span>
-          </div>
-        </div>
-      </a>
-
     </div>
   </main>
 
-  <nav class="fixed bottom-8 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-[#0a0a0c]/80 backdrop-blur-xl border border-white/10 rounded-full p-2 z-50 overflow-x-auto hide-scrollbar flex items-center gap-2 sm:gap-6 px-6 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
-      <a href="index.html" class="flex items-center justify-center px-6 h-12 rounded-full bg-white text-black font-['Space_Grotesk'] text-xs font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+  <nav class="fixed bottom-8 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-[#050505]/90 backdrop-blur-2xl border border-white/10 rounded-full p-2 z-50 overflow-x-auto hide-scrollbar flex items-center gap-2 sm:gap-6 px-6 shadow-[0_10px_40px_rgba(0,0,0,0.8)]">
+      <a href="index.html" class="flex items-center justify-center px-6 h-12 rounded-full bg-white text-black font-['Space_Grotesk'] text-xs font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
         <span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span>
       </a>
-      <a href="pages/creative.html" class="flex items-center justify-center w-12 h-12 rounded-full text-white/50 hover:text-white hover:bg-white/5 transition-all"><span class="material-symbols-outlined text-[24px]">palette</span></a>
-      <a href="pages/satire.html" class="flex items-center justify-center w-12 h-12 rounded-full text-white/50 hover:text-white hover:bg-white/5 transition-all"><span class="material-symbols-outlined text-[24px]">theater_comedy</span></a>
-      <a href="pages/podcasts.html" class="flex items-center justify-center w-12 h-12 rounded-full text-white/50 hover:text-white hover:bg-white/5 transition-all"><span class="material-symbols-outlined text-[24px]">podcasts</span></a>
-      <a href="pages/lessons.html" class="flex items-center justify-center w-12 h-12 rounded-full text-white/50 hover:text-white hover:bg-white/5 transition-all"><span class="material-symbols-outlined text-[24px]">handshake</span></a>
-      <a href="pages/songs.html" class="flex items-center justify-center w-12 h-12 rounded-full text-white/50 hover:text-white hover:bg-white/5 transition-all"><span class="material-symbols-outlined text-[24px]">music_note</span></a>
-      <a href="pages/posttrauma.html" class="flex items-center justify-center w-12 h-12 rounded-full text-white/50 hover:text-white hover:bg-white/5 transition-all"><span class="material-symbols-outlined text-[24px]">psychology</span></a>
+      <a href="pages/creative.html" class="flex items-center justify-center w-12 h-12 rounded-full text-white/40 hover:text-white hover:bg-white/5 transition-all"><span class="material-symbols-outlined text-[24px]">palette</span></a>
+      <a href="pages/satire.html" class="flex items-center justify-center w-12 h-12 rounded-full text-white/40 hover:text-white hover:bg-white/5 transition-all"><span class="material-symbols-outlined text-[24px]">theater_comedy</span></a>
+      <a href="pages/podcasts.html" class="flex items-center justify-center w-12 h-12 rounded-full text-white/40 hover:text-white hover:bg-white/5 transition-all"><span class="material-symbols-outlined text-[24px]">podcasts</span></a>
+      <a href="pages/lessons.html" class="flex items-center justify-center w-12 h-12 rounded-full text-white/40 hover:text-white hover:bg-white/5 transition-all"><span class="material-symbols-outlined text-[24px]">handshake</span></a>
+      <a href="pages/songs.html" class="flex items-center justify-center w-12 h-12 rounded-full text-white/40 hover:text-white hover:bg-white/5 transition-all"><span class="material-symbols-outlined text-[24px]">music_note</span></a>
+      <a href="pages/posttrauma.html" class="flex items-center justify-center w-12 h-12 rounded-full text-white/40 hover:text-white hover:bg-white/5 transition-all"><span class="material-symbols-outlined text-[24px]">psychology</span></a>
   </nav>
 
   <div id="accessibility-widget" class="fixed bottom-28 left-6 z-[200]">
-    <button onclick="toggleAccessMenu()" aria-label="תפריט נגישות" class="w-12 h-12 bg-white/10 border border-white/20 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-white hover:text-black transition-all">
+    <button onclick="toggleAccessMenu()" aria-label="תפריט נגישות" class="w-12 h-12 bg-white/5 border border-white/10 text-white/70 rounded-full shadow-lg flex items-center justify-center hover:bg-white hover:text-black transition-all">
       <span class="material-symbols-outlined text-[20px]">accessibility_new</span>
     </button>
 
@@ -297,6 +267,36 @@
 
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
+    const cube = document.getElementById('mainCube');
+    const label = document.getElementById('portalLabel');
+    const masterLink = document.getElementById('cubePortalLink');
+    const masterLinkText = document.getElementById('cubePortalLinkText');
+    let currentIndex = 0;
+    
+    const states = [
+      { transform: 'rotateX(0deg) rotateY(0deg)', he: 'יצירה', en: 'CREATIVE', ru: 'КРЕАТИВ', ar: 'إبداع', url: 'pages/creative.html' },
+      { transform: 'rotateX(0deg) rotateY(-90deg)', he: 'פודקאסטים', en: 'PODCASTS', ru: 'ПОДКАСТЫ', ar: 'بودكاست', url: 'pages/podcasts.html' },
+      { transform: 'rotateX(0deg) rotateY(-180deg)', he: 'סאטירה', en: 'SATIRE', ru: 'САТИРА', ar: 'سخرية', url: 'pages/satire.html' },
+      { transform: 'rotateX(0deg) rotateY(-270deg)', he: 'לקוחות', en: 'CLIENTS', ru: 'КЛИЕНТЫ', ar: 'عملاء', url: 'pages/lessons.html' },
+      { transform: 'rotateX(-90deg) rotateY(0deg)', he: 'פוסטראומה', en: 'TRAUMA', ru: 'ТРАВМА', ar: 'صدمة', url: 'pages/posttrauma.html' },
+      { transform: 'rotateX(90deg) rotateY(0deg)', he: 'שירים', en: 'SONGS', ru: 'ПЕСНИ', ar: 'أغاني', url: 'pages/songs.html' }
+    ];
+
+    function rotateCube(dir) {
+      if(dir === 'next') currentIndex = (currentIndex + 1) % states.length;
+      else currentIndex = (currentIndex - 1 + states.length) % states.length;
+      cube.style.transform = states[currentIndex].transform;
+      updateLabel();
+    }
+
+    function updateLabel() {
+      const lang = document.documentElement.getAttribute('data-lang');
+      const currentState = states[currentIndex];
+      label.innerText = currentState[lang] || currentState.he;
+      masterLink.setAttribute('href', currentState.url);
+      masterLinkText.setAttribute('href', currentState.url);
+    }
+
     const languages = ['he', 'en', 'ru', 'ar'];
     function toggleLang() {
       const html = document.documentElement;
@@ -306,11 +306,13 @@
       html.setAttribute('data-lang', newLang);
       html.setAttribute('dir', (newLang === 'he' || newLang === 'ar') ? 'rtl' : 'ltr');
       localStorage.setItem('siteLang', newLang);
+      updateLabel();
     }
 
     const savedLang = localStorage.getItem('siteLang') || 'he';
     document.documentElement.setAttribute('data-lang', savedLang);
     document.documentElement.setAttribute('dir', (savedLang === 'he' || savedLang === 'ar') ? 'rtl' : 'ltr');
+    updateLabel();
   </script>
 </body>
 </html>
