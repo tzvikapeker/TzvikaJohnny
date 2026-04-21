@@ -34,18 +34,18 @@
     body { background-color: #050608; color: #f8f8ff; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
     .material-symbols-outlined { font-size: 32px; display: inline-block; line-height: 1; vertical-align: middle; }
 
-    /* הגדרת גודל הקובייה החכם - מותאם למובייל */
+    /* הגדרת גודל הקובייה החכם - שודרג למובייל */
     :root {
-      --cube-size: 260px; 
+      --cube-size: 260px; /* מובייל קטן */
       --cube-half: 130px;
     }
-    @media (min-width: 640px) {
+    @media (min-width: 640px) { /* טאבלט/מובייל רוחבי */
       :root {
         --cube-size: 340px; 
         --cube-half: 170px;
       }
     }
-    @media (min-width: 768px) {
+    @media (min-width: 768px) { /* מחשב */
       :root {
         --cube-size: 460px; 
         --cube-half: 230px;
@@ -56,13 +56,13 @@
     .cube-stage { perspective: 1500px; width: var(--cube-size); height: var(--cube-size); position: relative; cursor: pointer; }
     .cube { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     
-    /* מנגנון חסימת הלחיצות על הפאות */
+    /* מנגנון חסימת הלחיצות על הפאות (הלינק הוא חיצוני כעת) */
     .cube-face { 
         position: absolute; width: var(--cube-size); height: var(--cube-size); 
         border: 3px solid rgba(0, 242, 255, 0.4); border-radius: 40px; background: #121318; 
         backface-visibility: hidden; overflow: hidden; box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
         transition: border-color 0.3s, box-shadow 0.3s;
-        pointer-events: none; 
+        pointer-events: none; /* הפאות עצמן לא חוסמות */
     }
     
     /* אפקט האובר על כל הלינק המרכזי */
@@ -113,10 +113,10 @@
     .access-btn:hover { background: #00f2ff; color: black; }
     .access-btn.active { background: #ebb2ff; color: black; border-color: #ebb2ff; }
 
-    /* ניגודיות גבוהה */
+    /* ניגודיות גבוהה - שחור/צהוב עז */
     body.high-contrast { filter: contrast(1.5) grayscale(1); background: #000 !important; }
     body.high-contrast * { color: #ffff00 !important; border-color: #ffff00 !important; }
-    body.high-contrast img, body.high-contrast iframe { filter: none !important; } 
+    body.high-contrast img, body.high-contrast iframe { filter: none !important; } /* שומר על התמונות מקוריות */
     
     /* טקסט גדול */
     body.large-text { font-size: 1.25rem !important; }
@@ -124,12 +124,12 @@
     body.large-text h2 { font-size: 1.2em !important; }
     body.large-text p { font-size: 1.2em !important; line-height: 1.6; }
     
-    /* הדגשת קישורים */
+    /* הדגשת קישורים וכפתורים */
     body.highlight-links a, body.highlight-links button { border: 2px solid #ffff00 !important; text-decoration: underline !important; background: rgba(255, 255, 0, 0.1) !important; color: #fff !important; }
     
     /* עצירת אנימציות */
     body.no-animations * { animation: none !important; transition: none !important; }
-    body.no-animations .cube { transform: rotateX(-15deg) rotateY(15deg) !important; } 
+    body.no-animations .cube { transform: rotateX(-15deg) rotateY(15deg) !important; } /* מקבע את הקובייה */
   </style>
 </head>
 
@@ -263,7 +263,7 @@
   <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/90 backdrop-blur-3xl border-2 border-white/10 rounded-[2.5rem] p-3 z-50 overflow-x-auto hide-scrollbar flex items-center gap-10 px-12 shadow-2xl">
       <a href="index.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-125 neon-text uppercase"><span class="material-symbols-outlined text-4xl">home</span><span class="text-[10px] font-black mt-1"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></span></a>
       <a href="pages/creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">palette</span><span class="text-[10px] mt-1"><span class="he">יצירה</span><span class="en">CREAT</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span></span></a>
-      <a href="pages/satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">theater_comedy</span><span class="text-[10px] mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span></span></a>
+      <a href="pages/satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">theater_comedy</span><span class="text-[10px] mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">סחרייה</span></span></a>
       <a href="pages/podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">podcasts</span><span class="text-[10px] mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span></span></a>
       <a href="pages/lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">handshake</span><span class="text-[10px] mt-1"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></span></a>
       <a href="pages/songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">music_note</span><span class="text-[10px] mt-1"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span></span></a>
