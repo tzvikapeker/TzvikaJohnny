@@ -31,10 +31,11 @@
     html:not([data-lang="ru"]) .ru { display: none !important; }
     html:not([data-lang="ar"]) .ar { display: none !important; }
 
-    body { background-color: #050608; color: #f8f8ff; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
+    /* הוסר overflow-x-hidden כדי לא לשבור תלת ממד במובייל */
+    body { background-color: #050608; color: #f8f8ff; font-family: 'Manrope', sans-serif; }
     .material-symbols-outlined { font-size: 32px; display: inline-block; line-height: 1; vertical-align: middle; }
 
-    /* הגדרת גודל הקובייה החכם - 3 גדלים להתאמה למובייל מבלי לשבור תלת-ממד */
+    /* הגדרת גודל הקובייה החכם - 3 גדלים להתאמה למובייל */
     :root {
       --cube-size: 260px; /* מובייל קטן */
       --cube-half: 130px;
@@ -154,7 +155,7 @@
   </header>
 
   <aside id="sidebar" class="fixed inset-y-0 right-0 w-72 sm:w-80 z-[110] bg-zinc-950/98 backdrop-blur-3xl translate-x-full transition-transform duration-500 p-8 sm:p-10 flex flex-col border-l border-white/10">
-    <button onclick="toggleMenu()" class="self-start text-white p-2 mb-10 sm:mb-12 hover:rotate-90 transition-transform"><span class="material-symbols-outlined text-4xl">close</span></button>
+    <button onclick="toggleMenu()" class="self-start text-white p-2 mb-10 hover:rotate-90 transition-transform"><span class="material-symbols-outlined text-4xl">close</span></button>
     <nav class="flex flex-col gap-6 sm:gap-8 text-white font-['Epilogue'] uppercase">
       <a href="index.html" class="text-2xl sm:text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4">
         <span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span>
@@ -189,14 +190,14 @@
       <span class="ar">تسفيكا جوني بيكر</span>
     </h1>
 
-    <h2 class="text-sm sm:text-lg md:text-2xl lg:text-3xl font-bold text-cyber-cyan text-center tracking-[0.1em] sm:tracking-[0.2em] mb-8 sm:mb-10 uppercase px-2">
+    <h2 class="text-base sm:text-lg md:text-2xl lg:text-3xl font-bold text-cyber-cyan text-center tracking-[0.1em] sm:tracking-[0.2em] mb-6 sm:mb-10 uppercase">
       <span class="he">יוצר AI מולטי-מודולרי / טכנולוג העתיד</span>
       <span class="en">MULTIMODAL AI CREATOR / FUTURE TECHNOLOGIST</span>
       <span class="ru">МУЛЬТИМОДАЛЬНЫЙ ИИ-КРЕАТОР / ТЕХНОЛОГ БУДУЩЕГО</span>
-      <span class="ar">مبدع ذكاء اصطناعي متعدد الوسائط / تكنولوجي المستقبل</span>
+      <span class="ar">مبدع ذكاء اصطناعي متعدد الوسائط</span>
     </h2>
     
-    <p class="text-sm sm:text-lg md:text-2xl text-slate-300 text-center font-light max-w-4xl leading-relaxed mb-10 sm:mb-12 italic opacity-90 px-2">
+    <p class="text-sm sm:text-lg md:text-2xl text-slate-300 text-center font-light max-w-4xl leading-relaxed mb-10 sm:mb-12 italic opacity-90">
       <span class="he">מותח את גבולות הלקוחות ומשלב בין אמנות, הומור, טכנולוגיה וסאטירה. <br> מוזמנים לצלול פנימה.</span>
       <span class="en">Pushing clients' boundaries and combining art, humor, technology, and satire. <br> Welcome to dive in.</span>
       <span class="ru">Раздвигая границы возможного, сочетая искусство, юмор, технологии и сатиру. <br> Добро пожаловать.</span>
@@ -213,13 +214,13 @@
     </div>
 
     <div class="flex flex-col items-center gap-8 sm:gap-12 w-full pb-10">
-      <div class="text-center relative z-10">
+      <div class="text-center relative z-10 w-full">
         <div id="portalLabel" class="font-['Epilogue'] font-black text-4xl sm:text-5xl md:text-8xl text-white uppercase tracking-widest neon-text">
             </div>
         <div class="h-1.5 sm:h-2 w-24 sm:w-40 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent mx-auto mt-4 sm:mt-6"></div>
       </div>
 
-      <div class="flex flex-col md:flex-row items-center justify-center w-full gap-8 md:gap-24 relative">
+      <div class="flex flex-col md:flex-row items-center justify-center w-full gap-6 md:gap-24 relative">
         
         <button onclick="rotateCube('prev')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_back_ios_new</span></button>
         
@@ -236,9 +237,9 @@
             </div>
         </a>
         
-        <div class="flex md:hidden gap-10 mt-4 relative z-20">
-            <button onclick="rotateCube('prev')" class="nav-arrow w-14 h-14"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button>
-            <button onclick="rotateCube('next')" class="nav-arrow w-14 h-14"><span class="material-symbols-outlined text-2xl">arrow_forward_ios</span></button>
+        <div class="flex md:hidden gap-8 mt-6 relative z-20">
+            <button onclick="rotateCube('prev')" class="nav-arrow w-12 h-12 sm:w-14 sm:h-14"><span class="material-symbols-outlined text-xl sm:text-2xl">arrow_back_ios_new</span></button>
+            <button onclick="rotateCube('next')" class="nav-arrow w-12 h-12 sm:w-14 sm:h-14"><span class="material-symbols-outlined text-xl sm:text-2xl">arrow_forward_ios</span></button>
         </div>
 
         <button onclick="rotateCube('next')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_forward_ios</span></button>
@@ -246,7 +247,7 @@
       </div>
 
       <a href="pages/creative.html" id="cubePortalLinkText" class="master-portal-link relative z-10 text-center">
-          <p class="text-cyber-cyan font-bold tracking-[0.1em] md:tracking-[0.3em] uppercase text-xs sm:text-sm md:text-lg mt-6 group flex items-center justify-center gap-2 sm:gap-3">
+          <p class="text-cyber-cyan font-bold tracking-[0.1em] md:tracking-[0.3em] uppercase text-xs sm:text-sm md:text-lg mt-4 sm:mt-6 group flex items-center justify-center gap-2 sm:gap-3">
             <span class="material-symbols-outlined tap-icon-glow text-2xl sm:text-3xl md:text-4xl" style="font-variation-settings: 'FILL' 1;">back_hand</span>
             <span class="he">לחצו על הקובייה כדי להיכנס</span>
             <span class="en">TAP CUBE TO ENTER PORTAL</span>
@@ -258,21 +259,21 @@
   </main>
 
   <nav class="fixed bottom-4 sm:bottom-6 inset-x-2 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/95 backdrop-blur-3xl border-2 border-white/10 rounded-[2.5rem] p-2 sm:p-3 z-50 overflow-x-auto hide-scrollbar flex items-center gap-6 sm:gap-10 px-6 sm:px-12 shadow-2xl">
-      <a href="index.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-110 sm:scale-125 neon-text uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">home</span><span class="text-[9px] sm:text-[10px] font-black mt-1"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></span></a>
-      <a href="pages/creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">palette</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">יצירה</span><span class="en">CREAT</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span></span></a>
-      <a href="pages/satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">theater_comedy</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span></span></a>
-      <a href="pages/podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">podcasts</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span></span></a>
-      <a href="pages/lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">handshake</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></span></a>
-      <a href="pages/songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">music_note</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span></span></a>
-      <a href="pages/posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">psychology</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span></span></a>
+      <a href="index.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-110 sm:scale-125 neon-text uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">home</span><span class="text-[9px] sm:text-[10px] font-black mt-1"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></span></a>
+      <a href="pages/creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">palette</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">יצירה</span><span class="en">CREAT</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span></span></a>
+      <a href="pages/satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">theater_comedy</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span></span></a>
+      <a href="pages/podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">podcasts</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span></span></a>
+      <a href="pages/lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">handshake</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></span></a>
+      <a href="pages/songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">music_note</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span></span></a>
+      <a href="pages/posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">psychology</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span></span></a>
   </nav>
 
-  <div id="accessibility-widget" class="fixed bottom-[100px] sm:bottom-24 left-4 sm:left-6 z-[200]">
+  <div id="accessibility-widget" class="fixed bottom-[110px] sm:bottom-24 left-4 sm:left-6 z-[200]">
     <button onclick="toggleAccessMenu()" aria-label="תפריט נגישות" class="w-12 h-12 sm:w-14 sm:h-14 bg-cyber-cyan text-black rounded-full shadow-[0_0_20px_rgba(0,242,255,0.5)] flex items-center justify-center hover:scale-110 transition-transform">
       <span class="material-symbols-outlined !text-2xl sm:!text-3xl">accessibility_new</span>
     </button>
 
-    <div id="access-menu" class="hidden absolute bottom-16 left-0 w-56 sm:w-64 glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 border-2 border-cyber-cyan/30 shadow-2xl flex flex-col gap-3 backdrop-blur-3xl bg-black/90">
+    <div id="access-menu" class="hidden absolute bottom-16 left-0 w-56 sm:w-64 glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 border-2 border-cyber-cyan/30 shadow-2xl flex flex-col gap-2 sm:gap-3 backdrop-blur-3xl bg-black/90 max-w-[calc(100vw-2rem)]">
       <h3 class="font-['Epilogue'] font-black text-cyber-cyan text-center border-b border-white/10 pb-2 uppercase tracking-widest text-xs sm:text-sm">
         <span class="he">נגישות</span><span class="en">Accessibility</span><span class="ru">Доступность</span><span class="ar">إمكانية الوصول</span>
       </h3>
@@ -289,7 +290,7 @@
       <button onclick="accessAction('stopAnim', this)" class="access-btn">
         <span class="he">עצירת אנימציות</span><span class="en">Stop Animations</span><span class="ru">Без анимаций</span><span class="ar">إيقاف الحركة</span>
       </button>
-      <button onclick="accessAction('reset', this)" class="mt-2 text-[10px] text-white/40 hover:text-white uppercase tracking-widest transition-colors w-full text-center">
+      <button onclick="accessAction('reset', this)" class="mt-2 text-[9px] sm:text-[10px] text-white/40 hover:text-white uppercase tracking-widest transition-colors w-full text-center">
         <span class="he">איפוס הגדרות</span><span class="en">Reset Settings</span><span class="ru">Сбросить</span><span class="ar">إعادة ضبط</span>
       </button>
     </div>
