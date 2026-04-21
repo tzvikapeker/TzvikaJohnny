@@ -56,13 +56,13 @@
     .cube-stage { perspective: 1500px; width: var(--cube-size); height: var(--cube-size); position: relative; cursor: pointer; }
     .cube { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     
-    /* מנגנון חסימת הלחיצות על הפאות */
+    /* מנגנון חסימת הלחיצות על הפאות (הלינק הוא חיצוני כעת) */
     .cube-face { 
         position: absolute; width: var(--cube-size); height: var(--cube-size); 
         border: 3px solid rgba(0, 242, 255, 0.4); border-radius: 40px; background: #121318; 
         backface-visibility: hidden; overflow: hidden; box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
         transition: border-color 0.3s, box-shadow 0.3s;
-        pointer-events: none;
+        pointer-events: none; /* הפאות עצמן לא חוסמות */
     }
     
     /* אפקט האובר על כל הלינק המרכזי */
@@ -86,14 +86,14 @@
 
     /* אנימציות */
     @keyframes neon-glow {
-      0%, 100% { text-shadow: 0 0 10px rgba(0,242,255,0.6), 0 0 20px rgba(0,242,255,0.2); opacity: 1; }
-      50% { text-shadow: 0 0 20px rgba(0,242,255,1), 0 0 40px rgba(0,242,255,0.6); opacity: 0.8; }
+      0%, 100% { text-shadow: 0 0 15px rgba(0,242,255,0.6), 0 0 30px rgba(0,242,255,0.2); opacity: 1; }
+      50% { text-shadow: 0 0 30px rgba(0,242,255,1), 0 0 50px rgba(0,242,255,0.6); opacity: 0.8; }
     }
     .neon-text { animation: neon-glow 3s infinite ease-in-out; }
 
     @keyframes badge-pulse {
-      0%, 100% { box-shadow: 0 0 10px rgba(235,178,255,0.3); border-color: rgba(235,178,255,0.5); transform: scale(1); }
-      50% { box-shadow: 0 0 30px rgba(235,178,255,0.8); border-color: rgba(235,178,255,1); transform: scale(1.05); }
+      0%, 100% { box-shadow: 0 0 15px rgba(235,178,255,0.3); border-color: rgba(235,178,255,0.5); transform: scale(1); }
+      50% { box-shadow: 0 0 40px rgba(235,178,255,0.8); border-color: rgba(235,178,255,1); transform: scale(1.05); }
     }
     .badge-pulse { animation: badge-pulse 2.5s infinite ease-in-out; }
 
@@ -114,19 +114,23 @@
     .access-btn:hover { background: #00f2ff; color: black; }
     .access-btn.active { background: #ebb2ff; color: black; border-color: #ebb2ff; }
 
+    /* ניגודיות גבוהה - שחור/צהוב עז */
     body.high-contrast { filter: contrast(1.5) grayscale(1); background: #000 !important; }
     body.high-contrast * { color: #ffff00 !important; border-color: #ffff00 !important; }
-    body.high-contrast img, body.high-contrast iframe { filter: none !important; } 
+    body.high-contrast img, body.high-contrast iframe { filter: none !important; } /* שומר על התמונות מקוריות */
     
+    /* טקסט גדול */
     body.large-text { font-size: 1.25rem !important; }
     body.large-text h1 { font-size: 1.2em !important; }
     body.large-text h2 { font-size: 1.2em !important; }
     body.large-text p { font-size: 1.2em !important; line-height: 1.6; }
     
+    /* הדגשת קישורים וכפתורים */
     body.highlight-links a, body.highlight-links button { border: 2px solid #ffff00 !important; text-decoration: underline !important; background: rgba(255, 255, 0, 0.1) !important; color: #fff !important; }
     
+    /* עצירת אנימציות */
     body.no-animations * { animation: none !important; transition: none !important; }
-    body.no-animations .cube { transform: rotateX(-15deg) rotateY(15deg) !important; } 
+    body.no-animations .cube { transform: rotateX(-15deg) rotateY(15deg) !important; } /* מקבע את הקובייה */
   </style>
 </head>
 
@@ -141,7 +145,7 @@
       <button onclick="toggleMenu()" class="text-cyber-cyan p-2 hover:scale-110 transition-transform">
         <span class="material-symbols-outlined text-3xl sm:text-4xl">menu</span>
       </button>
-      <img src="https://drive.google.com/uc?export=view&id=1VO1GyokRkNFjts6vH4Y9WDQJKuTYraWR" alt="Logo" class="w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 border-cyber-cyan/40 shadow-[0_0_15px_rgba(0,242,255,0.4)] object-cover">
+      <img src="https://drive.google.com/thumbnail?id=1VO1GyokRkNFjts6vH4Y9WDQJKuTYraWR&sz=w500" alt="Logo" class="w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 border-cyber-cyan/40 shadow-[0_0_15px_rgba(0,242,255,0.4)] object-cover">
     </div>
     
     <button onclick="toggleLang()" class="px-3 sm:px-5 py-1.5 sm:py-2 rounded-full border-2 border-cyber-cyan text-[10px] sm:text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-black transition-all flex items-center gap-1 sm:gap-2 uppercase">
@@ -180,9 +184,9 @@
     </nav>
   </aside>
 
-  <main class="relative pt-28 sm:pt-32 px-4 sm:px-6 max-w-6xl mx-auto flex flex-col items-center overflow-x-hidden">
+  <main class="relative pt-28 sm:pt-32 px-4 sm:px-6 max-w-6xl mx-auto flex flex-col items-center">
     
-    <h1 class="font-['Epilogue'] font-black text-4xl sm:text-6xl md:text-8xl lg:text-9xl text-white text-center tracking-tighter mb-4 uppercase neon-text px-2">
+    <h1 class="font-['Epilogue'] font-black text-4xl sm:text-6xl md:text-8xl lg:text-9xl text-white text-center tracking-tighter mb-4 uppercase neon-text">
       <span class="he">צביקה ג׳וני פקר</span>
       <span class="en">TZVIKA JOHNNY PEKER</span>
       <span class="ru">ЦВИКА ДЖОННИ ПЕКЕР</span>
@@ -196,14 +200,14 @@
       <span class="ar">مبدع ذكاء اصطناعي متعدد الوسائط</span>
     </h2>
     
-    <p class="text-sm sm:text-lg md:text-2xl text-slate-300 text-center font-light max-w-4xl leading-relaxed mb-10 sm:mb-12 italic opacity-90 px-4">
+    <p class="text-sm sm:text-lg md:text-2xl text-slate-300 text-center font-light max-w-4xl leading-relaxed mb-10 sm:mb-12 italic opacity-90 px-2">
       <span class="he">מותח את גבולות הלקוחות ומשלב בין אמנות, הומור, טכנולוגיה וסאטירה. <br> מוזמנים לצלול פנימה.</span>
       <span class="en">Pushing clients' boundaries and combining art, humor, technology, and satire. <br> Welcome to dive in.</span>
       <span class="ru">Раздвигая границы возможного, сочетая искусство, юмор, технологии и сатиру. <br> Добро пожаловать.</span>
-      <span class="ar">نتجاوز حدود العملاء ونجمع بين الفن والفكاهة والتكنولوجيا والسخرية. <br> مرحبًا بكم في الغوص معنا.</span>
+      <span class="ar">نتجاوز حدود العملاء ونجمع בין الفن والفكاهة والتكنولوجيا والسخرية. <br> مرحبًا بكم في الغوص معنا.</span>
     </p>
 
-    <div class="inline-block px-4 sm:px-8 py-2 sm:py-3 rounded-full bg-white/5 border-2 border-cyber-pink text-cyber-pink backdrop-blur-md mb-16 sm:mb-24 badge-pulse mx-4 text-center">
+    <div class="inline-block px-4 sm:px-8 py-2 sm:py-3 rounded-full bg-white/5 border-2 border-cyber-pink text-cyber-pink backdrop-blur-md mb-16 sm:mb-24 badge-pulse text-center">
       <span class="font-['Space_Grotesk'] text-[10px] sm:text-xs md:text-xl tracking-[0.1em] sm:tracking-[0.3em] uppercase font-black">
         <span class="he">(אתם חיים ב-2026 אני חי ב-2036)</span>
         <span class="en">(YOU LIVE IN 2026, I LIVE IN 2036)</span>
@@ -213,25 +217,25 @@
     </div>
 
     <div class="flex flex-col items-center gap-8 sm:gap-12 w-full pb-10">
-      <div class="text-center relative z-10 w-full px-4">
-        <div id="portalLabel" class="font-['Epilogue'] font-black text-4xl sm:text-5xl md:text-8xl text-white uppercase tracking-widest neon-text break-words">
+      <div class="text-center relative z-10 w-full">
+        <div id="portalLabel" class="font-['Epilogue'] font-black text-4xl sm:text-5xl md:text-8xl text-white uppercase tracking-widest neon-text">
             </div>
         <div class="h-1.5 sm:h-2 w-24 sm:w-40 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent mx-auto mt-4 sm:mt-6"></div>
       </div>
 
-      <div class="flex flex-col md:flex-row items-center justify-center w-full gap-6 md:gap-24 relative max-w-[100vw]">
+      <div class="flex flex-col md:flex-row items-center justify-center w-full gap-6 md:gap-24 relative">
         
         <button onclick="rotateCube('prev')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_back_ios_new</span></button>
         
-        <a href="pages/creative.html" id="cubePortalLink" class="master-portal-link relative z-10 block">
+        <a href="pages/creative.html" id="cubePortalLink" class="master-portal-link relative z-10">
             <div class="cube-stage group">
               <div class="cube" id="mainCube">
-                <div class="cube-face face-front"><img src="https://drive.google.com/uc?export=view&id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw" alt="Creative" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></div>
-                <div class="cube-face face-right"><img src="https://drive.google.com/uc?export=view&id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon" alt="Podcasts" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></div>
-                <div class="cube-face face-back"><img src="https://drive.google.com/uc?export=view&id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so" alt="Satire" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></div>
-                <div class="cube-face face-left"><img src="https://drive.google.com/uc?export=view&id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J" alt="Clients" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></div>
-                <div class="cube-face face-top"><img src="https://drive.google.com/uc?export=view&id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q" alt="Post Trauma" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></div>
-                <div class="cube-face face-bottom"><img src="https://drive.google.com/uc?export=view&id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l" alt="Songs" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                <div class="cube-face face-front"><img src="https://drive.google.com/thumbnail?id=1AyV_Pjm3D99OPbao7tpf-mfH4CDiuPkw&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" alt="Creative"></div>
+                <div class="cube-face face-right"><img src="https://drive.google.com/thumbnail?id=1hhSBF6ZZvMdjyjKDKcym8TGjCxoEjOon&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" alt="Podcasts"></div>
+                <div class="cube-face face-back"><img src="https://drive.google.com/thumbnail?id=1FyXG8Y5Vr3hWtEz5uixbEtqrQijU57so&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" alt="Satire"></div>
+                <div class="cube-face face-left"><img src="https://drive.google.com/thumbnail?id=1ouIn7S288MgmC_v4eOUQ-t4wwQtzig6J&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" alt="Clients"></div>
+                <div class="cube-face face-top"><img src="https://drive.google.com/thumbnail?id=1WuJ0R3vPdkP7vcMKqF2opPPlC7xMQ35Q&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" alt="Post Trauma"></div>
+                <div class="cube-face face-bottom"><img src="https://drive.google.com/thumbnail?id=1Bx08pEL47s6mATgeDt2EP-epJq5fas5l&sz=w1000" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" alt="Songs"></div>
               </div>
             </div>
         </a>
@@ -258,13 +262,13 @@
   </main>
 
   <nav class="fixed bottom-4 sm:bottom-6 inset-x-2 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/95 backdrop-blur-3xl border-2 border-white/10 rounded-[2.5rem] p-2 sm:p-3 z-50 overflow-x-auto hide-scrollbar flex items-center gap-6 sm:gap-10 px-6 sm:px-12 shadow-2xl">
-      <a href="index.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-110 sm:scale-125 neon-text uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">home</span><span class="text-[9px] sm:text-[10px] font-black mt-1"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></span></a>
-      <a href="pages/creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">palette</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">יצירה</span><span class="en">CREAT</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span></span></a>
-      <a href="pages/satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">theater_comedy</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span></span></a>
-      <a href="pages/podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">podcasts</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span></span></a>
-      <a href="pages/lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">handshake</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></span></a>
-      <a href="pages/songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">music_note</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span></span></a>
-      <a href="pages/posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">psychology</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span></span></a>
+      <a href="index.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-110 sm:scale-125 neon-text uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">home</span><span class="text-[9px] sm:text-[10px] font-black mt-1"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></span></a>
+      <a href="pages/creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">palette</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">יצירה</span><span class="en">CREAT</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span></span></a>
+      <a href="pages/satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">theater_comedy</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span></span></a>
+      <a href="pages/podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">podcasts</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span></span></a>
+      <a href="pages/lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">handshake</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></span></a>
+      <a href="pages/songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">music_note</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span></span></a>
+      <a href="pages/posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl sm:text-4xl">psychology</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span></span></a>
   </nav>
 
   <div id="accessibility-widget" class="fixed bottom-[110px] sm:bottom-24 left-4 sm:left-6 z-[200]">
@@ -318,6 +322,7 @@
       btn.classList.toggle('active');
     }
 
+    // סגירת תפריט בלחיצה מחוץ אליו
     document.addEventListener('click', function(event) {
       const widget = document.getElementById('accessibility-widget');
       const menu = document.getElementById('access-menu');
@@ -326,7 +331,7 @@
       }
     });
 
-    // === פונקציות קובייה ושפות ===
+    // === פונקציות קובייה ושפות (כפי שהיו) ===
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
     const cube = document.getElementById('mainCube');
