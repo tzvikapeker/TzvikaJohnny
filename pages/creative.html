@@ -125,7 +125,7 @@
     .access-btn:hover { background: #00f2ff; color: black; }
     .access-btn.active { background: #ebb2ff; color: black; border-color: #ebb2ff; }
 
-    /* ניגודיות גבוהה - שחור/צהוב עז */
+    /* ניגודיות גבוהה */
     body.high-contrast { filter: contrast(1.5) grayscale(1); background: #000 !important; }
     body.high-contrast * { color: #ffff00 !important; border-color: #ffff00 !important; }
     body.high-contrast img, body.high-contrast iframe { filter: none !important; } 
@@ -136,7 +136,7 @@
     body.large-text h2 { font-size: 1.2em !important; }
     body.large-text p { font-size: 1.2em !important; line-height: 1.6; }
     
-    /* הדגשת קישורים וכפתורים */
+    /* הדגשת קישורים */
     body.highlight-links a, body.highlight-links button { border: 2px solid #ffff00 !important; text-decoration: underline !important; background: rgba(255, 255, 0, 0.1) !important; color: #fff !important; }
     
     /* עצירת אנימציות */
@@ -171,13 +171,13 @@
     <button onclick="toggleMenu()" class="self-start text-white p-2 mb-12 hover:rotate-90 transition-transform"><span class="material-symbols-outlined text-4xl">close</span></button>
     <nav class="flex flex-col gap-8 text-white font-['Epilogue'] uppercase">
       <a href="../index.html" class="text-2xl hover:text-cyber-cyan">
-        <span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span>
+        <span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الרئيسية</span>
       </a>
       <a href="creative.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4">
         <span class="he">יצירה</span><span class="en">CREATIVE</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span>
       </a>
       <a href="satire.html" class="text-2xl hover:text-cyber-cyan">
-        <span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span>
+        <span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">סחרייה</span>
       </a>
       <a href="podcasts.html" class="text-2xl hover:text-cyber-cyan">
         <span class="he">פודקאסטים</span><span class="en">PODCASTS</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span>
@@ -189,7 +189,7 @@
         <span class="he">פוסטראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span>
       </a>
       <a href="songs.html" class="text-2xl hover:text-cyber-cyan">
-        <span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span>
+        <span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أגاني</span>
       </a>
     </nav>
   </aside>
@@ -205,25 +205,25 @@
       </div>
       
       <h1 class="font-['Epilogue'] font-black text-6xl md:text-8xl text-white tracking-tighter uppercase neon-text">
-        <span class="he">קריאייטיב</span><span class="en">MY CREATIVE</span><span class="ru">МОЙ КРЕАТИВ</span><span class="ar">إبداعي</span>
+        <span class="he">קריאייטיב</span><span class="en">MY CREATIVE</span><span class="ru">МОЙ КРЕАТИВ</span><span class="ar">إبداעי</span>
       </h1>
       
       <p class="text-slate-300 text-xl md:text-2xl font-light max-w-2xl mx-auto italic opacity-90">
         <span class="he">לחצו על תיקייה כדי לצלול לתוך העבודות שלי.</span>
         <span class="en">Click a folder to dive into my works.</span>
         <span class="ru">Нажмите на папку, чтобы погрузиться в мои работы.</span>
-        <span class="ar">اضغط على المجلد للغوص في أعمالي.</span>
+        <span class="ar">اضغط על המجلد للغوص في أعمالي.</span>
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 w-full max-w-5xl" id="folderGrid"></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 w-full max-w-6xl" id="folderGrid"></div>
 
     <div id="folderContentView" class="hidden flex-col w-full max-w-6xl gap-10">
       
       <div class="flex flex-col sm:flex-row items-center justify-between gap-6 glass-card p-6 rounded-3xl border-white/10">
         <button onclick="showFolders()" class="group flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 hover:bg-cyber-cyan/10 border-2 border-white/20 hover:border-cyber-cyan transition-all font-['Space_Grotesk'] text-sm md:text-base tracking-[0.1em] font-bold text-white uppercase">
           <span class="material-symbols-outlined text-2xl group-hover:-translate-x-2 transition-transform">arrow_back</span>
-          <span class="he">חזרה לתיקיות</span><span class="en">BACK TO FOLDERS</span><span class="ru">НАЗАД К ПАПКАМ</span><span class="ar">العودة للمجلدات</span>
+          <span class="he">חזרה לתיקיות</span><span class="en">BACK TO FOLDERS</span><span class="ru">НАЗАД К ПАПКАМ</span><span class="ar">العودة למجلدות</span>
         </button>
         <h2 id="currentFolderName" class="font-['Epilogue'] font-black text-3xl md:text-4xl text-cyber-cyan uppercase m-0 drop-shadow-[0_0_10px_rgba(0,242,255,0.6)]"></h2>
       </div>
@@ -236,7 +236,7 @@
           
           <div class="text-center w-full">
             <div class="inline-block bg-cyber-cyan/10 border border-cyber-cyan/30 px-5 py-1 rounded-full text-cyber-cyan font-['Space_Grotesk'] text-sm tracking-[0.3em] font-bold uppercase mb-2">
-              <span class="he">פריט</span><span class="en">ITEM</span><span class="ru">ЭЛЕМЕНТ</span><span class="ar">عنصر</span> 
+              <span class="he">פריט</span><span class="en">ITEM</span><span class="ru">ЭЛЕМЕНТ</span><span class="ar">ענצר</span> 
               <span id="mediaCounter">1 / X</span>
             </div>
           </div>
@@ -259,23 +259,23 @@
 
   </main>
 
-  <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/90 backdrop-blur-3xl border-2 border-white/10 rounded-[2.5rem] p-3 z-50 overflow-x-auto hide-scrollbar flex items-center gap-10 px-12 shadow-2xl">
-      <a href="../index.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">home</span><span class="text-[10px] font-black mt-1"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></span></a>
-      <a href="creative.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-125 neon-text uppercase"><span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">palette</span><span class="text-[10px] mt-1"><span class="he">יצירה</span><span class="en">CREAT</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span></span></a>
-      <a href="satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">theater_comedy</span><span class="text-[10px] mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span></span></a>
-      <a href="podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">podcasts</span><span class="text-[10px] mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span></span></a>
-      <a href="lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">handshake</span><span class="text-[10px] mt-1"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></span></a>
-      <a href="songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">music_note</span><span class="text-[10px] mt-1"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span></span></a>
-      <a href="posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">psychology</span><span class="text-[10px] mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span></span></a>
+  <nav class="fixed bottom-4 sm:bottom-6 inset-x-2 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/90 backdrop-blur-3xl border-2 border-white/10 rounded-[2.5rem] p-2 sm:p-3 z-50 overflow-x-auto hide-scrollbar flex items-center gap-6 sm:gap-10 px-6 sm:px-12 shadow-2xl">
+      <a href="../index.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">home</span><span class="text-[9px] sm:text-[10px] font-black mt-1"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></span></a>
+      <a href="creative.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-110 sm:scale-125 neon-text uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl" style="font-variation-settings: 'FILL' 1;">palette</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">יצירה</span><span class="en">CREAT</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداע</span></span></a>
+      <a href="satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">theater_comedy</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">סחרייה</span></span></a>
+      <a href="podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">podcasts</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودכאסט</span></span></a>
+      <a href="lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">handshake</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></span></a>
+      <a href="songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">music_note</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span></span></a>
+      <a href="posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl">psychology</span><span class="text-[9px] sm:text-[10px] mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span></span></a>
   </nav>
 
-  <div id="accessibility-widget" class="fixed bottom-24 left-6 z-[200]">
-    <button onclick="toggleAccessMenu()" aria-label="תפריט נגישות" class="w-14 h-14 bg-cyber-cyan text-black rounded-full shadow-[0_0_20px_rgba(0,242,255,0.5)] flex items-center justify-center hover:scale-110 transition-transform">
-      <span class="material-symbols-outlined !text-3xl">accessibility_new</span>
+  <div id="accessibility-widget" class="fixed bottom-[110px] sm:bottom-24 left-4 sm:left-6 z-[200]">
+    <button onclick="toggleAccessMenu()" aria-label="תפריט נגישות" class="w-12 h-12 sm:w-14 sm:h-14 bg-cyber-cyan text-black rounded-full shadow-[0_0_20px_rgba(0,242,255,0.5)] flex items-center justify-center hover:scale-110 transition-transform">
+      <span class="material-symbols-outlined !text-2xl sm:!text-3xl">accessibility_new</span>
     </button>
 
-    <div id="access-menu" class="hidden absolute bottom-16 left-0 w-64 glass-card rounded-3xl p-5 border-2 border-cyber-cyan/30 shadow-2xl flex flex-col gap-3 backdrop-blur-3xl bg-black/90">
-      <h3 class="font-['Epilogue'] font-black text-cyber-cyan text-center border-b border-white/10 pb-2 uppercase tracking-widest text-sm">
+    <div id="access-menu" class="hidden absolute bottom-16 left-0 w-56 sm:w-64 glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 border-2 border-cyber-cyan/30 shadow-2xl flex flex-col gap-2 sm:gap-3 backdrop-blur-3xl bg-black/90 max-w-[calc(100vw-2rem)]">
+      <h3 class="font-['Epilogue'] font-black text-cyber-cyan text-center border-b border-white/10 pb-2 uppercase tracking-widest text-xs sm:text-sm">
         <span class="he">נגישות</span><span class="en">Accessibility</span><span class="ru">Доступность</span><span class="ar">إمكانية الوصول</span>
       </h3>
       
@@ -283,16 +283,16 @@
         <span class="he">ניגודיות גבוהה</span><span class="en">High Contrast</span><span class="ru">Контраст</span><span class="ar">تباين عالٍ</span>
       </button>
       <button onclick="accessAction('textSize', this)" class="access-btn">
-        <span class="he">טקסט גדול</span><span class="en">Large Text</span><span class="ru">Крупный текст</span><span class="ar">نص كبير</span>
+        <span class="he">טקסט גדול</span><span class="en">Large Text</span><span class="ru">Крупный текст</span><span class="ar">נץ גדול</span>
       </button>
       <button onclick="accessAction('links', this)" class="access-btn">
-        <span class="he">הדגשת קישורים</span><span class="en">Highlight Links</span><span class="ru">Выделить ссылки</span><span class="ar">إبراז الروابط</span>
+        <span class="he">הדגשת קישורים</span><span class="en">Highlight Links</span><span class="ru">Выделить ссылки</span><span class="ar">إبراז הראובט</span>
       </button>
       <button onclick="accessAction('stopAnim', this)" class="access-btn">
-        <span class="he">עצירת אנימציות</span><span class="en">Stop Animations</span><span class="ru">Без анимаций</span><span class="ar">إيقاف الحركة</span>
+        <span class="he">עצירת אנימציות</span><span class="en">Stop Animations</span><span class="ru">Без анимаций</span><span class="ar">إيقאף החרכה</span>
       </button>
-      <button onclick="accessAction('reset', this)" class="mt-2 text-[10px] text-white/40 hover:text-white uppercase tracking-widest transition-colors w-full text-center">
-        <span class="he">איפוס הגדרות</span><span class="en">Reset Settings</span><span class="ru">Сбросить</span><span class="ar">إعادة ضبط</span>
+      <button onclick="accessAction('reset', this)" class="mt-2 text-[9px] sm:text-[10px] text-white/40 hover:text-white uppercase tracking-widest transition-colors w-full text-center">
+        <span class="he">איפוס הגדרות</span><span class="en">Reset Settings</span><span class="ru">Сбросить</span><span class="ar">إעדה ضبط</span>
       </button>
     </div>
   </div>
@@ -332,10 +332,11 @@
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
     const creativeFolders = [
-      { id: "reels", nameHe: "REELS", nameEn: "REELS", nameRu: "РИЛС", nameAr: "ريلز", items: ["1pJ936-J1w-5xP0hgSrD72dnAldFTlrnk", "1OomQoJi0j23dkSm6L2VDf4ZRKF54EYxR", "1EwZ-4b60wNygFCRk-KzJnr7LGIHdzBP3", "16lemEvsbSlj4fys_vPYxb-b7auWaIGJP", "13nCAZ0LjbJ6a32p8ninsxLak6dKXHPjk", "1da3Cy63y2nJsKPpdOSrphZ7um8NlRdVd", "1p6lJ9EFLlCkwAEjGDRIIzvBq972D2wD-"], type: "video" },
-      { id: "ads", nameHe: "פרסומות", nameEn: "ADS", nameRu: "РЕКЛАМА", nameAr: "إعلانات", items: ["1Y3F4BSj15Z3QCf3s5Rdzw7C0JyJYuq9V", "1lJXcYYAer5ZJ2vmz36aBKCDx8ZfMS_lr", "1w4XchLZ6H9AhkMu9ybWikdBq9zGPyWSd", "1CR-Q_QB58GcG4SECUdG5MAxMl-HUY7Gi", "1AE7UO3etTnlYBFG_c1UVKbZRSqwzxXsJ", "1A2zsQmzFStQp2RTNI4Y3oUHN1W4XqrtT"], type: "video" },
-      { id: "heart", nameHe: "מהלב", nameEn: "FROM HEART", nameRu: "ОТ ДУШИ", nameAr: "من القلب", items: ["1R4J6ReW90VVtaCUd221ozzk8q9PTkMxR", "150Fuq4Iljfo_3S2595lgYHChR86j9VrI", "14-Ul7MhJvgMVdqSDYkZqrt59qO51ierw", "14BUAoBy1A4WF388Q_0hjq6lv3B-lvGMc", "1otk559-02FywZLwV8TEown-zWpElm4ai"], type: "video" },
-      { id: "photos", nameHe: "תמונות", nameEn: "PHOTOS", nameRu: "ФОТОГРАФИИ", nameAr: "صور", items: ["185Aus2D_CzSEebIPsWmQ9z31MbHyDwNv", "1bB6URSsuUk5xVWt1iK5MjCATLKn0fbkb", "1W30xp_Y1ahtG4cQ_vZjK_P4hzf--7I6P"], type: "image" }
+      { id: "reels", nameHe: "REELS", nameEn: "REELS", nameRu: "РИЛС", nameAr: "ريلز", items: ["1cpMxev3DopYGq7KoU7XJSKR4MWDkvfct", "1-zRiOUyvbF3WLey6uXxux5Dbp10THsT5", "13O1VD76yYpOuuTek7E8MFtRu9y_jOnjv", "1o33c4VmevUe54L_q2dlQe03bHJRFMxM9", "1B6xcFuU8z0qHkxx3cJPVekPVUx2Ule_o", "1p4jvZebNT0pQbscdPcYsV_xlWaVyDVLB", "1ky2izx-nP9ooK3daiBzDUQa3IdOTDwpY", "1uBS-YbzkA_zPzfmYYN-KmpkfBEG-TE7z", "1gOvq6LrTesNd52nBHRWthdggr9BTYZ5Q", "17FLvaL4mcA0zGBiSOGcmttbCUvYfYAEh", "1u_VlrCDiYvqjMd5-94NFyWSBAUIl74DM", "12JJqrvZDkiRJn1gsm5eVmDyZE42nmVJL"], type: "video" },
+      { id: "ads", nameHe: "פרסומות", nameEn: "ADS", nameRu: "РЕКЛАМА", nameAr: "إعلانات", items: ["1s6U9ex8_e4PJpsCg4JwbsTOa2GclfF--", "1ysVwtZ45Zeg6LPTWtaHS0JEak4bcBLvf", "1-gGG1KczNZJSe7YnynBIO-wKUa2OJMmm", "1aT3ZbjRfAr3bkcc1Nvn75oD5zI9LORvl", "11vACYrAEckTv6nrQHxtNwwT_Vge6BTcg", "1lipP99zz3QLuuRj6YBLPL51EekvViFZr"], type: "video" },
+      { id: "heart", nameHe: "מהלב", nameEn: "FROM HEART", nameRu: "ОТ ДУШИ", nameAr: "من القلب", items: ["1Z932kFqEbAEpuKYBSDO1nRr5PXWP1Ha8", "1-N8JLz05b309ak4J3KZwL88RYuxajEFt", "1qNzEH6NH3U_rVxUklszPOa6xlnTuu95y", "1xQekRVXkOe9jOCGj98ERqNpkZDmj83ZT", "1ghD38lvYJtomLMfMaVktHtRCTIaY8Xw9", "1a8IPcPvqelsIXUhw1DRZb4_z1LK1j5ZA"], type: "video" },
+      { id: "satire", nameHe: "סאטירה", nameEn: "SATIRE", nameRu: "САТИРА", nameAr: "סחרייה", items: ["1FtPi26yyuodpWMSMVVl7TY_oWNb_zoH8", "1ETWw7P3nIyU1iHFidj73qUrie_F-eEBL", "1uopf3TCKGOhNAUZiMc_27V0k9KEOfVJG", "1delXXclcyG_svChe_GL0sy6yT5jjFL7j", "1GnkS-bbr9OExp-6RHTBL7vBDezvTflWC", "148eaPKdRUx94TpXGCf_g65-b8ROiWqFf", "1ragwsoiuz7YpPebmw8rTQ3_FYEmaAo8q"], type: "video" },
+      { id: "photos", nameHe: "תמונות", nameEn: "PHOTOS", nameRu: "ФОТОГРАФИИ", nameAr: "صور", items: ["1t2vlL9M7pwy6mOaj_WWmSUQ-Fa8pXhH_", "1_3mIqcPvHxEmlczw6IRIVXwzzbmcgni5", "1J2yiGEe3RpHPxuS6PSENQU8Dq6_cEyYF", "1QXYp34o4RWy6tiGimnrLLka9zMBSNpam", "1VT1yzoE6koqIlo6w3cFgfMC-I-tD1X9b", "1pHwnIVvbeom-3Qu6jMoJS9_zvI7xDACH"], type: "image" }
     ];
 
     let currentFolderItems = [];
