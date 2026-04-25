@@ -33,7 +33,6 @@
   </script>
 
   <style>
-    /* לוגיקת 4 שפות הרמטית */
     html:not([data-lang="he"]) .he { display: none !important; }
     html:not([data-lang="en"]) .en { display: none !important; }
     html:not([data-lang="ru"]) .ru { display: none !important; }
@@ -43,7 +42,6 @@
     body { background-color: #050608; color: #f8f8ff; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
     .material-symbols-outlined { font-size: 32px; display: inline-block; line-height: 1; vertical-align: middle; }
     
-    /* אפקטים מזוהים מ-2036 */
     .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); }
     
     @keyframes neon-glow {
@@ -58,7 +56,6 @@
     }
     .badge-pulse { animation: badge-pulse 2.5s infinite ease-in-out; }
 
-    /* עיצוב תיקיות עתידני */
     .folder-card:hover {
       box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
       border-color: rgba(0, 242, 255, 0.6);
@@ -72,73 +69,39 @@
       border-radius: 6px 16px 16px 16px;
       position: relative;
       box-shadow: 0 10px 25px rgba(0, 242, 255, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
     .folder-icon-modern::before {
-      content: "";
-      position: absolute;
-      top: -14px;
-      left: 0;
-      width: 45px;
-      height: 14px;
-      background: linear-gradient(to right, #00f2ff, #0284c7);
-      border-radius: 8px 8px 0 0;
+      content: ""; position: absolute; top: -14px; left: 0; width: 45px; height: 14px;
+      background: linear-gradient(to right, #00f2ff, #0284c7); border-radius: 8px 8px 0 0;
     }
 
-    /* ניווט הטיקטוק / קובייה */
     .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; z-index: 50; }
     .nav-arrow:hover { background: #00f2ff; color: black; transform: scale(1.2); box-shadow: 0 0 40px #00f2ff; }
 
     .tiktok-container { perspective: 1500px; }
     .tiktok-player {
-      position: relative; 
-      width: 100%; 
-      aspect-ratio: 9 / 16; 
-      background: #000; 
-      border-radius: 35px; 
-      overflow: hidden;
-      border: 3px solid rgba(0, 242, 255, 0.5);
-      box-shadow: 0 0 40px rgba(0, 242, 255, 0.2);
-      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
-      transform-style: preserve-3d;
+      position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 35px; overflow: hidden;
+      border: 3px solid rgba(0, 242, 255, 0.5); box-shadow: 0 0 40px rgba(0, 242, 255, 0.2);
+      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s; transform-style: preserve-3d;
     }
     .tiktok-player iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 32px; }
-    .tiktok-player img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 32px; object-fit: contain; } /* מונע חיתוך תמונות */
+    .tiktok-player img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 32px; object-fit: contain; }
 
     .swipe-next { animation: swipeNextAnim 0.6s forwards; }
     .swipe-prev { animation: swipePrevAnim 0.6s forwards; }
-
-    @keyframes swipeNextAnim {
-      0% { transform: rotateY(90deg) scale(0.8); opacity: 0; }
-      100% { transform: rotateY(0deg) scale(1); opacity: 1; }
-    }
-    @keyframes swipePrevAnim {
-      0% { transform: rotateY(-90deg) scale(0.8); opacity: 0; }
-      100% { transform: rotateY(0deg) scale(1); opacity: 1; }
-    }
+    @keyframes swipeNextAnim { 0% { transform: rotateY(90deg) scale(0.8); opacity: 0; } 100% { transform: rotateY(0deg) scale(1); opacity: 1; } }
+    @keyframes swipePrevAnim { 0% { transform: rotateY(-90deg) scale(0.8); opacity: 0; } 100% { transform: rotateY(0deg) scale(1); opacity: 1; } }
 
     .hide-scrollbar::-webkit-scrollbar { display: none; }
     .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* =========================================
-       הגדרות נגישות (Accessibility CSS)
-       ========================================= */
     .access-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 10px; border-radius: 12px; color: white; font-size: 12px; font-weight: bold; text-transform: uppercase; transition: all 0.3s; text-align: center; width: 100%; display: block;}
     .access-btn:hover { background: #00f2ff; color: black; }
     .access-btn.active { background: #ebb2ff; color: black; border-color: #ebb2ff; }
-
     body.high-contrast { filter: contrast(1.5) grayscale(1); background: #000 !important; }
     body.high-contrast * { color: #ffff00 !important; border-color: #ffff00 !important; }
-    body.high-contrast img, body.high-contrast iframe { filter: none !important; } 
-    
     body.large-text { font-size: 1.25rem !important; }
-    body.large-text h1, body.large-text h2, body.large-text p { font-size: 1.2em !important; line-height: 1.6; }
-    
-    body.highlight-links a, body.highlight-links button { border: 2px solid #ffff00 !important; text-decoration: underline !important; background: rgba(255, 255, 0, 0.1) !important; color: #fff !important; }
-    
-    body.no-animations * { animation: none !important; transition: none !important; }
   </style>
 </head>
 
@@ -155,299 +118,180 @@
       </button>
       <img src="../AIRetouch_20260208_120431073.jpg" alt="Logo" class="w-14 h-14 rounded-full border-2 border-cyber-cyan/40 shadow-[0_0_15px_rgba(0,242,255,0.3)] object-cover" onerror="this.src='https://ui-avatars.com/api/?name=JP&background=00f2ff&color=000&rounded=true'">
     </div>
-    
     <button onclick="toggleLang()" class="px-5 py-2 rounded-full border-2 border-cyber-cyan text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-black transition-all flex items-center gap-2 uppercase">
       <span class="material-symbols-outlined text-lg">language</span>
-      <span class="he">עברית</span>
-      <span class="en">ENGLISH</span>
-      <span class="ru">РУССКИЙ</span>
-      <span class="ar">العربية</span>
+      <span class="he">עברית</span><span class="en">ENGLISH</span><span class="ru">РУССКИЙ</span><span class="ar">العربية</span>
     </button>
   </header>
 
   <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] bg-zinc-950/98 backdrop-blur-3xl translate-x-full transition-transform duration-500 p-10 flex flex-col border-l border-white/10">
     <button onclick="toggleMenu()" class="self-start text-white p-2 mb-12 hover:rotate-90 transition-transform"><span class="material-symbols-outlined text-4xl">close</span></button>
     <nav class="flex flex-col gap-8 text-white font-['Epilogue'] uppercase">
-      <a href="../index.html" class="text-2xl hover:text-cyber-cyan transition-all">
-        <span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span>
-      </a>
-      <a href="creative.html" class="text-2xl hover:text-cyber-cyan transition-all">
-        <span class="he">יצירה</span><span class="en">CREATIVE</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span>
-      </a>
-      <a href="satire.html" class="text-2xl hover:text-cyber-cyan transition-all">
-        <span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سחרייה</span>
-      </a>
-      <a href="podcasts.html" class="text-2xl hover:text-cyber-cyan transition-all">
-        <span class="he">פודקאסטים</span><span class="en">PODCASTS</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكאסט</span>
-      </a>
-      <a href="lessons.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4 transition-all">
-        <span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span>
-      </a>
-      <a href="posttrauma.html" class="text-2xl hover:text-cyber-cyan transition-all">
-        <span class="he">פוסטראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">צדמה</span>
-      </a>
-      <a href="songs.html" class="text-2xl hover:text-cyber-cyan transition-all">
-        <span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span>
-      </a>
+      <a href="../index.html" class="text-2xl hover:text-cyber-cyan">ראשי</a>
+      <a href="creative.html" class="text-2xl hover:text-cyber-cyan">יצירה</a>
+      <a href="satire.html" class="text-2xl hover:text-cyber-cyan">סאטירה</a>
+      <a href="podcasts.html" class="text-2xl hover:text-cyber-cyan">פודקאסטים</a>
+      <a href="lessons.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4">לקוחות</a>
+      <a href="posttrauma.html" class="text-2xl hover:text-cyber-cyan">פוסטראומה</a>
+      <a href="songs.html" class="text-2xl hover:text-cyber-cyan">שירים</a>
     </nav>
   </aside>
 
   <main class="relative pt-36 px-6 max-w-7xl mx-auto flex flex-col items-center min-h-[80vh]">
-    
     <div id="mainHeader" class="text-center space-y-6 z-10 w-full mb-16 max-w-4xl">
       <div class="inline-block px-8 py-2 rounded-full bg-white/5 border-2 border-cyber-pink text-cyber-pink backdrop-blur-md badge-pulse">
         <span class="font-['Space_Grotesk'] text-sm md:text-base tracking-[0.2em] font-black uppercase flex items-center justify-center gap-3">
           <span class="material-symbols-outlined text-xl">handshake</span>
-          <span class="he">פרויקטים ולקוחות</span><span class="en">CLIENTS & PROJECTS</span><span class="ru">ПРОЕКТЫ И КЛИЕНТЫ</span><span class="ar">مشاريع ועמلاء</span>
+          <span class="he">פרויקטים ולקוחות</span><span class="en">CLIENTS & PROJECTS</span><span class="ru">ПРОЕКТЫ</span><span class="ar">مشاريع</span>
         </span>
       </div>
-      
-      <h1 class="font-['Epilogue'] font-black text-6xl md:text-8xl text-white tracking-tighter uppercase neon-text">
-        <span class="he">מותחים גבולות</span><span class="en">PUSHING BOUNDARIES</span><span class="ru">РАЗДВИГАЯ ГРАНИЦЫ</span><span class="ar">תג'אוז אלחודוד</span>
-      </h1>
-      
-      <p class="text-slate-300 text-xl md:text-2xl font-light max-w-3xl mx-auto italic opacity-90 leading-relaxed">
-        <span class="he">לחצו על תיקיית לקוח לצפייה בפרויקטים העדכניים.</span>
-        <span class="en">Click a client folder to view updated projects.</span>
-        <span class="ru">Нажмите на папку клиента для просмотра проектов.</span>
-        <span class="ar">אד'גט עלא מג'לד אלעמיל לעארד' אלמשאריע אלמוחדית'ה.</span>
-      </p>
+      <h1 class="font-['Epilogue'] font-black text-6xl md:text-8xl text-white tracking-tighter uppercase neon-text">מותחים גבולות</h1>
+      <p class="text-slate-300 text-xl md:text-2xl font-light max-w-3xl mx-auto italic opacity-90 leading-relaxed">לחצו על תיקיית לקוח לצפייה בפרויקטים העדכניים.</p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full max-w-6xl" id="folderGrid"></div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full max-w-6xl" id="folderGrid"></div>
 
     <div id="folderContentView" class="hidden flex-col w-full max-w-6xl gap-10">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-6 glass-card p-6 rounded-3xl border-white/10">
         <button onclick="showFolders()" class="group flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 hover:bg-cyber-cyan/10 border-2 border-white/20 hover:border-cyber-cyan transition-all font-['Space_Grotesk'] text-sm md:text-base tracking-[0.1em] font-bold text-white uppercase">
           <span class="material-symbols-outlined text-2xl group-hover:-translate-x-2 transition-transform">arrow_back</span>
-          <span class="he">חזרה ללקוחות</span><span class="en">BACK TO CLIENTS</span><span class="ru">НАЗАД К КЛИЕНТАМ</span><span class="ar">אלעודה ללעמלאא</span>
+          <span class="he">חזרה</span><span class="en">BACK</span>
         </button>
         <h2 id="currentFolderName" class="font-['Epilogue'] font-black text-3xl md:text-4xl text-cyber-cyan uppercase m-0 drop-shadow-[0_0_10px_rgba(0,242,255,0.6)]"></h2>
       </div>
-      
       <div class="flex items-center justify-center gap-4 md:gap-16 w-full max-w-6xl mx-auto mb-10 tiktok-container">
-        
         <button onclick="changeMedia('prev')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
-
-        <div class="flex flex-col items-center gap-6 w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] lg:max-w-[460px]">
-          
+        <div class="flex flex-col items-center gap-6 w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px]">
           <div class="text-center w-full">
             <div class="inline-block bg-cyber-cyan/10 border border-cyber-cyan/30 px-5 py-1 rounded-full text-cyber-cyan font-['Space_Grotesk'] text-sm tracking-[0.3em] font-bold uppercase mb-2">
-              <span class="he">פריט</span><span class="en">ITEM</span><span class="ru">ЭЛЕМЕНТ</span><span class="ar">ענצר</span>  <span id="mediaCounter">1 / X</span>
+              <span class="he">פריט</span><span class="en">ITEM</span> <span id="mediaCounter">1 / X</span>
             </div>
           </div>
-
-          <div id="playerWrapper" class="tiktok-player w-full">
-             <div id="mediaBox" class="w-full h-full"></div>
-          </div>
-
+          <div id="playerWrapper" class="tiktok-player w-full"><div id="mediaBox" class="w-full h-full"></div></div>
           <div class="flex md:hidden gap-8 mt-4">
-              <button onclick="changeMedia('prev')" class="nav-arrow w-14 h-14"><span class="material-symbols-outlined text-2xl">arrow_forward_ios</span></button>
-              <button onclick="changeMedia('next')" class="nav-arrow w-14 h-14"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button>
+            <button onclick="changeMedia('prev')" class="nav-arrow w-14 h-14"><span class="material-symbols-outlined text-2xl">arrow_forward_ios</span></button>
+            <button onclick="changeMedia('next')" class="nav-arrow w-14 h-14"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button>
           </div>
-
         </div>
-
         <button onclick="changeMedia('next')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined">arrow_back_ios_new</span></button>
-        
       </div>
     </div>
-
   </main>
 
   <nav class="fixed bottom-4 sm:bottom-6 inset-x-2 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/90 backdrop-blur-3xl border-2 border-white/10 rounded-[2.5rem] p-2 sm:p-3 z-50 overflow-x-auto hide-scrollbar flex items-center gap-4 sm:gap-10 px-4 sm:px-12 shadow-2xl">
-      <a href="../index.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl">home</span><span class="text-[10px] font-black mt-1"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">אלראיסיה</span></span></a>
-      <a href="creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl">palette</span><span class="text-[10px] mt-1"><span class="he">יצירה</span><span class="en">CREAT</span><span class="ru">КРЕАТИВ</span><span class="ar">إבדאע</span></span></a>
-      <a href="satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl">theater_comedy</span><span class="text-[10px] mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">סח'ריה</span></span></a>
-      <a href="podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl">podcasts</span><span class="text-[10px] mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span><span class="ru">ПОДКАСТЫ</span><span class="ar">בודכאסט</span></span></a>
-      <a href="lessons.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-110 sm:scale-125 neon-text uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl" style="font-variation-settings: 'FILL' 1;">handshake</span><span class="text-[10px] mt-1"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">עמלאא</span></span></a>
-      <a href="songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl">music_note</span><span class="text-[10px] mt-1"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">אע'אני</span></span></a>
-      <a href="posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl">psychology</span><span class="text-[10px] mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">צדמה</span></span></a>
+      <a href="../index.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl">home</span><span class="text-[10px] font-black mt-1">ראשי</span></a>
+      <a href="creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl">palette</span><span class="text-[10px] font-black mt-1">יצירה</span></a>
+      <a href="satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl">theater_comedy</span><span class="text-[10px] font-black mt-1">סאטירה</span></a>
+      <a href="podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl">podcasts</span><span class="text-[10px] font-black mt-1">פודקאסט</span></a>
+      <a href="lessons.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-110 sm:scale-125 neon-text uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl" style="font-variation-settings: 'FILL' 1;">handshake</span><span class="text-[10px] font-black mt-1">לקוחות</span></a>
+      <a href="songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl">music_note</span><span class="text-[10px] font-black mt-1">שירים</span></a>
+      <a href="posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-[32px] md:text-4xl">psychology</span><span class="text-[10px] font-black mt-1">טראומה</span></a>
   </nav>
 
   <div id="accessibility-widget" class="fixed bottom-[100px] sm:bottom-24 left-4 sm:left-6 z-[200]">
-    <button onclick="toggleAccessMenu()" aria-label="תפריט נגישות" class="w-12 h-12 sm:w-14 sm:h-14 bg-cyber-cyan text-black rounded-full shadow-[0_0_20px_rgba(0,242,255,0.5)] flex items-center justify-center hover:scale-110 transition-transform">
-      <span class="material-symbols-outlined !text-2xl sm:!text-3xl">accessibility_new</span>
-    </button>
-
-    <div id="access-menu" class="hidden absolute bottom-16 left-0 w-56 sm:w-64 glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 border-2 border-cyber-cyan/30 shadow-2xl flex flex-col gap-2 sm:gap-3 backdrop-blur-3xl bg-black/90 max-w-[calc(100vw-2rem)]">
-      <h3 class="font-['Epilogue'] font-black text-cyber-cyan text-center border-b border-white/10 pb-2 uppercase tracking-widest text-xs sm:text-sm">
-        <span class="he">נגישות</span><span class="en">Accessibility</span><span class="ru">Доступность</span><span class="ar">إדכאניה אלדוח'ול</span>
-      </h3>
-      
-      <button onclick="accessAction('contrast', this)" class="access-btn">
-        <span class="he">ניגודיות גבוהה</span><span class="en">High Contrast</span><span class="ru">Контраст</span><span class="ar">תבאין עאל</span>
-      </button>
-      <button onclick="accessAction('textSize', this)" class="access-btn">
-        <span class="he">טקסט גדול</span><span class="en">Large Text</span><span class="ru">Крупный текст</span><span class="ar">נץ כביר</span>
-      </button>
-      <button onclick="accessAction('links', this)" class="access-btn">
-        <span class="he">הדגשת קישורים</span><span class="en">Highlight Links</span><span class="ru">Выделить ссылки</span><span class="ar">אבראז אלרואבט</span>
-      </button>
-      <button onclick="accessAction('stopAnim', this)" class="access-btn">
-        <span class="he">עצירת אנימציות</span><span class="en">Stop Animations</span><span class="ru">Без анимаций</span><span class="ar">איקאף אלחרכה</span>
-      </button>
-      <button onclick="accessAction('reset', this)" class="mt-2 text-[9px] sm:text-[10px] text-white/40 hover:text-white uppercase tracking-widest transition-colors w-full text-center">
-        <span class="he">איפוס הגדרות</span><span class="en">Reset Settings</span><span class="ru">Сбросить</span><span class="ar">אעאדת ד'בט</span>
-      </button>
+    <button onclick="toggleAccessMenu()" class="w-12 h-12 sm:w-14 sm:h-14 bg-cyber-cyan text-black rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform"><span class="material-symbols-outlined !text-2xl sm:!text-3xl">accessibility_new</span></button>
+    <div id="access-menu" class="hidden absolute bottom-16 left-0 w-56 sm:w-64 glass-card rounded-2xl p-4 border-2 border-cyber-cyan/30 shadow-2xl flex flex-col gap-2 backdrop-blur-3xl bg-black/90">
+      <button onclick="accessAction('contrast', this)" class="access-btn">ניגודיות Contrast</button>
+      <button onclick="accessAction('textSize', this)" class="access-btn">טקסט גדול Text</button>
+      <button onclick="accessAction('stopAnim', this)" class="access-btn">עצירת אנימציות Motion</button>
+      <button onclick="accessAction('reset', this)" class="mt-2 text-[10px] text-white/40 uppercase text-center">איפוס Reset</button>
     </div>
   </div>
 
   <script>
-    // === סקריפט נגישות ===
-    function toggleAccessMenu() {
-      document.getElementById('access-menu').classList.toggle('hidden');
-    }
-
+    function toggleAccessMenu() { document.getElementById('access-menu').classList.toggle('hidden'); }
     function accessAction(type, btn) {
       const body = document.body;
-
-      if (type === 'reset') {
-        body.classList.remove('high-contrast', 'large-text', 'highlight-links', 'no-animations');
-        document.querySelectorAll('.access-btn').forEach(b => b.classList.remove('active'));
-        return;
-      }
-
+      if (type === 'reset') { body.classList.remove('high-contrast', 'large-text', 'no-animations'); return; }
       if (type === 'contrast') body.classList.toggle('high-contrast');
       if (type === 'textSize') body.classList.toggle('large-text');
-      if (type === 'links') body.classList.toggle('highlight-links');
       if (type === 'stopAnim') body.classList.toggle('no-animations');
-      
       btn.classList.toggle('active');
     }
-
-    document.addEventListener('click', function(event) {
-      const widget = document.getElementById('accessibility-widget');
-      const menu = document.getElementById('access-menu');
-      if (widget && !widget.contains(event.target)) {
-        menu.classList.add('hidden');
-      }
-    });
-
-    // === סקריפט הלקוחות והפרויקטים ===
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
+    // === כאן הוטמעו כל הלינקים החדשים שלך ===
     const clientFolders = [
-      { id: "powerup", nameHe: "פאוראפ - Powerup", nameEn: "POWERUP", nameRu: "ПАУЭРАП (POWERUP)", nameAr: "באוראב", year: "2025", items: ["1XF7N4sTXip8YJUHiFjOos-OxuRn_SqdX"] },
-      { id: "ayer", nameHe: "אייר - שחקנית D&D", nameEn: "AYER - D&D ACTRESS", nameRu: "АЙЕР - АКТРИСА D&D", nameAr: "אייר - ממת'לת D&D", year: "2023", items: ["1rrqzTRhZi913i-kLXHDjUbNttKIizckU", "1qr5GomMQIC95_iCyOnYEIkVyx7AxAheO", "1bx8pFNz0HcUrqFg9kuGGADSEvaWR1Bn8"] },
-      { id: "client3", nameHe: "לקוחה מס' 3", nameEn: "CLIENT #3", nameRu: "КЛИЕНТ #3", nameAr: "עמילה #3", year: "2023", items: ["1que1Zg-dY4NOnujT8gNJwDVtskw9mTAJ", "1gilrvbFl1XzhNxLSSpFbYqEDQc8D8Soe", "1Tk336Tx_U-bnRiJ8jiSXUL_yAD8PHQAZ"] },
-      { id: "client4", nameHe: "לקוחה מס' 4", nameEn: "CLIENT #4", nameRu: "КЛИЕНТ #4", nameAr: "עמילה #4", year: "2024", items: ["194K5vZluodYCjIwTAUw77LStKywcDFnE", "1AWxYfW-3mn7z2Sv9rioeh1brsutXq9fP", "1k6lRsWBn7JrgYXQ2cxXQS1mvvaZpL9Wd", "1d_MbQCcxd1UcJWNQ5E7S8h1ZWjQxjbjR", "1HjvsD9uBy5eddNI0EbfSSHh5IHRKQ5AO"] },
-      { id: "motti", nameHe: "מוטי", nameEn: "MOTTI", nameRu: "МОТИ", nameAr: "מותי", year: "2025", items: ["19HPaXdUBJBJtcdJHftcTVRV2fdlEbBFz"] },
-      { id: "moria", nameHe: "מוריה", nameEn: "MORIA", nameRu: "МОРИЯ", nameAr: "מוריה", year: "2024-2025", items: ["1uWUVr26pSl7gOWgw13CAc01GlAPwlu7w", "1pM_ns8jajgtCwkmTkz9kl1B2xKbOaQTZ", "1emR3UXyjQ0AzUr9KLyFdcxwz9V1NBsDy", "1DXmJBYVvXzUVis1S6JiMdHhXhMkIBw54", "1ccjFN59KCsum3pcbDYWLP8bCkkjqif7U", "1pUx6TuzU5iN9xGDzeDWB2dXoxRDsM0Qk", "1VB3xHI9hd2xHpyFrlZCPZSYEr90BgXcL", "1P3Jca6VYdDrkwnEmCa99pHgNUrgNqh_b", "1rUAntPgjSNlRkS9p5VJLzx_s8nct_pv4", "1bLK-zqsGTdAEW5fa72SyR4Nk0yGeBNQb", "1OaCWK_0scwQvddHoz8Y7vqg2PCuYzYoJ", "17yUpLH-di84m_RiPHACsjcqDrqmoZpMD", "1qIA9R71GraMv0MERQVUma9E9stk4Jagk", "13qQ7_sHVtOUiwzxonvYOiGNfu4NwTBME"] },
-      { id: "shane", nameHe: "שיין - לקוח מס' 5", nameEn: "SHANE - CLIENT #5", nameRu: "ШЕЙН - КЛИЕНТ #5", nameAr: "שין - עמיל #5", year: "2024", items: ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", "1dTt5oL3s26JToyiS-3f9wa1eUy-U3AN5", "1woidZAV82Xghxch9IaPSCG_oz4wSs9Um", "1xGs03y5iVD5dIFybanf9lo1V-h4xtHv8", "19MCoYb6dopZVwSEWaKEzz0UDczdCT1MJ"] }
+      { id: "ayer", nameHe: "אייר", nameEn: "AYER", year: "2023", items: ["12y2WK-FZJWYCNAeggr4FM16j2ui2IiVj", "17IjrppE52avsjHGhESOCpsaRm6RhHpic", "1pI8ZeM_E6C0PCxuWKED-44KN0RZ0TwoB", "13bpe_2NZXW6kDwI0VYK05b5v4Gqbt1J3", "1xpGBmgSTWg3BzNGUVPW3u-cJfnc1ra3M", "1SAD1AdcHJOBNhKb5LCleSo6_wP4Qo0H4"] },
+      { id: "hitech", nameHe: "חברת הייטק", nameEn: "HITECH", year: "2025", items: ["119FjF-QMX87MxV3GUkd9dXw-Bx0Jeagp"] },
+      { id: "client3", nameHe: "לקוחה מס' 3", nameEn: "CLIENT #3", year: "2023", items: ["1oM7u_7gPeYZkCO0iu_zBGnAmVueggCZ8", "1mQYMAa3xHp_WF_4AWDEGGfYISpiQlXYI", "1_lFkjD9KLzNwc_W9Wn7hK50oahguW3yO"] },
+      { id: "client4", nameHe: "לקוחה מס' 4", nameEn: "CLIENT #4", year: "2024", items: ["1_09Fircxmnu35OghR4XIFGON6-XY2nbC", "1lvPRWe17KOeFduiAQuEJaaZRHu3yaqYi", "18beVQ2_EzjpYf61C0O9vm4mcj-m0INVF", "1ewiteN_h9oq2gYOCE5xORU-3oDzItcEg", "1eSxGl6coC0jveFEddPw3jD4RINge_6AP"] },
+      { id: "motti", nameHe: "מוטי", nameEn: "MOTTI", year: "2025", items: ["1OcpSA3LrqDm9j28zZb5mPWsh6DVAtmxO"] },
+      { id: "moria", nameHe: "מוריה", nameEn: "MORIA", year: "2024-2026", items: ["1VrndKVQtV5OTKIv_isBnzD2qIXQzKsln", "1BNBjwGUzYHfCduAiTB8tYTBxuIPmznKe", "1U2AAE0RLmooUUXEg66DQlHNRXETMZEZH", "1eTqkWXIGI24V101asuRDRTYOgBPYsF6O", "1fgkRTfeK_XA51FydwcQY2fNJRzXwlb5k", "1vwEgXkOqSUVA97Kv2sP5qjZp1yGP78i_", "1AYe7KFOO9u1JsvKkLKfCjoYXgq0vHsev", "1szS85c-0CUIcjrKPPVqyGH4UZKhJNRz4", "1I9GlKJNuej1Hl7Ydb9Vb3k9TVULzg9Li", "13avl6op9nhrVzfOnFRCfPPGfBga_qeRD", "150bjlBq8PtVTweo3fte5DNZSrLwV8ktB", "1D4TZfPViNqXgIQj06Xz8DOIzn1Rmexue", "18qCIG8dF8tkd8bzbdKgl4QWDIsL-xkiC", "1WYlMT022c3ppL5_LhhUeQNsv8jyrDkVg", "1eH0xLRvCxsmGTf_0J410ZqAC_WVkaZe2", "13ZlBruWdxLt_4LDNSmCe1xiCGXcZuoTi", "1k_eYs7WOemlABj2BkKGxBX_R7ji2R8kB", "1LhDPHmg9awvh7AtoriEcJljiGTM5nIni"] },
+      { id: "shane", nameHe: "שיין", nameEn: "SHANE", year: "2023-2024", items: ["1jn1pG-tucp1gTYyhtlN3v3LSqsg1xo-s", "1l431I7b_wix8TxKnGEdouKj_M8_viAf0", "12M2-F6-ZTlMMJQu3QOwM9Vk58CMnmihR", "1uWMnF_71E45qUcZGsXsnZkA3JM7NDMcR", "1qbFzbOdxirM0CbXxkKHhPg0F-IxEaEkG", "1pb0pQ8yyF1coUPDaPC8kAjJt_K8ipzS8", "1xroR7FbxqoFuIqzn_RVxLhf-6VNWOsOr", "1KkjdoJk35NG5EU5fZpgQoVCBiRl6bS0C", "1t0fMJv9ZjBz7jWtfIM7jVGjs6eAUyRux"] }
     ];
-
-    const videoIds = ["1YAQDc3Hrgn2c5Po-EDnOxF_MHyOpf6Nc", "19HPaXdUBJBJtcdJHftcTVRV2fdlEbBFz", "1XF7N4sTXip8YJUHiFjOos-OxuRn_SqdX"];
 
     let currentFolderItems = [];
     let currentMediaIndex = 0;
     let currentFolderObj = null;
 
     function renderFolders() {
-      const grid = document.getElementById('folderGrid'); 
-      grid.innerHTML = "";
+      const grid = document.getElementById('folderGrid'); grid.innerHTML = "";
       clientFolders.forEach(f => {
-        const div = document.createElement('div'); 
-        div.className = 'glass-card rounded-[2rem] p-8 flex flex-col items-center justify-center cursor-pointer folder-card transition-all duration-300 group'; 
+        const div = document.createElement('div');
+        div.className = 'glass-card rounded-[2rem] p-6 flex flex-col items-center justify-center cursor-pointer folder-card transition-all duration-300 group';
         div.onclick = () => openFolder(f);
         div.innerHTML = `
-          <div class="folder-icon-modern group-hover:scale-110 transition-transform duration-500 mb-6">
-             <div class="bg-black/30 p-2 rounded-full backdrop-blur-sm"><span class="material-symbols-outlined text-white text-[24px]">person</span></div>
+          <div class="folder-icon-modern group-hover:scale-110 transition-transform duration-500 mb-6"><span class="material-symbols-outlined text-white">person</span></div>
+          <div class="font-['Epilogue'] font-black text-white text-lg md:text-xl tracking-widest text-center uppercase group-hover:text-cyber-cyan transition-colors">
+            <span class="he">${f.nameHe}</span><span class="en">${f.nameEn}</span>
           </div>
-          <div class="font-['Epilogue'] font-black text-white text-xl tracking-widest text-center uppercase drop-shadow-md group-hover:text-cyber-cyan transition-colors">
-            <span class="he">${f.nameHe}</span><span class="en">${f.nameEn}</span><span class="ru">${f.nameRu}</span><span class="ar">${f.nameAr}</span>
-          </div>
-          <div class="text-cyber-cyan/70 text-sm font-bold font-['Space_Grotesk'] mt-3 tracking-widest bg-cyber-cyan/10 px-3 py-1 rounded-full">${f.year}</div>
+          <div class="text-cyber-cyan/70 text-xs font-bold font-['Space_Grotesk'] mt-3 tracking-widest bg-cyber-cyan/10 px-3 py-1 rounded-full">${f.year}</div>
         `;
         grid.appendChild(div);
       });
     }
 
     function openFolder(f) {
-      document.getElementById('folderGrid').classList.add('hidden'); 
-      document.getElementById('mainHeader').classList.add('hidden'); 
+      document.getElementById('folderGrid').classList.add('hidden');
+      document.getElementById('mainHeader').classList.add('hidden');
       document.getElementById('folderContentView').classList.remove('hidden');
       document.getElementById('folderContentView').classList.add('flex');
-      
       currentFolderObj = f;
-      updateFolderName();
-
-      currentFolderItems = f.items;
-      currentMediaIndex = 0;
-
-      loadCurrentMedia();
+      const lang = document.documentElement.getAttribute('data-lang');
+      document.getElementById('currentFolderName').textContent = lang === 'en' ? f.nameEn : f.nameHe;
+      currentFolderItems = f.items; currentMediaIndex = 0; loadCurrentMedia();
     }
 
     function loadCurrentMedia() {
       if (!currentFolderItems.length) return;
-      
       const id = currentFolderItems[currentMediaIndex];
       const mediaBox = document.getElementById('mediaBox');
-      const counter = document.getElementById('mediaCounter');
-      
-      if (videoIds.includes(id)) {
-          mediaBox.innerHTML = `<iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>`;
-      } else {
-          mediaBox.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w1000" loading="lazy" alt="Client Work">`;
-      }
-      
-      counter.textContent = `${currentMediaIndex + 1} / ${currentFolderItems.length}`;
+      // כל הלינקים החדשים נפתחים ב-Preview כברירת מחדל כדי להבטיח תצוגה
+      mediaBox.innerHTML = `<iframe src="https://drive.google.com/file/d/${id}/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>`;
+      document.getElementById('mediaCounter').textContent = `${currentMediaIndex + 1} / ${currentFolderItems.length}`;
     }
 
     function changeMedia(direction) {
       const wrapper = document.getElementById('playerWrapper');
       wrapper.classList.remove('swipe-next', 'swipe-prev');
-      void wrapper.offsetWidth; 
-      
-      if (direction === 'next') {
-        currentMediaIndex = (currentMediaIndex + 1) % currentFolderItems.length;
-        wrapper.classList.add('swipe-next');
-      } else {
-        currentMediaIndex = (currentMediaIndex - 1 + currentFolderItems.length) % currentFolderItems.length;
-        wrapper.classList.add('swipe-prev');
-      }
-      
+      void wrapper.offsetWidth;
+      if (direction === 'next') { currentMediaIndex = (currentMediaIndex + 1) % currentFolderItems.length; wrapper.classList.add('swipe-next'); }
+      else { currentMediaIndex = (currentMediaIndex - 1 + currentFolderItems.length) % currentFolderItems.length; wrapper.classList.add('swipe-prev'); }
       loadCurrentMedia();
     }
 
-    function showFolders() { 
-      document.getElementById('folderGrid').classList.remove('hidden'); 
-      document.getElementById('mainHeader').classList.remove('hidden'); 
+    function showFolders() {
+      document.getElementById('folderGrid').classList.remove('hidden');
+      document.getElementById('mainHeader').classList.remove('hidden');
       document.getElementById('folderContentView').classList.add('hidden');
-      document.getElementById('folderContentView').classList.remove('flex'); 
-      document.getElementById('mediaBox').innerHTML = ''; 
-      currentFolderObj = null;
-    }
-
-    function updateFolderName() {
-      if(!currentFolderObj) return;
-      const lang = document.documentElement.getAttribute('data-lang');
-      let text = currentFolderObj.nameHe;
-      if(lang === 'en') text = currentFolderObj.nameEn;
-      if(lang === 'ru') text = currentFolderObj.nameRu;
-      if(lang === 'ar') text = currentFolderObj.nameAr;
-      document.getElementById('currentFolderName').textContent = text;
+      document.getElementById('folderContentView').classList.remove('flex');
     }
 
     const languages = ['he', 'en', 'ru', 'ar'];
-    
     function toggleLang() {
       const html = document.documentElement;
-      let currentLang = html.getAttribute('data-lang');
-      let nextIndex = (languages.indexOf(currentLang) + 1) % languages.length;
+      let nextIndex = (languages.indexOf(html.getAttribute('data-lang')) + 1) % languages.length;
       let newLang = languages[nextIndex];
-      
       html.setAttribute('data-lang', newLang);
       html.setAttribute('dir', (newLang === 'he' || newLang === 'ar') ? 'rtl' : 'ltr');
       localStorage.setItem('siteLang', newLang);
-      
-      updateFolderName();
+      if(currentFolderObj) openFolder(currentFolderObj);
     }
 
     const savedLang = localStorage.getItem('siteLang') || 'he';
     document.documentElement.setAttribute('data-lang', savedLang);
     document.documentElement.setAttribute('dir', (savedLang === 'he' || savedLang === 'ar') ? 'rtl' : 'ltr');
-    
     renderFolders();
   </script>
 </body>
