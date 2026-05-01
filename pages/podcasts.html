@@ -8,13 +8,13 @@
     gtag('js', new Date());
     gtag('config', 'G-GTHDTELYGW');
   </script>
-  
+
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes" name="viewport"/>
   <title>Podcasts | Johnny Peker 2036</title>
   
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Rubik:wght@300;400;500;700;900&family=Epilogue:wght@300;400;700;900&family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Rubik:wght@300;400;500;700;900&family=Epilogue:wght@300;400;700;900&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
   
   <script id="tailwind-config">
@@ -30,7 +30,7 @@
   </script>
 
   <style>
-    /* לוגיקת 4 שפות הרמטית */
+    /* לוגיקת שפות */
     html:not([data-lang="he"]) .he { display: none !important; }
     html:not([data-lang="en"]) .en { display: none !important; }
     html:not([data-lang="ru"]) .ru { display: none !important; }
@@ -39,16 +39,16 @@
     * { -webkit-tap-highlight-color: transparent; outline: none !important; }
     body { background-color: #050608; color: #f8f8ff; font-family: 'Rubik', sans-serif; overflow-x: hidden; min-height: 100vh; }
     
-    /* מנוע הרקע מהתמונה image_4b349e.png */
+    /* הרקע המורכב מ-image_4b349e.png */
     .bg-grid {
       background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
       background-size: 40px 40px;
     }
     .blob {
       position: absolute; width: 60vw; height: 60vw; border-radius: 50%;
-      filter: blur(120px); opacity: 0.12; z-index: -1; animation: float 20s infinite alternate ease-in-out;
+      filter: blur(130px); opacity: 0.12; z-index: -1; animation: float 25s infinite alternate ease-in-out;
     }
-    @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(10%, 10%) scale(1.1); } }
+    @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(10%, 5%) scale(1.05); } }
 
     .neon-title {
       color: #fff;
@@ -61,10 +61,9 @@
       backdrop-filter: blur(25px); 
       border: 1px solid rgba(255, 255, 255, 0.08); 
       border-radius: 28px; 
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
     }
 
-    /* נגן טיקטוק מוגדל (500px) */
+    /* נגן טיקטוק - פרופורציונלי 9:16 */
     .tiktok-player {
       position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 35px; overflow: hidden;
       border: 3px solid rgba(0, 242, 255, 0.5); box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
@@ -82,8 +81,8 @@
     .hide-scrollbar::-webkit-scrollbar { display: none; }
     
     @keyframes badge-pulse {
-      0%, 100% { box-shadow: 0 0 15px rgba(235,178,255,0.3); border-color: rgba(235,178,255,0.5); transform: scale(1); }
-      50% { box-shadow: 0 0 40px rgba(235,178,255,0.8); border-color: rgba(235,178,255,1); transform: scale(1.05); }
+      0%, 100% { box-shadow: 0 0 15px rgba(235,178,255,0.3); transform: scale(1); }
+      50% { box-shadow: 0 0 40px rgba(235,178,255,0.8); transform: scale(1.05); }
     }
     .badge-pulse { animation: badge-pulse 2.5s infinite ease-in-out; }
   </style>
@@ -96,10 +95,11 @@
   <div class="blob bg-purple-600 top-[-10%] left-[-10%] opacity-15"></div>
   <div class="blob bg-cyan-600 bottom-[-10%] right-[-10%] opacity-15" style="animation-delay: -5s;"></div>
 
+  <!-- Header - לוגו חזר למקום -->
   <header class="fixed top-4 left-4 right-4 z-[100] px-8 py-4 flex justify-between items-center glass-card bg-black/40 rounded-full max-w-7xl mx-auto shadow-2xl border-white/10">
-    <button onclick="toggleLang()" class="px-6 py-2 rounded-full border border-cyber-cyan/40 text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-black transition-all flex items-center gap-2 uppercase">
+    <button onclick="toggleLang()" class="px-6 py-2 rounded-full border border-cyber-cyan/40 text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-black transition-all flex items-center gap-2">
       <span class="material-symbols-outlined text-lg">language</span>
-      <span class="he">עברית</span><span class="en">ENGLISH</span><span class="ru">РУССКИЙ</span><span class="ar">العربية</span>
+      <span class="he">עברית</span><span class="en">ENGLISH</span>
     </button>
     
     <div class="flex items-center gap-5">
@@ -113,9 +113,9 @@
   <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] bg-zinc-950/98 backdrop-blur-3xl translate-x-full transition-transform duration-500 p-10 flex flex-col border-l border-white/10">
     <button onclick="toggleMenu()" class="self-start text-white p-2 mb-12 hover:rotate-90 transition-transform"><span class="material-symbols-outlined text-4xl">close</span></button>
     <nav class="flex flex-col gap-8 text-white font-['Outfit'] uppercase">
-      <a href="../index.html" class="text-2xl hover:text-cyber-cyan transition-all">HOME</a>
-      <a href="creative.html" class="text-2xl hover:text-cyber-cyan transition-all">CREATIVE</a>
-      <a href="satire.html" class="text-2xl hover:text-cyber-cyan transition-all">SATIRE</a>
+      <a href="../index.html" class="text-2xl hover:text-cyber-cyan">HOME</a>
+      <a href="creative.html" class="text-2xl hover:text-cyber-cyan">CREATIVE</a>
+      <a href="satire.html" class="text-2xl hover:text-cyber-cyan">SATIRE</a>
       <a href="podcasts.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4">PODCASTS</a>
     </nav>
   </aside>
@@ -123,9 +123,9 @@
   <main class="relative pt-48 px-6 max-w-7xl mx-auto flex flex-col items-center min-h-[85vh]">
     <div id="mainHeader" class="text-center space-y-6 z-10 w-full mb-12 max-w-4xl">
       <div class="inline-block px-8 py-2 rounded-full bg-white/5 border-2 border-cyber-pink text-cyber-pink backdrop-blur-md badge-pulse">
-        <span class="font-['Space_Grotesk'] text-sm md:text-base tracking-[0.2em] font-black uppercase flex items-center justify-center gap-3">
+        <span class="font-['Epilogue'] text-sm tracking-[0.2em] font-black uppercase flex items-center justify-center gap-3">
           <span class="material-symbols-outlined text-xl">podcasts</span>
-          <span class="he">מה למדתי היום?</span><span class="en">WHAT I LEARNED TODAY</span><span class="ru">ЧТО Я УЗНАЛ СЕГОДНЯ</span><span class="ar">ماذا تعلمت اليوم؟</span>
+          <span class="he">מה למדתי היום?</span><span class="en">WHAT I LEARNED TODAY</span>
         </span>
       </div>
       
@@ -135,19 +135,18 @@
       
       <p class="text-white/40 text-xl font-light italic max-w-3xl mx-auto">
         <span class="he">זו הזירה שבה מוזיקה פוגשת הומור חד. נווטו עם החיצים להאזנה.</span>
-        <span class="en">The arena where music meets sharp humor. Use arrows to listen.</span>
       </p>
     </div>
 
-    <!-- נגן פודקאסטים מוגדל (500px) עם mb-40 למניעת חפיפה -->
+    <!-- נגן פודקאסטים פרופורציונלי (max-w-450) עם mb-40 למרחק מהסרגל -->
     <div class="flex items-center justify-center gap-4 md:gap-24 w-full max-w-7xl mx-auto mb-40 relative">
       <button onclick="changePodcast('prev')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_forward_ios</span></button>
       
-      <div class="flex flex-col items-center gap-10 w-full max-w-[500px]">
+      <div class="flex flex-col items-center gap-10 w-full max-w-[450px]">
         <div class="text-center w-full">
           <h2 id="podcastTitle" class="font-heading font-black text-4xl text-cyber-cyan uppercase mb-2"></h2>
           <div class="inline-block bg-cyber-cyan/10 border-2 border-cyber-cyan/40 px-8 py-2 rounded-full text-cyber-cyan font-black uppercase text-xs">
-            <span class="he">פרק</span><span class="en">EPISODE</span> <span id="podcastCounter">1 / 9</span>
+             <span id="podcastCounter">1 / 9</span>
           </div>
         </div>
         
@@ -165,7 +164,7 @@
     </div>
   </main>
 
-  <!-- דאשבורד סלע (נעול Grid) -->
+  <!-- דאשבורד "בטון" יציב (1000px Grid) -->
   <nav class="fixed bottom-6 left-0 right-0 z-50 px-4">
     <div class="glass-card h-24 shadow-2xl bg-black/90 border-white/10 overflow-hidden mx-auto nav-stable-container">
           <div class="nav-cell">
@@ -187,7 +186,6 @@
             </a>
           </div>
           <div class="nav-cell">
-            <!-- כפתור פודקאסט פעיל -->
             <a href="podcasts.html" class="flex flex-col items-center active-icon">
               <div class="icon-box"><span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">podcasts</span></div>
               <div class="text-[9px] font-black mt-1 text-cyber-cyan uppercase tracking-widest"><span class="he">פוד</span><span class="en">POD</span></div>
@@ -214,7 +212,6 @@
     </div>
   </nav>
 
-  <!-- ווידג'ט נגישות -->
   <div id="accessibility-widget" class="fixed bottom-[110px] left-6 z-[200]">
     <button onclick="toggleAccessMenu()" class="w-14 h-14 bg-cyber-cyan text-black rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-[0_0_20px_rgba(0,242,255,0.5)]">
       <span class="material-symbols-outlined !text-3xl">accessibility_new</span>
@@ -223,9 +220,8 @@
       <h3 class="font-['Epilogue'] font-black text-cyber-cyan text-center border-b border-white/10 pb-2 uppercase tracking-widest text-sm">
         <span class="he">נגישות</span><span class="en">Accessibility</span>
       </h3>
-      <button onclick="accessAction('contrast', this)" class="access-btn">ניגודיות</button>
-      <button onclick="accessAction('textSize', this)" class="access-btn">טקסט גדול</button>
-      <button onclick="accessAction('reset', this)" class="mt-2 text-[10px] text-white/40 hover:text-white uppercase transition-colors w-full text-center">איפוס</button>
+      <button onclick="accessAction('contrast', this)" class="w-full bg-white/5 p-2 rounded text-xs uppercase font-bold text-white hover:bg-cyber-cyan hover:text-black transition-all">ניגודיות</button>
+      <button onclick="accessAction('textSize', this)" class="w-full bg-white/5 p-2 rounded text-xs uppercase font-bold text-white hover:bg-cyber-cyan hover:text-black transition-all">טקסט גדול</button>
     </div>
   </div>
 
@@ -233,8 +229,8 @@
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
     function toggleAccessMenu() { document.getElementById('access-menu').classList.toggle('hidden'); }
     function accessAction(t, b) {
-      if(t==='reset'){document.body.classList.remove('high-contrast','large-text');return;}
-      document.body.classList.toggle(t==='contrast'?'high-contrast':'large-text'); b.classList.toggle('active');
+      if(t==='contrast') document.body.classList.toggle('high-contrast');
+      if(t==='textSize') document.body.classList.toggle('large-text');
     }
 
     const podcasts = [
