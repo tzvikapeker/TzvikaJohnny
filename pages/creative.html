@@ -9,6 +9,7 @@
     gtag('config', 'G-GTHDTELYGW');
   </script>
 
+  <!-- === AI READY: JSON-LD Schema (Global Machine Identity) === -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -62,27 +63,18 @@
     * { -webkit-tap-highlight-color: transparent; }
     body { background-color: #0a0f1a; color: #f8f8ff; font-family: 'Rubik', sans-serif; overflow-x: hidden; }
     .font-heading { font-family: 'Outfit', sans-serif; }
-    .material-symbols-outlined { font-size: 32px; display: inline-block; line-height: 1; vertical-align: middle; }
     
     /* אפקטים של 2036 */
     .glass-card { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .glass-card:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(0, 242, 255, 0.4); transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+    .glass-card:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(0, 242, 255, 0.3); transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
     
     .glass-header { background: rgba(10, 15, 26, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
 
-    @keyframes blob { 
-      0% { transform: translate(0px, 0px) scale(1); } 
-      33% { transform: translate(50px, -70px) scale(1.15); } 
-      66% { transform: translate(-40px, 40px) scale(0.9); } 
-      100% { transform: translate(0px, 0px) scale(1); } 
-    }
+    @keyframes blob { 0% { transform: translate(0px, 0px) scale(1); } 33% { transform: translate(50px, -70px) scale(1.15); } 66% { transform: translate(-40px, 40px) scale(0.9); } 100% { transform: translate(0px, 0px) scale(1); } }
     .animate-blob { animation: blob 15s infinite alternate ease-in-out; }
 
-    @keyframes neon-glow { 
-      0%, 100% { text-shadow: 0 0 15px rgba(0,242,255,0.4), 0 0 30px rgba(0,242,255,0.1); } 
-      50% { text-shadow: 0 0 30px rgba(0,242,255,0.8), 0 0 50px rgba(0,242,255,0.4); } 
-    }
-    .neon-text { animation: neon-glow 4s infinite ease-in-out; }
+    @keyframes neon-glow { 0%, 100% { text-shadow: 0 0 15px rgba(0,242,255,0.4), 0 0 30px rgba(0,242,255,0.1); opacity: 1; } 50% { text-shadow: 0 0 30px rgba(0,242,255,0.8), 0 0 50px rgba(0,242,255,0.4); opacity: 0.9; } }
+    .neon-text { animation: neon-glow 4s infinite ease-in-out; will-change: text-shadow, opacity; }
 
     .folder-icon-modern {
       width: 100px; height: 75px; background: linear-gradient(135deg, #00f2ff, #1e3a8a);
@@ -99,7 +91,7 @@
     .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; z-index: 50; }
     .nav-arrow:hover { background: #00f2ff; color: black; transform: scale(1.2); box-shadow: 0 0 40px #00f2ff; }
 
-    /* הגדרות נגישות מלאות */
+    /* הגדרות נגישות */
     .access-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 16px; color: white; font-size: 13px; font-weight: bold; text-transform: uppercase; transition: all 0.3s; text-align: center; width: 100%; display: block; }
     .access-btn:hover { background: #00f2ff; color: black; border-color: #00f2ff; }
     .access-btn.active { background: #ebb2ff; color: black; border-color: #ebb2ff; }
@@ -111,10 +103,16 @@
     
     .hide-scrollbar::-webkit-scrollbar { display: none; }
     .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* תיקון "ריקוד" סרגל הניווט */
+    .nav-item-container { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; position: relative; }
+    .nav-icon-box { height: 42px; display: flex; items-center; justify-content: center; will-change: transform; }
+    .nav-text-box { height: 14px; margin-top: 4px; display: flex; items-center; justify-content: center; }
   </style>
 </head>
 
 <body class="selection:bg-cyan-500/30">
+  <!-- ANIMATED BACKGROUND -->
   <div class="fixed inset-0 z-[-1] bg-[#0a0f1a] overflow-hidden">
     <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PC9zdmc+')] opacity-60"></div>
     <div class="absolute top-[-15%] left-[-10%] w-[65vw] h-[65vw] bg-cyan-500/10 rounded-full blur-[140px] animate-blob"></div>
@@ -195,61 +193,63 @@
     </div>
   </main>
 
+  <!-- התיקון הסופי לרעידות: מבנה GRID עם גובה קשיח לכל רכיב פנימי -->
   <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 glass-card rounded-full h-24 z-50 shadow-2xl bg-[#0a0f1a]/95 border-white/20 overflow-hidden px-6 w-[98%] max-w-[800px]">
-      <div class="grid grid-cols-7 h-full items-center justify-items-center">
+      <div class="grid grid-cols-7 h-full items-center justify-items-center w-full">
           
-          <div class="w-full flex justify-center">
+          <div class="nav-item-container">
             <a href="../index.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-all group">
-              <span class="material-symbols-outlined text-3xl group-hover:scale-110">home</span>
-              <span class="text-[9px] font-black uppercase mt-1"><span class="he">ראשי</span><span class="en">HOME</span></span>
+              <div class="nav-icon-box"><span class="material-symbols-outlined text-3xl group-hover:scale-110">home</span></div>
+              <div class="nav-text-box"><span class="text-[9px] font-black uppercase"><span class="he">ראשי</span><span class="en">HOME</span></span></div>
             </a>
           </div>
 
-          <div class="w-full flex justify-center">
-            <a href="creative.html" class="flex flex-col items-center text-cyber-cyan neon-text scale-110">
-              <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">palette</span>
-              <span class="text-[9px] font-black uppercase mt-1"><span class="he">יצירה</span><span class="en">CREAT</span></span>
+          <div class="nav-item-container">
+            <a href="creative.html" class="flex flex-col items-center text-cyber-cyan neon-text">
+              <div class="nav-icon-box"><span class="material-symbols-outlined text-4xl scale-125" style="font-variation-settings: 'FILL' 1;">palette</span></div>
+              <div class="nav-text-box"><span class="text-[9px] font-black uppercase"><span class="he">יצירה</span><span class="en">CREAT</span></span></div>
             </a>
           </div>
 
-          <div class="w-full flex justify-center">
+          <div class="nav-item-container">
             <a href="satire.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-all group">
-              <span class="material-symbols-outlined text-3xl group-hover:scale-110">theater_comedy</span>
-              <span class="text-[9px] font-black uppercase mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span></span>
+              <div class="nav-icon-box"><span class="material-symbols-outlined text-3xl group-hover:scale-110">theater_comedy</span></div>
+              <div class="nav-text-box"><span class="text-[9px] font-black uppercase"><span class="he">סאטירה</span><span class="en">SATIRE</span></span></div>
             </a>
           </div>
 
-          <div class="w-full flex justify-center">
+          <div class="nav-item-container">
             <a href="podcasts.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-all group">
-              <span class="material-symbols-outlined text-3xl group-hover:scale-110">podcasts</span>
-              <span class="text-[9px] font-black uppercase mt-1"><span class="he">פוד</span><span class="en">POD</span></span>
+              <div class="nav-icon-box"><span class="material-symbols-outlined text-3xl group-hover:scale-110">podcasts</span></div>
+              <div class="nav-text-box"><span class="text-[9px] font-black uppercase"><span class="he">פוד</span><span class="en">POD</span></span></div>
             </a>
           </div>
 
-          <div class="w-full flex justify-center">
+          <div class="nav-item-container">
             <a href="lessons.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-all group">
-              <span class="material-symbols-outlined text-3xl group-hover:scale-110">handshake</span>
-              <span class="text-[9px] font-black uppercase mt-1"><span class="he">לקוחות</span><span class="en">CLIENT</span></span>
+              <div class="nav-icon-box"><span class="material-symbols-outlined text-3xl group-hover:scale-110">handshake</span></div>
+              <div class="nav-text-box"><span class="text-[9px] font-black uppercase"><span class="he">לקוחות</span><span class="en">CLIENT</span></span></div>
             </a>
           </div>
 
-          <div class="w-full flex justify-center">
+          <div class="nav-item-container">
             <a href="songs.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-all group">
-              <span class="material-symbols-outlined text-3xl group-hover:scale-110">music_note</span>
-              <span class="text-[9px] font-black uppercase mt-1"><span class="he">שירים</span><span class="en">SONG</span></span>
+              <div class="nav-icon-box"><span class="material-symbols-outlined text-3xl group-hover:scale-110">music_note</span></div>
+              <div class="nav-text-box"><span class="text-[9px] font-black uppercase"><span class="he">שירים</span><span class="en">SONG</span></span></div>
             </a>
           </div>
 
-          <div class="w-full flex justify-center">
+          <div class="nav-item-container">
             <a href="posttrauma.html" class="flex flex-col items-center text-slate-400 hover:text-white transition-all group">
-              <span class="material-symbols-outlined text-3xl group-hover:scale-110">psychology</span>
-              <span class="text-[9px] font-black uppercase mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span></span>
+              <div class="nav-icon-box"><span class="material-symbols-outlined text-3xl group-hover:scale-110">psychology</span></div>
+              <div class="nav-text-box"><span class="text-[9px] font-black uppercase"><span class="he">טראומה</span><span class="en">TRAUMA</span></span></div>
             </a>
           </div>
 
       </div>
   </nav>
 
+  <!-- ACCESSIBILITY FULL -->
   <div id="accessibility-widget" class="fixed bottom-32 left-6 z-[200]">
     <button onclick="toggleAccessMenu()" class="w-16 h-16 bg-cyber-cyan text-[#0a0f1a] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform">
       <span class="material-symbols-outlined !text-4xl">accessibility_new</span>
@@ -292,7 +292,7 @@
       { id: "reels", nameHe: "REELS", nameEn: "REELS", nameRu: "РИЛС", nameAr: "ريلز", items: ["1cpMxev3DopYGq7KoU7XJSKR4MWDkvfct", "1-zRiOUyvbF3WLey6uXxux5Dbp10THsT5", "13O1VD76yYpOuuTek7E8MFtRu9y_jOnjv", "1o33c4VmevUe54L_q2dlQe03bHJRFMxM9", "1B6xcFuU8z0qHkxx3cJPVekPVUx2Ule_o", "1p4jvZebNT0pQbscdPcYsV_xlWaVyDVLB", "1ky2izx-nP9ooK3daiBzDUQa3IdOTDwpY", "1uBS-YbzkA_zPzfmYYN-KmpkfBEG-TE7z", "1gOvq6LrTesNd52nBHRWthdggr9BTYZ5Q", "17FLvaL4mcA0zGBiSOGcmttbCUvYfYAEh", "1u_VlrCDiYvqjMd5-94NFyWSBAUIl74DM", "12JJqrvZDkiRJn1gsm5eVmDyZE42nmVJL"], type: "video" },
       { id: "ads", nameHe: "פרסומות", nameEn: "ADS", nameRu: "РЕКЛАМА", nameAr: "إعلانات", items: ["1s6U9ex8_e4PJpsCg4JwbsTOa2GclfF--", "1ysVwtZ45Zeg6LPTWtaHS0JEak4bcBLvf", "1-gGG1KczNZJSe7YnynBIO-wKUa2OJMmm", "1aT3ZbjRfAr3bkcc1Nvn75oD5zI9LORvl", "11vACYrAEckTv6nrQHxtNwwT_Vge6BTcg", "1lipP99zz3QLuuRj6YBLPL51EekvViFZr"], type: "video" },
       { id: "heart", nameHe: "מהלב", nameEn: "FROM HEART", nameRu: "ОТ ДУШИ", nameAr: "من القلب", items: ["1Z932kFqEbAEpuKYBSDO1nRr5PXWP1Ha8", "1-N8JLz05b309ak4J3KZwL88RYuxajEFt", "1qNzEH6NH3U_rVxUklszPOa6xlnTuu95y", "1xQekRVXkOe9jOCGj98ERqNpkZDmj83ZT", "1ghD38lvYJtomLMfMaVktHtRCTIaY8Xw9", "1a8IPcPvqelsIXUhw1DRZb4_z1LK1j5ZA"], type: "video" },
-      { id: "satire", nameHe: "סאטירה", nameEn: "SATIRE", nameRu: "САТИРА", nameAr: "سخرية", items: ["1FtPi26yyuodpWMSMVVl7TY_oWNb_zoH8", "1ETWw7P3nIyU1iHFidj73qUrie_F-eEBL", "1uopf3TCKGOhNAUZiMc_27V0k9KEOfVJG", "1delXXclcyG_svChe_GL0sy6yT5jjFL7j", "1GnkS-bbr9OExp-6RHTBL7vBDezvTflWC", "148eaPKdRUx94TpXGCf_g65-b8ROiWqFf", "1ragwsoiuz7YpPebmw8rTQ3_FYEmaAo8q"], type: "video" },
+      { id: "satire", nameHe: "סאטירה", nameEn: "SATIRE", nameRu: "САТИРА", nameAr: "סחרייה", items: ["1FtPi26yyuodpWMSMVVl7TY_oWNb_zoH8", "1ETWw7P3nIyU1iHFidj73qUrie_F-eEBL", "1uopf3TCKGOhNAUZiMc_27V0k9KEOfVJG", "1delXXclcyG_svChe_GL0sy6yT5jjFL7j", "1GnkS-bbr9OExp-6RHTBL7vBDezvTflWC", "148eaPKdRUx94TpXGCf_g65-b8ROiWqFf", "1ragwsoiuz7YpPebmw8rTQ3_FYEmaAo8q"], type: "video" },
       { id: "photos", nameHe: "תמונות", nameEn: "PHOTOS", nameRu: "ФОТО", nameAr: "صور", items: ["1t2vlL9M7pwy6mOaj_WWmSUQ-Fa8pXhH_", "1_3mIqcPvHxEmlczw6IRIVXwzzbmcgni5", "1J2yiGEe3RpHPxuS6PSENQU8Dq6_cEyYF", "1QXYp34o4RWy6tiGimnrLLka9zMBSNpam", "1VT1yzoE6koqIlo6w3cFgfMC-I-tD1X9b", "1pHwnIVvbeom-3Qu6jMoJS9_zvI7xDACH"], type: "image" }
     ];
 
@@ -315,9 +315,14 @@
       currentFolderObj = f; currentFolderItems = f.items; currentMediaType = f.type; currentMediaIndex = 0; updateFolderName(); loadCurrentMedia();
     }
 
+    function updateFolderName() {
+      const lang = document.documentElement.getAttribute('data-lang');
+      document.getElementById('currentFolderName').textContent = currentFolderObj["name" + lang.charAt(0).toUpperCase() + lang.slice(1)] || currentFolderObj.nameHe;
+    }
+
     function loadCurrentMedia() {
       const id = currentFolderItems[currentMediaIndex]; const mediaBox = document.getElementById('mediaBox');
-      mediaBox.innerHTML = currentMediaType === 'video' ? `<iframe src="https://drive.google.com/file/d/${id}/preview" allow="autoplay; fullscreen" allowfullscreen="true" title="Tzvika Johnny Peker - Project"></iframe>` : `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w1000" alt="Creative Item">`;
+      mediaBox.innerHTML = currentMediaType === 'video' ? `<iframe src="https://drive.google.com/file/d/${id}/preview" allow="autoplay; fullscreen" allowfullscreen="true" title="Tzvika Johnny Peker - Project"></iframe>` : `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w1000" alt="Work Item">`;
       document.getElementById('mediaCounter').textContent = `${currentMediaIndex + 1} / ${currentFolderItems.length}`;
     }
 
@@ -328,11 +333,6 @@
     }
 
     function showFolders() { document.getElementById('folderGrid').classList.remove('hidden'); document.getElementById('mainHeader').classList.remove('hidden'); document.getElementById('folderContentView').classList.add('hidden'); }
-
-    function updateFolderName() {
-      const lang = document.documentElement.getAttribute('data-lang');
-      document.getElementById('currentFolderName').textContent = currentFolderObj["name" + lang.charAt(0).toUpperCase() + lang.slice(1)] || currentFolderObj.nameHe;
-    }
 
     const savedLang = localStorage.getItem('siteLang') || 'he';
     document.documentElement.setAttribute('data-lang', savedLang);
