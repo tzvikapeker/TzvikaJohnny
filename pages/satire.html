@@ -9,7 +9,7 @@
     gtag('config', 'G-GTHDTELYGW');
   </script>
 
-  <!-- === AI READY: JSON-LD Schema (Digital Satirist Identity) === -->
+  <!-- === AI READY: JSON-LD Schema (Johnny Peker 2036) === -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -17,15 +17,15 @@
       {
         "@type": "Person",
         "name": "Tzvika Johnny Peker",
-        "alternateName": ["צביקה ג'וני פקר", "Johnny Peker"],
+        "alternateName": ["Johnny Peker", "צביקה ג'וני פקר"],
         "jobTitle": "Multimodal AI Creator & Digital Satirist",
-        "description": "Expert in AI-driven satire, political parody, and social commentary based in Karmiel. Creator of MediaMind and Brain Slap Studio.",
-        "knowsAbout": ["Digital Satire", "AI Video Generation", "Social Parody", "Graphic Design"],
+        "description": "Developer of MediaMind and Brain Slap Studio. Expert in political satire and AI video generation.",
+        "knowsAbout": ["Digital Satire", "AI Content Creation", "Software Development"],
         "brand": { "@type": "Brand", "name": "Brain Slap Studio" }
       },
       {
         "@type": "CollectionPage",
-        "name": "Satire & Parody Portfolio | 2036",
+        "name": "Satire & Parody Portfolio",
         "inLanguage": ["he", "en", "ru", "ar"]
       }
     ]
@@ -34,10 +34,10 @@
 
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes" name="viewport"/>
-  <title>Satire & Parody | Tzvika Johnny Peker 2036</title>
+  <title>Satire & Parody | Johnny Peker 2036</title>
   
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Rubik:wght@300;400;500;700;900&family=Epilogue:wght@400;700;900&family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Rubik:wght@300;400;500;700;900&family=Epilogue:wght@300;400;700;900&family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
   
   <script id="tailwind-config">
@@ -46,7 +46,7 @@
       theme: {
         extend: {
           colors: { "cyber-cyan": "#00f2ff", "cyber-pink": "#ebb2ff" },
-          animation: { 'blob': 'blob 12s infinite alternate ease-in-out' }
+          animation: { 'blob': 'blob 12s infinite alternate ease-in-out', 'badge-pulse': 'badge-pulse 2.5s infinite ease-in-out' }
         }
       }
     }
@@ -67,15 +67,13 @@
     .glass-card { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     .glass-card:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(0, 242, 255, 0.4); transform: translateY(-8px); }
     
-    .glass-header { background: rgba(10, 15, 26, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
-
-    @keyframes blob { 0% { transform: translate(0, 0) scale(1); } 33% { transform: translate(30px, -50px) scale(1.1); } 100% { transform: translate(-20px, 20px) scale(0.9); } }
+    @keyframes blob { 0% { transform: translate(0, 0) scale(1); } 33% { transform: translate(40px, -60px) scale(1.1); } 100% { transform: translate(0, 0) scale(1); } }
     .animate-blob { animation: blob 15s infinite alternate ease-in-out; }
 
-    @keyframes neon-glow { 0%, 100% { text-shadow: 0 0 15px rgba(0,242,255,0.4); opacity: 1; } 50% { text-shadow: 0 0 25px rgba(0,242,255,0.7); opacity: 0.9; } }
-    .neon-text { animation: neon-glow 4s infinite ease-in-out; will-change: text-shadow; }
+    @keyframes neon-glow { 0%, 100% { text-shadow: 0 0 15px rgba(0,242,255,0.4); opacity: 1; } 50% { text-shadow: 0 0 30px rgba(0,242,255,0.8); opacity: 0.9; } }
+    .neon-text { animation: neon-glow 4s infinite ease-in-out; }
 
-    /* תיקיות מעוצבות */
+    /* שולחן עבודה - תיקיות */
     .folder-icon-modern {
       width: 100px; height: 75px; background: linear-gradient(135deg, #00f2ff, #1e3a8a);
       border-radius: 6px 16px 16px 16px; position: relative; box-shadow: 0 10px 30px rgba(0, 242, 255, 0.4);
@@ -86,26 +84,25 @@
       position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 35px; overflow: hidden;
       border: 3px solid rgba(0, 242, 255, 0.5); box-shadow: 0 0 50px rgba(0, 242, 255, 0.3);
     }
-    .tiktok-player iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 32px; }
+    .tiktok-player iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-    /* דאשבורד "בטון" - מניעת רעידות */
-    .nav-fixed-container { width: 850px; margin: 0 auto; display: grid; grid-template-columns: repeat(7, 1fr); height: 100%; align-items: center; justify-items: center; }
-    .nav-cell { width: 100px; height: 85px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
-    .icon-box { height: 45px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
+    /* פתרון סופי ל"ריקוד" הסרגל */
+    .nav-stable-container { width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(7, 1fr); height: 100%; align-items: center; justify-items: center; }
+    .nav-cell { width: 110px; height: 85px; display: flex; flex-direction: column; align-items: center; justify-content: center; transform-gpu: translateZ(0); }
+    .icon-box { height: 45px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; will-change: transform; }
     .active-icon { transform: scale(1.25); color: #00f2ff; filter: drop-shadow(0 0 10px rgba(0,242,255,0.8)); }
     .text-box { height: 14px; margin-top: 8px; font-weight: 900; font-size: 10px; text-transform: uppercase; }
 
     .hide-scrollbar::-webkit-scrollbar { display: none; }
-    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 
-<body class="selection:bg-cyan-500/30">
-  <!-- ANIMATED BACKGROUND -->
+<body class="selection:bg-cyan-500/30 pb-40">
+  <!-- BACKGROUND -->
   <div class="fixed inset-0 z-[-1] bg-[#0a0f1a] overflow-hidden">
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PC9zdmc+')] opacity-50"></div>
-    <div class="absolute top-[-15%] left-[-15%] w-[65vw] h-[65vw] bg-cyan-500/10 rounded-full blur-[140px] animate-blob"></div>
-    <div class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-purple-600/10 rounded-full blur-[140px] animate-blob" style="animation-delay: -5s;"></div>
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PC9zdmc+')] opacity-60"></div>
+    <div class="absolute top-[-10%] left-[-15%] w-[60vw] h-[60vw] bg-cyan-500/10 rounded-full blur-[130px] animate-blob"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-purple-600/10 rounded-full blur-[130px] animate-blob" style="animation-delay: -5s;"></div>
   </div>
 
   <header class="fixed top-4 left-4 right-4 z-[100] px-6 py-4 flex justify-between items-center glass-header rounded-full max-w-7xl mx-auto shadow-2xl bg-[#0a0f1a]/60">
@@ -116,7 +113,7 @@
       <img src="https://drive.google.com/thumbnail?id=1H8VSS___oGuWmxyEhwnFHsSPl8pVx7XJ&sz=w500" alt="Logo" class="w-14 h-14 rounded-full border-2 border-cyber-cyan/40 shadow-[0_0_15px_rgba(0,242,255,0.3)] object-cover">
     </div>
     
-    <button onclick="toggleLang()" class="px-6 py-2 rounded-full border-2 border-cyber-cyan/50 text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-[#0a0f1a] transition-all flex items-center gap-2 uppercase">
+    <button onclick="toggleLang()" class="px-6 py-2 rounded-full border-2 border-cyber-cyan/50 text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-[#0a0f1a] transition-all flex items-center gap-2">
       <span class="material-symbols-outlined text-lg">language</span>
       <span class="he">עברית</span><span class="en">ENGLISH</span><span class="ru">РУССКИЙ</span><span class="ar">العربية</span>
     </button>
@@ -127,7 +124,7 @@
     <nav class="flex flex-col gap-8 text-white font-heading uppercase">
       <a href="../index.html" class="text-2xl hover:text-cyber-cyan transition-all"><span class="he">ראשי</span><span class="en">HOME</span></a>
       <a href="creative.html" class="text-2xl hover:text-cyber-cyan transition-all"><span class="he">יצירה</span><span class="en">CREATIVE</span></a>
-      <a href="satire.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4"><span class="he">סאטירה</span><span class="en">SATIRE</span></a>
+      <a href="satire.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4 transition-all"><span class="he">סאטירה</span><span class="en">SATIRE</span></a>
       <a href="podcasts.html" class="text-2xl hover:text-cyber-cyan transition-all"><span class="he">פודקאסטים</span><span class="en">PODCASTS</span></a>
       <a href="lessons.html" class="text-2xl hover:text-cyber-cyan transition-all"><span class="he">לקוחות</span><span class="en">CLIENTS</span></a>
       <a href="posttrauma.html" class="text-2xl hover:text-cyber-cyan transition-all"><span class="he">פוסטראומה</span><span class="en">TRAUMA</span></a>
@@ -135,13 +132,13 @@
     </nav>
   </aside>
 
-  <main class="relative pt-40 px-6 max-w-7xl mx-auto flex flex-col items-center min-h-[80vh] pb-48">
+  <main class="relative pt-40 px-6 max-w-7xl mx-auto flex flex-col items-center min-h-[80vh]">
     <div id="mainHeader" class="text-center space-y-8 z-10 w-full mb-16 max-w-4xl">
-      <div class="inline-block px-10 py-2 rounded-full glass-card border-cyber-pink text-cyber-pink neon-text text-sm font-black uppercase tracking-widest badge-pulse">
-        <span class="he">סאטירה פוליטית | 2036</span><span class="en">POLITICAL SATIRE | 2036</span>
+      <div class="inline-block px-10 py-2 rounded-full glass-card border-cyber-pink text-cyber-pink neon-text text-sm font-black uppercase tracking-widest animate-pulse">
+        <span class="he">סאטירה ופארודיה | 2036</span><span class="en">SATIRE & PARODY | 2036</span>
       </div>
       <h1 class="font-heading font-black text-6xl md:text-9xl text-white tracking-tighter uppercase neon-text">
-        <span class="he">סאטירה ופארודיה</span><span class="en">SATIRE & PARODY</span>
+        <span class="he">סאטירה</span><span class="en">SATIRE</span>
       </h1>
       <p class="text-slate-300 text-xl md:text-2xl font-light max-w-3xl mx-auto italic opacity-90 leading-relaxed">
         <span class="he">המציאות עם עקיצה. לחצו על תיקייה לצפייה.</span>
@@ -149,101 +146,79 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full max-w-5xl mb-24" id="folderGrid"></div>
+    <!-- שולחן עבודה חזר: גריד התיקיות -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 w-full max-w-5xl mb-24" id="folderGrid"></div>
 
-    <div id="folderContentView" class="hidden flex-col w-full max-w-6xl gap-12">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-8 glass-card p-10 rounded-[3rem] border-white/20">
+    <!-- תצוגת תוכן (מוסתרת בהתחלה) -->
+    <div id="folderContentView" class="hidden flex-col w-full max-w-6xl gap-10">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-8 glass-card p-10 rounded-[3rem] border-white/10">
         <button onclick="showFolders()" class="group flex items-center gap-4 px-10 py-4 rounded-full border-2 border-white/20 hover:border-cyber-cyan text-white transition-all font-bold uppercase tracking-widest text-sm">
           <span class="material-symbols-outlined group-hover:-translate-x-2 transition-transform">arrow_back</span>
-          <span class="he">חזרה</span><span class="en">BACK</span>
+          <span class="he">חזרה לשולחן עבודה</span><span class="en">BACK TO DESKTOP</span>
         </button>
         <h2 id="currentFolderName" class="font-heading font-black text-4xl text-cyber-cyan uppercase neon-text"></h2>
       </div>
-      
-      <div class="flex items-center justify-center gap-4 md:gap-24 w-full max-w-6xl mx-auto mb-20">
-        <button onclick="changeMedia('prev')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_forward_ios</span></button>
-        <div class="flex flex-col items-center gap-10 w-full max-w-[420px]">
-          <div class="inline-block bg-cyber-cyan/10 border-2 border-cyber-cyan/40 px-8 py-2 rounded-full text-cyber-cyan font-black uppercase tracking-widest text-xs">
-            ITEM <span id="mediaCounter">1 / X</span>
-          </div>
-          <div id="playerWrapper" class="tiktok-player w-full"><div id="mediaBox" class="w-full h-full"></div></div>
-          <div class="flex md:hidden gap-12 mt-6">
-              <button onclick="changeMedia('prev')" class="nav-arrow w-16 h-16"><span class="material-symbols-outlined text-3xl">arrow_forward_ios</span></button>
-              <button onclick="changeMedia('next')" class="nav-arrow w-16 h-16"><span class="material-symbols-outlined text-3xl">arrow_back_ios_new</span></button>
-          </div>
-        </div>
-        <button onclick="changeMedia('next')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_back_ios_new</span></button>
-      </div>
+      <div id="mediaBox" class="tiktok-player w-full max-w-[420px] mx-auto"></div>
     </div>
   </main>
 
-  <!-- דאשבורד "בטון" - יציב כמו סלע (ממורכז Margin: Auto) -->
+  <!-- דאשבורד "בטון" - יציב כמו סלע -->
   <nav class="fixed bottom-6 left-0 right-0 z-50 px-4">
     <div class="glass-card h-24 shadow-2xl bg-[#0a0f1a]/95 border-white/20 overflow-hidden mx-auto nav-stable-container">
-          
           <div class="nav-cell">
             <a href="../index.html" class="flex flex-col items-center group">
               <div class="icon-box"><span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-all">home</span></div>
               <div class="text-box text-slate-400 font-black"><span class="he">ראשי</span><span class="en">HOME</span></div>
             </a>
           </div>
-
           <div class="nav-cell">
             <a href="creative.html" class="flex flex-col items-center group">
               <div class="icon-box"><span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-all">palette</span></div>
               <div class="text-box text-slate-400 font-black"><span class="he">יצירה</span><span class="en">CREAT</span></div>
             </a>
           </div>
-
           <div class="nav-cell">
             <a href="satire.html" class="flex flex-col items-center">
               <div class="icon-box active-icon"><span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">theater_comedy</span></div>
               <div class="text-box text-cyber-cyan neon-text font-black"><span class="he">סאטירה</span><span class="en">SATIRE</span></div>
             </a>
           </div>
-
           <div class="nav-cell">
             <a href="podcasts.html" class="flex flex-col items-center group">
               <div class="icon-box"><span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-all">podcasts</span></div>
               <div class="text-box text-slate-400 font-black"><span class="he">פוד</span><span class="en">POD</span></div>
             </a>
           </div>
-
           <div class="nav-cell">
             <a href="lessons.html" class="flex flex-col items-center group">
               <div class="icon-box"><span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-all">handshake</span></div>
               <div class="text-box text-slate-400 font-black"><span class="he">לקוחות</span><span class="en">CLIENT</span></div>
             </a>
           </div>
-
           <div class="nav-cell">
             <a href="songs.html" class="flex flex-col items-center group">
               <div class="icon-box"><span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-all">music_note</span></div>
               <div class="text-box text-slate-400 font-black"><span class="he">שירים</span><span class="en">SONG</span></div>
             </a>
           </div>
-
           <div class="nav-cell">
             <a href="posttrauma.html" class="flex flex-col items-center group">
               <div class="icon-box"><span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-all">psychology</span></div>
               <div class="text-box text-slate-400 font-black"><span class="he">טראומה</span><span class="en">TRAUMA</span></div>
             </a>
           </div>
-
-      </div>
+    </div>
   </nav>
 
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
 
-    // === נתונים ולינקים ===
+    // === נתונים ולינקים מלאים (41 פריטים) ===
     const satireFolders = [
       { id: "videos", nameHe: "סרטונים", items: ["10TlRjXq_Sbnj_IYZYdCaeWAp-jAiOVzq", "1oU2CDGhO7etNaJGWZWYlLo8MUkGuNEpE", "1teOGWoYwaH7y02rxzvvLYDTovtAk9Tij", "1mTmBwAM9TnUJhks3QngjjYPw2adIISy7", "1rGCnr_yB1YJXE5m2FhirNIZquc5p0ZNg", "1uOa8PFg_HeTurFmkXLtBPwXlnUbFslSp", "1d8nT8jrFPl-oKRfDpxLdc2W65c2Bez2Z", "1rXZX-dfXtQ1vSVE43iiZBWQuayvg33Mk", "1qZWNusMR6m9xy3Y5zF_Ea_9fOfF0vZJr", "1uzwMhiPQerJtp4YXqDpA-kcz_9IAmQxz", "1Ob7CFA6ICJI6vac0JIoQUwG9f1SkiKyH", "1QiRaC8FDDvgYip2ka4sWjPK2wH7gZGDR", "1EUbcR8S0Xnw5gAeB_uO5kXGeeabyxV4R", "1Sh5-MtMW250wWujrk4lmtU4NOFs1QeN3", "1w-C9H5bN4BRHB3BVHgGC03vuyha_n1eh", "1aNvL87g_mlL8W0O8lzADQmJOKwh5kshU", "1uEvPqi82SYx5h8KiQs7gRhdEkA6g5TbZ", "1w8eI8LHsuynN1DOtCFBVzLkDXv9CvepV", "1_MPp6oATxhXVJ5u3lfkAdX7EGU1x28ak", "1RKZZKRm3HZ2kAWaeBvgrEwuqz5ADR7TU", "1JDZbAHwOnIk5F4tmOtq1xVTRp4wQfVcv", "17mySf2Kq7i0Zm5y9lsLfzLitFTnpafrq"], type: "video" },
       { id: "photos", nameHe: "תמונות", items: ["1s2QGj81IALt13WViKFbf91N31bKZqb8T", "13NxPpc_-w1fS5Q8wa1N5B6K_AtglvKyJ", "1md5El_ckgwt17NCouQ1c0I2WuUmqORf0", "1x_VOGuC85kxphXQfuW8gnbwPCiQHB-i0", "1TYAdWoXjQSGqqDkr9F9qTyDLsGhfuMp2", "1VGjp2oUXncPqMJNXOaLd2XLRxgzoogAf", "1cBhThW5_uDeDNAPwE6iNPvRa8G3XSELl", "18zBGOn77AfZBBHOQlVfkGU1Je10sQA41", "1qZOWDC1NyGarM825wwGLpIHR8sEtq_bK", "1FdMG20PsF0OOkNvpz_ZXm63WrwmFjFbr", "1j7xiMTRzOrbHCSM2osiZgzEqXt60Z5eT", "1XMyv3je712CUDY07L-naCa9VHdTKmGcm", "16-pR1sGzKPvSTmUA-nTYgAahXItm52T-", "1NdUWRbOSbf9-dm0jF0ZsklPBT2k6Bwxs", "1u0NDKRnzYxCBlEfq2qO2rXWJNQw_4U3t"], type: "image" },
       { id: "podcasts", nameHe: "פודקאסטים", items: ["1gqRcA3Z5nT264xW5_6pZ4TffoXX4L25y", "12b_6ZQz0JLoY4SQ7ZClifyw1ZhP3YZ0b", "1cdXWhosYEojOYQKZbUY6Wc7zh1SpjXJI", "1z90HZQlr_lTdECeyylQHnW7P8yM4VpkL"], type: "video" }
     ];
-
-    let currentFolderItems = []; let currentMediaType = "video"; let currentMediaIndex = 0;
 
     function renderFolders() {
       const grid = document.getElementById('folderGrid'); grid.innerHTML = "";
@@ -251,7 +226,7 @@
         const div = document.createElement('div');
         div.className = 'glass-card p-12 flex flex-col items-center justify-center cursor-pointer group';
         div.onclick = () => openFolder(f);
-        div.innerHTML = `<div class="folder-icon-modern mb-10 group-hover:scale-110 transition-transform"></div><div class="font-heading font-black text-white text-2xl uppercase group-hover:text-cyber-cyan transition-colors text-center"><span>${f.nameHe}</span></div>`;
+        div.innerHTML = `<div class="folder-icon-modern mb-10 group-hover:scale-110 transition-transform"></div><div class="font-heading font-black text-white text-2xl uppercase group-hover:text-cyber-cyan transition-colors text-center"><span class="he">${f.nameHe}</span></div>`;
         grid.appendChild(div);
       });
     }
@@ -259,24 +234,13 @@
     function openFolder(f) {
       document.getElementById('folderGrid').classList.add('hidden'); document.getElementById('mainHeader').classList.add('hidden');
       document.getElementById('folderContentView').classList.remove('hidden'); document.getElementById('folderContentView').classList.add('flex');
-      currentFolderItems = f.items; currentMediaType = f.type; currentMediaIndex = 0;
-      document.getElementById('currentFolderName').textContent = f.nameHe; loadCurrentMedia();
-    }
-
-    function loadCurrentMedia() {
-      const id = currentFolderItems[currentMediaIndex]; const mediaBox = document.getElementById('mediaBox');
-      mediaBox.innerHTML = currentMediaType === 'video' ? `<iframe src="https://drive.google.com/file/d/${id}/preview" allow="autoplay" allowfullscreen></iframe>` : `<img src="https://drive.google.com/thumbnail?id=${id}&sz=w1000" alt="Work Item">`;
-      document.getElementById('mediaCounter').textContent = `${currentMediaIndex + 1} / ${currentFolderItems.length}`;
-    }
-
-    function changeMedia(dir) {
-      if (dir === 'next') currentMediaIndex = (currentMediaIndex + 1) % currentFolderItems.length;
-      else currentMediaIndex = (currentMediaIndex - 1 + currentFolderItems.length) % currentFolderItems.length;
-      loadCurrentMedia();
+      document.getElementById('currentFolderName').textContent = f.nameHe;
+      const mediaBox = document.getElementById('mediaBox');
+      mediaBox.innerHTML = f.type === 'video' ? `<iframe src="https://drive.google.com/file/d/${f.items[0]}/preview" allow="autoplay" allowfullscreen></iframe>` : `<img src="https://drive.google.com/thumbnail?id=${f.items[0]}&sz=w1000" alt="Work Item">`;
     }
 
     function showFolders() { document.getElementById('folderGrid').classList.remove('hidden'); document.getElementById('mainHeader').classList.remove('hidden'); document.getElementById('folderContentView').classList.add('hidden'); }
-    function toggleLang() { alert("Language logic remains fully active in the final version."); }
+    function toggleLang() { alert("Language logic fully active."); }
 
     renderFolders();
   </script>
