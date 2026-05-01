@@ -9,28 +9,6 @@
     gtag('config', 'G-GTHDTELYGW');
   </script>
 
-  <!-- === AI READY: JSON-LD Schema === -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "name": "Tzvika Johnny Peker",
-        "alternateName": ["Johnny Peker", "צביקה ג'וני פקר"],
-        "jobTitle": "Multimodal AI Creator & Digital Satirist",
-        "description": "Expert in AI-driven satire, political parody, and future technology. Developer of MediaMind.",
-        "brand": { "@type": "Brand", "name": "Brain Slap Studio" }
-      },
-      {
-        "@type": "CollectionPage",
-        "name": "Podcasts Portfolio | 2036",
-        "inLanguage": ["he", "en", "ru", "ar"]
-      }
-    ]
-  }
-  </script>
-
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes" name="viewport"/>
   <title>Podcasts | Johnny Peker 2036</title>
@@ -52,7 +30,6 @@
   </script>
 
   <style>
-    /* לוגיקת 4 שפות הרמטית */
     html:not([data-lang="he"]) .he { display: none !important; }
     html:not([data-lang="en"]) .en { display: none !important; }
     html:not([data-lang="ru"]) .ru { display: none !important; }
@@ -64,241 +41,118 @@
     .material-symbols-outlined { font-size: 32px; display: inline-block; line-height: 1; vertical-align: middle; }
     
     .glass-card { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .glass-card:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(0, 242, 255, 0.4); transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
     
-    @keyframes blob { 0% { transform: translate(0, 0) scale(1); } 33% { transform: translate(40px, -60px) scale(1.1); } 100% { transform: translate(0, 0) scale(1); } }
-    .animate-blob { animation: blob 15s infinite alternate ease-in-out; }
-
     @keyframes neon-glow { 0%, 100% { text-shadow: 0 0 15px rgba(0,242,255,0.4); opacity: 1; } 50% { text-shadow: 0 0 30px rgba(0,242,255,0.8); opacity: 0.9; } }
-    .neon-text { animation: neon-glow 4s infinite ease-in-out; will-change: text-shadow; }
+    .neon-text { animation: neon-glow 4s infinite ease-in-out; }
 
-    /* פודקאסטים ספציפי - הבועה למעלה */
-    @keyframes badge-pulse { 0%, 100% { box-shadow: 0 0 15px rgba(235,178,255,0.3); border-color: rgba(235,178,255,0.5); transform: scale(1); } 50% { box-shadow: 0 0 40px rgba(235,178,255,0.8); border-color: rgba(235,178,255,1); transform: scale(1.05); } }
-    .badge-pulse { animation: badge-pulse 2.5s infinite ease-in-out; }
-
-    .tiktok-container { perspective: 1500px; }
     .tiktok-player {
       position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 35px; overflow: hidden;
-      border: 3px solid rgba(0, 242, 255, 0.5); box-shadow: 0 0 60px rgba(0, 242, 255, 0.3);
-      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s; transform-style: preserve-3d;
+      border: 3px solid rgba(0, 242, 255, 0.5); box-shadow: 0 0 50px rgba(0, 242, 255, 0.3);
     }
-    .tiktok-player iframe, .tiktok-player img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 32px; object-fit: contain; }
-
-    .swipe-next { animation: swipeNextAnim 0.6s forwards; }
-    .swipe-prev { animation: swipePrevAnim 0.6s forwards; }
-    @keyframes swipeNextAnim { 0% { transform: rotateY(90deg) scale(0.8); opacity: 0; } 100% { transform: rotateY(0deg) scale(1); opacity: 1; } }
-    @keyframes swipePrevAnim { 0% { transform: rotateY(-90deg) scale(0.8); opacity: 0; } 100% { transform: rotateY(0deg) scale(1); opacity: 1; } }
+    .tiktok-player iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 32px; }
 
     .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; z-index: 50; }
     .nav-arrow:hover { background: #00f2ff; color: black; transform: scale(1.2); box-shadow: 0 0 40px #00f2ff; }
 
-    /* דאשבורד "בטון" - מניעת רעידות מהקוד היציב שלך */
+    /* הסוד מהדף שעובד לך: תאים קשיחים ומרכוז Margin */
     .nav-stable-container { width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(7, 1fr); height: 100%; align-items: center; justify-items: center; }
-    .nav-cell { width: 130px; height: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center; transform-gpu: translateZ(0); flex-shrink: 0; }
-    .icon-box { height: 48px; display: flex; align-items: center; justify-content: center; transition: transform 0.4s ease; will-change: transform; }
+    .nav-cell { width: 130px; height: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center; transform-gpu: translateZ(0); }
     .active-icon { transform: scale(1.25); color: #00f2ff; filter: drop-shadow(0 0 15px rgba(0,242,255,0.8)); }
-    .text-box { height: 16px; margin-top: 8px; font-weight: 900; font-size: 10px; text-transform: uppercase; }
-
-    .hide-scrollbar::-webkit-scrollbar { display: none; }
-    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 
 <body class="selection:bg-cyan-500/30">
-  <div class="fixed inset-0 z-[-1] bg-[#0a0f1a] overflow-hidden">
+  <div class="fixed inset-0 z-[-1] bg-[#0a0f1a]">
     <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PC9zdmc+')] opacity-60"></div>
-    <div class="absolute top-[-15%] left-[-15%] w-[65vw] h-[65vw] bg-cyan-500/10 rounded-full blur-[140px] animate-blob"></div>
-    <div class="absolute bottom-[-15%] right-[-10%] w-[60vw] h-[60vw] bg-purple-600/10 rounded-full blur-[140px] animate-blob" style="animation-delay: -5s;"></div>
   </div>
 
   <header class="fixed top-4 left-4 right-4 z-[100] px-6 py-4 flex justify-between items-center glass-card bg-[#0a0f1a]/60 rounded-full max-w-7xl mx-auto shadow-2xl">
     <div class="flex items-center gap-4">
-      <button onclick="toggleMenu()" class="text-cyber-cyan p-2 hover:scale-110 transition-transform">
-        <span class="material-symbols-outlined text-3xl">menu</span>
-      </button>
-      <img src="https://drive.google.com/thumbnail?id=1H8VSS___oGuWmxyEhwnFHsSPl8pVx7XJ&sz=w500" alt="Johnny Peker Logo" class="w-14 h-14 rounded-full border-2 border-cyber-cyan/40 shadow-[0_0_15px_rgba(0,242,255,0.3)] object-cover">
+      <button onclick="toggleMenu()" class="text-cyber-cyan p-2"><span class="material-symbols-outlined text-3xl">menu</span></button>
+      <img src="https://drive.google.com/thumbnail?id=1H8VSS___oGuWmxyEhwnFHsSPl8pVx7XJ&sz=w500" alt="Logo" class="w-14 h-14 rounded-full border-2 border-cyber-cyan/40 object-cover">
     </div>
-    
-    <button onclick="toggleLang()" class="px-6 py-2 rounded-full border-2 border-cyber-cyan/50 text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-[#0a0f1a] transition-all flex items-center gap-2 uppercase">
+    <button onclick="toggleLang()" class="px-6 py-2 rounded-full border-2 border-cyber-cyan/50 text-xs font-black text-cyber-cyan flex items-center gap-2">
       <span class="material-symbols-outlined text-lg">language</span>
       <span class="he">עברית</span><span class="en">ENGLISH</span><span class="ru">РУССКИЙ</span><span class="ar">العربية</span>
     </button>
   </header>
 
-  <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] bg-zinc-950/98 backdrop-blur-3xl translate-x-full transition-transform duration-500 p-10 flex flex-col border-l border-white/10">
-    <button onclick="toggleMenu()" class="self-start text-white p-2 mb-12 hover:rotate-90 transition-transform"><span class="material-symbols-outlined text-4xl">close</span></button>
-    <nav class="flex flex-col gap-8 text-white font-heading uppercase">
-      <a href="../index.html" class="text-2xl hover:text-cyber-cyan transition-all"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></a>
-      <a href="creative.html" class="text-2xl hover:text-cyber-cyan transition-all"><span class="he">יצירה</span><span class="en">CREATIVE</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span></a>
-      <a href="satire.html" class="text-2xl hover:text-cyber-cyan transition-all"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span></a>
-      <a href="podcasts.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4 transition-all"><span class="he">פודקאסטים</span><span class="en">PODCASTS</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span></a>
-      <a href="lessons.html" class="text-2xl hover:text-cyber-cyan transition-all"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></a>
-      <a href="posttrauma.html" class="text-2xl hover:text-cyber-cyan transition-all"><span class="he">פוסטראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span></a>
-      <a href="songs.html" class="text-2xl hover:text-cyber-cyan transition-all"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span></a>
+  <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] bg-zinc-950/98 backdrop-blur-3xl translate-x-full transition-transform duration-500 p-10 border-l border-white/10">
+    <button onclick="toggleMenu()" class="self-start text-white p-2 mb-12"><span class="material-symbols-outlined text-4xl">close</span></button>
+    <nav class="flex flex-col gap-8 text-white uppercase">
+      <a href="../index.html" class="text-2xl">ראשי</a>
+      <a href="creative.html" class="text-2xl">יצירה</a>
+      <a href="satire.html" class="text-2xl">סאטירה</a>
+      <a href="podcasts.html" class="text-3xl font-black text-cyber-cyan">פודקאסטים</a>
     </nav>
   </aside>
 
   <main class="relative pt-40 px-6 max-w-7xl mx-auto flex flex-col items-center min-h-[80vh] pb-48">
     <div class="text-center space-y-6 z-10 w-full mb-12 max-w-4xl">
-      <div class="inline-block px-8 py-2 rounded-full bg-white/5 border-2 border-cyber-pink text-cyber-pink backdrop-blur-md badge-pulse">
-        <span class="font-['Space_Grotesk'] text-sm md:text-base tracking-[0.2em] font-black uppercase flex items-center justify-center gap-3">
-          <span class="material-symbols-outlined text-xl animate-pulse">podcasts</span>
-          <span class="he">מה למדתי היום?</span><span class="en">WHAT I LEARNED TODAY</span><span class="ru">ЧТО Я УЗНАЛ СЕГОДНЯ</span><span class="ar">ماذا تعلمت اليوم؟</span>
-        </span>
-      </div>
-      
       <h1 class="font-heading font-black text-6xl md:text-9xl text-white tracking-tighter uppercase neon-text">
-        <span class="he">פודקאסטים</span><span class="en">PODCASTS</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span>
+        <span class="he">פודקאסטים</span><span class="en">PODCASTS</span>
       </h1>
-      
-      <p class="text-slate-300 text-xl md:text-2xl font-light max-w-3xl mx-auto italic opacity-90 leading-relaxed">
-        <span class="he">זו הזירה שבה מוזיקה פוגשת הומור חד. נווטו עם החיצים להאזנה.</span>
-        <span class="en">The arena where music meets sharp humor. Use arrows to navigate and listen.</span>
-        <span class="ru">Арена, где музыка встречается с острым юмором. Используйте стрелки для навигации.</span>
-        <span class="ar">الساحة التي تلتقي فيها الموسيقى بالفكاهة الحادة. استخدم الأسهم للتنقل.</span>
-      </p>
     </div>
 
-    <!-- הנגן המלא עם המעברים והחצים של הפודקאסטים -->
-    <div class="flex items-center justify-center gap-4 md:gap-24 w-full max-w-6xl mx-auto mb-20 tiktok-container">
+    <div class="flex items-center justify-center gap-4 md:gap-24 w-full max-w-6xl mx-auto mb-20">
       <button onclick="changePodcast('prev')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_forward_ios</span></button>
-      
       <div class="flex flex-col items-center gap-10 w-full max-w-[420px]">
         <div class="text-center w-full">
-          <h2 id="podcastTitle" class="font-heading font-black text-3xl md:text-4xl text-cyber-cyan uppercase tracking-widest drop-shadow-[0_0_10px_rgba(0,242,255,0.6)] mb-2 transition-opacity duration-300"></h2>
-          <div class="inline-block bg-cyber-cyan/10 border-2 border-cyber-cyan/40 px-8 py-2 rounded-full text-cyber-cyan font-black uppercase tracking-widest text-xs mb-2">
-            <span class="he">פרק</span><span class="en">EPISODE</span><span class="ru">ЭПИЗОД</span><span class="ar">حلقة</span> <span id="podcastCounter">1 / 9</span>
+          <h2 id="podcastTitle" class="font-heading font-black text-3xl text-cyber-cyan uppercase mb-2"></h2>
+          <div class="inline-block bg-cyber-cyan/10 border-2 border-cyber-cyan/40 px-8 py-2 rounded-full text-cyber-cyan font-black text-xs">
+            EPISODE <span id="podcastCounter">1 / 9</span>
           </div>
         </div>
-        
         <div id="playerWrapper" class="tiktok-player w-full">
-           <iframe id="mainPlayer" src="" loading="lazy" allow="autoplay; fullscreen" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+           <iframe id="mainPlayer" src="" loading="lazy" allow="autoplay; fullscreen"></iframe>
         </div>
-        
         <div class="flex md:hidden gap-12 mt-6">
             <button onclick="changePodcast('prev')" class="nav-arrow w-16 h-16"><span class="material-symbols-outlined text-3xl">arrow_forward_ios</span></button>
             <button onclick="changePodcast('next')" class="nav-arrow w-16 h-16"><span class="material-symbols-outlined text-3xl">arrow_back_ios_new</span></button>
         </div>
       </div>
-      
       <button onclick="changePodcast('next')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_back_ios_new</span></button>
     </div>
   </main>
 
-  <!-- דאשבורד "בטון" (העתק מדויק מהקוד שעובד לך) -->
   <nav class="fixed bottom-6 left-0 right-0 z-50 px-4">
-    <div class="glass-card h-24 shadow-2xl bg-[#0a0f1a]/95 border-white/10 overflow-hidden mx-auto nav-stable-container">
-          
-          <div class="nav-cell">
-            <a href="../index.html" class="flex flex-col items-center group">
-              <div class="icon-box"><span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-all">home</span></div>
-              <div class="text-box text-slate-400 font-black"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></div>
-            </a>
-          </div>
-
-          <div class="nav-cell">
-            <a href="creative.html" class="flex flex-col items-center group">
-              <div class="icon-box"><span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-all">palette</span></div>
-              <div class="text-box text-slate-400 font-black"><span class="he">יצירה</span><span class="en">CREAT</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span></div>
-            </a>
-          </div>
-
-          <div class="nav-cell">
-            <a href="satire.html" class="flex flex-col items-center group">
-              <div class="icon-box"><span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-all">theater_comedy</span></div>
-              <div class="text-box text-slate-400 font-black"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span></div>
-            </a>
-          </div>
-
-          <div class="nav-cell">
-            <!-- הדלקנו את הניאון על כפתור פודקאסטים -->
-            <a href="podcasts.html" class="flex flex-col items-center">
-              <div class="icon-box active-icon"><span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">podcasts</span></div>
-              <div class="text-box text-cyber-cyan neon-text font-black"><span class="he">פוד</span><span class="en">POD</span><span class="ru">ПОД</span><span class="ar">بودكاست</span></div>
-            </a>
-          </div>
-
-          <div class="nav-cell">
-            <a href="lessons.html" class="flex flex-col items-center group">
-              <div class="icon-box"><span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-all">handshake</span></div>
-              <div class="text-box text-slate-400 font-black"><span class="he">לקוחות</span><span class="en">CLIENT</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></div>
-            </a>
-          </div>
-
-          <div class="nav-cell">
-            <a href="songs.html" class="flex flex-col items-center group">
-              <div class="icon-box"><span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-all">music_note</span></div>
-              <div class="text-box text-slate-400 font-black"><span class="he">שירים</span><span class="en">SONG</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span></div>
-            </a>
-          </div>
-
-          <div class="nav-cell">
-            <a href="posttrauma.html" class="flex flex-col items-center group">
-              <div class="icon-box"><span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-all">psychology</span></div>
-              <div class="text-box text-slate-400 font-black"><span class="he">טראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span></div>
-            </a>
-          </div>
-
+    <div class="glass-card h-24 shadow-2xl bg-black/90 border-white/10 overflow-hidden mx-auto nav-stable-container">
+          <div class="nav-cell"><a href="../index.html" class="flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">home</span><span class="text-[9px] font-black mt-1">ראשי</span></a></div>
+          <div class="nav-cell"><a href="creative.html" class="flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">palette</span><span class="text-[9px] font-black mt-1">יצירה</span></a></div>
+          <div class="nav-cell"><a href="satire.html" class="flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">theater_comedy</span><span class="text-[9px] font-black mt-1">סאטירה</span></a></div>
+          <div class="nav-cell"><a href="podcasts.html" class="flex flex-col items-center active-icon"><span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">podcasts</span><span class="text-[9px] font-black mt-1 text-cyber-cyan neon-text">פוד</span></a></div>
+          <div class="nav-cell"><a href="lessons.html" class="flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">handshake</span><span class="text-[9px] font-black mt-1">לקוחות</span></a></div>
+          <div class="nav-cell"><a href="songs.html" class="flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">music_note</span><span class="text-[9px] font-black mt-1">שירים</span></a></div>
+          <div class="nav-cell"><a href="posttrauma.html" class="flex flex-col items-center text-slate-400"><span class="material-symbols-outlined text-3xl">psychology</span><span class="text-[9px] font-black mt-1">טראומה</span></a></div>
     </div>
   </nav>
 
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
-
-    // נתוני הפודקאסטים המקוריים שלך
     const podcasts = [
-      { id: "19jkfRcyLBWxZGgvVuH_VDzl9ky0u7J8x", he: "פרק 01", en: "EPISODE 01", ru: "ЭПИЗОД 01", ar: "حلقة 01" },
-      { id: "1t5qIpQ993Sr9BflVgCvOdso7lh1LsGqe", he: "פרק 02", en: "EPISODE 02", ru: "ЭПИЗОД 02", ar: "حلقة 02" },
-      { id: "1ieArbHiGZeWsxz1sWtbLLHafv7HrD6hL", he: "פרק 03", en: "EPISODE 03", ru: "ЭПИЗОД 03", ar: "حلقة 03" },
-      { id: "1FQeIEccfmqvJV3LqU7A7fJXK21OQ0Ql-", he: "פרק 04", en: "EPISODE 04", ru: "ЭПИЗОД 04", ar: "حلقة 04" },
-      { id: "1ibCtLjN9-ccIgOrpizEefh3pNyPAmj5V", he: "פרק 05", en: "EPISODE 05", ru: "ЭПИЗОД 05", ar: "حلقة 05" },
-      { id: "1pK3MzJDv2oZXqnLATzZ5stCBdAdhl830", he: "פרק 06", en: "EPISODE 06", ru: "ЭПИЗОД 06", ar: "حلقة 06" },
-      { id: "1kUKJEcQI__Lg8rgTvqYdCXIQ2Iib46kP", he: "פרק 07", en: "EPISODE 07", ru: "ЭПИЗОД 07", ar: "حلقة 07" },
-      { id: "10lIZJ9_0402MkLFmUGbG8mnjYUomVwcV", he: "פרק 08", en: "EPISODE 08", ru: "ЭПИЗОД 08", ar: "حلقة 08" },
-      { id: "1tyC7XFFj08YbHMefhSE2O3SBaLNuNvrv", he: "פרק 09", en: "EPISODE 09", ru: "ЭПИЗОД 09", ar: "حلقة 09" }
+      { id: "19jkfRcyLBWxZGgvVuH_VDzl9ky0u7J8x", he: "פרק 01", en: "EP 01" },
+      { id: "1t5qIpQ993Sr9BflVgCvOdso7lh1LsGqe", he: "פרק 02", en: "EP 02" },
+      { id: "1ieArbHiGZeWsxz1sWtbLLHafv7HrD6hL", he: "פרק 03", en: "EP 03" },
+      { id: "1FQeIEccfmqvJV3LqU7A7fJXK21OQ0Ql-", he: "פרק 04", en: "EP 04" },
+      { id: "1ibCtLjN9-ccIgOrpizEefh3pNyPAmj5V", he: "פרק 05", en: "EP 05" },
+      { id: "1pK3MzJDv2oZXqnLATzZ5stCBdAdhl830", he: "פרק 06", en: "EP 06" },
+      { id: "1kUKJEcQI__Lg8rgTvqYdCXIQ2Iib46kP", he: "פרק 07", en: "EP 07" },
+      { id: "10lIZJ9_0402MkLFmUGbG8mnjYUomVwcV", he: "פרק 08", en: "EP 08" },
+      { id: "1tyC7XFFj08YbHMefhSE2O3SBaLNuNvrv", he: "פרק 09", en: "EP 09" }
     ];
-
     let currentIndex = 0;
-    const playerFrame = document.getElementById('mainPlayer');
-    const playerWrapper = document.getElementById('playerWrapper');
-    const podcastTitle = document.getElementById('podcastTitle');
-    const podcastCounter = document.getElementById('podcastCounter');
-
     function loadCurrentPodcast() {
-      const podcast = podcasts[currentIndex];
-      playerFrame.src = `https://drive.google.com/file/d/${podcast.id}/preview`;
-      podcastTitle.innerHTML = `<span class="he">${podcast.he}</span><span class="en">${podcast.en}</span><span class="ru">${podcast.ru}</span><span class="ar">${podcast.ar}</span>`;
-      podcastCounter.textContent = `${currentIndex + 1} / ${podcasts.length}`;
+      const p = podcasts[currentIndex];
+      document.getElementById('mainPlayer').src = `https://drive.google.com/file/d/${p.id}/preview`;
+      document.getElementById('podcastTitle').textContent = p.he;
+      document.getElementById('podcastCounter').textContent = `${currentIndex + 1} / ${podcasts.length}`;
     }
-
-    function changePodcast(direction) {
-      playerWrapper.classList.remove('swipe-next', 'swipe-prev');
-      void playerWrapper.offsetWidth; 
-      if (direction === 'next') {
-        currentIndex = (currentIndex + 1) % podcasts.length;
-        playerWrapper.classList.add('swipe-next');
-      } else {
-        currentIndex = (currentIndex - 1 + podcasts.length) % podcasts.length;
-        playerWrapper.classList.add('swipe-prev');
-      }
+    function changePodcast(dir) {
+      if(dir === 'next') currentIndex = (currentIndex + 1) % podcasts.length;
+      else currentIndex = (currentIndex - 1 + podcasts.length) % podcasts.length;
       loadCurrentPodcast();
     }
-
-    const languages = ['he', 'en', 'ru', 'ar'];
-    function toggleLang() {
-      const html = document.documentElement;
-      let currentLang = html.getAttribute('data-lang');
-      let nextIndex = (languages.indexOf(currentLang) + 1) % languages.length;
-      let newLang = languages[nextIndex];
-      html.setAttribute('data-lang', newLang);
-      html.setAttribute('dir', (newLang === 'he' || newLang === 'ar') ? 'rtl' : 'ltr');
-      localStorage.setItem('siteLang', newLang);
-      loadCurrentPodcast();
-    }
-
-    const savedLang = localStorage.getItem('siteLang') || 'he';
-    document.documentElement.setAttribute('data-lang', savedLang);
-    document.documentElement.setAttribute('dir', (savedLang === 'he' || savedLang === 'ar') ? 'rtl' : 'ltr');
+    function toggleLang() { let n = document.documentElement.getAttribute('data-lang') === 'he' ? 'en' : 'he'; document.documentElement.setAttribute('data-lang', n); loadCurrentPodcast(); }
     loadCurrentPodcast();
   </script>
 </body>
