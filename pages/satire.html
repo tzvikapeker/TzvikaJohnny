@@ -9,23 +9,12 @@
     gtag('config', 'G-GTHDTELYGW');
   </script>
 
-  <!-- === AI READY: JSON-LD Schema (Johnny Peker 2036) === -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Satire & Parody | Johnny Peker 2036",
-    "description": "AI-assisted satirical visual archive and social commentary by Tzvika Johnny Peker.",
-    "creator": { "@type": "Person", "name": "Tzvika Johnny Peker" }
-  }
-  </script>
-  
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes" name="viewport"/>
-  <title>Satire | Johnny Peker 2036</title>
+  <title>Satire & Parody | Johnny Peker 2036</title>
   
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Rubik:wght@300;400;500;700;900&family=Epilogue:wght@300;400;700;900&family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Rubik:wght@300;400;500;700;900&family=Epilogue:wght@300;400;700;900&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
   
   <script id="tailwind-config">
@@ -36,47 +25,50 @@
   </script>
 
   <style>
-    /* לוגיקת 4 שפות הרמטית */
     html:not([data-lang="he"]) .he { display: none !important; }
     html:not([data-lang="en"]) .en { display: none !important; }
     html:not([data-lang="ru"]) .ru { display: none !important; }
     html:not([data-lang="ar"]) .ar { display: none !important; }
     
     * { -webkit-tap-highlight-color: transparent; outline: none !important; }
-    body { background-color: #050608; color: #f8f8ff; font-family: 'Rubik', sans-serif; overflow-x: hidden; }
+    body { background-color: #050608; color: #f8f8ff; font-family: 'Rubik', sans-serif; overflow-x: hidden; min-height: 100vh; }
     
+    /* הרקע מהתמונה image_4b349e.png */
+    .bg-grid {
+      background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
+      background-size: 40px 40px;
+    }
+    .blob { position: absolute; width: 60vw; height: 60vw; border-radius: 50%; filter: blur(120px); opacity: 0.1; z-index: -1; }
+
     .neon-title { color: #fff; text-shadow: 0 0 20px rgba(0, 242, 255, 0.8), 0 0 40px rgba(0, 242, 255, 0.4); font-family: 'Outfit', sans-serif; }
 
     .glass-card { 
       background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); 
-      border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; 
+      border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 28px; 
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
     }
-    .glass-card:hover { 
-      background: rgba(255, 255, 255, 0.07); border-color: rgba(0, 242, 255, 0.5); 
-      transform: translateY(-10px); box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
 
-    /* עיצוב תיקייה מהצילום מסך המנצח */
+    /* עיצוב תיקייה מהצילום מסך image_5801a9.jpg */
     .folder-icon {
-      width: 110px; height: 80px; background: linear-gradient(135deg, #00f2ff 0%, #0066ff 100%);
-      border-radius: 4px 14px 14px 14px; position: relative; box-shadow: 0 15px 35px rgba(0, 102, 255, 0.4);
+      width: 110px; height: 80px; 
+      background: linear-gradient(135deg, #00f2ff 0%, #0066ff 100%);
+      border-radius: 4px 14px 14px 14px; position: relative;
+      box-shadow: 0 15px 35px rgba(0, 102, 255, 0.4);
     }
     .folder-icon::before {
-      content: ""; position: absolute; top: -12px; left: 0; width: 45px; height: 12px; 
-      background: #00f2ff; border-radius: 6px 6px 0 0;
+      content: ""; position: absolute; top: -12px; left: 0; width: 45px; height: 12px; background: #00f2ff; border-radius: 6px 6px 0 0;
     }
 
     .tiktok-player {
       position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 35px; overflow: hidden;
-      border: 3px solid rgba(0, 242, 255, 0.5); box-shadow: 0 0 50px rgba(0, 242, 255, 0.3);
+      border: 3px solid rgba(0, 242, 255, 0.5); box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
     }
     .tiktok-player iframe, .tiktok-player img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 32px; object-fit: contain; }
 
-    .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; z-index: 50; }
+    .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; z-index: 50; }
     .nav-arrow:hover { background: #00f2ff; color: black; transform: scale(1.1); }
 
-    /* סרגל בטון יציב */
+    /* סרגל "בטון" יציב */
     .nav-stable-container { width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(7, 1fr); height: 100%; align-items: center; justify-items: center; }
     .nav-cell { width: 130px; height: 85px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .active-icon { color: #00f2ff; filter: drop-shadow(0 0 12px rgba(0,242,255,0.9)); transform: scale(1.2); }
@@ -86,9 +78,10 @@
 </head>
 
 <body class="pb-40 selection:bg-cyan-500/30">
-  <div class="fixed inset-0 z-[-1] bg-[#050608] overflow-hidden">
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIi8+PC9zdmc+')] opacity-40"></div>
-  </div>
+  <div class="fixed inset-0 z-[-2] bg-[#050608]"></div>
+  <div class="fixed inset-0 z-[-1] bg-grid opacity-50"></div>
+  <div class="blob bg-purple-900 top-[-10%] left-[-10%] opacity-20"></div>
+  <div class="blob bg-cyan-900 bottom-[-10%] right-[-10%] opacity-20"></div>
 
   <header class="fixed top-4 left-4 right-4 z-[100] px-8 py-4 flex justify-between items-center glass-card bg-black/40 rounded-full max-w-7xl mx-auto shadow-2xl border-white/10">
     <button onclick="toggleLang()" class="px-6 py-2 rounded-full border border-cyber-cyan/40 text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-black transition-all flex items-center gap-2">
@@ -101,18 +94,9 @@
     </div>
   </header>
 
-  <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] bg-zinc-950/98 backdrop-blur-3xl translate-x-full transition-transform duration-500 p-10 flex flex-col border-l border-white/10">
-    <button onclick="toggleMenu()" class="self-start text-white p-2 mb-12 hover:rotate-90 transition-transform"><span class="material-symbols-outlined text-4xl">close</span></button>
-    <nav class="flex flex-col gap-8 text-white font-['Outfit'] uppercase">
-      <a href="../index.html" class="text-2xl hover:text-cyber-cyan">HOME</a>
-      <a href="creative.html" class="text-2xl hover:text-cyber-cyan">CREATIVE</a>
-      <a href="satire.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4">SATIRE</a>
-    </nav>
-  </aside>
-
   <main class="relative pt-48 px-6 max-w-7xl mx-auto flex flex-col items-center min-h-[80vh]">
     <div id="mainHeader" class="text-center space-y-5 mb-20">
-      <div class="inline-block px-8 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-black tracking-[0.3em] uppercase text-white/60">SATIRE & PARODY | 2036</div>
+      <div class="inline-block px-8 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-black tracking-[0.3em] uppercase text-white/60">SATIRE | 2036</div>
       <h1 class="font-heading font-black text-7xl md:text-9xl uppercase neon-title tracking-tighter">
         <span class="he">סאטירה</span><span class="en">SATIRE</span>
       </h1>
@@ -122,10 +106,10 @@
       </p>
     </div>
 
-    <!-- גריד תיקיות מעוצב -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full max-w-5xl mb-32" id="folderGrid"></div>
+    <!-- גריד תיקיות מהתמונה -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 w-full max-w-5xl mb-32" id="folderGrid"></div>
 
-    <!-- תצוגת נגן המדיה -->
+    <!-- תצוגת המדיה -->
     <div id="folderContentView" class="hidden flex-col w-full max-w-6xl gap-10">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-6 glass-card p-8 rounded-3xl border-white/10">
         <button onclick="showFolders()" class="group flex items-center gap-3 px-6 py-3 rounded-full border-2 border-white/20 hover:border-cyber-cyan text-white transition-all font-bold uppercase text-sm">
@@ -138,7 +122,7 @@
       <div class="flex items-center justify-center gap-4 md:gap-24 w-full max-w-6xl mx-auto mb-20 relative">
         <button onclick="changeMedia('prev')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_forward_ios</span></button>
         <div class="flex flex-col items-center gap-10 w-full max-w-[420px]">
-          <div class="inline-block bg-cyber-cyan/10 border-2 border-cyber-cyan/40 px-8 py-2 rounded-full text-cyber-cyan font-black uppercase tracking-widest text-xs">
+          <div class="inline-block bg-cyber-cyan/10 border-2 border-cyber-cyan/40 px-8 py-2 rounded-full text-cyber-cyan font-black uppercase text-xs">
             ITEM <span id="mediaCounter">1 / X</span>
           </div>
           <div id="playerWrapper" class="tiktok-player w-full"><div id="mediaBox" class="w-full h-full"></div></div>
@@ -152,7 +136,6 @@
     </div>
   </main>
 
-  <!-- דאשבורד "בטון" יציב -->
   <nav class="fixed bottom-6 left-0 right-0 z-50 px-4">
     <div class="glass-card h-24 shadow-2xl bg-black/90 border-white/10 overflow-hidden mx-auto nav-stable-container">
           <div class="nav-cell"><a href="../index.html" class="flex flex-col items-center text-white/40"><span class="material-symbols-outlined text-3xl">home</span><span class="text-[9px] font-black mt-1">ראשי</span></a></div>
@@ -166,9 +149,6 @@
   </nav>
 
   <script>
-    function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
-
-    // === נתונים מלאים (41 פריטים) ===
     const satireFolders = [
       { id: "videos", nameHe: "סרטונים", nameEn: "VIDEOS", type: "video", items: ["10TlRjXq_Sbnj_IYZYdCaeWAp-jAiOVzq", "1oU2CDGhO7etNaJGWZWYlLo8MUkGuNEpE", "1teOGWoYwaH7y02rxzvvLYDTovtAk9Tij", "1mTmBwAM9TnUJhks3QngjjYPw2adIISy7", "1rGCnr_yB1YJXE5m2FhirNIZquc5p0ZNg", "1uOa8PFg_HeTurFmkXLtBPwXlnUbFslSp", "1d8nT8jrFPl-oKRfDpxLdc2W65c2Bez2Z", "1rXZX-dfXtQ1vSVE43iiZBWQuayvg33Mk", "1qZWNusMR6m9xy3Y5zF_Ea_9fOfF0vZJr", "1uzwMhiPQerJtp4YXqDpA-kcz_9IAmQxz", "1Ob7CFA6ICJI6vac0JIoQUwG9f1SkiKyH", "1QiRaC8FDDvgYip2ka4sWjPK2wH7gZGDR", "1EUbcR8S0Xnw5gAeB_uO5kXGeeabyxV4R", "1Sh5-MtMW250wWujrk4lmtU4NOFs1QeN3", "1w-C9H5bN4BRHB3BVHgGC03vuyha_n1eh", "1aNvL87g_mlL8W0O8lzADQmJOKwh5kshU", "1uEvPqi82SYx5h8KiQs7gRhdEkA6g5TbZ", "1w8eI8LHsuynN1DOtCFBVzLkDXv9CvepV", "1_MPp6oATxhXVJ5u3lfkAdX7EGU1x28ak", "1RKZZKRm3HZ2kAWaeBvgrEwuqz5ADR7TU", "1JDZbAHwOnIk5F4tmOtq1xVTRp4wQfVcv", "17mySf2Kq7i0Zm5y9lsLfzLitFTnpafrq"] },
       { id: "photos", nameHe: "תמונות", nameEn: "PHOTOS", type: "image", items: ["1s2QGj81IALt13WViKFbf91N31bKZqb8T", "13NxPpc_-w1fS5Q8wa1N5B6K_AtglvKyJ", "1md5El_ckgwt17NCouQ1c0I2WuUmqORf0", "1x_VOGuC85kxphXQfuW8gnbwPCiQHB-i0", "1TYAdWoXjQSGqqDkr9F9qTyDLsGhfuMp2", "1VGjp2oUXncPqMJNXOaLd2XLRxgzoogAf", "1cBhThW5_uDeDNAPwE6iNPvRa8G3XSELl", "18zBGOn77AfZBBHOQlVfkGU1Je10sQA41", "1qZOWDC1NyGarM825wwGLpIHR8sEtq_bK", "1FdMG20PsF0OOkNvpz_ZXm63WrwmFjFbr", "1j7xiMTRzOrbHCSM2osiZgzEqXt60Z5eT", "1XMyv3je712CUDY07L-naCa9VHdTKmGcm", "16-pR1sGzKPvSTmUA-nTYgAahXItm52T-", "1NdUWRbOSbf9-dm0jF0ZsklPBT2k6Bwxs", "1u0NDKRnzYxCBlEfq2qO2rXWJNQw_4U3t"] },
@@ -183,7 +163,7 @@
         const div = document.createElement('div');
         div.className = 'glass-card p-12 flex flex-col items-center justify-center cursor-pointer group';
         div.onclick = () => openFolder(f);
-        div.innerHTML = `<div class="folder-icon mb-10 group-hover:scale-110 transition-transform"></div><div class="text-2xl font-black text-white/90 group-hover:text-cyber-cyan transition-colors text-center uppercase tracking-widest"><span class="he">${f.nameHe}</span><span class="en">${f.nameEn}</span></div>`;
+        div.innerHTML = `<div class="folder-icon mb-10 group-hover:scale-110 transition-transform"></div><div class="text-2xl font-black text-white/90 group-hover:text-cyber-cyan transition-colors text-center tracking-widest uppercase"><span class="he">${f.nameHe}</span><span class="en">${f.nameEn}</span></div>`;
         grid.appendChild(div);
       });
     }
@@ -207,16 +187,9 @@
       loadCurrentMedia();
     }
 
-    function showFolders() { 
-      document.getElementById('folderGrid').classList.remove('hidden'); 
-      document.getElementById('mainHeader').classList.remove('hidden'); 
-      document.getElementById('folderContentView').classList.add('hidden'); 
-    }
-
-    function toggleLang() {
-      const h = document.documentElement; let n = h.getAttribute('data-lang') === 'he' ? 'en' : 'he';
-      h.setAttribute('data-lang', n); h.setAttribute('dir', n === 'he' ? 'rtl' : 'ltr');
-    }
+    function showFolders() { document.getElementById('folderGrid').classList.remove('hidden'); document.getElementById('mainHeader').classList.remove('hidden'); document.getElementById('folderContentView').classList.add('hidden'); }
+    function toggleLang() { const h = document.documentElement; let n = h.getAttribute('data-lang') === 'he' ? 'en' : 'he'; h.setAttribute('data-lang', n); h.setAttribute('dir', n === 'he' ? 'rtl' : 'ltr'); }
+    function toggleMenu() { alert("Menu"); }
 
     renderFolders();
   </script>
