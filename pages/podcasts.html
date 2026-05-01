@@ -112,6 +112,15 @@
     body.highlight-links a, body.highlight-links button { border: 2px solid #ffff00 !important; text-decoration: underline !important; background: rgba(255, 255, 0, 0.1) !important; color: #fff !important; }
     
     body.no-animations * { animation: none !important; transition: none !important; }
+
+    /* =========================================
+       דאשבורד "בטון" מלא - לא זז מילימטר
+       ========================================= */
+    .nav-stable-container { width: 100%; max-width: 950px; margin: 0 auto; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); height: 100%; align-items: center; justify-items: center; }
+    .nav-cell { width: 100%; height: 85px; display: flex; flex-direction: column; align-items: center; justify-content: center; transform-gpu: translateZ(0); }
+    .icon-box { height: 45px; display: flex; align-items: center; justify-content: center; transition: transform 0.4s ease; will-change: transform; }
+    .active-icon { transform: scale(1.25); color: #00f2ff; filter: drop-shadow(0 0 10px rgba(0,242,255,0.8)); }
+    .text-box { height: 14px; margin-top: 8px; font-weight: 900; font-size: 10px; text-transform: uppercase; }
   </style>
 </head>
 
@@ -219,14 +228,62 @@
 
   </main>
 
-  <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bg-black/90 backdrop-blur-3xl border-2 border-white/10 rounded-[2.5rem] p-3 z-50 overflow-x-auto hide-scrollbar flex items-center gap-10 px-12 shadow-2xl">
-      <a href="../index.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">home</span><span class="text-[10px] font-black mt-1"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></span></a>
-      <a href="creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">palette</span><span class="text-[10px] mt-1"><span class="he">יצירה</span><span class="en">CREAT</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span></span></a>
-      <a href="satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">theater_comedy</span><span class="text-[10px] mt-1"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span></span></a>
-      <a href="podcasts.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-125 neon-text uppercase"><span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">podcasts</span><span class="text-[10px] mt-1"><span class="he">פודקאסט</span><span class="en">PODCAST</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span></span></a>
-      <a href="lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">handshake</span><span class="text-[10px] mt-1"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></span></a>
-      <a href="songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">music_note</span><span class="text-[10px] mt-1"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span></span></a>
-      <a href="posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-4xl">psychology</span><span class="text-[10px] mt-1"><span class="he">טראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span></span></a>
+  <!-- דאשבורד "בטון" (Grid נעול) עם 4 השפות - התיקון שהיינו צריכים -->
+  <nav class="fixed bottom-4 sm:bottom-6 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none">
+    <div class="bg-black/90 backdrop-blur-3xl border-2 border-white/10 rounded-[2.5rem] h-24 shadow-2xl overflow-hidden w-full max-w-[950px] pointer-events-auto">
+      <div class="nav-stable-container">
+          
+          <div class="nav-cell">
+            <a href="../index.html" class="flex flex-col items-center group">
+              <div class="icon-box"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl text-slate-400 group-hover:text-white transition-all">home</span></div>
+              <div class="text-box text-slate-400 font-black"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></div>
+            </a>
+          </div>
+
+          <div class="nav-cell">
+            <a href="creative.html" class="flex flex-col items-center group">
+              <div class="icon-box"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl text-slate-400 group-hover:text-white transition-all">palette</span></div>
+              <div class="text-box text-slate-400 font-black"><span class="he">יצירה</span><span class="en">CREAT</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span></div>
+            </a>
+          </div>
+
+          <div class="nav-cell">
+            <a href="satire.html" class="flex flex-col items-center group">
+              <div class="icon-box"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl text-slate-400 group-hover:text-white transition-all">theater_comedy</span></div>
+              <div class="text-box text-slate-400 font-black"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سخرية</span></div>
+            </a>
+          </div>
+
+          <div class="nav-cell">
+            <a href="podcasts.html" class="flex flex-col items-center">
+              <div class="icon-box active-icon"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl" style="font-variation-settings: 'FILL' 1;">podcasts</span></div>
+              <div class="text-box text-cyber-cyan neon-text font-black"><span class="he">פודקאסט</span><span class="en">PODCAST</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكاست</span></div>
+            </a>
+          </div>
+
+          <div class="nav-cell">
+            <a href="lessons.html" class="flex flex-col items-center group">
+              <div class="icon-box"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl text-slate-400 group-hover:text-white transition-all">handshake</span></div>
+              <div class="text-box text-slate-400 font-black"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></div>
+            </a>
+          </div>
+
+          <div class="nav-cell">
+            <a href="songs.html" class="flex flex-col items-center group">
+              <div class="icon-box"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl text-slate-400 group-hover:text-white transition-all">music_note</span></div>
+              <div class="text-box text-slate-400 font-black"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span></div>
+            </a>
+          </div>
+
+          <div class="nav-cell">
+            <a href="posttrauma.html" class="flex flex-col items-center group">
+              <div class="icon-box"><span class="material-symbols-outlined text-[28px] sm:text-[32px] md:text-4xl text-slate-400 group-hover:text-white transition-all">psychology</span></div>
+              <div class="text-box text-slate-400 font-black"><span class="he">טראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">صدمة</span></div>
+            </a>
+          </div>
+
+      </div>
+    </div>
   </nav>
 
   <div id="accessibility-widget" class="fixed bottom-24 left-6 z-[200]">
