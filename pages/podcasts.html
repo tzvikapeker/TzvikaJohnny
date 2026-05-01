@@ -30,16 +30,13 @@
   </script>
 
   <style>
-    /* לוגיקת שפות */
     html:not([data-lang="he"]) .he { display: none !important; }
     html:not([data-lang="en"]) .en { display: none !important; }
-    html:not([data-lang="ru"]) .ru { display: none !important; }
-    html:not([data-lang="ar"]) .ar { display: none !important; }
     
     * { -webkit-tap-highlight-color: transparent; outline: none !important; }
-    body { background-color: #050608; color: #f8f8ff; font-family: 'Rubik', sans-serif; overflow-x: hidden; min-height: 100vh; }
+    body { background-color: #050608; color: #f8f8ff; font-family: 'Rubik', sans-serif; overflow-x: hidden; height: 100vh; display: flex; flex-direction: column; }
     
-    /* הרקע המורכב מ-image_4b349e.png */
+    /* הרקע המלא מהתמונה שביקשת */
     .bg-grid {
       background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
       background-size: 40px 40px;
@@ -63,14 +60,15 @@
       border-radius: 28px; 
     }
 
-    /* נגן טיקטוק - פרופורציונלי 9:16 */
+    /* נגן טיקטוק - פרופורציונלי ומותאם למסך למניעת חפיפה */
     .tiktok-player {
       position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 35px; overflow: hidden;
       border: 3px solid rgba(0, 242, 255, 0.5); box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
+      max-height: 65vh; /* מונע ממנו להיות גבוה מדי ולגעת בסרגל */
     }
     .tiktok-player iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 32px; }
 
-    .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; z-index: 50; }
+    .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; z-index: 50; }
     .nav-arrow:hover { background: #00f2ff; color: black; transform: scale(1.1); }
 
     /* סרגל בטון יציב - 1000px Grid */
@@ -79,39 +77,35 @@
     .active-icon { color: #00f2ff; filter: drop-shadow(0 0 12px rgba(0,242,255,0.9)); transform: scale(1.2); }
 
     .hide-scrollbar::-webkit-scrollbar { display: none; }
-    
-    @keyframes badge-pulse {
-      0%, 100% { box-shadow: 0 0 15px rgba(235,178,255,0.3); transform: scale(1); }
-      50% { box-shadow: 0 0 40px rgba(235,178,255,0.8); transform: scale(1.05); }
-    }
-    .badge-pulse { animation: badge-pulse 2.5s infinite ease-in-out; }
   </style>
 </head>
 
-<body class="pb-40 selection:bg-cyan-500/30">
-  <!-- רקע מורכב (Grid + Aura) -->
+<body class="selection:bg-cyan-500/30 overflow-hidden">
+  <!-- רקע מורכב -->
   <div class="fixed inset-0 z-[-2] bg-[#050608]"></div>
   <div class="fixed inset-0 z-[-1] bg-grid opacity-60"></div>
   <div class="blob bg-purple-600 top-[-10%] left-[-10%] opacity-15"></div>
   <div class="blob bg-cyan-600 bottom-[-10%] right-[-10%] opacity-15" style="animation-delay: -5s;"></div>
 
-  <!-- Header - לוגו חזר למקום -->
-  <header class="fixed top-4 left-4 right-4 z-[100] px-8 py-4 flex justify-between items-center glass-card bg-black/40 rounded-full max-w-7xl mx-auto shadow-2xl border-white/10">
-    <button onclick="toggleLang()" class="px-6 py-2 rounded-full border border-cyber-cyan/40 text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-black transition-all flex items-center gap-2">
-      <span class="material-symbols-outlined text-lg">language</span>
-      <span class="he">עברית</span><span class="en">ENGLISH</span>
-    </button>
-    
-    <div class="flex items-center gap-5">
-      <img src="../AIRetouch_20260208_120431073.jpg" alt="Johnny Peker" class="w-12 h-14 rounded-xl border border-white/20 object-cover shadow-lg" onerror="this.src='https://ui-avatars.com/api/?name=JP&background=00f2ff&color=000&rounded=false'">
-      <button onclick="toggleMenu()" class="text-white p-1 hover:scale-110 transition-transform">
-        <span class="material-symbols-outlined text-4xl">menu</span>
+  <!-- Header מסודר כמו בתמונה -->
+  <header class="fixed top-4 left-4 right-4 z-[100] max-w-7xl mx-auto">
+    <div class="glass-card bg-black/40 rounded-full px-8 py-4 flex justify-between items-center border-white/10 shadow-2xl">
+      <div class="flex items-center gap-4">
+        <button onclick="toggleMenu()" class="text-white p-1 hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+        <img src="../AIRetouch_20260208_120431073.jpg" alt="Johnny Peker" class="w-12 h-14 rounded-xl border border-white/20 object-cover shadow-lg" onerror="this.src='https://ui-avatars.com/api/?name=JP&background=00f2ff&color=000&rounded=false'">
+      </div>
+
+      <button onclick="toggleLang()" class="px-6 py-2 rounded-full border border-cyber-cyan/40 text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-black transition-all flex items-center gap-2">
+        <span class="material-symbols-outlined text-lg">language</span>
+        <span class="he">עברית</span><span class="en">ENGLISH</span>
       </button>
     </div>
   </header>
 
   <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] bg-zinc-950/98 backdrop-blur-3xl translate-x-full transition-transform duration-500 p-10 flex flex-col border-l border-white/10">
-    <button onclick="toggleMenu()" class="self-start text-white p-2 mb-12 hover:rotate-90 transition-transform"><span class="material-symbols-outlined text-4xl">close</span></button>
+    <button onclick="toggleMenu()" class="self-start text-white p-2 mb-12"><span class="material-symbols-outlined text-4xl">close</span></button>
     <nav class="flex flex-col gap-8 text-white font-['Outfit'] uppercase">
       <a href="../index.html" class="text-2xl hover:text-cyber-cyan">HOME</a>
       <a href="creative.html" class="text-2xl hover:text-cyber-cyan">CREATIVE</a>
@@ -120,129 +114,109 @@
     </nav>
   </aside>
 
-  <main class="relative pt-48 px-6 max-w-7xl mx-auto flex flex-col items-center min-h-[85vh]">
-    <div id="mainHeader" class="text-center space-y-6 z-10 w-full mb-12 max-w-4xl">
-      <div class="inline-block px-8 py-2 rounded-full bg-white/5 border-2 border-cyber-pink text-cyber-pink backdrop-blur-md badge-pulse">
-        <span class="font-['Epilogue'] text-sm tracking-[0.2em] font-black uppercase flex items-center justify-center gap-3">
-          <span class="material-symbols-outlined text-xl">podcasts</span>
-          <span class="he">מה למדתי היום?</span><span class="en">WHAT I LEARNED TODAY</span>
-        </span>
+  <!-- תוכן ראשי -->
+  <main class="relative flex-1 flex flex-col items-center justify-center pt-32 pb-24 px-6 overflow-y-auto hide-scrollbar">
+    
+    <div class="text-center space-y-4 mb-8">
+       <div class="inline-block px-6 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-black tracking-[0.3em] uppercase text-white/60">
+        PODCASTS | 2036
       </div>
-      
-      <h1 class="font-heading font-black text-7xl md:text-9xl uppercase neon-title tracking-tighter">
-        <span class="he">פודקאסטים</span><span class="en">PODCASTS</span>
+      <h1 id="podcastTitle" class="font-heading font-black text-5xl md:text-6xl uppercase text-cyber-cyan drop-shadow-[0_0_15px_rgba(0,242,255,0.5)]">
+        פרק 01
       </h1>
-      
-      <p class="text-white/40 text-xl font-light italic max-w-3xl mx-auto">
-        <span class="he">זו הזירה שבה מוזיקה פוגשת הומור חד. נווטו עם החיצים להאזנה.</span>
-      </p>
+      <div class="inline-block bg-cyber-cyan/10 border border-cyber-cyan/40 px-5 py-1 rounded-full text-cyber-cyan font-black text-xs">
+         <span id="podcastCounter">1 / 9</span>
+      </div>
     </div>
 
-    <!-- נגן פודקאסטים פרופורציונלי (max-w-450) עם mb-40 למרחק מהסרגל -->
-    <div class="flex items-center justify-center gap-4 md:gap-24 w-full max-w-7xl mx-auto mb-40 relative">
-      <button onclick="changePodcast('prev')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_forward_ios</span></button>
+    <!-- אזור הנגן והחצים -->
+    <div class="relative w-full max-w-4xl flex items-center justify-center gap-12">
+      <!-- חץ ימין (קודם ב-RTL) -->
+      <button onclick="changePodcast('prev')" class="nav-arrow hidden md:flex shrink-0">
+        <span class="material-symbols-outlined text-3xl">arrow_forward_ios</span>
+      </button>
       
-      <div class="flex flex-col items-center gap-10 w-full max-w-[450px]">
-        <div class="text-center w-full">
-          <h2 id="podcastTitle" class="font-heading font-black text-4xl text-cyber-cyan uppercase mb-2"></h2>
-          <div class="inline-block bg-cyber-cyan/10 border-2 border-cyber-cyan/40 px-8 py-2 rounded-full text-cyber-cyan font-black uppercase text-xs">
-             <span id="podcastCounter">1 / 9</span>
-          </div>
-        </div>
-        
+      <!-- הנגן -->
+      <div class="w-full max-w-[380px] sm:max-w-[420px] shrink-0">
         <div id="playerWrapper" class="tiktok-player w-full">
            <iframe id="mainPlayer" src="" loading="lazy" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
         </div>
-        
-        <div class="flex md:hidden gap-12 mt-6">
-            <button onclick="changePodcast('prev')" class="nav-arrow w-16 h-16"><span class="material-symbols-outlined text-3xl">arrow_forward_ios</span></button>
-            <button onclick="changePodcast('next')" class="nav-arrow w-16 h-16"><span class="material-symbols-outlined text-3xl">arrow_back_ios_new</span></button>
-        </div>
       </div>
 
-      <button onclick="changePodcast('next')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-4xl">arrow_back_ios_new</span></button>
+      <!-- חץ שמאל (הבא ב-RTL) -->
+      <button onclick="changePodcast('next')" class="nav-arrow hidden md:flex shrink-0">
+        <span class="material-symbols-outlined text-3xl">arrow_back_ios_new</span>
+      </button>
+
+      <!-- חצים למובייל -->
+      <div class="absolute -bottom-16 flex md:hidden gap-12">
+          <button onclick="changePodcast('prev')" class="nav-arrow"><span class="material-symbols-outlined text-2xl">arrow_forward_ios</span></button>
+          <button onclick="changePodcast('next')" class="nav-arrow"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button>
+      </div>
     </div>
   </main>
 
-  <!-- דאשבורד "בטון" יציב (1000px Grid) -->
+  <!-- דאשבורד "בטון" יציב -->
   <nav class="fixed bottom-6 left-0 right-0 z-50 px-4">
-    <div class="glass-card h-24 shadow-2xl bg-black/90 border-white/10 overflow-hidden mx-auto nav-stable-container">
+    <div class="glass-card h-24 shadow-2xl bg-black/95 border-white/10 overflow-hidden mx-auto nav-stable-container">
           <div class="nav-cell">
             <a href="../index.html" class="flex flex-col items-center group">
               <div class="icon-box"><span class="material-symbols-outlined text-3xl text-white/40 group-hover:text-white transition-all">home</span></div>
-              <div class="text-[9px] font-black mt-1 text-white/40 uppercase tracking-widest"><span class="he">ראשי</span><span class="en">HOME</span></div>
+              <div class="text-[9px] font-black mt-1 text-white/40 uppercase"><span class="he">ראשי</span><span class="en">HOME</span></div>
             </a>
           </div>
           <div class="nav-cell">
             <a href="creative.html" class="flex flex-col items-center group">
               <div class="icon-box"><span class="material-symbols-outlined text-3xl text-white/40 group-hover:text-white transition-all">palette</span></div>
-              <div class="text-[9px] font-black mt-1 text-white/40 uppercase tracking-widest"><span class="he">יצירה</span><span class="en">CREAT</span></div>
+              <div class="text-[9px] font-black mt-1 text-white/40 uppercase"><span class="he">יצירה</span><span class="en">CREAT</span></div>
             </a>
           </div>
           <div class="nav-cell">
             <a href="satire.html" class="flex flex-col items-center group">
               <div class="icon-box"><span class="material-symbols-outlined text-3xl text-white/40 group-hover:text-white transition-all">theater_comedy</span></div>
-              <div class="text-[9px] font-black mt-1 text-white/40 uppercase tracking-widest"><span class="he">סאטירה</span><span class="en">SATIRE</span></div>
+              <div class="text-[9px] font-black mt-1 text-white/40 uppercase"><span class="he">סאטירה</span><span class="en">SATIRE</span></div>
             </a>
           </div>
           <div class="nav-cell">
             <a href="podcasts.html" class="flex flex-col items-center active-icon">
               <div class="icon-box"><span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">podcasts</span></div>
-              <div class="text-[9px] font-black mt-1 text-cyber-cyan uppercase tracking-widest"><span class="he">פוד</span><span class="en">POD</span></div>
+              <div class="text-[9px] font-black mt-1 text-cyber-cyan uppercase"><span class="he">פוד</span><span class="en">POD</span></div>
             </a>
           </div>
           <div class="nav-cell">
             <a href="lessons.html" class="flex flex-col items-center group">
               <div class="icon-box"><span class="material-symbols-outlined text-3xl text-white/40 group-hover:text-white transition-all">handshake</span></div>
-              <div class="text-[9px] font-black mt-1 text-white/40 uppercase tracking-widest"><span class="he">לקוחות</span><span class="en">CLIENT</span></div>
+              <div class="text-[9px] font-black mt-1 text-white/40 uppercase"><span class="he">לקוחות</span><span class="en">CLIENT</span></div>
             </a>
           </div>
           <div class="nav-cell">
             <a href="songs.html" class="flex flex-col items-center group">
               <div class="icon-box"><span class="material-symbols-outlined text-3xl text-white/40 group-hover:text-white transition-all">music_note</span></div>
-              <div class="text-[9px] font-black mt-1 text-white/40 uppercase tracking-widest"><span class="he">שירים</span><span class="en">SONG</span></div>
+              <div class="text-[9px] font-black mt-1 text-white/40 uppercase"><span class="he">שירים</span><span class="en">SONG</span></div>
             </a>
           </div>
           <div class="nav-cell">
             <a href="posttrauma.html" class="flex flex-col items-center group">
               <div class="icon-box"><span class="material-symbols-outlined text-3xl text-white/40 group-hover:text-white transition-all">psychology</span></div>
-              <div class="text-[9px] font-black mt-1 text-white/40 uppercase tracking-widest"><span class="he">טראומה</span><span class="en">TRAUMA</span></div>
+              <div class="text-[9px] font-black mt-1 text-white/40 uppercase"><span class="he">טראומה</span><span class="en">TRAUMA</span></div>
             </a>
           </div>
     </div>
   </nav>
 
-  <div id="accessibility-widget" class="fixed bottom-[110px] left-6 z-[200]">
-    <button onclick="toggleAccessMenu()" class="w-14 h-14 bg-cyber-cyan text-black rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-[0_0_20px_rgba(0,242,255,0.5)]">
-      <span class="material-symbols-outlined !text-3xl">accessibility_new</span>
-    </button>
-    <div id="access-menu" class="hidden absolute bottom-16 left-0 w-64 glass-card p-6 border-2 border-cyber-cyan/30 flex flex-col gap-3 bg-black/95">
-      <h3 class="font-['Epilogue'] font-black text-cyber-cyan text-center border-b border-white/10 pb-2 uppercase tracking-widest text-sm">
-        <span class="he">נגישות</span><span class="en">Accessibility</span>
-      </h3>
-      <button onclick="accessAction('contrast', this)" class="w-full bg-white/5 p-2 rounded text-xs uppercase font-bold text-white hover:bg-cyber-cyan hover:text-black transition-all">ניגודיות</button>
-      <button onclick="accessAction('textSize', this)" class="w-full bg-white/5 p-2 rounded text-xs uppercase font-bold text-white hover:bg-cyber-cyan hover:text-black transition-all">טקסט גדול</button>
-    </div>
-  </div>
-
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
-    function toggleAccessMenu() { document.getElementById('access-menu').classList.toggle('hidden'); }
-    function accessAction(t, b) {
-      if(t==='contrast') document.body.classList.toggle('high-contrast');
-      if(t==='textSize') document.body.classList.toggle('large-text');
-    }
 
     const podcasts = [
-      { id: "19jkfRcyLBWxZGgvVuH_VDzl9ky0u7J8x", he: "פרק 01", en: "EP 01" },
-      { id: "1t5qIpQ993Sr9BflVgCvOdso7lh1LsGqe", he: "פרק 02", en: "EP 02" },
-      { id: "1ieArbHiGZeWsxz1sWtbLLHafv7HrD6hL", he: "פרק 03", en: "EP 03" },
-      { id: "1FQeIEccfmqvJV3LqU7A7fJXK21OQ0Ql-", he: "פרק 04", en: "EP 04" },
-      { id: "1ibCtLjN9-ccIgOrpizEefh3pNyPAmj5V", he: "פרק 05", en: "EP 05" },
-      { id: "1pK3MzJDv2oZXqnLATzZ5stCBdAdhl830", he: "פרק 06", en: "EP 06" },
-      { id: "1kUKJEcQI__Lg8rgTvqYdCXIQ2Iib46kP", he: "פרק 07", en: "EP 07" },
-      { id: "10lIZJ9_0402MkLFmUGbG8mnjYUomVwcV", he: "פרק 08", en: "EP 08" },
-      { id: "1tyC7XFFj08YbHMefhSE2O3SBaLNuNvrv", he: "פרק 09", en: "EP 09" }
+      { id: "19jkfRcyLBWxZGgvVuH_VDzl9ky0u7J8x", he: "פרק 01", en: "EPISODE 01" },
+      { id: "1t5qIpQ993Sr9BflVgCvOdso7lh1LsGqe", he: "פרק 02", en: "EPISODE 02" },
+      { id: "1ieArbHiGZeWsxz1sWtbLLHafv7HrD6hL", he: "פרק 03", en: "EPISODE 03" },
+      { id: "1FQeIEccfmqvJV3LqU7A7fJXK21OQ0Ql-", he: "פרק 04", en: "EPISODE 04" },
+      { id: "1ibCtLjN9-ccIgOrpizEefh3pNyPAmj5V", he: "פרק 05", en: "EPISODE 05" },
+      { id: "1pK3MzJDv2oZXqnLATzZ5stCBdAdhl830", he: "פרק 06", en: "EPISODE 06" },
+      { id: "1kUKJEcQI__Lg8rgTvqYdCXIQ2Iib46kP", he: "פרק 07", en: "EPISODE 07" },
+      { id: "10lIZJ9_0402MkLFmUGbG8mnjYUomVwcV", he: "פרק 08", en: "EPISODE 08" },
+      { id: "1tyC7XFFj08YbHMefhSE2O3SBaLNuNvrv", he: "פרק 09", en: "EPISODE 09" }
     ];
 
     let currentIndex = 0;
@@ -251,6 +225,7 @@
       const lang = document.documentElement.getAttribute('data-lang') || 'he';
       document.getElementById('mainPlayer').src = `https://drive.google.com/file/d/${p.id}/preview`;
       document.getElementById('podcastTitle').textContent = lang === 'he' ? p.he : p.en;
+      // תיקון הקאונטר שלא יתהפך ב-RTL
       document.getElementById('podcastCounter').textContent = `${currentIndex + 1} / ${podcasts.length}`;
     }
 
