@@ -11,7 +11,7 @@
 
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes" name="viewport"/>
-  <title>Podcasts | Tzvika Johnny Peker 2036</title>
+  <title>Podcasts | Johnny Peker 2036</title>
   
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
@@ -31,7 +31,6 @@
     * { -webkit-tap-highlight-color: transparent; outline: none !important; }
     body { background-color: #050608; color: #f8f8ff; font-family: 'Rubik', sans-serif; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
     
-    /* רקע 2036 המלא */
     .bg-grid {
       background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
       background-size: 40px 40px;
@@ -41,12 +40,11 @@
       filter: blur(130px); opacity: 0.12; z-index: -1;
     }
 
-    .neon-title { color: #fff; text-shadow: 0 0 20px rgba(0, 242, 255, 0.8), 0 0 40px rgba(0, 242, 255, 0.4); font-family: 'Outfit', sans-serif; }
     .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 28px; }
 
     /* נגן 9:16 נעול למניעת רזולוציה מוזרה */
     .tiktok-player-container {
-      height: 60vh;
+      height: 62vh;
       aspect-ratio: 9 / 16;
       width: auto;
       position: relative;
@@ -61,12 +59,9 @@
     .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; }
     .nav-arrow:hover { background: #00f2ff; color: black; transform: scale(1.1); }
 
-    /* סרגל בטון יציב - 1000px */
     .nav-stable-container { width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(7, 1fr); height: 100%; align-items: center; justify-items: center; }
     .nav-cell { width: 130px; height: 85px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .active-icon { color: #00f2ff; filter: drop-shadow(0 0 12px rgba(0,242,255,0.9)); transform: scale(1.2); }
-
-    .hide-scrollbar::-webkit-scrollbar { display: none; }
   </style>
 </head>
 
@@ -76,12 +71,12 @@
   <div class="blob bg-purple-600 top-[-10%] left-[-10%]"></div>
   <div class="blob bg-cyan-600 bottom-[-10%] right-[-10%]" style="animation-delay: -5s;"></div>
 
-  <!-- Header - לוגו שמור ונעול -->
+  <!-- Header - הלוגו שלך ../AIRetouch_20260208_120431073.jpg -->
   <header class="fixed top-4 left-4 right-4 z-[100] max-w-7xl mx-auto">
     <div class="glass-card bg-black/40 rounded-full px-8 py-4 flex justify-between items-center border-white/10 shadow-2xl">
       <div class="flex items-center gap-4">
         <button onclick="toggleMenu()" class="text-white p-1 hover:scale-110 transition-transform"><span class="material-symbols-outlined text-3xl">menu</span></button>
-        <img src="../AIRetouch_20260208_120431073.jpg" alt="Johnny Peker" class="w-12 h-14 rounded-xl border border-white/20 object-cover shadow-lg" onerror="this.src='https://ui-avatars.com/api/?name=JP&background=00f2ff&color=000'">
+        <img src="../AIRetouch_20260208_120431073.jpg" alt="Johnny Peker" class="w-12 h-14 rounded-xl border border-white/20 object-cover shadow-lg">
       </div>
       <button onclick="toggleLang()" class="px-6 py-2 rounded-full border border-cyber-cyan/40 text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-black transition-all flex items-center gap-2 uppercase">
         <span class="material-symbols-outlined text-lg">language</span>
@@ -114,7 +109,6 @@
     </div>
   </main>
 
-  <!-- דאשבורד בטון יציב -->
   <nav class="fixed bottom-6 left-0 right-0 z-50 px-4">
     <div class="glass-card h-24 shadow-2xl bg-black/95 border-white/10 overflow-hidden mx-auto nav-stable-container">
           <div class="nav-cell">
@@ -178,7 +172,6 @@
       h.setAttribute('data-lang', next); h.setAttribute('dir', next==='he'?'rtl':'ltr');
       loadCurrentPodcast();
     }
-
     loadCurrentPodcast();
   </script>
 </body>
