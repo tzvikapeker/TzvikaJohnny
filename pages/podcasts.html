@@ -11,7 +11,7 @@
 
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes" name="viewport"/>
-  <title>Podcasts | Johnny Peker 2036</title>
+  <title>Podcasts | Tzvika Johnny Peker 2036</title>
   
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
@@ -25,14 +25,12 @@
   </script>
 
   <style>
-    /* לוגיקת שפות */
     html:not([data-lang="he"]) .he { display: none !important; }
     html:not([data-lang="en"]) .en { display: none !important; }
     
     * { -webkit-tap-highlight-color: transparent; outline: none !important; }
     body { background-color: #050608; color: #f8f8ff; font-family: 'Rubik', sans-serif; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
     
-    /* הרקע המלא */
     .bg-grid {
       background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
       background-size: 40px 40px;
@@ -42,14 +40,13 @@
       filter: blur(130px); opacity: 0.12; z-index: -1;
     }
 
-    .neon-title { color: #fff; text-shadow: 0 0 20px rgba(0, 242, 255, 0.8), 0 0 40px rgba(0, 242, 255, 0.4); font-family: 'Outfit', sans-serif; }
     .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 28px; }
 
-    /* התיקון הקריטי: נגן 9:16 אמיתי שלא נמרח */
+    /* נגן 9:16 נעול - לא נמרח */
     .tiktok-player-container {
-      height: 60vh; /* שולט בגובה הכללי */
-      aspect-ratio: 9 / 16; /* נועל את היחס */
-      width: auto; /* הרוחב יחושב אוטומטית מהגובה */
+      height: 60vh;
+      aspect-ratio: 9 / 16;
+      width: auto;
       position: relative;
       background: #000;
       border-radius: 35px;
@@ -62,12 +59,10 @@
     .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; }
     .nav-arrow:hover { background: #00f2ff; color: black; transform: scale(1.1); }
 
-    /* סרגל בטון */
+    /* סרגל בטון יציב */
     .nav-stable-container { width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(7, 1fr); height: 100%; align-items: center; justify-items: center; }
     .nav-cell { width: 130px; height: 85px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .active-icon { color: #00f2ff; filter: drop-shadow(0 0 12px rgba(0,242,255,0.9)); transform: scale(1.2); }
-
-    .hide-scrollbar::-webkit-scrollbar { display: none; }
   </style>
 </head>
 
@@ -77,7 +72,7 @@
   <div class="blob bg-purple-600 top-[-10%] left-[-10%]"></div>
   <div class="blob bg-cyan-600 bottom-[-10%] right-[-10%]" style="animation-delay: -5s;"></div>
 
-  <!-- Header -->
+  <!-- Header - הלוגו שלך חזר -->
   <header class="fixed top-4 left-4 right-4 z-[100] max-w-7xl mx-auto">
     <div class="glass-card bg-black/40 rounded-full px-8 py-4 flex justify-between items-center border-white/10 shadow-2xl">
       <div class="flex items-center gap-4">
@@ -91,41 +86,28 @@
     </div>
   </header>
 
-  <!-- Main Content -->
   <main class="relative flex-1 flex flex-col items-center justify-center pt-24 pb-20 px-6">
-    
-    <!-- Title & Counter -->
     <div class="text-center mb-6">
-      <h1 id="podcastTitle" class="font-heading font-black text-4xl md:text-5xl uppercase text-white drop-shadow-[0_0_15px_rgba(0,242,255,0.5)] mb-2">פרק 01</h1>
+      <h1 id="podcastTitle" class="font-['Outfit'] font-black text-4xl md:text-5xl uppercase text-white drop-shadow-[0_0_15px_rgba(0,242,255,0.5)] mb-2">פרק 01</h1>
       <div dir="ltr" class="inline-block bg-cyber-cyan/10 border-2 border-cyber-cyan/40 px-6 py-1 rounded-full text-cyber-cyan font-black text-sm">
         <span id="podcastCounter">1 / 9</span>
       </div>
     </div>
 
-    <!-- Player Area -->
     <div class="flex items-center justify-center gap-8 md:gap-16 w-full max-w-5xl">
+      <button onclick="changePodcast('prev')" class="nav-arrow hidden md:flex shrink-0"><span class="material-symbols-outlined text-3xl">arrow_forward_ios</span></button>
       
-      <button onclick="changePodcast('prev')" class="nav-arrow hidden md:flex shrink-0">
-        <span class="material-symbols-outlined text-3xl">arrow_forward_ios</span>
-      </button>
-      
-      <!-- הנגן המתוקן -->
       <div class="tiktok-player-container">
          <iframe id="mainPlayer" src="" loading="lazy" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
       </div>
 
-      <button onclick="changePodcast('next')" class="nav-arrow hidden md:flex shrink-0">
-        <span class="material-symbols-outlined text-3xl">arrow_back_ios_new</span>
-      </button>
-
+      <button onclick="changePodcast('next')" class="nav-arrow hidden md:flex shrink-0"><span class="material-symbols-outlined text-3xl">arrow_back_ios_new</span></button>
     </div>
 
-    <!-- Mobile Navigation Arrows -->
     <div class="flex md:hidden gap-10 mt-6">
         <button onclick="changePodcast('prev')" class="nav-arrow"><span class="material-symbols-outlined text-2xl">arrow_forward_ios</span></button>
         <button onclick="changePodcast('next')" class="nav-arrow"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button>
     </div>
-
   </main>
 
   <!-- דאשבורד סלע -->
@@ -160,15 +142,15 @@
 
   <script>
     const podcasts = [
-      { id: "19jkfRcyLBWxZGgvVuH_VDzl9ky0u7J8x", he: "פרק 01", en: "EPISODE 01" },
-      { id: "1t5qIpQ993Sr9BflVgCvOdso7lh1LsGqe", he: "פרק 02", en: "EPISODE 02" },
-      { id: "1ieArbHiGZeWsxz1sWtbLLHafv7HrD6hL", he: "פרק 03", en: "EPISODE 03" },
-      { id: "1FQeIEccfmqvJV3LqU7A7fJXK21OQ0Ql-", he: "פרק 04", en: "EPISODE 04" },
-      { id: "1ibCtLjN9-ccIgOrpizEefh3pNyPAmj5V", he: "פרק 05", en: "EPISODE 05" },
-      { id: "1pK3MzJDv2oZXqnLATzZ5stCBdAdhl830", he: "פרק 06", en: "EPISODE 06" },
-      { id: "1kUKJEcQI__Lg8rgTvqYdCXIQ2Iib46kP", he: "פרק 07", en: "EPISODE 07" },
-      { id: "10lIZJ9_0402MkLFmUGbG8mnjYUomVwcV", he: "פרק 08", en: "EPISODE 08" },
-      { id: "1tyC7XFFj08YbHMefhSE2O3SBaLNuNvrv", he: "פרק 09", en: "EPISODE 09" }
+      { id: "19jkfRcyLBWxZGgvVuH_VDzl9ky0u7J8x", he: "פרק 01", en: "EP 01" },
+      { id: "1t5qIpQ993Sr9BflVgCvOdso7lh1LsGqe", he: "פרק 02", en: "EP 02" },
+      { id: "1ieArbHiGZeWsxz1sWtbLLHafv7HrD6hL", he: "פרק 03", en: "EP 03" },
+      { id: "1FQeIEccfmqvJV3LqU7A7fJXK21OQ0Ql-", he: "פרק 04", en: "EP 04" },
+      { id: "1ibCtLjN9-ccIgOrpizEefh3pNyPAmj5V", he: "פרק 05", en: "EP 05" },
+      { id: "1pK3MzJDv2oZXqnLATzZ5stCBdAdhl830", he: "פרק 06", en: "EP 06" },
+      { id: "1kUKJEcQI__Lg8rgTvqYdCXIQ2Iib46kP", he: "פרק 07", en: "EP 07" },
+      { id: "10lIZJ9_0402MkLFmUGbG8mnjYUomVwcV", he: "פרק 08", en: "EP 08" },
+      { id: "1tyC7XFFj08YbHMefhSE2O3SBaLNuNvrv", he: "פרק 09", en: "EP 09" }
     ];
 
     let currentIndex = 0;
@@ -192,8 +174,6 @@
       h.setAttribute('data-lang', next); h.setAttribute('dir', next==='he'?'rtl':'ltr');
       loadCurrentPodcast();
     }
-
-    function toggleMenu() { alert("ניווט צד פתוח"); }
 
     loadCurrentPodcast();
   </script>
