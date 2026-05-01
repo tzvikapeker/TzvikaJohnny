@@ -31,6 +31,7 @@
     * { -webkit-tap-highlight-color: transparent; outline: none !important; }
     body { background-color: #050608; color: #f8f8ff; font-family: 'Rubik', sans-serif; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
     
+    /* רקע 2036 המלא */
     .bg-grid {
       background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
       background-size: 40px 40px;
@@ -40,9 +41,10 @@
       filter: blur(130px); opacity: 0.12; z-index: -1;
     }
 
+    .neon-title { color: #fff; text-shadow: 0 0 20px rgba(0, 242, 255, 0.8), 0 0 40px rgba(0, 242, 255, 0.4); font-family: 'Outfit', sans-serif; }
     .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 28px; }
 
-    /* נגן 9:16 נעול - לא נמרח */
+    /* נגן 9:16 נעול למניעת רזולוציה מוזרה */
     .tiktok-player-container {
       height: 60vh;
       aspect-ratio: 9 / 16;
@@ -59,10 +61,12 @@
     .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; }
     .nav-arrow:hover { background: #00f2ff; color: black; transform: scale(1.1); }
 
-    /* סרגל בטון יציב */
+    /* סרגל בטון יציב - 1000px */
     .nav-stable-container { width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(7, 1fr); height: 100%; align-items: center; justify-items: center; }
     .nav-cell { width: 130px; height: 85px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .active-icon { color: #00f2ff; filter: drop-shadow(0 0 12px rgba(0,242,255,0.9)); transform: scale(1.2); }
+
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
   </style>
 </head>
 
@@ -72,7 +76,7 @@
   <div class="blob bg-purple-600 top-[-10%] left-[-10%]"></div>
   <div class="blob bg-cyan-600 bottom-[-10%] right-[-10%]" style="animation-delay: -5s;"></div>
 
-  <!-- Header - הלוגו שלך חזר -->
+  <!-- Header - לוגו שמור ונעול -->
   <header class="fixed top-4 left-4 right-4 z-[100] max-w-7xl mx-auto">
     <div class="glass-card bg-black/40 rounded-full px-8 py-4 flex justify-between items-center border-white/10 shadow-2xl">
       <div class="flex items-center gap-4">
@@ -110,7 +114,7 @@
     </div>
   </main>
 
-  <!-- דאשבורד סלע -->
+  <!-- דאשבורד בטון יציב -->
   <nav class="fixed bottom-6 left-0 right-0 z-50 px-4">
     <div class="glass-card h-24 shadow-2xl bg-black/95 border-white/10 overflow-hidden mx-auto nav-stable-container">
           <div class="nav-cell">
@@ -142,15 +146,15 @@
 
   <script>
     const podcasts = [
-      { id: "19jkfRcyLBWxZGgvVuH_VDzl9ky0u7J8x", he: "פרק 01", en: "EP 01" },
-      { id: "1t5qIpQ993Sr9BflVgCvOdso7lh1LsGqe", he: "פרק 02", en: "EP 02" },
-      { id: "1ieArbHiGZeWsxz1sWtbLLHafv7HrD6hL", he: "פרק 03", en: "EP 03" },
-      { id: "1FQeIEccfmqvJV3LqU7A7fJXK21OQ0Ql-", he: "פרק 04", en: "EP 04" },
-      { id: "1ibCtLjN9-ccIgOrpizEefh3pNyPAmj5V", he: "פרק 05", en: "EP 05" },
-      { id: "1pK3MzJDv2oZXqnLATzZ5stCBdAdhl830", he: "פרק 06", en: "EP 06" },
-      { id: "1kUKJEcQI__Lg8rgTvqYdCXIQ2Iib46kP", he: "פרק 07", en: "EP 07" },
-      { id: "10lIZJ9_0402MkLFmUGbG8mnjYUomVwcV", he: "פרק 08", en: "EP 08" },
-      { id: "1tyC7XFFj08YbHMefhSE2O3SBaLNuNvrv", he: "פרק 09", en: "EP 09" }
+      { id: "19jkfRcyLBWxZGgvVuH_VDzl9ky0u7J8x", he: "פרק 01", en: "EPISODE 01" },
+      { id: "1t5qIpQ993Sr9BflVgCvOdso7lh1LsGqe", he: "פרק 02", en: "EPISODE 02" },
+      { id: "1ieArbHiGZeWsxz1sWtbLLHafv7HrD6hL", he: "פרק 03", en: "EPISODE 03" },
+      { id: "1FQeIEccfmqvJV3LqU7A7fJXK21OQ0Ql-", he: "פרק 04", en: "EPISODE 04" },
+      { id: "1ibCtLjN9-ccIgOrpizEefh3pNyPAmj5V", he: "פרק 05", en: "EPISODE 05" },
+      { id: "1pK3MzJDv2oZXqnLATzZ5stCBdAdhl830", he: "פרק 06", en: "EPISODE 06" },
+      { id: "1kUKJEcQI__Lg8rgTvqYdCXIQ2Iib46kP", he: "פרק 07", en: "EPISODE 07" },
+      { id: "10lIZJ9_0402MkLFmUGbG8mnjYUomVwcV", he: "פרק 08", en: "EPISODE 08" },
+      { id: "1tyC7XFFj08YbHMefhSE2O3SBaLNuNvrv", he: "פרק 09", en: "EPISODE 09" }
     ];
 
     let currentIndex = 0;
