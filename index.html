@@ -65,26 +65,22 @@
   </script>
 
   <style>
-    /* לוגיקת החלפת שפות הרמטית */
     html:not([data-lang="he"]) .he { display: none !important; }
     html:not([data-lang="en"]) .en { display: none !important; }
     html:not([data-lang="ru"]) .ru { display: none !important; }
     html:not([data-lang="ar"]) .ar { display: none !important; }
 
-    /* הגדרת פונט גלובלית לכל האתר */
     body { 
-      background-color: #0a0f1a; /* כחול-חצות עמוק במקום שחור נוקשה */
+      background-color: #0a0f1a;
       color: #f8f8ff; 
       font-family: 'Rubik', 'Outfit', sans-serif; 
       overflow-x: hidden; 
     }
     
-    /* קלאס ייעודי לכותרות להדגשת הפונט */
     .font-heading { font-family: 'Outfit', 'Rubik', sans-serif; }
 
     .material-symbols-outlined { font-size: 32px; display: inline-block; line-height: 1; vertical-align: middle; }
 
-    /* --- GLASSMORPHISM & BENTO BOX UI --- */
     .glass-card { 
       background: rgba(255, 255, 255, 0.04); 
       backdrop-filter: blur(24px); 
@@ -106,7 +102,6 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    /* --- אנימציות רקע נושמות (Blob Animations) --- */
     @keyframes blob {
       0% { transform: translate(0px, 0px) scale(1); }
       33% { transform: translate(30px, -50px) scale(1.1); }
@@ -117,12 +112,10 @@
     .animation-delay-2000 { animation-delay: 2s; }
     .animation-delay-4000 { animation-delay: 4s; }
 
-    /* הגדרת גודל הקובייה */
     :root { --cube-size: 240px; --cube-half: 120px; }
     @media (min-width: 640px) { :root { --cube-size: 320px; --cube-half: 160px; } }
     @media (min-width: 1024px) { :root { --cube-size: 420px; --cube-half: 210px; } }
 
-    /* הקובייה */
     .cube-stage { perspective: 1500px; width: var(--cube-size); height: var(--cube-size); position: relative; cursor: pointer; }
     .cube { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     
@@ -136,7 +129,6 @@
     
     .master-portal-link:hover .cube-face { border-color: rgba(0, 242, 255, 0.8); box-shadow: 0 0 40px rgba(0, 242, 255, 0.4); }
     
-    /* מיקומי הפאות */
     .face-front  { transform: rotateY(0deg) translateZ(var(--cube-half)); }
     .face-right  { transform: rotateY(90deg) translateZ(var(--cube-half)); }
     .face-back   { transform: rotateY(180deg) translateZ(var(--cube-half)); }
@@ -144,11 +136,9 @@
     .face-top    { transform: rotateX(90deg) translateZ(var(--cube-half)); }
     .face-bottom { transform: rotateX(-90deg) translateZ(var(--cube-half)); }
 
-    /* חיצי ניווט */
     .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; z-index: 60; position: relative; }
     .nav-arrow:hover { background: #00f2ff; color: #0a0f1a; transform: scale(1.1); box-shadow: 0 0 30px rgba(0, 242, 255, 0.6); }
 
-    /* אנימציות אלמנטים */
     @keyframes neon-glow {
       0%, 100% { text-shadow: 0 0 15px rgba(0,242,255,0.4), 0 0 30px rgba(0,242,255,0.1); opacity: 1; }
       50% { text-shadow: 0 0 30px rgba(0,242,255,0.8), 0 0 50px rgba(0,242,255,0.4); opacity: 0.9; }
@@ -288,11 +278,11 @@
               <div class="cube-stage group">
                 <div class="cube" id="mainCube">
                   <div class="cube-face face-front"><img src="https://drive.google.com/thumbnail?id=1ROYbDsAjBTtMgHE5btkP5IBRXa-nhue5&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Creative"></div>
-                  <div class="cube-face face-right"><img src="https://drive.google.com/thumbnail?id=1TWqOfsWUO7E1vQYY9J9Zoqxl9hmFJuOW&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Podcasts"></div>
-                  <div class="cube-face face-back"><img src="https://drive.google.com/thumbnail?id=1lTlUFa0Phf7cjw8u1Q5IO6jiJNJf77ry&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Satire"></div>
+                  <div class="cube-face face-right"><img src="https://drive.google.com/thumbnail?id=1lTlUFa0Phf7cjw8u1Q5IO6jiJNJf77ry&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Satire"></div>
+                  <div class="cube-face face-back"><img src="https://drive.google.com/thumbnail?id=1TWqOfsWUO7E1vQYY9J9Zoqxl9hmFJuOW&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Podcasts"></div>
                   <div class="cube-face face-left"><img src="https://drive.google.com/thumbnail?id=10djzHLXNxQvEx71-t7NakRLxMjYdbQmc&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Clients"></div>
-                  <div class="cube-face face-top"><img src="https://drive.google.com/thumbnail?id=1w-5fmasi7rNcuxqnaAhyxEQxABH6bl7T&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Post Trauma"></div>
-                  <div class="cube-face face-bottom"><img src="https://drive.google.com/thumbnail?id=194_LEHyTr3OIHJhTrc62aJ17sjCtyxxm&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Songs"></div>
+                  <div class="cube-face face-top"><img src="https://drive.google.com/thumbnail?id=194_LEHyTr3OIHJhTrc62aJ17sjCtyxxm&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Songs"></div>
+                  <div class="cube-face face-bottom"><img src="https://drive.google.com/thumbnail?id=1w-5fmasi7rNcuxqnaAhyxEQxABH6bl7T&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Post Trauma"></div>
                 </div>
               </div>
           </a>
@@ -388,13 +378,14 @@
     const masterLinkText = document.getElementById('cubePortalLinkText');
     let currentIndex = 0;
     
+    // סידרתי מחדש את המערך כדי שיתאים לסדר ההופעה בתפריט התחתון ויסתנכרן בדיוק עם התמונות
     const states = [
       { transform: 'rotateX(0deg) rotateY(0deg)', he: 'יצירה', en: 'CREATIVE', ru: 'КРЕАТИВ', ar: 'إبداع', url: 'pages/creative.html' },
-      { transform: 'rotateX(0deg) rotateY(-90deg)', he: 'פודקאסטים', en: 'PODCASTS', ru: 'ПОДКАСТЫ', ar: 'بودكاست', url: 'pages/podcasts.html' },
-      { transform: 'rotateX(0deg) rotateY(-180deg)', he: 'סאטירה', en: 'SATIRE', ru: 'САТИРА', ar: 'سחרייה', url: 'pages/satire.html' },
+      { transform: 'rotateX(0deg) rotateY(-90deg)', he: 'סאטירה', en: 'SATIRE', ru: 'САТИРА', ar: 'سחרייה', url: 'pages/satire.html' },
+      { transform: 'rotateX(0deg) rotateY(-180deg)', he: 'פודקאסטים', en: 'PODCASTS', ru: 'ПОДКАСТЫ', ar: 'بودكاست', url: 'pages/podcasts.html' },
       { transform: 'rotateX(0deg) rotateY(-270deg)', he: 'לקוחות', en: 'CLIENTS', ru: 'КЛИЕНТЫ', ar: 'عملاء', url: 'pages/lessons.html' },
-      { transform: 'rotateX(-90deg) rotateY(0deg)', he: 'פוסטראומה', en: 'TRAUMA', ru: 'ТРАВМА', ar: 'صدمة', url: 'pages/posttrauma.html' },
-      { transform: 'rotateX(90deg) rotateY(0deg)', he: 'שירים', en: 'SONGS', ru: 'ПЕСНИ', ar: 'أغاني', url: 'pages/songs.html' }
+      { transform: 'rotateX(-90deg) rotateY(0deg)', he: 'שירים', en: 'SONGS', ru: 'ПЕСНИ', ar: 'أغاني', url: 'pages/songs.html' },
+      { transform: 'rotateX(90deg) rotateY(0deg)', he: 'פוסטראומה', en: 'TRAUMA', ru: 'ТРАВМА', ar: 'صدمة', url: 'pages/posttrauma.html' }
     ];
 
     function rotateCube(dir) {
