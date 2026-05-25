@@ -3,31 +3,27 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creative Feed | Tzvika Johnny Peker</title>
+  <title>Creative Feed | Pro Player</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+  <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
   <style>
-    body { background: #000; margin: 0; color: #fff; font-family: sans-serif; }
-    .nav-bar { padding: 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-    .filter-btn { padding: 8px 16px; border-radius: 9999px; background: #222; margin: 0 5px; cursor: pointer; transition: 0.3s; }
-    .filter-btn.active { background: #00f2ff; color: #000; font-weight: bold; }
+    body { background: #000; color: #fff; font-family: sans-serif; margin: 0; }
     .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; padding: 1.5rem; max-width: 1200px; margin: 0 auto; }
-    .card { aspect-ratio: 9 / 16; background: #111; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
-    iframe { width: 100%; height: 100%; border: none; }
+    .card { aspect-ratio: 9 / 16; background: #111; border-radius: 12px; overflow: hidden; }
   </style>
 </head>
 <body>
 
-  <header class="nav-bar">
-    <a href="../index.html" class="flex items-center gap-2 hover:text-cyan-400">← חזרה</a>
-    <div id="filter-container">
-      <button class="filter-btn active" onclick="renderGallery('all')">הכל</button>
-    </div>
+  <header class="p-6 flex justify-between items-center max-w-7xl mx-auto">
+    <a href="../index.html" class="text-white/60 hover:text-white">← חזרה</a>
+    <h1 class="font-black text-xl text-cyan-400">CREATIVE FEED</h1>
   </header>
 
   <div id="gallery" class="project-grid"></div>
 
   <script>
-    const videos = [
+    const videoIds = [
       "1ypXVriVw0EOC47YP2qRjgTnERK7fyJm9", "1QcVSof_lka6y2T1PzUvLdRdv4h3NVzC0", "1DTsQebKGIKR2Ia3uwhQTglEbLNG4MJCs", 
       "1i4-sFxFaPY6OFD0fBgl4FPVqBr8UQGTb", "1Xzx0X7msk8E6u3zE0yDoQRsS53YkngBg", "1mkitoTRBJ9DfbemMoIyj5kEx3BK3ctr4", 
       "1pFkjtYevi--MtaAzp9mv-aOuKv3S2tIT", "14gm-VCgxxziwthy_XuiV6-nAxVgp67DW", "1iM272Epu8b9FEksWxFZoba2ALKkRCffW", 
@@ -44,18 +40,17 @@
       "1ZtabDZ6Yan3JnH6SFiG_JcuUaaX2UcHW", "1k6xYCpmvU-lpbBCiGVMqqPSzkUAEaCLz", "1Fi6oWF4Uaokaqj-g_ueotbXQM4ZwgP4X"
     ];
 
-    function renderGallery() {
-      const gallery = document.getElementById('gallery');
-      gallery.innerHTML = '';
-      videos.forEach(id => {
-        const card = document.createElement('div');
-        card.className = "card";
-        card.innerHTML = `<iframe src="https://drive.google.com/file/d/${id}/preview" allow="fullscreen" allowfullscreen></iframe>`;
-        gallery.appendChild(card);
-      });
-    }
+    const gallery = document.getElementById('gallery');
+    videoIds.forEach(id => {
+      const card = document.createElement('div');
+      card.className = "card";
+      // הנגן של Plyr תופס את ה-iframe ומלביש עליו ממשק מודרני
+      card.innerHTML = `<div class="plyr__video-embed"><iframe src="https://drive.google.com/file/d/${id}/preview?amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe></div>`;
+      gallery.appendChild(card);
+    });
 
-    renderGallery();
+    // הפעלת הנגנים
+    const players = Plyr.setup('.plyr__video-embed');
   </script>
 </body>
 </html>
