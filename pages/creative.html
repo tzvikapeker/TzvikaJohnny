@@ -2,25 +2,41 @@
 <html lang="he" data-lang="he" dir="rtl" class="dark">
 <head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Creative Gallery | Tzvika Johnny Peker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TikTok Feed | Creative | Johnny Peker</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background-color: #0a0f1a; color: #f8f8ff; font-family: 'Rubik', sans-serif; }
-    .glass-card { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; transition: 0.3s; }
-    .glass-card:hover { border-color: #00f2ff; transform: translateY(-5px); }
+    body { background-color: #050608; overflow: hidden; height: 100vh; }
+    
+    /* קסם הגלילה של טיקטוק באופקית */
+    .snap-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      height: 100vh;
+      width: 100vw;
+    }
+    
+    .snap-item {
+      flex: 0 0 100vw;
+      scroll-snap-align: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
   </style>
 </head>
-<body class="p-4 md:p-8">
+<body>
 
-  <main class="max-w-7xl mx-auto">
-    <h1 class="text-3xl font-black mb-8 text-center uppercase tracking-widest text-cyber-cyan">Creative Gallery</h1>
-    <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3"></div>
-  </main>
+  <a href="../index.html" class="fixed top-6 left-6 z-50 text-white/50 hover:text-white">
+    <span class="material-symbols-outlined text-4xl">arrow_back</span>
+  </a>
+
+  <div class="snap-container hide-scrollbar" id="feed"></div>
 
   <script>
-    // הלינקים שהעברת הוטמעו במלואם
-    const creativeWorks = [
+    const videos = [
       "1ypXVriVw0EOC47YP2qRjgTnERK7fyJm9", "1KWPWnUOC_PdALG41iusJYhqQyuG0_6hh", "10ewLvB6Orq6_Q8BDc84JP9RyDCB1ArkH", 
       "1_5DWsWsbkKJbz2ozpMsztOopfTQocdM9", "1P0AtDhoBg7fo4Jqx50L2XRMwUIRoNSMZ", "1xr12DO5840GjAQpmic5rTC_mZgG3ZIad", 
       "1aQf8VKGuwiPMPCs7RZimXr5R1Nj-Y8ql", "1cz7dpp90pMRdbk8UvZ_-BLmxK6jXBEqW", "1go8qI8-JroO2LSAf2fMn-f3xE2g63eLz", 
@@ -40,12 +56,16 @@
       "1k6xYCpmvU-lpbBCiGVMqqPSzkUAEaCLz", "1Fi6oWF4Uaokaqj-g_ueotbXQM4ZwgP4X"
     ];
 
-    const grid = document.getElementById('galleryGrid');
-    creativeWorks.forEach(id => {
-      grid.innerHTML += `
-        <a href="https://drive.google.com/file/d/${id}/view" target="_blank" class="glass-card p-1 block">
-          <img src="https://drive.google.com/thumbnail?id=${id}&sz=w300" class="w-full h-32 object-cover rounded-lg">
-        </a>`;
+    const feed = document.getElementById('feed');
+    videos.forEach(id => {
+      feed.innerHTML += `
+        <div class="snap-item">
+          <iframe src="https://drive.google.com/file/d/${id}/preview" 
+                  class="w-full h-full" 
+                  allow="autoplay; fullscreen">
+          </iframe>
+        </div>
+      `;
     });
   </script>
 </body>
