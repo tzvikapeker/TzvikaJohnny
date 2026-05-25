@@ -2,65 +2,50 @@
 <html lang="he" dir="rtl" class="dark">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>Creative Feed | Johnny Peker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Feed | Tzvika Johnny Peker</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: #000; margin: 0; color: #fff; font-family: 'Rubik', sans-serif; overflow: hidden; }
+    body { background: #050608; color: #fff; font-family: 'Rubik', sans-serif; margin: 0; }
     
-    /* מכל גלילה אופקי */
-    .snap-container {
-      display: flex;
-      flex-direction: row;
-      height: 100vh;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-    }
-    
-    .snap-item {
-      flex: 0 0 100vw;
-      height: 100vh;
-      scroll-snap-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+    /* הגריד האנכי המקצועי */
+    .project-grid { 
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .iframe-wrapper { 
-      width: 95vw; 
-      height: 90vh;
-      max-width: 450px; 
+    .project-card { 
       aspect-ratio: 9 / 16; 
       background: #111; 
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 0 30px rgba(0,242,255,0.15);
+      border-radius: 16px; 
+      overflow: hidden; 
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
+    
+    .project-card:hover { transform: translateY(-5px); border-color: #00f2ff; }
     
     iframe { width: 100%; height: 100%; border: none; }
-    
-    /* כפתור חזרה מעוצב */
-    .back-btn {
-      position: fixed; top: 2rem; left: 2rem; z-index: 50;
-      background: rgba(0,0,0,0.6); backdrop-filter: blur(10px);
-      padding: 12px; border-radius: 50%; color: white; border: 1px solid rgba(255,255,255,0.1);
-    }
   </style>
 </head>
 <body>
 
-  <a href="../index.html" class="back-btn">
-    <span class="material-symbols-outlined text-2xl">arrow_back</span>
-  </a>
+  <header class="p-6 max-w-7xl mx-auto flex justify-between items-center">
+    <a href="../index.html" class="text-white/60 hover:text-white flex items-center gap-2">
+      <span class="material-symbols-outlined">arrow_back</span> חזרה
+    </a>
+    <h1 class="font-black text-xl uppercase tracking-widest text-cyber-cyan">Creative Feed</h1>
+  </header>
 
-  <div id="feed" class="snap-container"></div>
+  <div id="gallery" class="project-grid"></div>
 
   <script>
-    // הרשימה המלאה של ה-42 (כל הלינקים ששלחת)
-    const videos = [
+    // כל ה-42 הלינקים המזוקקים ששלחת
+    const videoIds = [
       "1ypXVriVw0EOC47YP2qRjgTnERK7fyJm9", "1QcVSof_lka6y2T1PzUvLdRdv4h3NVzC0", "1DTsQebKGIKR2Ia3uwhQTglEbLNG4MJCs", 
       "1i4-sFxFaPY6OFD0fBgl4FPVqBr8UQGTb", "1Xzx0X7msk8E6u3zE0yDoQRsS53YkngBg", "1mkitoTRBJ9DfbemMoIyj5kEx3BK3ctr4", 
       "1pFkjtYevi--MtaAzp9mv-aOuKv3S2tIT", "14gm-VCgxxziwthy_XuiV6-nAxVgp67DW", "1iM272Epu8b9FEksWxFZoba2ALKkRCffW", 
@@ -77,28 +62,27 @@
       "1ZtabDZ6Yan3JnH6SFiG_JcuUaaX2UcHW", "1k6xYCpmvU-lpbBCiGVMqqPSzkUAEaCLz", "1Fi6oWF4Uaokaqj-g_ueotbXQM4ZwgP4X"
     ];
 
-    const feed = document.getElementById('feed');
-    
-    // אופטימיזציה לטעינה (Lazy Load)
+    const gallery = document.getElementById('gallery');
+
+    // טעינה חכמה: טוען סרטון רק כשגוללים אליו
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        const wrapper = entry.target.querySelector('.iframe-wrapper');
+        const wrapper = entry.target;
         if (entry.isIntersecting) {
-          if (!wrapper.innerHTML) {
-            wrapper.innerHTML = `<iframe src="https://drive.google.com/file/d/${wrapper.dataset.id}/preview" allow="autoplay; fullscreen"></iframe>`;
-          }
+          const id = wrapper.dataset.id;
+          wrapper.innerHTML = `<iframe src="https://drive.google.com/file/d/${id}/preview" allow="autoplay; fullscreen"></iframe>`;
         } else {
           wrapper.innerHTML = '';
         }
       });
-    }, { threshold: 0.2 });
+    }, { rootMargin: '300px' });
 
-    videos.forEach(id => {
-      const item = document.createElement('div');
-      item.className = "snap-item";
-      item.innerHTML = `<div class="iframe-wrapper" data-id="${id}"></div>`;
-      feed.appendChild(item);
-      observer.observe(item);
+    videoIds.forEach(id => {
+      const card = document.createElement('div');
+      card.className = "project-card";
+      card.dataset.id = id;
+      gallery.appendChild(card);
+      observer.observe(card);
     });
   </script>
 </body>
