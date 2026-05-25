@@ -3,12 +3,10 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>Creative Feed | Tzvika Johnny Peker</title>
+  <title>Creative Feed | Johnny Peker</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: #000; margin: 0; overflow: hidden; font-family: 'Rubik', sans-serif; }
-    
-    /* מכל גלילה אופקי - טיקטוק סטייל */
+    body { background: #000; margin: 0; overflow: hidden; }
     .snap-container {
       display: flex;
       flex-direction: row;
@@ -21,47 +19,38 @@
       flex: 0 0 100vw;
       height: 100vh;
       scroll-snap-align: center;
-      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .iframe-wrapper { width: 100%; height: 100%; background: #000; }
+    .iframe-wrapper { 
+      width: 90%; 
+      max-width: 380px; 
+      aspect-ratio: 9 / 16; 
+      background: #111; 
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    iframe { width: 100%; height: 100%; border: none; }
   </style>
 </head>
 <body>
 
-  <a href="../index.html" class="fixed top-6 left-6 z-50 text-white/70 hover:text-white bg-black/40 p-3 rounded-full backdrop-blur-md">
-    <span class="material-symbols-outlined text-2xl">arrow_back</span>
+  <a href="../index.html" class="fixed top-6 left-6 z-50 text-white bg-black/50 p-2 rounded-full">
+    <span class="material-symbols-outlined">arrow_back</span>
   </a>
 
   <div id="feed" class="snap-container"></div>
 
   <script>
-    const videos = [
-      "1ypXVriVw0EOC47YP2qRjgTnERK7fyJm9", "1QcVSof_lka6y2T1PzUvLdRdv4h3NVzC0", "1DTsQebKGIKR2Ia3uwhQTglEbLNG4MJCs", 
-      "1i4-sFxFaPY6OFD0fBgl4FPVqBr8UQGTb", "1Xzx0X7msk8E6u3zE0yDoQRsS53YkngBg", "1mkitoTRBJ9DfbemMoIyj5kEx3BK3ctr4", 
-      "1pFkjtYevi--MtaAzp9mv-aOuKv3S2tIT", "14gm-VCgxxziwthy_XuiV6-nAxVgp67DW", "1iM272Epu8b9FEksWxFZoba2ALKkRCffW", 
-      "1oBFWvAFu3jtcs2NW4iA7l1Hg86Z8EpV_", "15uXiX1-SGpYxJak9mW9zFEOifVHUN5RX", "1Lnx7g8Ru7Xw3nWprdzh7yU68UMky-UDE", 
-      "1SGJDCfpdF6neDUmM-FXJ-83G-svc-oI9", "1ZpX2-hSwGHZ_pE6lPzZTqCxK_ouptk9l", "12WyhZefdXnOGmu65PSuivRzZE5bg-rzt", 
-      "16v1RxjWEOpz5zrgQemeZGLrflz9xL7yv", "10gppZFEHB1k6nX95mgu0Ys8zUB7EoBO4", "1VQ_Wb1NE4T6XHncQqIHyLceGyMtaKaH9", 
-      "1vd4ieYGiM8NRK3P3Esu_ecS7d_gFcdoe", "1DapsU2Xbtam5paVLz5MkfP5xBAStZTfq", "1f0NfjPe-qOxy4bgYB1RGEmsEuNdq5Zfp", 
-      "18YhaydpS9HcV90PH4a5lpf8_rW-O6Cww", "162uNCji7bKsNbWKq1ab8mqiuzdDfsM57", "1fJKe4YL6n_O1L0HHQXh7tgKMd0K0lax0", 
-      "1FTqQATjFSccAt6Z1PNfrfvdKagfYNRvt", "1fDxhBlBtWqDGyqfe_pYxFzESMr2GpEt_", "1mMhy_exx9svlOqlnBu_U24WvCLjHuFCY", 
-      "1mEM_BLCl0pzbLLTgI4POO_teaU435SSh", "12dcog53XM9rOOQLwrz5-dvb6veVmyyBK", "1-UBuO4jmI9QZPt7_N1caju0vDd1KnPr7", 
-      "1Wgk-qUGOhDP1Jejf0ATEd03woG_-w59I", "1V1QZdvd3iy16XYaf_2FKVPxsl8H9KGgF", "1Qa4oWPK1k4pmZGqKz6_8BdRvabei10LF", 
-      "1HI5KuCixNNsKnTgh0fAC4DNBQ8quWScs", "1C4Dq8tIB-pNLBGtI0XsFbVOwQUGTm3od", "1nRjYQdQcZmUifoCh-h2_jAcgWPzeuqWS", 
-      "1DcAg7n4R4JXbiWW7secgk3Z9f1bX3GNA", "1jQIfRWeBg50JACtbPL42VuIM2A0LLhJB", "1ImwkGqB7OCYLP2QIk7GCir-j8T10rHqn", 
-      "1ZtabDZ6Yan3JnH6SFiG_JcuUaaX2UcHW", "1k6xYCpmvU-lpbBCiGVMqqPSzkUAEaCLz", "1Fi6oWF4Uaokaqj-g_ueotbXQM4ZwgP4X"
-    ];
-
+    const videos = [/* הכנס כאן את הרשימה שלך */];
     const feed = document.getElementById('feed');
-    
-    // טעינה חכמה
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const wrapper = entry.target.querySelector('.iframe-wrapper');
         if (entry.isIntersecting) {
-          if (!wrapper.innerHTML) {
-            wrapper.innerHTML = `<iframe src="https://drive.google.com/file/d/${wrapper.dataset.id}/preview" class="w-full h-full border-none" allow="autoplay; fullscreen"></iframe>`;
-          }
+          wrapper.innerHTML = `<iframe src="https://drive.google.com/file/d/${wrapper.dataset.id}/preview" allow="autoplay; fullscreen"></iframe>`;
         } else {
           wrapper.innerHTML = ''; 
         }
