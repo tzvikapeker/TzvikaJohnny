@@ -3,63 +3,50 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Creative Gallery | Johnny Peker 2036</title>
+  <title>Creative Gallery | Tzvika Johnny Peker</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Rubik:wght@300;400;700&display=swap" rel="stylesheet"/>
   <style>
     body { background-color: #0a0f1a; color: #f8f8ff; font-family: 'Rubik', sans-serif; }
-    .glass-card { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; }
+    .glass-card { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; transition: 0.3s; }
+    .glass-card:hover { border-color: #00f2ff; transform: translateY(-5px); }
   </style>
 </head>
 <body class="p-4 md:p-8">
 
-  <header class="flex justify-between items-center mb-10 max-w-7xl mx-auto">
-    <a href="../index.html" class="text-cyber-cyan flex items-center gap-2"><span class="material-symbols-outlined">arrow_back</span> חזרה</a>
-    <h1 class="text-2xl font-black uppercase tracking-widest">Creative Gallery</h1>
-  </header>
-
-  <div id="filterBar" class="flex flex-wrap justify-center gap-4 mb-10"></div>
-
-  <main class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="galleryGrid"></main>
+  <main class="max-w-7xl mx-auto">
+    <h1 class="text-3xl font-black mb-8 text-center uppercase tracking-widest text-cyber-cyan">Creative Gallery</h1>
+    <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3"></div>
+  </main>
 
   <script>
-    // הלינקים ששלחת ממופים כאן. הוסף כל לינק חדש למערך הזה בלבד.
+    // הלינקים שהעברת הוטמעו במלואם
     const creativeWorks = [
-      { category: "Creative", id: "16Ejhv02SEvS3bHbb-ByhFyGV5QzZF_5P" },
-      { category: "Satire", id: "11r5MoePfKHPnYxaHu_frZ4hRq4tHCGqo" },
-      { category: "Podcasts", id: "1SzxxdngMZwVNgckdmb6uYSj4UhI5YuEP" },
-      { category: "Trauma", id: "1auwx_ZeQgeOLAtDgZ_G5mjss64iRM9sX" },
-      // ... הוסף כאן את שאר ה-IDs מהרשימה הארוכה ששלחת
-      { category: "Art", id: "1Md3ciydhSzM1DSFjo7z6AZzIbdHEYf8B" },
-      { category: "Music", id: "1CAWqpldpKyupY_GDetknFcve9gLBPU-L" }
+      "1ypXVriVw0EOC47YP2qRjgTnERK7fyJm9", "1KWPWnUOC_PdALG41iusJYhqQyuG0_6hh", "10ewLvB6Orq6_Q8BDc84JP9RyDCB1ArkH", 
+      "1_5DWsWsbkKJbz2ozpMsztOopfTQocdM9", "1P0AtDhoBg7fo4Jqx50L2XRMwUIRoNSMZ", "1xr12DO5840GjAQpmic5rTC_mZgG3ZIad", 
+      "1aQf8VKGuwiPMPCs7RZimXr5R1Nj-Y8ql", "1cz7dpp90pMRdbk8UvZ_-BLmxK6jXBEqW", "1go8qI8-JroO2LSAf2fMn-f3xE2g63eLz", 
+      "1QcVSof_lka6y2T1PzUvLdRdv4h3NVzC0", "1DTsQebKGIKR2Ia3uwhQTglEbLNG4MJCs", "1i4-sFxFaPY6OFD0fBgl4FPVqBr8UQGTb", 
+      "1Xzx0X7msk8E6u3zE0yDoQRsS53YkngBg", "1mkitoTRBJ9DfbemMoIyj5kEx3BK3ctr4", "1pFkjtYevi--MtaAzp9mv-aOuKv3S2tIT", 
+      "14gm-VCgxxziwthy_XuiV6-nAxVgp67DW", "1iM272Epu8b9FEksWxFZoba2ALKkRCffW", "1oBFWvAFu3jtcs2NW4iA7l1Hg86Z8EpV_", 
+      "15uXiX1-SGpYxJak9mW9zFEOifVHUN5RX", "1Lnx7g8Ru7Xw3nWprdzh7yU68UMky-UDE", "1SGJDCfpdF6neDUmM-FXJ-83G-svc-oI9", 
+      "1ZpX2-hSwGHZ_pE6lPzZTqCxK_ouptk9l", "12WyhZefdXnOGmu65PSuivRzZE5bg-rzt", "16v1RxjWEOpz5zrgQemeZGLrflz9xL7yv", 
+      "10gppZFEHB1k6nX95mgu0Ys8zUB7EoBO4", "1VQ_Wb1NE4T6XHncQqIHyLceGyMtaKaH9", "1vd4ieYGiM8NRK3P3Esu_ecS7d_gFcdoe", 
+      "1DapsU2Xbtam5paVLz5MkfP5xBAStZTfq", "1f0NfjPe-qOxy4bgYB1RGEmsEuNdq5Zfp", "18YhaydpS9HcV90PH4a5lpf8_rW-O6Cww", 
+      "162uNCji7bKsNbWKq1ab8mqiuzdDfsM57", "1fJKe4YL6n_O1L0HHQXh7tgKMd0K0lax0", "1FTqQATjFSccAt6Z1PNfrfvdKagfYNRvt", 
+      "1fDxhBlBtWqDGyqfe_pYxFzESMr2GpEt_", "1mMhy_exx9svlOqlnBu_U24WvCLjHuFCY", "1mEM_BLCl0pzbLLTgI4POO_teaU435SSh", 
+      "12dcog53XM9rOOQLwrz5-dvb6veVmyyBK", "1-UBuO4jmI9QZPt7_N1caju0vDd1KnPr7", "1Wgk-qUGOhDP1Jejf0ATEd03woG_-w59I", 
+      "1V1QZdvd3iy16XYaf_2FKVPxsl8H9KGgF", "1Qa4oWPK1k4pmZGqKz6_8BdRvabei10LF", "1HI5KuCixNNsKnTgh0fAC4DNBQ8quWScs", 
+      "1C4Dq8tIB-pNLBGtI0XsFbVOwQUGTm3od", "1nRjYQdQcZmUifoCh-h2_jAcgWPzeuqWS", "1DcAg7n4R4JXbiWW7secgk3Z9f1bX3GNA", 
+      "1jQIfRWeBg50JACtbPL42VuIM2A0LLhJB", "1ImwkGqB7OCYLP2QIk7GCir-j8T10rHqn", "1ZtabDZ6Yan3JnH6SFiG_JcuUaaX2UcHW", 
+      "1k6xYCpmvU-lpbBCiGVMqqPSzkUAEaCLz", "1Fi6oWF4Uaokaqj-g_ueotbXQM4ZwgP4X"
     ];
 
-    function render(filter = 'All') {
-      const grid = document.getElementById('galleryGrid');
-      grid.innerHTML = '';
-      
-      const filtered = filter === 'All' ? creativeWorks : creativeWorks.filter(w => w.category === filter);
-      
-      filtered.forEach(work => {
-        const div = document.createElement('div');
-        div.className = "glass-card p-2 hover:scale-[1.02] transition-transform";
-        div.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${work.id}&sz=w500" class="w-full h-40 object-cover rounded-xl">`;
-        grid.appendChild(div);
-      });
-    }
-
-    // יצירת כפתורי סינון אוטומטיים
-    const categories = ['All', ...new Set(creativeWorks.map(w => w.category))];
-    const filterBar = document.getElementById('filterBar');
-    categories.forEach(cat => {
-      const btn = document.createElement('button');
-      btn.className = "px-4 py-2 bg-white/10 rounded-full hover:bg-cyber-cyan hover:text-black transition-all";
-      btn.innerText = cat;
-      btn.onclick = () => render(cat);
-      filterBar.appendChild(btn);
+    const grid = document.getElementById('galleryGrid');
+    creativeWorks.forEach(id => {
+      grid.innerHTML += `
+        <a href="https://drive.google.com/file/d/${id}/view" target="_blank" class="glass-card p-1 block">
+          <img src="https://drive.google.com/thumbnail?id=${id}&sz=w300" class="w-full h-32 object-cover rounded-lg">
+        </a>`;
     });
-
-    render();
   </script>
 </body>
 </html>
