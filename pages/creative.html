@@ -2,52 +2,64 @@
 <html lang="he" dir="rtl" class="dark">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creative Feed | Tzvika Johnny Peker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Creative Feed | Johnny Peker</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: #000; margin: 0; color: #fff; font-family: 'Rubik', sans-serif; }
+    body { background: #000; margin: 0; color: #fff; font-family: 'Rubik', sans-serif; overflow: hidden; }
     
-    /* מכל הגלריה - גלילה אופקית בתוך הדף */
+    /* מכל גלילה אופקי */
     .snap-container {
       display: flex;
       flex-direction: row;
+      height: 100vh;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
-      padding: 20px 0;
-      gap: 20px;
     }
     
     .snap-item {
-      flex: 0 0 85vw; /* נותן לראות קצת מהבא בתור */
+      flex: 0 0 100vw;
+      height: 100vh;
       scroll-snap-align: center;
-      aspect-ratio: 9 / 16;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
     }
 
     .iframe-wrapper { 
-      width: 100%; 
-      height: 100%; 
+      width: 95vw; 
+      height: 90vh;
+      max-width: 450px; 
+      aspect-ratio: 9 / 16; 
       background: #111; 
       border-radius: 24px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 30px rgba(0,242,255,0.15);
     }
     
     iframe { width: 100%; height: 100%; border: none; }
+    
+    /* כפתור חזרה מעוצב */
+    .back-btn {
+      position: fixed; top: 2rem; left: 2rem; z-index: 50;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(10px);
+      padding: 12px; border-radius: 50%; color: white; border: 1px solid rgba(255,255,255,0.1);
+    }
   </style>
 </head>
 <body>
 
-  <a href="../index.html" class="block p-6 text-white/70">
-    <span class="text-xl">← חזרה</span>
+  <a href="../index.html" class="back-btn">
+    <span class="material-symbols-outlined text-2xl">arrow_back</span>
   </a>
-
-  <h1 class="text-center text-2xl font-black uppercase mb-6">Creative Feed</h1>
 
   <div id="feed" class="snap-container"></div>
 
   <script>
+    // הרשימה המלאה של ה-42 (כל הלינקים ששלחת)
     const videos = [
       "1ypXVriVw0EOC47YP2qRjgTnERK7fyJm9", "1QcVSof_lka6y2T1PzUvLdRdv4h3NVzC0", "1DTsQebKGIKR2Ia3uwhQTglEbLNG4MJCs", 
       "1i4-sFxFaPY6OFD0fBgl4FPVqBr8UQGTb", "1Xzx0X7msk8E6u3zE0yDoQRsS53YkngBg", "1mkitoTRBJ9DfbemMoIyj5kEx3BK3ctr4", 
@@ -67,16 +79,19 @@
 
     const feed = document.getElementById('feed');
     
+    // אופטימיזציה לטעינה (Lazy Load)
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const wrapper = entry.target.querySelector('.iframe-wrapper');
         if (entry.isIntersecting) {
-          wrapper.innerHTML = `<iframe src="https://drive.google.com/file/d/${wrapper.dataset.id}/preview" allow="autoplay; fullscreen"></iframe>`;
+          if (!wrapper.innerHTML) {
+            wrapper.innerHTML = `<iframe src="https://drive.google.com/file/d/${wrapper.dataset.id}/preview" allow="autoplay; fullscreen"></iframe>`;
+          }
         } else {
           wrapper.innerHTML = '';
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.2 });
 
     videos.forEach(id => {
       const item = document.createElement('div');
