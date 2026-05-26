@@ -8,40 +8,31 @@
   <style>
     body { background: #000; color: #fff; font-family: sans-serif; margin: 0; padding-bottom: 120px; }
     
-    /* תפריט ניווט דביק - Dock */
+    /* תפריט ניווט דביק - הוספתי z-index גבוה מאוד כדי שיהיה לחיץ */
     .sticky-nav {
       position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
       background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px);
       border: 1px solid rgba(255,255,255,0.1); border-radius: 30px;
-      padding: 10px 20px; display: flex; gap: 20px; z-index: 1000;
+      padding: 10px 20px; display: flex; gap: 20px; z-index: 9999;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-    .nav-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; color: #888; font-size: 10px; transition: 0.3s; }
-    .nav-item.active { color: #00f2ff; }
+    .nav-item { 
+      display: flex; flex-direction: column; align-items: center; 
+      cursor: pointer; color: #888; font-size: 10px; transition: 0.3s; 
+      pointer-events: auto; /* מוודא שהאזור לחיץ */
+    }
+    .nav-item:hover, .nav-item.active { color: #00f2ff; }
 
-    /* גריד מותאם: גדול וברור במובייל */
     .project-grid { 
-      display: grid; 
-      grid-template-columns: 1fr; /* טור אחד במובייל */
-      gap: 2rem; 
-      padding: 1rem; 
-      max-width: 600px; /* רוחב מושלם לצפייה */
-      margin: 0 auto;
+      display: grid; grid-template-columns: 1fr; gap: 2rem; 
+      padding: 1rem; max-width: 600px; margin: 0 auto; 
     }
-
     .card { 
-      width: 100%;
-      aspect-ratio: 9 / 16; 
-      background: #000; 
-      border-radius: 20px; 
-      overflow: hidden; 
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      width: 100%; aspect-ratio: 9 / 16; background: #000; 
+      border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);
     }
-
     iframe { width: 100%; height: 100%; border: none; }
 
-    /* במחשב: מחזירים לגריד של 2 עמודות */
     @media (min-width: 768px) {
       .project-grid { grid-template-columns: repeat(2, 1fr); max-width: 1000px; }
     }
@@ -52,12 +43,12 @@
   <div id="gallery" class="project-grid"></div>
 
   <nav class="sticky-nav">
-    <div class="nav-item active">🏠 <span>ראשי</span></div>
-    <div class="nav-item">🎨 <span>יצירה</span></div>
-    <div class="nav-item">🎭 <span>סאטירה</span></div>
-    <div class="nav-item">📡 <span>פודקאסט</span></div>
-    <div class="nav-item">🤝 <span>לקוחות</span></div>
-    <div class="nav-item">🎵 <span>שירים</span></div>
+    <div class="nav-item active" onclick="console.log('ראשי')">🏠 <span>ראשי</span></div>
+    <div class="nav-item" onclick="console.log('יצירה')">🎨 <span>יצירה</span></div>
+    <div class="nav-item" onclick="console.log('סאטירה')">🎭 <span>סאטירה</span></div>
+    <div class="nav-item" onclick="console.log('פודקאסט')">📡 <span>פודקאסט</span></div>
+    <div class="nav-item" onclick="console.log('לקוחות')">🤝 <span>לקוחות</span></div>
+    <div class="nav-item" onclick="console.log('שירים')">🎵 <span>שירים</span></div>
   </nav>
 
   <script>
