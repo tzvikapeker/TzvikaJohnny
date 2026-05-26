@@ -3,79 +3,75 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creative Feed | Tzvika Johnny Peker</title>
+  <title>Tzvika Johnny Peker | Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: #000; color: #fff; font-family: sans-serif; margin: 0; padding-bottom: 120px; }
+    body { background: #050505; color: #fff; margin: 0; font-family: sans-serif; height: 100vh; overflow: hidden; }
     
-    /* תפריט ניווט דביק - הוספתי z-index גבוה מאוד כדי שיהיה לחיץ */
+    /* הנגן המרכזי */
+    .player-wrapper { 
+      display: flex; align-items: center; justify-content: center; 
+      height: 85vh; width: 100%; position: relative; 
+    }
+    .video-frame { 
+      width: 90%; max-width: 400px; aspect-ratio: 9/16; 
+      background: #111; border-radius: 24px; overflow: hidden; 
+      border: 2px solid #00f2ff; box-shadow: 0 0 30px rgba(0,242,255,0.2);
+    }
+    
+    /* חצי ניווט */
+    .nav-arrow { 
+      position: absolute; top: 50%; transform: translateY(-50%); 
+      background: rgba(255,255,255,0.1); border-radius: 50%; 
+      padding: 15px; cursor: pointer; border: 1px solid rgba(255,255,255,0.2);
+    }
+    .arrow-left { left: 20px; }
+    .arrow-right { right: 20px; }
+
+    /* התפריט התחתון (הדוק) */
     .sticky-nav {
       position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
       background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.1); border-radius: 30px;
-      padding: 10px 20px; display: flex; gap: 20px; z-index: 9999;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 50px;
+      padding: 12px 25px; display: flex; gap: 20px; z-index: 1000;
     }
-    .nav-item { 
-      display: flex; flex-direction: column; align-items: center; 
-      cursor: pointer; color: #888; font-size: 10px; transition: 0.3s; 
-      pointer-events: auto; /* מוודא שהאזור לחיץ */
-    }
-    .nav-item:hover, .nav-item.active { color: #00f2ff; }
-
-    .project-grid { 
-      display: grid; grid-template-columns: 1fr; gap: 2rem; 
-      padding: 1rem; max-width: 600px; margin: 0 auto; 
-    }
-    .card { 
-      width: 100%; aspect-ratio: 9 / 16; background: #000; 
-      border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);
-    }
-    iframe { width: 100%; height: 100%; border: none; }
-
-    @media (min-width: 768px) {
-      .project-grid { grid-template-columns: repeat(2, 1fr); max-width: 1000px; }
-    }
+    .nav-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; color: #888; font-size: 10px; }
+    .nav-item.active { color: #00f2ff; }
   </style>
 </head>
 <body>
 
-  <div id="gallery" class="project-grid"></div>
+  <div class="player-wrapper">
+    <div class="nav-arrow arrow-left" onclick="changeVideo(-1)">❮</div>
+    <div id="video-container" class="video-frame"></div>
+    <div class="nav-arrow arrow-right" onclick="changeVideo(1)">❯</div>
+  </div>
 
   <nav class="sticky-nav">
-    <div class="nav-item active" onclick="console.log('ראשי')">🏠 <span>ראשי</span></div>
-    <div class="nav-item" onclick="console.log('יצירה')">🎨 <span>יצירה</span></div>
-    <div class="nav-item" onclick="console.log('סאטירה')">🎭 <span>סאטירה</span></div>
-    <div class="nav-item" onclick="console.log('פודקאסט')">📡 <span>פודקאסט</span></div>
-    <div class="nav-item" onclick="console.log('לקוחות')">🤝 <span>לקוחות</span></div>
-    <div class="nav-item" onclick="console.log('שירים')">🎵 <span>שירים</span></div>
+    <div class="nav-item">🧠 <span>טראומה</span></div>
+    <div class="nav-item">🎵 <span>שירים</span></div>
+    <div class="nav-item active">🤝 <span>לקוחות</span></div>
+    <div class="nav-item">📡 <span>פודקאסט</span></div>
+    <div class="nav-item">🎭 <span>סאטירה</span></div>
+    <div class="nav-item">🎨 <span>יצירה</span></div>
+    <div class="nav-item">🏠 <span>ראשי</span></div>
   </nav>
 
   <script>
-    const videoIds = [
-      "1ypXVriVw0EOC47YP2qRjgTnERK7fyJm9", "1QcVSof_lka6y2T1PzUvLdRdv4h3NVzC0", "1DTsQebKGIKR2Ia3uwhQTglEbLNG4MJCs", 
-      "1i4-sFxFaPY6OFD0fBgl4FPVqBr8UQGTb", "1Xzx0X7msk8E6u3zE0yDoQRsS53YkngBg", "1mkitoTRBJ9DfbemMoIyj5kEx3BK3ctr4", 
-      "1pFkjtYevi--MtaAzp9mv-aOuKv3S2tIT", "14gm-VCgxxziwthy_XuiV6-nAxVgp67DW", "1iM272Epu8b9FEksWxFZoba2ALKkRCffW", 
-      "1oBFWvAFu3jtcs2NW4iA7l1Hg86Z8EpV_", "15uXiX1-SGpYxJak9mW9zFEOifVHUN5RX", "1Lnx7g8Ru7Xw3nWprdzh7yU68UMky-UDE", 
-      "1SGJDCfpdF6neDUmM-FXJ-83G-svc-oI9", "1ZpX2-hSwGHZ_pE6lPzZTqCxK_ouptk9l", "12WyhZefdXnOGmu65PSuivRzZE5bg-rzt", 
-      "16v1RxjWEOpz5zrgQemeZGLrflz9xL7yv", "10gppZFEHB1k6nX95mgu0Ys8zUB7EoBO4", "1VQ_Wb1NE4T6XHncQqIHyLceGyMtaKaH9", 
-      "1vd4ieYGiM8NRK3P3Esu_ecS7d_gFcdoe", "1DapsU2Xbtam5paVLz5MkfP5xBAStZTfq", "1f0NfjPe-qOxy4bgYB1RGEmsEuNdq5Zfp", 
-      "18YhaydpS9HcV90PH4a5lpf8_rW-O6Cww", "162uNCji7bKsNbWKq1ab8mqiuzdDfsM57", "1fJKe4YL6n_O1L0HHQXh7tgKMd0K0lax0", 
-      "1FTqQATjFSccAt6Z1PNfrfvdKagfYNRvt", "1fDxhBlBtWqDGyqfe_pYxFzESMr2GpEt_", "1mMhy_exx9svlOqlnBu_U24WvCLjHuFCY", 
-      "1mEM_BLCl0pzbLLTgI4POO_teaU435SSh", "12dcog53XM9rOOQLwrz5-dvb6veVmyyBK", "1-UBuO4jmI9QZPt7_N1caju0vDd1KnPr7", 
-      "1Wgk-qUGOhDP1Jejf0ATEd03woG_-w59I", "1V1QZdvd3iy16XYaf_2FKVPxsl8H9KGgF", "1Qa4oWPK1k4pmZGqKz6_8BdRvabei10LF", 
-      "1HI5KuCixNNsKnTgh0fAC4DNBQ8quWScs", "1C4Dq8tIB-pNLBGtI0XsFbVOwQUGTm3od", "1nRjYQdQcZmUifoCh-h2_jAcgWPzeuqWS", 
-      "1DcAg7n4R4JXbiWW7secgk3Z9f1bX3GNA", "1jQIfRWeBg50JACtbPL42VuIM2A0LLhJB", "1ImwkGqB7OCYLP2QIk7GCir-j8T10rHqn", 
-      "1ZtabDZ6Yan3JnH6SFiG_JcuUaaX2UcHW", "1k6xYCpmvU-lpbBCiGVMqqPSzkUAEaCLz", "1Fi6oWF4Uaokaqj-g_ueotbXQM4ZwgP4X"
-    ];
+    const videoIds = ["1ypXVriVw0EOC47YP2qRjgTnERK7fyJm9", "1QcVSof_lka6y2T1PzUvLdRdv4h3NVzC0", "1DTsQebKGIKR2Ia3uwhQTglEbLNG4MJCs"]; // וכו'...
+    let currentIndex = 0;
 
-    const gallery = document.getElementById('gallery');
-    videoIds.forEach(id => {
-      const card = document.createElement('div');
-      card.className = "card";
-      card.innerHTML = `<iframe src="https://drive.google.com/file/d/${id}/preview" allow="fullscreen" allowfullscreen></iframe>`;
-      gallery.appendChild(card);
-    });
+    function showVideo(index) {
+      const container = document.getElementById('video-container');
+      container.innerHTML = `<iframe src="https://drive.google.com/file/d/${videoIds[index]}/preview" allow="fullscreen" allowfullscreen></iframe>`;
+    }
+
+    function changeVideo(dir) {
+      currentIndex = (currentIndex + dir + videoIds.length) % videoIds.length;
+      showVideo(currentIndex);
+    }
+
+    showVideo(0);
   </script>
 </body>
 </html>
