@@ -6,43 +6,101 @@
   <title>Tzvika Johnny Peker | Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: #050505; color: #fff; margin: 0; font-family: sans-serif; height: 100vh; overflow: hidden; }
+    body { background: #050505; color: #fff; margin: 0; font-family: sans-serif; height: 100vh; overflow: hidden; position: relative; }
     
-    .player-wrapper { display: flex; align-items: center; justify-content: center; height: 85vh; width: 100%; position: relative; }
-    .video-frame { width: 90%; max-width: 400px; aspect-ratio: 9/16; background: #111; border-radius: 24px; overflow: hidden; border: 2px solid #00f2ff; box-shadow: 0 0 30px rgba(0,242,255,0.2); }
-    
-    .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border-radius: 50%; padding: 15px; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); font-size: 20px; transition: 0.3s; }
-    .nav-arrow:hover { background: rgba(0, 242, 255, 0.2); }
-    .arrow-left { left: 20px; }
-    .arrow-right { right: 20px; }
+    /* כפתור חזרה מקובע למעלה */
+    .back-btn {
+      position: absolute; top: 20px; right: 20px; z-index: 9999;
+      color: rgba(255,255,255,0.7); text-decoration: none; font-size: 16px;
+      display: flex; align-items: center; gap: 8px; transition: 0.3s;
+      background: rgba(0,0,0,0.5); padding: 8px 16px; border-radius: 20px;
+    }
+    .back-btn:hover { color: #00f2ff; border-color: #00f2ff; }
 
-    .sticky-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 50px; padding: 12px 25px; display: flex; gap: 20px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    .nav-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; color: #888; font-size: 10px; transition: 0.3s; }
-    .nav-item:hover, .nav-item.active { color: #00f2ff; }
+    /* מעטפת הנגן והכפתורים */
+    .player-wrapper { 
+      display: flex; flex-direction: column; align-items: center; justify-content: center; 
+      height: 100vh; width: 100%; position: absolute; top: -5%; left: 0; z-index: 10;
+    }
+    .video-frame { 
+      width: 90%; max-width: 380px; aspect-ratio: 9/16; 
+      background: #111; border-radius: 24px; overflow: hidden; 
+      border: 2px solid #00f2ff; box-shadow: 0 10px 40px rgba(0,242,255,0.15);
+    }
+    
+    /* כפתורי הבא / הקודם - בולטים וברורים מתחת לסרטון */
+    .controls {
+      display: flex; gap: 20px; margin-top: 20px; width: 90%; max-width: 380px; justify-content: space-between;
+    }
+    .control-btn {
+      flex: 1; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 30px; padding: 12px; color: #fff; font-size: 16px; font-weight: bold;
+      cursor: pointer; transition: 0.3s; text-align: center; backdrop-filter: blur(10px);
+    }
+    .control-btn:hover { background: rgba(0, 242, 255, 0.2); color: #00f2ff; border-color: #00f2ff; }
+
+    /* התפריט התחתון (הדוק) העובד */
+    .sticky-nav {
+      position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
+      background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 50px;
+      padding: 15px 20px; display: flex; gap: 15px; z-index: 9999;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+      width: max-content; max-width: 95vw; overflow-x: auto; scroll-behavior: smooth;
+    }
+    .sticky-nav::-webkit-scrollbar { display: none; }
+
+    .nav-item { 
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      cursor: pointer; color: #aaa; font-size: 13px; transition: 0.3s; 
+      min-width: 55px; pointer-events: auto;
+    }
+    .nav-icon { font-size: 22px; margin-bottom: 5px; transition: 0.3s; }
+    .nav-item:hover, .nav-item.active { color: #00f2ff; font-weight: bold; }
+    .nav-item:hover .nav-icon, .nav-item.active .nav-icon { transform: scale(1.2); }
     
     iframe { width: 100%; height: 100%; border: none; }
   </style>
 </head>
 <body>
 
+  <a href="../index.html" class="back-btn">← חזרה</a>
+
   <div class="player-wrapper">
-    <div class="nav-arrow arrow-left" onclick="changeVideo(-1)">❮</div>
     <div id="video-container" class="video-frame"></div>
-    <div class="nav-arrow arrow-right" onclick="changeVideo(1)">❯</div>
+    <div class="controls">
+      <button class="control-btn" onclick="changeVideo(-1)">❮ הקודם</button>
+      <button class="control-btn" onclick="changeVideo(1)">הבא ❯</button>
+    </div>
   </div>
 
   <nav class="sticky-nav">
-    <div class="nav-item">🧠 <span>טראומה</span></div>
-    <div class="nav-item">🎵 <span>שירים</span></div>
-    <div class="nav-item active">🤝 <span>לקוחות</span></div>
-    <div class="nav-item">📡 <span>פודקאסט</span></div>
-    <div class="nav-item">🎭 <span>סאטירה</span></div>
-    <div class="nav-item">🎨 <span>יצירה</span></div>
-    <div class="nav-item">🏠 <span>ראשי</span></div>
+    <div class="nav-item" onclick="setCategory('טראומה')" data-cat="טראומה">
+      <span class="nav-icon">🧠</span><span>טראומה</span>
+    </div>
+    <div class="nav-item" onclick="setCategory('שירים')" data-cat="שירים">
+      <span class="nav-icon">🎵</span><span>שירים</span>
+    </div>
+    <div class="nav-item" onclick="setCategory('לקוחות')" data-cat="לקוחות">
+      <span class="nav-icon">🤝</span><span>לקוחות</span>
+    </div>
+    <div class="nav-item" onclick="setCategory('פודקאסט')" data-cat="פודקאסט">
+      <span class="nav-icon">📡</span><span>פודקאסט</span>
+    </div>
+    <div class="nav-item" onclick="setCategory('סאטירה')" data-cat="סאטירה">
+      <span class="nav-icon">🎭</span><span>סאטירה</span>
+    </div>
+    <div class="nav-item" onclick="setCategory('יצירה')" data-cat="יצירה">
+      <span class="nav-icon">🎨</span><span>יצירה</span>
+    </div>
+    <div class="nav-item active" onclick="setCategory('ראשי')" data-cat="ראשי">
+      <span class="nav-icon">🏠</span><span>ראשי</span>
+    </div>
   </nav>
 
   <script>
-    const videoIds = [
+    // כל ה-42 שלך
+    const allVideos = [
       "1ypXVriVw0EOC47YP2qRjgTnERK7fyJm9", "1QcVSof_lka6y2T1PzUvLdRdv4h3NVzC0", "1DTsQebKGIKR2Ia3uwhQTglEbLNG4MJCs", 
       "1i4-sFxFaPY6OFD0fBgl4FPVqBr8UQGTb", "1Xzx0X7msk8E6u3zE0yDoQRsS53YkngBg", "1mkitoTRBJ9DfbemMoIyj5kEx3BK3ctr4", 
       "1pFkjtYevi--MtaAzp9mv-aOuKv3S2tIT", "14gm-VCgxxziwthy_XuiV6-nAxVgp67DW", "1iM272Epu8b9FEksWxFZoba2ALKkRCffW", 
@@ -59,14 +117,47 @@
       "1ZtabDZ6Yan3JnH6SFiG_JcuUaaX2UcHW", "1k6xYCpmvU-lpbBCiGVMqqPSzkUAEaCLz", "1Fi6oWF4Uaokaqj-g_ueotbXQM4ZwgP4X"
     ];
 
+    // חלוקה לדוגמה של הקישורים לקטגוריות. 
+    // מאוחר יותר תוכל פשוט להזיז את ה-IDs בין המערכים האלה כדי לסדר את הפורטפוליו בדיוק איך שאתה רוצה.
+    const categories = {
+      'ראשי': allVideos, // כל הסרטונים
+      'יצירה': allVideos.slice(0, 7),
+      'סאטירה': allVideos.slice(7, 14),
+      'פודקאסט': allVideos.slice(14, 21),
+      'לקוחות': allVideos.slice(21, 28),
+      'שירים': allVideos.slice(28, 35),
+      'טראומה': allVideos.slice(35, 42)
+    };
+
+    let currentPlaylist = categories['ראשי'];
     let currentIndex = 0;
+    
+    // פונקציה שמציגה את הסרטון הנוכחי
     function showVideo(index) {
-      document.getElementById('video-container').innerHTML = `<iframe src="https://drive.google.com/file/d/${videoIds[index]}/preview" allow="fullscreen" allowfullscreen></iframe>`;
+      if(currentPlaylist.length === 0) return;
+      document.getElementById('video-container').innerHTML = `<iframe src="https://drive.google.com/file/d/${currentPlaylist[index]}/preview" allow="fullscreen" allowfullscreen></iframe>`;
     }
+    
+    // פונקציה להעברת סרטון (הבא/הקודם) שרצה בלולאה
     function changeVideo(dir) {
-      currentIndex = (currentIndex + dir + videoIds.length) % videoIds.length;
+      if(currentPlaylist.length === 0) return;
+      currentIndex = (currentIndex + dir + currentPlaylist.length) % currentPlaylist.length;
       showVideo(currentIndex);
     }
+
+    // פונקציה שמופעלת בלחיצה על קטגוריה בדוק
+    function setCategory(catName) {
+      // 1. מעדכן את הפלייליסט
+      currentPlaylist = categories[catName];
+      currentIndex = 0;
+      showVideo(0);
+
+      // 2. מחליף את העיצוב (האור הכחול) לכפתור שנלחץ
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+      document.querySelector(`.nav-item[data-cat="${catName}"]`).classList.add('active');
+    }
+    
+    // הפעלה ראשונית
     showVideo(0);
   </script>
 </body>
