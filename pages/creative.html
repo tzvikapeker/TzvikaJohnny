@@ -39,7 +39,7 @@
     }
     .control-btn:hover { background: rgba(0, 242, 255, 0.2); color: #00f2ff; border-color: #00f2ff; }
 
-    /* התפריט התחתון (הדוק) - מעביר לעמודים אחרים */
+    /* התפריט התחתון (הדוק) */
     .sticky-nav {
       position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
       background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px);
@@ -50,7 +50,7 @@
     }
     .sticky-nav::-webkit-scrollbar { display: none; }
 
-    /* שינוי ל-<a> כדי שיתפקד כקישור ללא קו תחתון */
+    /* עיצוב כפתורי הניווט (לינקים) */
     .nav-item { 
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       cursor: pointer; color: #aaa; font-size: 13px; transition: 0.3s; 
@@ -76,31 +76,37 @@
   </div>
 
   <nav class="sticky-nav">
-    <a href="trauma.html" class="nav-item">
-      <span class="nav-icon">🧠</span><span>טראומה</span>
+    <a href="../index.html" class="nav-item">
+      <span class="nav-icon">🏠</span><span>ראשי</span>
     </a>
-    <a href="songs.html" class="nav-item">
-      <span class="nav-icon">🎵</span><span>שירים</span>
+    
+    <a href="creative.html" class="nav-item active">
+      <span class="nav-icon">🎨</span><span>יצירה</span>
     </a>
-    <a href="clients.html" class="nav-item">
-      <span class="nav-icon">🤝</span><span>לקוחות</span>
-    </a>
-    <a href="podcast.html" class="nav-item">
-      <span class="nav-icon">📡</span><span>פודקאסט</span>
-    </a>
+    
     <a href="satire.html" class="nav-item">
       <span class="nav-icon">🎭</span><span>סאטירה</span>
     </a>
-    <a href="creation.html" class="nav-item">
-      <span class="nav-icon">🎨</span><span>יצירה</span>
+    
+    <a href="podcasts.html" class="nav-item">
+      <span class="nav-icon">📡</span><span>פודקאסט</span>
     </a>
-    <a href="index.html" class="nav-item active">
-      <span class="nav-icon">🏠</span><span>ראשי</span>
+    
+    <a href="lessons.html" class="nav-item">
+      <span class="nav-icon">🤝</span><span>לקוחות</span>
+    </a>
+    
+    <a href="songs.html" class="nav-item">
+      <span class="nav-icon">🎵</span><span>שירים</span>
+    </a>
+    
+    <a href="posttrauma.html" class="nav-item">
+      <span class="nav-icon">🧠</span><span>טראומה</span>
     </a>
   </nav>
 
   <script>
-    // כאן אתה שם אך ורק את הסרטונים שרלוונטיים לעמוד הספציפי הזה
+    // שים כאן את מערך הלינקים שרלוונטי רק לעמוד הזה (יצירה)
     const videoIds = [
       "1ypXVriVw0EOC47YP2qRjgTnERK7fyJm9", "1QcVSof_lka6y2T1PzUvLdRdv4h3NVzC0", "1DTsQebKGIKR2Ia3uwhQTglEbLNG4MJCs", 
       "1i4-sFxFaPY6OFD0fBgl4FPVqBr8UQGTb", "1Xzx0X7msk8E6u3zE0yDoQRsS53YkngBg", "1mkitoTRBJ9DfbemMoIyj5kEx3BK3ctr4", 
