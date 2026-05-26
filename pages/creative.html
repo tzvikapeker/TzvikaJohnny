@@ -39,7 +39,7 @@
     }
     .control-btn:hover { background: rgba(0, 242, 255, 0.2); color: #00f2ff; border-color: #00f2ff; }
 
-    /* התפריט התחתון (הדוק) העובד */
+    /* התפריט התחתון (הדוק) - מעביר לעמודים אחרים */
     .sticky-nav {
       position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
       background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px);
@@ -50,10 +50,11 @@
     }
     .sticky-nav::-webkit-scrollbar { display: none; }
 
+    /* שינוי ל-<a> כדי שיתפקד כקישור ללא קו תחתון */
     .nav-item { 
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       cursor: pointer; color: #aaa; font-size: 13px; transition: 0.3s; 
-      min-width: 55px; pointer-events: auto;
+      min-width: 55px; pointer-events: auto; text-decoration: none;
     }
     .nav-icon { font-size: 22px; margin-bottom: 5px; transition: 0.3s; }
     .nav-item:hover, .nav-item.active { color: #00f2ff; font-weight: bold; }
@@ -75,32 +76,32 @@
   </div>
 
   <nav class="sticky-nav">
-    <div class="nav-item" onclick="setCategory('טראומה')" data-cat="טראומה">
+    <a href="trauma.html" class="nav-item">
       <span class="nav-icon">🧠</span><span>טראומה</span>
-    </div>
-    <div class="nav-item" onclick="setCategory('שירים')" data-cat="שירים">
+    </a>
+    <a href="songs.html" class="nav-item">
       <span class="nav-icon">🎵</span><span>שירים</span>
-    </div>
-    <div class="nav-item" onclick="setCategory('לקוחות')" data-cat="לקוחות">
+    </a>
+    <a href="clients.html" class="nav-item">
       <span class="nav-icon">🤝</span><span>לקוחות</span>
-    </div>
-    <div class="nav-item" onclick="setCategory('פודקאסט')" data-cat="פודקאסט">
+    </a>
+    <a href="podcast.html" class="nav-item">
       <span class="nav-icon">📡</span><span>פודקאסט</span>
-    </div>
-    <div class="nav-item" onclick="setCategory('סאטירה')" data-cat="סאטירה">
+    </a>
+    <a href="satire.html" class="nav-item">
       <span class="nav-icon">🎭</span><span>סאטירה</span>
-    </div>
-    <div class="nav-item" onclick="setCategory('יצירה')" data-cat="יצירה">
+    </a>
+    <a href="creation.html" class="nav-item">
       <span class="nav-icon">🎨</span><span>יצירה</span>
-    </div>
-    <div class="nav-item active" onclick="setCategory('ראשי')" data-cat="ראשי">
+    </a>
+    <a href="index.html" class="nav-item active">
       <span class="nav-icon">🏠</span><span>ראשי</span>
-    </div>
+    </a>
   </nav>
 
   <script>
-    // כל ה-42 שלך
-    const allVideos = [
+    // כאן אתה שם אך ורק את הסרטונים שרלוונטיים לעמוד הספציפי הזה
+    const videoIds = [
       "1ypXVriVw0EOC47YP2qRjgTnERK7fyJm9", "1QcVSof_lka6y2T1PzUvLdRdv4h3NVzC0", "1DTsQebKGIKR2Ia3uwhQTglEbLNG4MJCs", 
       "1i4-sFxFaPY6OFD0fBgl4FPVqBr8UQGTb", "1Xzx0X7msk8E6u3zE0yDoQRsS53YkngBg", "1mkitoTRBJ9DfbemMoIyj5kEx3BK3ctr4", 
       "1pFkjtYevi--MtaAzp9mv-aOuKv3S2tIT", "14gm-VCgxxziwthy_XuiV6-nAxVgp67DW", "1iM272Epu8b9FEksWxFZoba2ALKkRCffW", 
@@ -117,46 +118,19 @@
       "1ZtabDZ6Yan3JnH6SFiG_JcuUaaX2UcHW", "1k6xYCpmvU-lpbBCiGVMqqPSzkUAEaCLz", "1Fi6oWF4Uaokaqj-g_ueotbXQM4ZwgP4X"
     ];
 
-    // חלוקה לדוגמה של הקישורים לקטגוריות. 
-    // מאוחר יותר תוכל פשוט להזיז את ה-IDs בין המערכים האלה כדי לסדר את הפורטפוליו בדיוק איך שאתה רוצה.
-    const categories = {
-      'ראשי': allVideos, // כל הסרטונים
-      'יצירה': allVideos.slice(0, 7),
-      'סאטירה': allVideos.slice(7, 14),
-      'פודקאסט': allVideos.slice(14, 21),
-      'לקוחות': allVideos.slice(21, 28),
-      'שירים': allVideos.slice(28, 35),
-      'טראומה': allVideos.slice(35, 42)
-    };
-
-    let currentPlaylist = categories['ראשי'];
     let currentIndex = 0;
     
-    // פונקציה שמציגה את הסרטון הנוכחי
     function showVideo(index) {
-      if(currentPlaylist.length === 0) return;
-      document.getElementById('video-container').innerHTML = `<iframe src="https://drive.google.com/file/d/${currentPlaylist[index]}/preview" allow="fullscreen" allowfullscreen></iframe>`;
+      if(videoIds.length === 0) return;
+      document.getElementById('video-container').innerHTML = `<iframe src="https://drive.google.com/file/d/${videoIds[index]}/preview" allow="fullscreen" allowfullscreen></iframe>`;
     }
     
-    // פונקציה להעברת סרטון (הבא/הקודם) שרצה בלולאה
     function changeVideo(dir) {
-      if(currentPlaylist.length === 0) return;
-      currentIndex = (currentIndex + dir + currentPlaylist.length) % currentPlaylist.length;
+      if(videoIds.length === 0) return;
+      currentIndex = (currentIndex + dir + videoIds.length) % videoIds.length;
       showVideo(currentIndex);
     }
 
-    // פונקציה שמופעלת בלחיצה על קטגוריה בדוק
-    function setCategory(catName) {
-      // 1. מעדכן את הפלייליסט
-      currentPlaylist = categories[catName];
-      currentIndex = 0;
-      showVideo(0);
-
-      // 2. מחליף את העיצוב (האור הכחול) לכפתור שנלחץ
-      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-      document.querySelector(`.nav-item[data-cat="${catName}"]`).classList.add('active');
-    }
-    
     // הפעלה ראשונית
     showVideo(0);
   </script>
