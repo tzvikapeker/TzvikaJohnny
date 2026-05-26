@@ -6,23 +6,45 @@
   <title>Creative Feed | Tzvika Johnny Peker</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: #000; margin: 0; color: #fff; font-family: 'Rubik', sans-serif; padding-bottom: 120px; }
+    body { background: #000; color: #fff; font-family: sans-serif; margin: 0; padding-bottom: 120px; }
     
-    /* תפריט ניווט דביק (Dock) */
+    /* תפריט ניווט דביק - Dock */
     .sticky-nav {
       position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
       background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px);
       border: 1px solid rgba(255,255,255,0.1); border-radius: 30px;
-      padding: 10px 25px; display: flex; gap: 25px; z-index: 1000;
+      padding: 10px 20px; display: flex; gap: 20px; z-index: 1000;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-    .nav-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; color: #888; font-size: 11px; transition: 0.3s; }
-    .nav-item:hover, .nav-item.active { color: #00f2ff; }
+    .nav-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; color: #888; font-size: 10px; transition: 0.3s; }
+    .nav-item.active { color: #00f2ff; }
 
-    /* הגריד */
-    .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; padding: 1.5rem; max-width: 1200px; margin: 0 auto; }
-    .card { aspect-ratio: 9 / 16; background: #111; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+    /* גריד מותאם: גדול וברור במובייל */
+    .project-grid { 
+      display: grid; 
+      grid-template-columns: 1fr; /* טור אחד במובייל */
+      gap: 2rem; 
+      padding: 1rem; 
+      max-width: 600px; /* רוחב מושלם לצפייה */
+      margin: 0 auto;
+    }
+
+    .card { 
+      width: 100%;
+      aspect-ratio: 9 / 16; 
+      background: #000; 
+      border-radius: 20px; 
+      overflow: hidden; 
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
     iframe { width: 100%; height: 100%; border: none; }
+
+    /* במחשב: מחזירים לגריד של 2 עמודות */
+    @media (min-width: 768px) {
+      .project-grid { grid-template-columns: repeat(2, 1fr); max-width: 1000px; }
+    }
   </style>
 </head>
 <body>
@@ -39,7 +61,6 @@
   </nav>
 
   <script>
-    // כל 42 הקישורים המלאים
     const videoIds = [
       "1ypXVriVw0EOC47YP2qRjgTnERK7fyJm9", "1QcVSof_lka6y2T1PzUvLdRdv4h3NVzC0", "1DTsQebKGIKR2Ia3uwhQTglEbLNG4MJCs", 
       "1i4-sFxFaPY6OFD0fBgl4FPVqBr8UQGTb", "1Xzx0X7msk8E6u3zE0yDoQRsS53YkngBg", "1mkitoTRBJ9DfbemMoIyj5kEx3BK3ctr4", 
