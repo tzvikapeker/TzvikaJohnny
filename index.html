@@ -119,21 +119,29 @@
     <div class="perspective-grid"></div>
   </div>
 
-  <!-- Top Navigation Header -->
+    <!-- Top Navigation Header -->
   <header class="fixed top-4 left-4 right-4 z-[100] px-6 py-3 flex justify-between items-center glass-header rounded-full shadow-2xl max-w-7xl mx-auto">
     <div class="flex items-center gap-4">
       <button onclick="toggleMenu()" class="text-cyber-cyan p-2 hover:scale-110 transition-transform">
         <span class="material-symbols-outlined text-3xl">menu</span>
       </button>
-      <img src="https://drive.google.com/thumbnail?id=1VO1GyokRkNFjts6vH4Y9WDQJKuTYraWR&sz=w500" alt="Tzvika Johnny Peker Logo" class="w-12 h-12 rounded-full border border-cyber-cyan/40 shadow-[0_0_10px_rgba(0,242,255,0.3)] object-cover">
+      <img src="https://drive.google.com/thumbnail?id=1VO1GyokRkNFjts6vH4Y9WDQJKuTYraWR&sz=w500" alt="Tzvika Johnny Peker Logo" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-cyber-cyan/40 shadow-[0_0_10px_rgba(0,242,255,0.3)] object-cover">
     </div>
     
-    <button onclick="toggleLang()" class="px-5 py-2 rounded-full border border-cyber-cyan/50 text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-[#0a0f1a] transition-all flex items-center gap-2 uppercase">
-      <span class="material-symbols-outlined text-lg">language</span>
-      <span class="he">עברית</span>
-      <span class="en">ENGLISH</span>
-      <span class="ru">РУССКИЙ</span>
-      <span class="ar">العربية</span>
+    <button onclick="toggleLang()" class="px-3 sm:px-5 py-2 rounded-full border border-cyber-cyan/50 text-xs font-black text-cyber-cyan tracking-widest hover:bg-cyber-cyan hover:text-[#0a0f1a] transition-all flex items-center gap-1.5 sm:gap-2 uppercase">
+      <span class="material-symbols-outlined text-base sm:text-lg">language</span>
+      <span class="hidden sm:inline">
+        <span class="he">עברית</span>
+        <span class="en">ENGLISH</span>
+        <span class="ru">РУССКИЙ</span>
+        <span class="ar">العربية</span>
+      </span>
+      <span class="sm:hidden text-[10px] tracking-normal font-black">
+        <span class="he">עב</span>
+        <span class="en">EN</span>
+        <span class="ru">RU</span>
+        <span class="ar">AR</span>
+      </span>
     </button>
   </header>
 
