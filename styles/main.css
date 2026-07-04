@@ -744,3 +744,64 @@ html[dir="ltr"] .sidebar-drawer:not(.translate-x-full) {
   text-transform: uppercase;
 }
 
+
+
+/* ==========================================================================
+   Mobile Adaptive & Touch Screen Fixes
+   ========================================================================== */
+
+/* Enable scrolling on mobile screens to prevent layout cutoff */
+@media (max-width: 768px) {
+  html, body {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+  }
+  
+  body.overflow-hidden {
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+  
+  main {
+    height: auto !important;
+    min-height: calc(100vh - 160px) !important;
+    padding-bottom: 140px !important;
+    overflow-y: visible !important;
+  }
+}
+
+/* Touch screen specific resets to prevent hover state sticking */
+@media (hover: none) {
+  .dock-item:hover {
+    color: rgba(255, 255, 255, 0.55);
+    transform: none !important;
+  }
+  .dock-item.active:hover {
+    color: var(--color-cyan) !important;
+  }
+  .nav-arrow-3d:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: white !important;
+    transform: none !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3) !important;
+    border-color: rgba(0, 242, 255, 0.3) !important;
+  }
+  .glass-card:hover {
+    background: var(--color-dark-glass) !important;
+    border-color: var(--color-border-glass) !important;
+    box-shadow: 
+      0 15px 40px rgba(0, 0, 0, 0.3),
+      0 0 1px rgba(255, 255, 255, 0.1) inset,
+      0 0 20px rgba(0, 242, 255, 0.03) !important;
+    transform: none !important;
+  }
+  .folder-3d-card:hover .folder-3d-body {
+    transform: none !important;
+    box-shadow: 0 15px 35px rgba(0, 242, 255, 0.2) !important;
+  }
+  .dock:hover {
+    transform: rotateX(12deg) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
