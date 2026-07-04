@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="he" data-lang="he" dir="rtl" class="dark">
 <head>
+  <script>
+    (function() {
+      const savedLang = localStorage.getItem('siteLang') || 'he';
+      document.documentElement.setAttribute('data-lang', savedLang);
+      document.documentElement.setAttribute('dir', (savedLang === 'he' || savedLang === 'ar') ? 'rtl' : 'ltr');
+    })();
+  </script>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHDTELYGW"></script>
   <script>
     window.dataLayer = window.dataLayer || [];

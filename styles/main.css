@@ -860,3 +860,22 @@ body.theme-trauma {
 .dock-item:hover .dock-emoji {
   transform: scale(1.3) translateY(-4px);
 }
+
+
+/* ==========================================================================
+   Smooth Page Load Transition
+   ========================================================================== */
+body {
+  animation: page-transition-fade 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes page-transition-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
