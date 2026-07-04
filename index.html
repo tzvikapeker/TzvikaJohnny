@@ -56,6 +56,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Rubik:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link href="styles/main.css" rel="stylesheet"/>
   
   <script>
     tailwind.config = {
@@ -65,69 +66,23 @@
   </script>
 
   <style>
-    html:not([data-lang="he"]) .he { display: none !important; }
-    html:not([data-lang="en"]) .en { display: none !important; }
-    html:not([data-lang="ru"]) .ru { display: none !important; }
-    html:not([data-lang="ar"]) .ar { display: none !important; }
-
-    body { 
-      background-color: #0a0f1a;
-      color: #f8f8ff; 
-      font-family: 'Rubik', 'Outfit', sans-serif; 
-      overflow-x: hidden; 
-    }
-    
-    .font-heading { font-family: 'Outfit', 'Rubik', sans-serif; }
-
-    .material-symbols-outlined { font-size: 32px; display: inline-block; line-height: 1; vertical-align: middle; }
-
-    .glass-card { 
-      background: rgba(255, 255, 255, 0.04); 
-      backdrop-filter: blur(24px); 
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.1); 
-      border-radius: 32px; 
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-    }
-    .glass-card:hover {
-      background: rgba(255, 255, 255, 0.07);
-      border-color: rgba(0, 242, 255, 0.3);
-    }
-    
-    .glass-header {
-      background: rgba(10, 15, 26, 0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    @keyframes blob {
-      0% { transform: translate(0px, 0px) scale(1); }
-      33% { transform: translate(30px, -50px) scale(1.1); }
-      66% { transform: translate(-20px, 20px) scale(0.9); }
-      100% { transform: translate(0px, 0px) scale(1); }
-    }
-    .animate-blob { animation: blob 10s infinite alternate ease-in-out; }
-    .animation-delay-2000 { animation-delay: 2s; }
-    .animation-delay-4000 { animation-delay: 4s; }
-
+    /* Specific Home Cube Settings */
     :root { --cube-size: 240px; --cube-half: 120px; }
     @media (min-width: 640px) { :root { --cube-size: 320px; --cube-half: 160px; } }
-    @media (min-width: 1024px) { :root { --cube-size: 420px; --cube-half: 210px; } }
+    @media (min-width: 1024px) { :root { --cube-size: 380px; --cube-half: 190px; } }
 
     .cube-stage { perspective: 1500px; width: var(--cube-size); height: var(--cube-size); position: relative; cursor: pointer; }
     .cube { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     
     .cube-face { 
         position: absolute; width: var(--cube-size); height: var(--cube-size); 
-        border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 32px; background: rgba(10, 15, 26, 0.85); 
-        backface-visibility: hidden; overflow: hidden; box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+        border: 2px solid rgba(0, 242, 255, 0.3); border-radius: 32px; background: rgba(8, 12, 28, 0.85); 
+        backface-visibility: hidden; overflow: hidden; box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
         transition: border-color 0.3s, box-shadow 0.3s;
         pointer-events: none; 
     }
     
-    .master-portal-link:hover .cube-face { border-color: rgba(0, 242, 255, 0.8); box-shadow: 0 0 40px rgba(0, 242, 255, 0.4); }
+    .master-portal-link:hover .cube-face { border-color: rgba(0, 242, 255, 0.8); box-shadow: 0 0 45px rgba(0, 242, 255, 0.45); }
     
     .face-front  { transform: rotateY(0deg) translateZ(var(--cube-half)); }
     .face-right  { transform: rotateY(90deg) translateZ(var(--cube-half)); }
@@ -136,60 +91,35 @@
     .face-top    { transform: rotateX(90deg) translateZ(var(--cube-half)); }
     .face-bottom { transform: rotateX(-90deg) translateZ(var(--cube-half)); }
 
-    .nav-arrow { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s; color: white; z-index: 60; position: relative; }
-    .nav-arrow:hover { background: #00f2ff; color: #0a0f1a; transform: scale(1.1); box-shadow: 0 0 30px rgba(0, 242, 255, 0.6); }
-
-    @keyframes neon-glow {
-      0%, 100% { text-shadow: 0 0 15px rgba(0,242,255,0.4), 0 0 30px rgba(0,242,255,0.1); opacity: 1; }
-      50% { text-shadow: 0 0 30px rgba(0,242,255,0.8), 0 0 50px rgba(0,242,255,0.4); opacity: 0.9; }
+    /* Shadow underneath the cube */
+    .cube-shadow {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%) rotateX(90deg);
+      width: calc(var(--cube-size) * 0.85);
+      height: 40px;
+      background: radial-gradient(ellipse at center, rgba(0, 242, 255, 0.25) 0%, transparent 70%);
+      filter: blur(8px);
+      pointer-events: none;
+      transition: transform 0.8s, opacity 0.8s;
     }
-    .neon-text { animation: neon-glow 4s infinite ease-in-out; }
-
-    @keyframes badge-pulse {
-      0%, 100% { box-shadow: 0 0 15px rgba(235,178,255,0.15); border-color: rgba(235,178,255,0.3); transform: scale(1); }
-      50% { box-shadow: 0 0 30px rgba(235,178,255,0.5); border-color: rgba(235,178,255,0.7); transform: scale(1.02); }
-    }
-    .badge-pulse { animation: badge-pulse 3s infinite ease-in-out; }
-
-    @keyframes icon-pulse {
-      0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.5)); }
-      50% { opacity: 0.7; filter: drop-shadow(0 0 15px #00f2ff); }
-    }
-    .tap-icon-glow { color: #00f2ff; animation: icon-pulse 2s infinite ease-in-out; vertical-align: middle; }
-
-    .hide-scrollbar::-webkit-scrollbar { display: none; }
-    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-    /* === הגדרות נגישות === */
-    .access-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 10px; border-radius: 12px; color: white; font-size: 12px; font-weight: bold; text-transform: uppercase; transition: all 0.3s; text-align: center; width: 100%; display: block;}
-    .access-btn:hover { background: #00f2ff; color: black; }
-    .access-btn.active { background: #ebb2ff; color: black; border-color: #ebb2ff; }
-
-    body.high-contrast { filter: contrast(1.5) grayscale(1); background: #000 !important; }
-    body.high-contrast * { color: #ffff00 !important; border-color: #ffff00 !important; }
-    body.high-contrast img, body.high-contrast iframe { filter: none !important; } 
-    
-    body.large-text { font-size: 1.25rem !important; }
-    body.large-text h1 { font-size: 1.2em !important; }
-    body.large-text h2 { font-size: 1.2em !important; }
-    body.large-text p { font-size: 1.2em !important; line-height: 1.6; }
-    
-    body.highlight-links a, body.highlight-links button { border: 2px solid #ffff00 !important; text-decoration: underline !important; background: rgba(255, 255, 0, 0.1) !important; color: #fff !important; }
-    
-    body.no-animations * { animation: none !important; transition: none !important; }
-    body.no-animations .cube { transform: rotateX(-15deg) rotateY(15deg) !important; } 
   </style>
 </head>
 
 <body class="selection:bg-cyan-500/30">
   
-  <div class="fixed inset-0 z-[-1] bg-[#0a0f1a] overflow-hidden">
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDIpIi8+PC9zdmc+')] opacity-60"></div>
-    <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-cyan-500/20 rounded-full blur-[120px] animate-blob mix-blend-screen"></div>
-    <div class="absolute top-[20%] right-[-10%] w-[45vw] h-[45vw] bg-purple-600/20 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-screen"></div>
-    <div class="absolute bottom-[-20%] left-[20%] w-[60vw] h-[60vw] bg-indigo-500/15 rounded-full blur-[120px] animate-blob animation-delay-4000 mix-blend-screen"></div>
+  <!-- Interactive 3D Background -->
+  <div class="bg-scene">
+    <div class="bg-blobs">
+      <div class="bg-blob blob-cyan"></div>
+      <div class="bg-blob blob-pink"></div>
+      <div class="bg-blob blob-purple"></div>
+    </div>
+    <div class="perspective-grid"></div>
   </div>
 
+  <!-- Top Navigation Header -->
   <header class="fixed top-4 left-4 right-4 z-[100] px-6 py-3 flex justify-between items-center glass-header rounded-full shadow-2xl max-w-7xl mx-auto">
     <div class="flex items-center gap-4">
       <button onclick="toggleMenu()" class="text-cyber-cyan p-2 hover:scale-110 transition-transform">
@@ -207,29 +137,35 @@
     </button>
   </header>
 
-  <aside id="sidebar" class="fixed inset-y-0 right-0 w-80 z-[110] bg-zinc-950/98 backdrop-blur-3xl translate-x-full transition-transform duration-500 p-10 flex flex-col border-l border-white/10">
-    <button onclick="toggleMenu()" class="self-start text-white p-2 mb-12 hover:rotate-90 transition-transform"><span class="material-symbols-outlined text-4xl">close</span></button>
-    <nav class="flex flex-col gap-8 text-white font-heading uppercase">
-      <a href="index.html" class="text-3xl font-black text-cyber-cyan border-b-2 border-cyber-cyan/30 pb-4">
+  <!-- Sidebar Menu -->
+  <aside id="sidebar" class="sidebar-drawer translate-x-full">
+    <button onclick="toggleMenu()" class="self-start text-white p-2 mb-12 hover:rotate-90 transition-transform">
+      <span class="material-symbols-outlined text-4xl">close</span>
+    </button>
+    <nav class="flex flex-col gap-6 text-white font-heading uppercase">
+      <a href="index.html" class="text-2xl font-black text-cyber-cyan border-b border-cyber-cyan/20 pb-4">
         <span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span>
       </a>
-      <a href="pages/creative.html" class="text-2xl hover:text-cyber-cyan"><span class="he">קריאייטיב שלי</span><span class="en">CREATIVE</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span></a>
-      <a href="pages/satire.html" class="text-2xl hover:text-cyber-cyan"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">سחרייה</span></a>
-      <a href="pages/podcasts.html" class="text-2xl hover:text-cyber-cyan"><span class="he">פודקאסטים</span><span class="en">PODCASTS</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكאסט</span></a>
-      <a href="pages/lessons.html" class="text-2xl hover:text-cyber-cyan"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></a>
-      <a href="pages/posttrauma.html" class="text-2xl hover:text-cyber-cyan"><span class="he">פוסטראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">צדמה</span></a>
-      <a href="pages/songs.html" class="text-2xl hover:text-cyber-cyan"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">أغاني</span></a>
+      <a href="pages/creative.html" class="text-xl hover:text-cyber-cyan transition-colors"><span class="he">קריאייטיב שלי</span><span class="en">CREATIVE</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداع</span></a>
+      <a href="pages/satire.html" class="text-xl hover:text-cyber-cyan transition-colors"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">סחרייה</span></a>
+      <a href="pages/podcasts.html" class="text-xl hover:text-cyber-cyan transition-colors"><span class="he">פודקאסטים</span><span class="en">PODCASTS</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودكאסט</span></a>
+      <a href="pages/lessons.html" class="text-xl hover:text-cyber-cyan transition-colors"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">عملاء</span></a>
+      <a href="pages/posttrauma.html" class="text-xl hover:text-cyber-cyan transition-colors"><span class="he">פוסטראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">צדמה</span></a>
+      <a href="pages/songs.html" class="text-xl hover:text-cyber-cyan transition-colors"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">אגאני</span></a>
     </nav>
   </aside>
 
-  <main class="relative pt-32 pb-40 px-4 md:px-8 max-w-[1400px] mx-auto w-full">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full">
+  <!-- Main Content Layout -->
+  <main class="relative pt-32 pb-40 px-4 md:px-8 max-w-[1400px] mx-auto w-full flex-grow flex items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 w-full items-center">
 
+      <!-- Text / Info Section -->
       <div class="lg:col-span-5 flex flex-col gap-6">
         
-        <div class="glass-card p-10 flex-1 flex flex-col justify-center relative overflow-hidden group">
+        <div class="glass-card p-10 flex flex-col justify-center relative overflow-hidden group tilt-3d">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-cyber-cyan/15 to-transparent rounded-bl-full pointer-events-none"></div>
           
-          <h1 class="font-heading font-black text-5xl md:text-6xl xl:text-7xl text-white tracking-tight mb-4 uppercase neon-text text-right md:text-center lg:text-right">
+          <h1 class="font-heading font-black text-4xl md:text-5xl xl:text-6xl text-white tracking-tight mb-4 uppercase neon-text-cyan text-right md:text-center lg:text-right">
             <span class="he">צביקה ג׳וני פקר</span>
             <span class="en">TZVIKA JOHNNY PEKER</span>
             <span class="ru">ЦВИКА ДЖОННИ ПЕКЕР</span>
@@ -243,16 +179,16 @@
             <span class="ar">مبدע ذكاء اصطناعي متعدد الوسائط <br> תكنولوجي المستقبل</span>
           </h2>
           
-          <p class="text-base md:text-lg text-slate-300 font-light leading-relaxed opacity-90 text-right md:text-center lg:text-right">
-            <span class="he">מותח את גבולות הלקוחות ומשלב בין אמנות, הומור, טכנולוגיה וסאטירה. מוזמנים לצלול פנימה.</span>
-            <span class="en">Pushing clients' boundaries and combining art, humor, technology, and satire. Welcome to dive in.</span>
+          <p class="text-slate-300 font-light leading-relaxed opacity-90 text-right md:text-center lg:text-right">
+            <span class="he">מותח את גבולות היצירה ומשלב בין אמנות, הומור, טכנולוגיה וסאטירה. מוזמנים לצלול פנימה.</span>
+            <span class="en">Pushing boundaries and combining art, humor, technology, and satire. Welcome to dive in.</span>
             <span class="ru">Раздвигая границы возможного, сочетая искусство, юмор, технологии и сатиру. Добро пожаловать.</span>
-            <span class="ar">نتجاوز حدود العملاء ونجمع בין الفن والفكاهة والتكنولوجيا والسخرية. مرحبًا بكم في الغوص معنا.</span>
+            <span class="ar">نتجاوز حدود الفن والفكاهة والتكنولوجيا والسخرية. مرحبًا بكم في الغوص معنا.</span>
           </p>
         </div>
 
-        <div class="glass-card p-8 flex items-center justify-center badge-pulse bg-gradient-to-r from-cyber-pink/5 to-transparent">
-          <span class="font-['Space_Grotesk'] text-sm md:text-base xl:text-lg tracking-[0.2em] uppercase font-black text-cyber-pink text-center">
+        <div class="glass-card p-6 flex items-center justify-center badge-pulse-pink bg-gradient-to-r from-cyber-pink/5 to-transparent">
+          <span class="font-heading text-sm md:text-base xl:text-lg tracking-[0.15em] uppercase font-black text-cyber-pink text-center">
             <span class="he">(אתם חיים ב-2026 אני חי ב-2036)</span>
             <span class="en">(YOU LIVE IN 2026, I LIVE IN 2036)</span>
             <span class="ru">(ВЫ ЖИВЕТЕ В 2026, Я ЖИВУ В 2036)</span>
@@ -260,65 +196,70 @@
           </span>
         </div>
 
-        <div class="glass-card p-6 flex flex-row items-center justify-center gap-8">
+        <div class="glass-card p-5 flex flex-row items-center justify-center gap-8">
           
           <a href="https://wa.me/972528359966" target="_blank" class="flex flex-col items-center gap-2 text-cyber-cyan hover:text-white transition-colors group">
-            <div class="w-14 h-14 rounded-full border-2 border-cyber-cyan/50 flex items-center justify-center group-hover:bg-cyber-cyan group-hover:border-cyber-cyan transition-all">
-              <span class="material-symbols-outlined text-2xl group-hover:text-[#0a0f1a]">chat</span>
+            <div class="w-12 h-12 rounded-full border border-cyber-cyan/35 flex items-center justify-center group-hover:bg-cyber-cyan group-hover:border-cyber-cyan transition-all duration-300 shadow-[0_0_10px_rgba(0,242,255,0.1)] group-hover:shadow-[0_0_20px_rgba(0,242,255,0.4)]">
+              <span class="material-symbols-outlined text-xl group-hover:text-[#0a0f1a]">chat</span>
             </div>
-            <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest">WhatsApp</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest">WhatsApp</span>
           </a>
 
-          <div class="w-[1px] h-12 bg-white/10"></div>
+          <div class="w-[1px] h-10 bg-white/10"></div>
 
           <a href="tel:+972528359966" class="flex flex-col items-center gap-2 text-cyber-pink hover:text-white transition-colors group">
-            <div class="w-14 h-14 rounded-full border-2 border-cyber-pink/50 flex items-center justify-center group-hover:bg-cyber-pink group-hover:border-cyber-pink transition-all">
-              <span class="material-symbols-outlined text-2xl group-hover:text-[#0a0f1a]">call</span>
+            <div class="w-12 h-12 rounded-full border border-cyber-pink/35 flex items-center justify-center group-hover:bg-cyber-pink group-hover:border-cyber-pink transition-all duration-300 shadow-[0_0_10px_rgba(235,178,255,0.1)] group-hover:shadow-[0_0_20px_rgba(235,178,255,0.4)]">
+              <span class="material-symbols-outlined text-xl group-hover:text-[#0a0f1a]">call</span>
             </div>
-            <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest">Phone</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest">Phone</span>
           </a>
 
         </div>
 
       </div>
 
-      <div class="lg:col-span-7 glass-card p-6 md:p-10 flex flex-col items-center justify-center relative min-h-[500px] xl:min-h-[650px] overflow-hidden">
+      <!-- 3D Cube Section -->
+      <div class="lg:col-span-7 glass-card p-6 md:p-10 flex flex-col items-center justify-center relative min-h-[500px] xl:min-h-[600px] overflow-hidden tilt-3d">
+        <div class="absolute inset-0 bg-radial-gradient from-cyber-cyan/5 to-transparent pointer-events-none"></div>
 
         <div class="text-center relative z-10 mb-8">
-          <div id="portalLabel" class="font-heading font-black text-4xl md:text-6xl xl:text-7xl text-white uppercase tracking-wider neon-text">
+          <div id="portalLabel" class="font-heading font-black text-3xl md:text-5xl xl:text-6xl text-white uppercase tracking-wider neon-text-cyan h-16 flex items-center justify-center">
               </div>
-          <div class="h-1 w-24 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent mx-auto mt-4 opacity-50"></div>
+          <div class="h-1 w-20 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent mx-auto mt-2 opacity-60"></div>
         </div>
 
-        <div class="flex flex-col md:flex-row items-center justify-center w-full gap-6 xl:gap-16 relative z-10">
+        <div class="flex flex-col md:flex-row items-center justify-center w-full gap-6 xl:gap-14 relative z-10">
           
-          <button onclick="rotateCube('prev')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-3xl">arrow_back_ios_new</span></button>
+          <button onclick="rotateCube('prev')" class="nav-arrow-3d hidden md:flex"><span class="material-symbols-outlined text-2xl">arrow_forward_ios</span></button>
           
-          <a href="pages/creative.html" id="cubePortalLink" class="master-portal-link relative z-10">
-              <div class="cube-stage group">
-                <div class="cube" id="mainCube">
-                  <div class="cube-face face-front"><img src="https://drive.google.com/thumbnail?id=1b8huxKDJiDN65d7F-iA88VfMbDInsx6z&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Creative"></div>
-                  <div class="cube-face face-right"><img src="https://drive.google.com/thumbnail?id=11r5MoePfKHPnYxaHu_frZ4hRq4tHCGqo&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Satire"></div>
-                  <div class="cube-face face-back"><img src="https://drive.google.com/thumbnail?id=1jwcPgLv76lhmVnpROXSfbxTzByaRG11y&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Podcasts"></div>
-                  <div class="cube-face face-left"><img src="https://drive.google.com/thumbnail?id=16suPCqC5GyUK_J-zVaJoVdQBR_eoPaOk&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Clients"></div>
-                  <div class="cube-face face-top"><img src="https://drive.google.com/thumbnail?id=1lwnnh1K2rnzd0iYU0gHC1ryE8TrNCsGW&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Songs"></div>
-                  <div class="cube-face face-bottom"><img src="https://drive.google.com/thumbnail?id=1wQH40yN3zuKPSjYuShSJV9E6116E2DdK&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Post Trauma"></div>
+          <div class="relative">
+            <a href="pages/creative.html" id="cubePortalLink" class="master-portal-link relative z-10 block">
+                <div class="cube-stage group">
+                  <div class="cube" id="mainCube">
+                    <div class="cube-face face-front"><img src="https://drive.google.com/thumbnail?id=1b8huxKDJiDN65d7F-iA88VfMbDInsx6z&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Creative"></div>
+                    <div class="cube-face face-right"><img src="https://drive.google.com/thumbnail?id=11r5MoePfKHPnYxaHu_frZ4hRq4tHCGqo&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Satire"></div>
+                    <div class="cube-face face-back"><img src="https://drive.google.com/thumbnail?id=1jwcPgLv76lhmVnpROXSfbxTzByaRG11y&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Podcasts"></div>
+                    <div class="cube-face face-left"><img src="https://drive.google.com/thumbnail?id=16suPCqC5GyUK_J-zVaJoVdQBR_eoPaOk&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Clients"></div>
+                    <div class="cube-face face-top"><img src="https://drive.google.com/thumbnail?id=1lwnnh1K2rnzd0iYU0gHC1ryE8TrNCsGW&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Songs"></div>
+                    <div class="cube-face face-bottom"><img src="https://drive.google.com/thumbnail?id=1wQH40yN3zuKPSjYuShSJV9E6116E2DdK&sz=w1000" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Post Trauma"></div>
+                  </div>
                 </div>
-              </div>
-          </a>
+            </a>
+            <div class="cube-shadow" id="cubeShadow"></div>
+          </div>
           
-          <div class="flex md:hidden gap-8 mt-6 relative z-20">
-              <button onclick="rotateCube('prev')" class="nav-arrow w-12 h-12"><span class="material-symbols-outlined text-xl">arrow_back_ios_new</span></button>
-              <button onclick="rotateCube('next')" class="nav-arrow w-12 h-12"><span class="material-symbols-outlined text-xl">arrow_forward_ios</span></button>
+          <div class="flex md:hidden gap-6 mt-6 relative z-20">
+              <button onclick="rotateCube('prev')" class="nav-arrow-3d w-12 h-12"><span class="material-symbols-outlined text-lg">arrow_forward_ios</span></button>
+              <button onclick="rotateCube('next')" class="nav-arrow-3d w-12 h-12"><span class="material-symbols-outlined text-lg">arrow_back_ios_new</span></button>
           </div>
 
-          <button onclick="rotateCube('next')" class="nav-arrow hidden md:flex"><span class="material-symbols-outlined text-3xl">arrow_forward_ios</span></button>
+          <button onclick="rotateCube('next')" class="nav-arrow-3d hidden md:flex"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button>
 
         </div>
 
-        <a href="pages/creative.html" id="cubePortalLinkText" class="master-portal-link relative z-10 text-center mt-8 xl:mt-12">
-            <p class="text-cyber-cyan font-bold tracking-[0.1em] md:tracking-[0.2em] uppercase text-xs md:text-sm xl:text-base group flex items-center justify-center gap-2 bg-[#0a0f1a]/40 px-6 py-2 rounded-full border border-cyber-cyan/20">
-              <span class="material-symbols-outlined tap-icon-glow text-xl md:text-2xl" style="font-variation-settings: 'FILL' 1;">back_hand</span>
+        <a href="pages/creative.html" id="cubePortalLinkText" class="master-portal-link relative z-10 text-center mt-12 block">
+            <p class="text-cyber-cyan font-bold tracking-[0.15em] uppercase text-xs md:text-sm group flex items-center justify-center gap-2 bg-[#03050e]/60 px-6 py-3 rounded-full border border-cyber-cyan/20 hover:border-cyber-cyan/60 hover:bg-cyber-cyan/10 transition-all duration-300">
+              <span class="material-symbols-outlined tap-icon-glow text-xl animate-pulse" style="font-variation-settings: 'FILL' 1;">back_hand</span>
               <span class="he">לחצו על הקובייה לכניסה</span>
               <span class="en">TAP CUBE TO ENTER</span>
               <span class="ru">НАЖМИТЕ НА КУБ</span>
@@ -330,76 +271,72 @@
     </div>
   </main>
 
-  <nav class="fixed bottom-6 inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 glass-card rounded-[2.5rem] p-3 z-50 overflow-x-auto hide-scrollbar flex items-center gap-8 px-10 shadow-2xl bg-[#0a0f1a]/50 border-white/5">
-      <a href="index.html" class="flex-shrink-0 flex flex-col items-center text-cyber-cyan scale-110 neon-text uppercase"><span class="material-symbols-outlined text-3xl">home</span><span class="text-[9px] font-black mt-1 font-heading"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛАВНАЯ</span><span class="ar">الرئيسية</span></span></a>
-      <a href="pages/creative.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl">palette</span><span class="text-[9px] mt-1 font-heading"><span class="he">קריאייטיב שלי</span><span class="en">CREAT</span><span class="ru">КРЕАТИВ</span><span class="ar">إبداע</span></span></a>
-      <a href="pages/satire.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl">theater_comedy</span><span class="text-[9px] mt-1 font-heading"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИРА</span><span class="ar">סחרייה</span></span></a>
-      <a href="pages/podcasts.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl">podcasts</span><span class="text-[9px] mt-1 font-heading"><span class="he">פודקאסט</span><span class="en">PODCAST</span><span class="ru">ПОДКАСТЫ</span><span class="ar">بودכאסט</span></span></a>
-      <a href="pages/lessons.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl">handshake</span><span class="text-[9px] mt-1 font-heading"><span class="he">לקוחות</span><span class="en">CLIENTS</span><span class="ru">КЛИЕНТЫ</span><span class="ar">עמלאא</span></span></a>
-      <a href="pages/songs.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl">music_note</span><span class="text-[9px] mt-1 font-heading"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕСНИ</span><span class="ar">אע'אני</span></span></a>
-      <a href="pages/posttrauma.html" class="flex-shrink-0 flex flex-col items-center text-slate-400 hover:text-white transition-all uppercase"><span class="material-symbols-outlined text-3xl">psychology</span><span class="text-[9px] mt-1 font-heading"><span class="he">טראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВМА</span><span class="ar">צדמה</span></span></a>
-  </nav>
+  <!-- 3D Navigation Dock -->
+  <div class="dock-wrapper">
+    <nav class="dock">
+        <a href="index.html" class="dock-item active">
+          <span class="material-symbols-outlined">home</span>
+          <span class="dock-text font-heading"><span class="he">ראשי</span><span class="en">HOME</span><span class="ru">ГЛ.</span><span class="ar">الرئيسية</span></span>
+        </a>
+        <a href="pages/creative.html" class="dock-item">
+          <span class="material-symbols-outlined">palette</span>
+          <span class="dock-text font-heading"><span class="he">יצירה</span><span class="en">CREAT</span><span class="ru">КРЕА.</span><span class="ar">إبداع</span></span>
+        </a>
+        <a href="pages/satire.html" class="dock-item">
+          <span class="material-symbols-outlined">theater_comedy</span>
+          <span class="dock-text font-heading"><span class="he">סאטירה</span><span class="en">SATIRE</span><span class="ru">САТИ.</span><span class="ar">סחרייה</span></span>
+        </a>
+        <a href="pages/podcasts.html" class="dock-item">
+          <span class="material-symbols-outlined">podcasts</span>
+          <span class="dock-text font-heading"><span class="he">פוד</span><span class="en">POD</span><span class="ru">ПОД.</span><span class="ar">بودكאסט</span></span>
+        </a>
+        <a href="pages/lessons.html" class="dock-item">
+          <span class="material-symbols-outlined">handshake</span>
+          <span class="dock-text font-heading"><span class="he">לקוחות</span><span class="en">CLIENT</span><span class="ru">КЛИ.</span><span class="ar">عملاء</span></span>
+        </a>
+        <a href="pages/songs.html" class="dock-item">
+          <span class="material-symbols-outlined">music_note</span>
+          <span class="dock-text font-heading"><span class="he">שירים</span><span class="en">SONGS</span><span class="ru">ПЕС.</span><span class="ar">أغاني</span></span>
+        </a>
+        <a href="pages/posttrauma.html" class="dock-item">
+          <span class="material-symbols-outlined">psychology</span>
+          <span class="dock-text font-heading"><span class="he">טראומה</span><span class="en">TRAUMA</span><span class="ru">ТРАВ.</span><span class="ar">צדמה</span></span>
+        </a>
+    </nav>
+  </div>
 
+  <!-- Accessibility Widget -->
   <div id="accessibility-widget" class="fixed bottom-28 left-6 z-[200]">
-    <button onclick="toggleAccessMenu()" aria-label="תפריט נגישות" class="w-12 h-12 bg-cyber-cyan text-[#0a0f1a] rounded-full shadow-[0_0_20px_rgba(0,242,255,0.4)] flex items-center justify-center hover:scale-110 transition-transform">
+    <button onclick="toggleAccessMenu()" aria-label="תפריט נגישות" class="w-12 h-12 bg-cyber-cyan text-[#0a0f1a] rounded-full shadow-[0_0_20px_rgba(0,242,255,0.4)] flex items-center justify-center hover:scale-110 transition-all duration-300">
       <span class="material-symbols-outlined !text-2xl">accessibility_new</span>
     </button>
 
     <div id="access-menu" class="hidden absolute bottom-14 left-0 w-56 glass-card p-4 border border-cyber-cyan/30 flex flex-col gap-2">
       <h3 class="font-heading font-black text-cyber-cyan text-center border-b border-white/10 pb-2 uppercase tracking-widest text-xs">
-        <span class="he">נגישות</span><span class="en">Accessibility</span><span class="ru">Доступность</span><span class="ar">إدכאניה אלדוח'ול</span>
+        <span class="he">נגישות</span><span class="en">Accessibility</span><span class="ru">Доступность</span><span class="ar">إمكانية الوصول</span>
       </h3>
       
-      <button onclick="accessAction('contrast', this)" class="access-btn"><span class="he">ניגודיות גבוהה</span><span class="en">High Contrast</span><span class="ru">Контраст</span><span class="ar">תבאין עאל</span></button>
-      <button onclick="accessAction('textSize', this)" class="access-btn"><span class="he">טקסט גדול</span><span class="en">Large Text</span><span class="ru">Крупный текст</span><span class="ar">נץ כביר</span></button>
-      <button onclick="accessAction('links', this)" class="access-btn"><span class="he">הדגשת קישורים</span><span class="en">Highlight Links</span><span class="ru">Выделить ссылки</span><span class="ar">אבראז אלרואבט</span></button>
-      <button onclick="accessAction('stopAnim', this)" class="access-btn"><span class="he">עצירת אנימציות</span><span class="en">Stop Animations</span><span class="ru">Без анимаций</span><span class="ar">איקאף אלחרכה</span></button>
-      <button onclick="accessAction('reset', this)" class="mt-2 text-[10px] text-white/40 hover:text-white uppercase tracking-widest transition-colors w-full text-center"><span class="he">איפוס הגדרות</span><span class="en">Reset Settings</span><span class="ru">Сбросить</span><span class="ar">אעאדת ד'בט</span></button>
+      <button onclick="accessAction('contrast', this)" class="access-btn"><span class="he">ניגודיות גבוהה</span><span class="en">High Contrast</span><span class="ru">Контраст</span><span class="ar">تباين عالٍ</span></button>
+      <button onclick="accessAction('textSize', this)" class="access-btn"><span class="he">טקסט גדול</span><span class="en">Large Text</span><span class="ru">Крупный текст</span><span class="ar">נץ גדול</span></button>
+      <button onclick="accessAction('links', this)" class="access-btn"><span class="he">הדגשת קישורים</span><span class="en">Highlight Links</span><span class="ru">Выделить ссылки</span><span class="ar">إبراز הראובט</span></button>
+      <button onclick="accessAction('stopAnim', this)" class="access-btn"><span class="he">עצירת אנימציות</span><span class="en">Stop Animations</span><span class="ru">Без анимаций</span><span class="ar">إيقאף החרכה</span></button>
+      <button onclick="accessAction('reset', this)" class="mt-2 text-[10px] text-white/40 hover:text-white uppercase tracking-widest transition-colors w-full text-center"><span class="he">איפוס הגדרות</span><span class="en">Reset Settings</span><span class="ru">Сбросить</span><span class="ar">إעדה ضبط</span></button>
     </div>
   </div>
 
+  <script src="js/shared.js"></script>
   <script>
-    function toggleAccessMenu() {
-      document.getElementById('access-menu').classList.toggle('hidden');
-    }
-
-    function accessAction(type, btn) {
-      const body = document.body;
-
-      if (type === 'reset') {
-        body.classList.remove('high-contrast', 'large-text', 'highlight-links', 'no-animations');
-        document.querySelectorAll('.access-btn').forEach(b => b.classList.remove('active'));
-        return;
-      }
-
-      if (type === 'contrast') body.classList.toggle('high-contrast');
-      if (type === 'textSize') body.classList.toggle('large-text');
-      if (type === 'links') body.classList.toggle('highlight-links');
-      if (type === 'stopAnim') body.classList.toggle('no-animations');
-      
-      btn.classList.toggle('active');
-    }
-
-    document.addEventListener('click', function(event) {
-      const widget = document.getElementById('accessibility-widget');
-      const menu = document.getElementById('access-menu');
-      if (widget && !widget.contains(event.target)) {
-        menu.classList.add('hidden');
-      }
-    });
-
-    function toggleMenu() { document.getElementById('sidebar').classList.toggle('translate-x-full'); }
-
     const cube = document.getElementById('mainCube');
+    const shadow = document.getElementById('cubeShadow');
     const label = document.getElementById('portalLabel');
     const masterLink = document.getElementById('cubePortalLink');
     const masterLinkText = document.getElementById('cubePortalLinkText');
     let currentIndex = 0;
     
-    // סינכרון המצבים (States) מעודכן ל"קריאייטיב שלי"
+    // States configuration matching the cube faces
     const states = [
       { transform: 'rotateX(0deg) rotateY(0deg)', he: 'קריאייטיב שלי', en: 'CREATIVE', ru: 'КРЕАТИВ', ar: 'إبداع', url: 'pages/creative.html' },
-      { transform: 'rotateX(0deg) rotateY(-90deg)', he: 'סאטירה', en: 'SATIRE', ru: 'САТИРА', ar: 'سחרייה', url: 'pages/satire.html' },
+      { transform: 'rotateX(0deg) rotateY(-90deg)', he: 'סאטירה', en: 'SATIRE', ru: 'САТИРА', ar: 'סחרייה', url: 'pages/satire.html' },
       { transform: 'rotateX(0deg) rotateY(-180deg)', he: 'פודקאסטים', en: 'PODCASTS', ru: 'ПОДКАСТЫ', ar: 'بودكاست', url: 'pages/podcasts.html' },
       { transform: 'rotateX(0deg) rotateY(90deg)', he: 'לקוחות', en: 'CLIENTS', ru: 'КЛИЕНТЫ', ar: 'عملاء', url: 'pages/lessons.html' },
       { transform: 'rotateX(-90deg) rotateY(0deg)', he: 'שירים', en: 'SONGS', ru: 'ПЕСНИ', ar: 'أغاني', url: 'pages/songs.html' },
@@ -409,12 +346,21 @@
     function rotateCube(dir) {
       if(dir === 'next') currentIndex = (currentIndex + 1) % states.length;
       else currentIndex = (currentIndex - 1 + states.length) % states.length;
+      
+      // Update cube rotation
       cube.style.transform = states[currentIndex].transform;
+      
+      // Create a nice sync animation for the shadow
+      if (shadow) {
+        shadow.style.transform = `translateX(-50%) rotateX(90deg) scale(${currentIndex % 2 === 0 ? 1 : 0.85})`;
+        shadow.style.opacity = currentIndex % 2 === 0 ? '1' : '0.6';
+      }
+      
       updateLabel();
     }
 
     function updateLabel() {
-      const lang = document.documentElement.getAttribute('data-lang');
+      const lang = document.documentElement.getAttribute('data-lang') || 'he';
       const currentState = states[currentIndex];
       
       label.innerText = currentState[lang] || currentState.he;
@@ -422,24 +368,10 @@
       masterLinkText.setAttribute('href', currentState.url);
     }
 
-    const languages = ['he', 'en', 'ru', 'ar'];
-    
-    function toggleLang() {
-      const html = document.documentElement;
-      let currentLang = html.getAttribute('data-lang');
-      let nextIndex = (languages.indexOf(currentLang) + 1) % languages.length;
-      let newLang = languages[nextIndex];
-      
-      html.setAttribute('data-lang', newLang);
-      html.setAttribute('dir', (newLang === 'he' || newLang === 'ar') ? 'rtl' : 'ltr');
-      localStorage.setItem('siteLang', newLang);
+    // Callback called by shared.js when language is updated
+    function updatePageLang(lang) {
       updateLabel();
     }
-
-    const savedLang = localStorage.getItem('siteLang') || 'he';
-    document.documentElement.setAttribute('data-lang', savedLang);
-    document.documentElement.setAttribute('dir', (savedLang === 'he' || savedLang === 'ar') ? 'rtl' : 'ltr');
-    updateLabel();
   </script>
 </body>
 </html>
