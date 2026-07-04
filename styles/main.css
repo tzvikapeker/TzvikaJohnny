@@ -879,3 +879,94 @@ body {
     transform: translateY(0);
   }
 }
+
+
+/* ==========================================================================
+   Contact Section Styling (WhatsApp & Phone)
+   ========================================================================== */
+.contact-bar {
+  background: rgba(10, 15, 30, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.contact-link:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.contact-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contact-link:hover .contact-circle {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px var(--hover-shadow-color);
+  background: var(--hover-bg-color);
+  border-color: var(--hover-border-color);
+}
+
+.contact-link.whatsapp {
+  --hover-shadow-color: rgba(37, 211, 102, 0.4);
+  --hover-bg-color: rgba(37, 211, 102, 0.1);
+  --hover-border-color: #25d366;
+}
+
+.contact-link.phone {
+  --hover-shadow-color: rgba(255, 119, 255, 0.4);
+  --hover-bg-color: rgba(255, 119, 255, 0.15);
+  --hover-border-color: var(--color-pink);
+}
+
+.contact-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.contact-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: color 0.3s;
+}
+
+.contact-link.whatsapp:hover .contact-label {
+  color: #25d366;
+  text-shadow: 0 0 8px rgba(37, 211, 102, 0.3);
+}
+
+.contact-link.phone:hover .contact-label {
+  color: var(--color-pink);
+  text-shadow: 0 0 8px rgba(255, 119, 255, 0.3);
+}
