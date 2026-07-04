@@ -808,61 +808,6 @@ html[dir="ltr"] .sidebar-drawer:not(.translate-x-full) {
 
 
 /* ==========================================================================
-   Vibrant Theme Color Maps (Per Page Override)
-   ========================================================================== */
-
-/* 1. Creative (Emerald Green / Turquoise) */
-body.theme-creative {
-  --color-cyan: #00ffb7;
-  --color-pink: #34d399;
-  --color-purple: #065f46;
-}
-
-/* 2. Satire (Tangerine / Yellow) */
-body.theme-satire {
-  --color-cyan: #ff9900;
-  --color-pink: #facc15;
-  --color-purple: #9a3412;
-}
-
-/* 3. Podcasts (Lavender / Violet) */
-body.theme-podcasts {
-  --color-cyan: #d946ef;
-  --color-pink: #a78bfa;
-  --color-purple: #5b21b6;
-}
-
-/* 4. Clients (Gold / Amber) */
-body.theme-clients {
-  --color-cyan: #fbbf24;
-  --color-pink: #fb7185;
-  --color-purple: #78350f;
-}
-
-/* 5. Songs (Neon Magenta / Pink) */
-body.theme-songs {
-  --color-cyan: #ff007f;
-  --color-pink: #f472b6;
-  --color-purple: #9d174d;
-}
-
-/* 6. Trauma (Crimson Red / Orange) */
-body.theme-trauma {
-  --color-cyan: #ef4444;
-  --color-pink: #f97316;
-  --color-purple: #991b1b;
-}
-
-/* Base adjustment for dock icons using emojis */
-.dock-emoji {
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.25);
-}
-.dock-item:hover .dock-emoji {
-  transform: scale(1.3) translateY(-4px);
-}
-
-
-/* ==========================================================================
    Smooth Page Load Transition
    ========================================================================== */
 body {
