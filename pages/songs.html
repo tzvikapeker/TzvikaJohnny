@@ -104,6 +104,19 @@
       <div class="text-white/50 text-xs font-mono tracking-widest mt-1">
         TRACK <span id="songCounter">1 / 10</span>
       </div>
+        <div class="flex items-center justify-center gap-4 mt-2">
+          <div class="audio-visualizer">
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+          </div>
+          <div class="hud-telemetry flex items-center gap-1.5"><span class="status-dot pink"></span><span>AUDIO_STREAM: DECRYPTED</span></div>
+        </div>
+    
+      </div>
     </div>
 
     <!-- Interactive 3D Player -->
@@ -115,7 +128,9 @@
       </button>
 
       <!-- 3D Phone Mockup Wrapper -->
+      <div class="radar-reticle"></div>
       <div class="phone-mockup tilt-3d flip-3d-container" id="playerWrapper">
+        <div class="scanlines"></div>
          <iframe id="mainPlayer" src="" loading="lazy" allow="autoplay; fullscreen" allowfullscreen="true" class="w-full h-full rounded-2xl border-0"></iframe>
       </div>
 

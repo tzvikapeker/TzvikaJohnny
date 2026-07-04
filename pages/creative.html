@@ -91,6 +91,8 @@
       <div class="text-white/50 text-xs font-mono tracking-widest mt-1">
         ITEM <span id="videoCounter">1 / 42</span>
       </div>
+      <div class="hud-telemetry mt-2 flex items-center justify-center gap-1.5"><span class="status-dot"></span><span>FEED: LIVE_DRIVE | MODULE: CREATIVE_AI</span>
+      </div>
     </div>
 
     <!-- 3D Layout: Arrows on side of the Phone Mockup -->
@@ -102,7 +104,9 @@
       </button>
 
       <!-- 3D Phone Mockup Wrapper -->
+      <div class="radar-reticle"></div>
       <div class="phone-mockup tilt-3d flip-3d-container" id="playerWrapper">
+        <div class="scanlines"></div>
         <div id="video-container" class="w-full h-full">
           <!-- iframe loaded dynamically -->
         </div>

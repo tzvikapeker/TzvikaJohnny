@@ -589,3 +589,158 @@ html[dir="ltr"] .sidebar-drawer:not(.translate-x-full) {
     height: 426px;
   }
 }
+
+/* ==========================================================================
+   Sci-Fi digital console interface (HUD/FUI) & animations
+   ========================================================================== */
+
+/* Holographic Scanlines screen overlay */
+.scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 242, 255, 0.05) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.02),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.02)
+  );
+  background-size: 100% 4px, 6px 100%;
+  border-radius: inherit;
+  opacity: 0.85;
+}
+
+/* Glowing HUD corner brackets */
+.hud-card {
+  position: relative;
+}
+
+.hud-bracket {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--color-cyan);
+  pointer-events: none;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.hud-bracket.top-left { top: 12px; left: 12px; border-top: 2px solid; border-left: 2px solid; }
+.hud-bracket.top-right { top: 12px; right: 12px; border-top: 2px solid; border-right: 2px solid; }
+.hud-bracket.bottom-left { bottom: 12px; left: 12px; border-bottom: 2px solid; border-left: 2px solid; }
+.hud-bracket.bottom-right { bottom: 12px; right: 12px; border-bottom: 2px solid; border-right: 2px solid; }
+
+.glass-card:hover .hud-bracket {
+  opacity: 1;
+  width: 18px;
+  height: 18px;
+  border-color: var(--color-pink);
+  filter: drop-shadow(0 0 5px var(--color-pink));
+}
+
+/* Blinking Digital status light */
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-cyan);
+  border-radius: 50%;
+  margin-right: 6px;
+  box-shadow: 0 0 8px var(--color-cyan);
+  animation: blink-status 1.5s infinite ease-in-out;
+}
+
+.status-dot.pink {
+  background-color: var(--color-pink);
+  box-shadow: 0 0 8px var(--color-pink);
+  animation: blink-status-pink 1.5s infinite ease-in-out;
+}
+
+@keyframes blink-status {
+  0%, 100% { opacity: 0.3; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes blink-status-pink {
+  0%, 100% { opacity: 0.3; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Bouncing Audio visualizer equalizer bars */
+.audio-visualizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 24px;
+}
+
+.audio-bar {
+  width: 3px;
+  height: 4px;
+  background-color: var(--color-pink);
+  box-shadow: 0 0 6px var(--color-pink);
+  animation: bounce-equalizer 0.8s infinite alternate ease-in-out;
+  border-radius: 1px;
+}
+
+.audio-bar:nth-child(2) { animation-delay: 0.15s; background-color: var(--color-cyan); box-shadow: 0 0 6px var(--color-cyan); }
+.audio-bar:nth-child(3) { animation-delay: 0.3s; }
+.audio-bar:nth-child(4) { animation-delay: 0.05s; background-color: var(--color-cyan); box-shadow: 0 0 6px var(--color-cyan); }
+.audio-bar:nth-child(5) { animation-delay: 0.25s; }
+.audio-bar:nth-child(6) { animation-delay: 0.4s; background-color: var(--color-cyan); box-shadow: 0 0 6px var(--color-cyan); }
+
+@keyframes bounce-equalizer {
+  0% { height: 4px; }
+  100% { height: 24px; }
+}
+
+/* Rotating scan reticle backdrop behind players */
+.radar-reticle {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border: 1px dashed rgba(0, 242, 255, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: spin-radar 20s infinite linear;
+  z-index: -1;
+}
+
+.radar-reticle::before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(235, 178, 255, 0.05);
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.radar-reticle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,242,255,0.1), transparent);
+}
+
+@keyframes spin-radar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Cyber text typing effect or system telemetry info */
+.hud-telemetry {
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+}
+

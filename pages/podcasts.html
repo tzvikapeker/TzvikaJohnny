@@ -104,6 +104,8 @@
       <div class="text-white/50 text-xs font-mono tracking-widest mt-1">
         TRACK <span id="podcastCounter">1 / 9</span>
       </div>
+      <div class="hud-telemetry mt-2 flex items-center justify-center gap-1.5"><span class="status-dot"></span><span>AUDIO_STREAM: ACTIVE | BROADCAST: 2036</span>
+      </div>
     </div>
 
     <!-- Interactive 3D Player -->
@@ -115,7 +117,9 @@
       </button>
 
       <!-- 3D Phone Mockup Wrapper -->
+      <div class="radar-reticle"></div>
       <div class="phone-mockup tilt-3d flip-3d-container" id="playerWrapper">
+        <div class="scanlines"></div>
          <iframe id="mainPlayer" src="" loading="lazy" allow="autoplay; fullscreen" allowfullscreen="true" class="w-full h-full rounded-2xl border-0"></iframe>
       </div>
 
